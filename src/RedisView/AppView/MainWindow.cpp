@@ -147,7 +147,7 @@ void MainWindow::about() {
                        "<br>"
                        "<b>RedisView</b><br><br>"
                        "作者 ：菜鸟人<br>"
-                       "版本 ：Version1.0.0<br>"
+                       "版本 ：Version 1.1812.30<br>"
                        "邮箱 ：cc20110101@126.com<br>"
                        "版权 ：Copyright 2018 Powered By CC<br>"
                        );

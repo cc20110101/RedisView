@@ -10,14 +10,15 @@ SOURCES += \
     AppView/MainWidget.cpp \
     AppView/LoginDialog.cpp \
     AppView/LoginSet.cpp \
-    Model/KeyTreeItemModel.cpp \
     Public/WorkThread.cpp \
     AppView/DataView.cpp \
     AppView/Donation.cpp \
     AppView/InputDialog.cpp \
     Public/Publib.cpp \
     AppView/KeyDialog.cpp \
-    AppView/Instructions.cpp
+    AppView/Instructions.cpp \
+    Model/TreeModel.cpp \
+    Model/TreeItem.cpp
 
 
 HEADERS += \
@@ -32,14 +33,15 @@ HEADERS += \
     AppView/MainWidget.h \
     AppView/LoginDialog.h \
     AppView/LoginSet.h \
-    Model/KeyTreeItemModel.h \
     Public/WorkThread.h \
     AppView/DataView.h \
     AppView/Donation.h \
     AppView/InputDialog.h \
     Public/Publib.h \
     AppView/KeyDialog.h \
-    AppView/Instructions.h
+    AppView/Instructions.h \
+    Model/TreeModel.h \
+    Model/TreeItem.h
 
 
 TARGET = RedisView

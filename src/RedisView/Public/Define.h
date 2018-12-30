@@ -5,7 +5,6 @@
 #include <QTextBrowser>
 #include <QMessageBox>
 #include <QTextCodec>
-#include <QStandardItemModel>
 #include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
@@ -33,6 +32,9 @@
 #include <QReadLocker>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QAbstractItemModel>
+#include <QModelIndex>
+#include <QVariant>
 #include "RedisLib/RedisCluster.h"
 
 

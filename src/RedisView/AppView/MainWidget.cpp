@@ -7,8 +7,6 @@ MainWidget::MainWidget(RedisCluster *redisClient, QWidget *parent) :
     initSet(redisClient);
     initView();
     initKeyView();
-    //大数据量卡顿，暂时不初始化key列表，手动刷新获取数据
-    //initKeyListDat();
 
     connect(_mCount, &QAction::triggered, this, &MainWidget::count);
     connect(_mRefresh, &QAction::triggered, this, &MainWidget::flush);
@@ -20,7 +18,6 @@ MainWidget::MainWidget(RedisCluster *redisClient, QWidget *parent) :
     connect(_textBrowser, &QTextBrowser::textChanged, this, &MainWidget::autoScroll);
     connect(_dataView, &DataView::getData, this, &MainWidget::initValueListData);
     connect(_dataView, &DataView::commitData, this, &MainWidget::commitValue);
-
 }
 
 MainWidget::~MainWidget()
@@ -63,7 +60,7 @@ void MainWidget::initSet(RedisCluster *redisClient) {
     _iScanValueSeq = 0;
     _vTaskId.clear();
     _cmdRsult.clear();
-    _vStandardItemKey.clear();
+    _vTreeItemKey.clear();
 }
 
 void MainWidget::initKeyListData(int dbIndex)
@@ -72,16 +69,13 @@ void MainWidget::initKeyListData(int dbIndex)
 
     ++_iScanKeySeq;
     if(dbIndex == -1) {
-        _vStandardItemKey.clear();
+        _vTreeItemKey.clear();
         _itemKeyModel->clear();
-        _standardItemKey = new QStandardItem(_strConnectName);
-        _standardItemKey->setIcon(QIcon(ICON_LONGIN));
-        _standardItemKey->setEditable(false);
-        _itemKeyModel->appendRow(_standardItemKey);
+        _treeItemKey = new TreeItem(_strConnectName, _itemKeyModel->getRootItem());
+        _treeItemKey->setIconId(1);
+        _itemKeyModel->insertRow(_treeItemKey);
     } else {
-        while(_vStandardItemKey[dbIndex]->rowCount()) {
-            _vStandardItemKey[dbIndex]->removeRow(0);
-        }
+        _itemKeyModel->removeChild(_vTreeItemKey[dbIndex]);
     }
 
     for(int i = 0; i < vClients.size(); ++i) {
@@ -111,11 +105,10 @@ void MainWidget::initKeyListData(int dbIndex)
                 }
 
                 if(dbIndex == -1) {
-                    _standardSubItem = new QStandardItem(QString("db%1").arg(j));
-                    _standardSubItem->setIcon(QIcon(ICON_DB));
-                    _standardSubItem->setEditable(false);
-                    _standardItemKey->appendRow(_standardSubItem);
-                    _vStandardItemKey << _standardSubItem;
+                    _subTreeItem = new TreeItem(QString("db%1").arg(j),_treeItemKey);
+                    _subTreeItem->setIconId(2);
+                    _itemKeyModel->insertRow(_subTreeItem);
+                    _vTreeItemKey << _subTreeItem;
                 }
 
                 _taskMsg = new TaskMsg();
@@ -200,14 +193,13 @@ void MainWidget::recvData(const TaskMsg taskMsg) {
             QString strKey;
             for(int i = 0; i < taskMsg._list.size(); ++i) {
                 strKey = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
-                _standardSubItem = new QStandardItem(strKey);
-                _standardSubItem->setIcon(QIcon(ICON_KEY));
-                _standardSubItem->setEditable(false);
                 if(_isClusterMode) {
-                    _standardItemKey->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(strKey,_treeItemKey);
                 } else {
-                    _vStandardItemKey[taskMsg._dbIndex]->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(strKey,_vTreeItemKey[taskMsg._dbIndex]);
                 }
+                _subTreeItem->setIconId(3);
+                _itemKeyModel->insertRow(_subTreeItem);
             }
         }
         _SCAN_KEY_LOCK.unlock();
@@ -225,10 +217,10 @@ void MainWidget::finishWork(const int taskid) {
     if(taskid == THREAD_SCAN_KEY_TASK) {
         if(_vTaskId.indexOf(taskid) == -1) {
             if(_isClusterMode) {
-                _standardItemKey->sortChildren(0);
+                _itemKeyModel->sortItem(_treeItemKey);
             } else {
-                for(int i = 0; i < _vStandardItemKey.size(); ++i) {
-                    _vStandardItemKey[i]->sortChildren(0);
+                for(int i = 0; i < _vTreeItemKey.size(); ++i) {
+                    _itemKeyModel->sortItem(_vTreeItemKey[i]);
                 }
             }
         }
@@ -240,20 +232,18 @@ void MainWidget::finishWork(const int taskid) {
 }
 
 void MainWidget::initKeyView() {
-    _vStandardItemKey.clear();
+    _vTreeItemKey.clear();
     _itemKeyModel->clear();
-    _standardItemKey = new QStandardItem(_strConnectName);
-    _standardItemKey->setIcon(QIcon(ICON_LONGIN));
-    _standardItemKey->setEditable(false);
-    _itemKeyModel->appendRow(_standardItemKey);
+    _treeItemKey = new TreeItem(_strConnectName, _itemKeyModel->getRootItem());
+    _treeItemKey->setIconId(1);
+    _itemKeyModel->insertRow(_treeItemKey);
 
     if(!_isClusterMode) {
         for(int i = 0; i < _idbNums; ++i) {
-            _standardSubItem = new QStandardItem(QString("db%1").arg(i));
-            _standardSubItem->setIcon(QIcon(ICON_DB));
-            _standardSubItem->setEditable(false);
-            _standardItemKey->appendRow(_standardSubItem);
-            _vStandardItemKey << _standardSubItem;
+            _subTreeItem = new TreeItem(QString("db%1").arg(i),_treeItemKey);
+            _subTreeItem->setIconId(2);
+            _itemKeyModel->insertRow(_subTreeItem);
+            _vTreeItemKey << _subTreeItem;
         }
     }
 }
@@ -308,7 +298,7 @@ void MainWidget::initView()
     ui->_radioButtonJson->setChecked(_isJson);
     ui->_radioButtonText->setChecked(_isText);
 
-    _itemKeyModel = new QStandardItemModel(ui->_treeView);
+    _itemKeyModel = new TreeModel(ui->_treeView);
     ui->_treeView->setModel(_itemKeyModel);
     ui->_treeView->setHeaderHidden(true);
     ui->_treeView->setSortingEnabled(true);
@@ -329,13 +319,13 @@ void MainWidget::initView()
 }
 
 void MainWidget::showTreeRightMenu(const QPoint &pos) {
-    _standardSubItem = _itemKeyModel->itemFromIndex(ui->_treeView->indexAt(pos));
-    if(!_standardSubItem)
+    _subTreeItem = _itemKeyModel->itemFromIndex(ui->_treeView->indexAt(pos));
+    if(!_subTreeItem)
         return;
     _menu->clear();
     if(_isClusterMode) {
         _idbIndex = 0;
-        if(_standardSubItem == _standardItemKey) {
+        if(_subTreeItem == _treeItemKey) {
             _menu->addAction(_mCount);
             _menu->addAction(_mRefresh);
             _menu->addAction(_mCreated);
@@ -344,17 +334,17 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
             _menu->addAction(_mDelete);
         }
     } else {
-        _idbIndex = _vStandardItemKey.indexOf(_standardSubItem);
+        _idbIndex = _vTreeItemKey.indexOf(_subTreeItem);
         if(_idbIndex != -1) {
             _menu->addAction(_mCount);
             _menu->addAction(_mRefresh);
             _menu->addAction(_mCreated);
-        } else if(_standardItemKey == _standardSubItem) {
+        } else if(_treeItemKey == _subTreeItem) {
             _menu->addAction(_mCount);
             _menu->addAction(_mRefresh);
             _idbIndex = -1;
         } else {
-            _idbIndex = _vStandardItemKey.indexOf(_standardSubItem->parent());
+            _idbIndex = _vTreeItemKey.indexOf(_subTreeItem->parent());
             _menu->addAction(_mAlter);
             _menu->addAction(_mDelete);
         }
@@ -366,18 +356,18 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
 void MainWidget::count() {
     QString str;
     if(_isClusterMode) {
-        str = QString("统计键值总数为%1").arg(_standardItemKey->rowCount());
+        str = QString("统计键值总数为%1").arg(_treeItemKey->childCount());
         QMessageBox::information(this, "统计", str);
     } else {
         if(_idbIndex == -1) {
             _qLongLong = 0;
             for(int i = 0; i < _idbNums; ++i) {
-                _qLongLong += _vStandardItemKey[i]->rowCount();
+                _qLongLong += _vTreeItemKey[i]->childCount();
             }
             str = QString("统计键值总数为%1").arg(_qLongLong);
             QMessageBox::information(this, "统计", str);
         } else {
-            str = QString("统计键值总数为%1").arg(_vStandardItemKey[_idbIndex]->rowCount());
+            str = QString("统计键值总数为%1").arg(_vTreeItemKey[_idbIndex]->childCount());
             QMessageBox::information(this, "统计", str);
         }
     }
@@ -401,7 +391,7 @@ void MainWidget::del() {
         }
     }
 
-    if(!_redisClient->del(_standardSubItem->text(), _qLongLong)) {
+    if(!_redisClient->del(_subTreeItem->text(), _qLongLong)) {
         QMessageBox::critical(this, "错误", _redisClient->getErrorInfo());
         _idbIndex = 0;
         if(!_redisClient->select(_idbIndex)) {
@@ -411,9 +401,9 @@ void MainWidget::del() {
     }
 
     if(_isClusterMode)
-        _standardItemKey->removeRow(_standardSubItem->row());
+        _itemKeyModel->removeChild(_subTreeItem->parent(), _subTreeItem->childNumber());
     else
-        _vStandardItemKey[_idbIndex]->removeRow(_standardSubItem->row());
+        _itemKeyModel->removeChild(_vTreeItemKey[_idbIndex]->parent(),_vTreeItemKey[_idbIndex]->childNumber());
 
     _idbIndex = 0;
     if(!_redisClient->select(_idbIndex)) {
@@ -431,7 +421,7 @@ void MainWidget::alter() {
     }
 
     QString sTtl;
-    if(!_redisClient->pttl(_standardSubItem->text(), _qLongLong)) {
+    if(!_redisClient->pttl(_subTreeItem->text(), _qLongLong)) {
         QMessageBox::critical(this, "错误", "获取键超时时间失败");
         sTtl.clear();
     } else {
@@ -439,7 +429,7 @@ void MainWidget::alter() {
     }
 
     _keyDialog->init();
-    _keyDialog->setKey(_standardSubItem->text());
+    _keyDialog->setKey(_subTreeItem->text());
     _keyDialog->setTtl(sTtl);
     _keyDialog->setFlag(1);
     if(_keyDialog->exec() != QDialog::Accepted) {
@@ -452,22 +442,22 @@ void MainWidget::alter() {
         if(_keyDialog->getTtl() != sTtl) {
             if(_keyDialog->getTtl().isEmpty() || _keyDialog->getTtl().toLongLong() < 0) {
                 if(sTtl.toLongLong() >= 0) {
-                    if(!_redisClient->persist(_standardSubItem->text())) {
+                    if(!_redisClient->persist(_subTreeItem->text())) {
                         QMessageBox::critical(this, "错误", "设置键超时时间永久失败");
                     }
                 }
             } else {
-                if(!_redisClient->pexpire(_standardSubItem->text(),sTtl.toLongLong())) {
+                if(!_redisClient->pexpire(_subTreeItem->text(),_keyDialog->getTtl().toLongLong())) {
                     QMessageBox::critical(this, "错误", "设置超时失败");
                 }
             }
         }
 
-        if(_keyDialog->getKey() != _standardSubItem->text()) {
-            if(!_redisClient->renamex(_standardSubItem->text(),_keyDialog->getKey())) {
+        if(_keyDialog->getKey() != _subTreeItem->text()) {
+            if(!_redisClient->renamex(_subTreeItem->text(),_keyDialog->getKey())) {
                 QMessageBox::critical(this, "错误", _redisClient->getErrorInfo());
             } else {
-                _standardSubItem->setText(_keyDialog->getKey());
+                _itemKeyModel->setText(_subTreeItem, _keyDialog->getKey());
             }
         }
     }
@@ -506,14 +496,13 @@ void MainWidget::add() {
             }
             return;
         }
-        _standardSubItem = new QStandardItem(_strKey);
-        _standardSubItem->setIcon(QIcon(ICON_KEY));
-        _standardSubItem->setEditable(false);
         if(_isClusterMode) {
-            _standardItemKey->appendRow(_standardSubItem);
+            _subTreeItem = new TreeItem(_strKey,_treeItemKey);
         } else {
-            _vStandardItemKey[_idbIndex]->appendRow(_standardSubItem);
+            _subTreeItem = new TreeItem(_strKey,_vTreeItemKey[_idbIndex]);
         }
+        _subTreeItem->setIconId(3);
+        _itemKeyModel->insertRow(_subTreeItem);
     } else if(_strType == "Hash") {
         for(int i = 0; i < textList.size(); ++++i) {
             if(!_redisClient->hset(_strKey,textList[i],textList[i+1], _qLongLong)) {
@@ -521,14 +510,13 @@ void MainWidget::add() {
                 continue;
             }
             if(!i) {
-                _standardSubItem = new QStandardItem(_strKey);
-                _standardSubItem->setIcon(QIcon(ICON_KEY));
-                _standardSubItem->setEditable(false);
                 if(_isClusterMode) {
-                    _standardItemKey->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_subTreeItem);
                 } else {
-                    _vStandardItemKey[_idbIndex]->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_vTreeItemKey[_idbIndex]);
                 }
+                _itemKeyModel->insertRow(_subTreeItem);
+                _subTreeItem->setIconId(3);
             }
         }
     } else if(_strType == "Set") {
@@ -538,14 +526,13 @@ void MainWidget::add() {
                 continue;
             }
             if(!i) {
-                _standardSubItem = new QStandardItem(_strKey);
-                _standardSubItem->setIcon(QIcon(ICON_KEY));
-                _standardSubItem->setEditable(false);
                 if(_isClusterMode) {
-                    _standardItemKey->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_treeItemKey);
                 } else {
-                    _vStandardItemKey[_idbIndex]->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_vTreeItemKey[_idbIndex]);
                 }
+                _itemKeyModel->insertRow(_subTreeItem);
+                _subTreeItem->setIconId(3);
             }
         }
     } else if(_strType == "ZSet") {
@@ -555,14 +542,13 @@ void MainWidget::add() {
                 continue;
             }
             if(!i) {
-                _standardSubItem = new QStandardItem(_strKey);
-                _standardSubItem->setIcon(QIcon(ICON_KEY));
-                _standardSubItem->setEditable(false);
                 if(_isClusterMode) {
-                    _standardItemKey->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_treeItemKey);
                 } else {
-                    _vStandardItemKey[_idbIndex]->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_vTreeItemKey[_idbIndex]);
                 }
+                _itemKeyModel->insertRow(_subTreeItem);
+                _subTreeItem->setIconId(3);
             }
         }
     } else if(_strType == "List") {
@@ -572,14 +558,13 @@ void MainWidget::add() {
                 continue;
             }
             if(!i) {
-                _standardSubItem = new QStandardItem(_strKey);
-                _standardSubItem->setIcon(QIcon(ICON_KEY));
-                _standardSubItem->setEditable(false);
                 if(_isClusterMode) {
-                    _standardItemKey->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_treeItemKey);
                 } else {
-                    _vStandardItemKey[_idbIndex]->appendRow(_standardSubItem);
+                    _subTreeItem = new TreeItem(_strKey,_vTreeItemKey[_idbIndex]);
                 }
+                _itemKeyModel->insertRow(_subTreeItem);
+                _subTreeItem->setIconId(3);
             }
         }
     }
@@ -591,9 +576,9 @@ void MainWidget::add() {
     }
 
     if(_isClusterMode) {
-        _standardItemKey->sortChildren(0);
+        _itemKeyModel->sortItem(_treeItemKey);
     } else {
-        _vStandardItemKey[_idbIndex]->sortChildren(0);
+        _itemKeyModel->sortItem(_vTreeItemKey[_idbIndex]);
     }
 
     _idbIndex = 0;
@@ -609,15 +594,15 @@ void MainWidget::runError(const int taskid, const QString & error) {
 
 void MainWidget::treeClicked(const QModelIndex &index) {
     int dbIndex = 0;
-    _standardSubItem = _itemKeyModel->itemFromIndex(index);
-    QString key = _standardSubItem->data(Qt::DisplayRole).toString();
-    if(_standardItemKey == _standardSubItem)
+    _subTreeItem = _itemKeyModel->itemFromIndex(index);
+    QString key = _subTreeItem->text();
+    if(_treeItemKey == _subTreeItem)
         return;
     if(!_isClusterMode) {
-        dbIndex = _vStandardItemKey.indexOf(_standardSubItem);
+        dbIndex = _vTreeItemKey.indexOf(_subTreeItem);
         if(dbIndex != -1)
             return;
-        dbIndex = _vStandardItemKey.indexOf(_standardSubItem->parent());
+        dbIndex = _vTreeItemKey.indexOf(_subTreeItem->parent());
         if(dbIndex == -1)
             return;
     }

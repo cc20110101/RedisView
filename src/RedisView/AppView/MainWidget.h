@@ -4,6 +4,7 @@
 #include "Public/WorkThread.h"
 #include "AppView/DataView.h"
 #include "AppView/KeyDialog.h"
+#include "Model/TreeModel.h"
 #include "ui_mainwidget.h"
 
 namespace Ui {
@@ -87,10 +88,10 @@ private:
     QAction* _mDelete;
     QAction* _mAlter;
     QMenu *_menu;
-    QStandardItemModel* _itemKeyModel;
-    QStandardItem *_standardItemKey;
-    QStandardItem *_standardSubItem;
-    QList<QStandardItem *> _vStandardItemKey;
+    TreeModel* _itemKeyModel;
+    TreeItem *_treeItemKey;
+    TreeItem *_subTreeItem;
+    QList<TreeItem *> _vTreeItemKey;
     QThreadPool *_threadPool;
     WorkThread *_workThread;
     TaskMsg *_taskMsg;
