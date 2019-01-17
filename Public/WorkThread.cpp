@@ -40,6 +40,8 @@ void WorkThread::doKeyListWork()
         if(!_redisClient->auth(_taskMsg->_passwd)) {
             _string = "connect host auth failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
@@ -49,6 +51,8 @@ void WorkThread::doKeyListWork()
     if(!_redisClient->isOpen()) {
         _string = "connect host failed";
         _redisClient->close();
+        delete _redisClient;
+        _redisClient = nullptr;
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;
@@ -58,6 +62,8 @@ void WorkThread::doKeyListWork()
         if(!_redisClient->select(_taskMsg->_dbIndex)) {
             _string = "select db failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
@@ -103,6 +109,8 @@ void WorkThread::doValueListWork() {
         if(!_redisClient->auth(_taskMsg->_passwd)) {
             _string = "connect host auth failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
@@ -112,6 +120,8 @@ void WorkThread::doValueListWork() {
     if(!_redisClient->isOpen()) {
         _string = "connect host failed";
         _redisClient->close();
+        delete _redisClient;
+        _redisClient = nullptr;
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;
@@ -121,6 +131,8 @@ void WorkThread::doValueListWork() {
         if(!_redisClient->select(_taskMsg->_dbIndex)) {
             _string = "select db failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
@@ -216,7 +228,6 @@ void WorkThread::doCommitValueWork() {
 
     if(_cmd.size() <= 0) {
         emit finishWork(_taskMsg->_taskid);
-        emit finishWork(_taskMsg->_taskid);
         return;
     }
 
@@ -234,6 +245,8 @@ void WorkThread::doCommitValueWork() {
         if(!_redisClient->auth(_taskMsg->_passwd)) {
             _string = "connect host auth failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
@@ -243,6 +256,8 @@ void WorkThread::doCommitValueWork() {
     if(!_redisClient->isOpen()) {
         _string = "connect host failed";
         _redisClient->close();
+        delete _redisClient;
+        _redisClient = nullptr;
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;
@@ -252,6 +267,8 @@ void WorkThread::doCommitValueWork() {
         if(!_redisClient->select(_taskMsg->_dbIndex)) {
             _string = "select db failed";
             _redisClient->close();
+            delete _redisClient;
+            _redisClient = nullptr;
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             return;
