@@ -25,18 +25,6 @@ int main(int argc, char *argv[]) {
     }
     app.installTranslator(Global::trans);
 
-    QDateTime nowDateTime = QDateTime::currentDateTime();
-    QDateTime endDateTime(QDate(2021,1,1));
-    int iday = nowDateTime.daysTo(endDateTime);
-    if(iday <= 0) {
-        QMessageBox box(QMessageBox::Critical,"错误","软件运行异常");
-        box.setStandardButtons(QMessageBox::Yes);
-        box.setDefaultButton(QMessageBox::Yes);
-        box.exec();
-        exit(0);
-    }
-    Global::gLeftDay = QString::number(iday);
-
     LoginDialog loginDialog;
     if(loginDialog.exec() != QDialog::Accepted) {
         exit(0);
