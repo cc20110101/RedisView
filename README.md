@@ -14,6 +14,9 @@ The first start does not scan key, need to manually right-click refresh.
 4.suppport subscribe and publish mode
 
 1、Redis数据库视图工具，提供CURD功能
+
 2、提供基本命令运行
+
 3、支持集群模式
+
 4、支持订阅发布模式
