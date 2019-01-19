@@ -6,8 +6,11 @@ The first start does not scan key, need to manually right-click refresh.
 需手动右键点击刷新。可执行程序文件为zip压缩格式，解压即可使用
 
 1.Redis database view tool, providing CURD functionality
+
 2.provide basic command operation
+
 3.support cluster model
+
 4.suppport subscribe and publish mode
 
 1、Redis数据库视图工具，提供CURD功能
