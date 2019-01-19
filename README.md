@@ -13,6 +13,8 @@ The first start does not scan key, need to manually right-click refresh.
 
 4.suppport subscribe and publish mode
 
+5.Support tens of millions of orders of magnitude, fast speed
+
 1、Redis数据库视图工具，提供CURD功能
 
 2、提供基本命令运行
@@ -20,3 +22,5 @@ The first start does not scan key, need to manually right-click refresh.
 3、支持集群模式
 
 4、支持订阅发布模式
+
+5、支持千万级别数量级，速度快
