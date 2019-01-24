@@ -1,5 +1,7 @@
-﻿    RedisView is a redis cross-platform gui tool, provides simple add, delete, alter and basic commands, supports cluster mode. 
-    Executable file is compress file, decompression can be used.The first start does not scan key, need to manually right-click refresh.
+﻿    RedisView is a redis cross-platform gui tool, provides simple add, delete, alter and basic commands, 
+ supports cluster mode. 
+    Executable file is compress file, decompression can be used.The first start does not scan key, need to 
+manually right-click refresh.
 
 
 
