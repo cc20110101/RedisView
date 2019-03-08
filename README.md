@@ -42,3 +42,6 @@
     5、支持千万级别数量级，速度快。
 
     6、支持千万级别数据量。
+    
+    
+More information reference:https://blog.csdn.net/cc20110101/article/details/87301562
