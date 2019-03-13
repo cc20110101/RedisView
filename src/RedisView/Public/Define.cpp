@@ -5,6 +5,6 @@ Global::Global() {
 Global::~Global() {
 }
 
-QString Global::gLeftDay = "";
-QTranslator * Global::trans = nullptr;
+QString Global::gEncode = "";
+QTranslator * Global::gTrans = nullptr;
 

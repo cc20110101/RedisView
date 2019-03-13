@@ -24,6 +24,31 @@ private:
     QAction *_runAct;
     RedisCluster *_redisClient;
 
+    QAction *_big5Act;
+    QAction *_big5HkscsAct;
+    QAction *_cp949Act;
+    QAction *_eucjpAct;
+    QAction *_euckrAct;
+    QAction *_gb18030Act;
+    QAction *_hproman8Act;
+    QAction *_ibm850Act;
+    QAction *_ibm866Act;
+    QAction *_ibm874Act;
+    QAction *_iso2022jpAct;
+    QAction *_koi8rAct;
+    QAction *_koi8uAct;
+    QAction *_macintoshAcy;
+    QAction *_shiftjisAct;
+    QAction *_tis620Act;
+    QAction *_tsciiAct;
+    QAction *_utf8Act;
+    QAction *_utf16Act;
+    QAction *_utf16beAct;
+    QAction *_utf16leAct;
+    QAction *_utf32Act;
+    QAction *_utf32beAct;
+    QAction *_utf32leAct;
+
 private:
     // 读取窗口位置大小信息
     void readSettings();
@@ -37,6 +62,12 @@ private:
     void createSlot();
     // 初始化
     void init(RedisCluster *redisClient);
+    // 设置编码
+    void setEncode(QString encode);
+    // 设置编码图标
+    void setEncodeIcon();
+    // 清理编码图标
+    void clearEncodeIcon();
 
 private slots:
 

@@ -79,6 +79,7 @@ void LoginDialog::initConnect(int index) {
         _clientInfo._name = settings.value("name").toString().trimmed();
         _clientInfo._addr = settings.value("addr").toString().trimmed();
         _clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        _clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         if(_clientInfo._name.isEmpty())
             continue;
         _treeWidgetItem = new QTreeWidgetItem();
@@ -196,6 +197,7 @@ void LoginDialog::saveSet(QList<ClientInfoDialog> &vClientInfo) {
         settings.setValue("name", vClientInfo[i]._name);
         settings.setValue("addr", vClientInfo[i]._addr);
         settings.setValue("passwd", vClientInfo[i]._passwd);
+        settings.setValue("encode", "GB18030");
     }
     settings.endArray();
 }
@@ -241,7 +243,8 @@ void LoginDialog::onOK() {
         if(_redisClient->openCluster(_treeWidgetItem->text(1),
                                      _treeWidgetItem->text(2),
                                      false, 1000)) {
-            _redisClient->setConnectName(_treeWidgetItem->text(0));
+            _lableName = _treeWidgetItem->text(0);
+            _redisClient->setConnectName(_lableName);
             accept();
         } else {
             QMessageBox::critical(this, tr("连接错误"), _redisClient->getErrorInfo());
@@ -254,4 +257,20 @@ void LoginDialog::onExit() {
     reject();
 }
 
+QString LoginDialog::getEncode(QString lableName) {
+    for(int i =0; i < _vClientInfo.size(); ++i) {
+        if(_vClientInfo[i]._name == lableName)
+            return _vClientInfo[i]._encode;
+    }
+    return "";
+}
+
+QString LoginDialog::getEncode() {
+    return getEncode(_lableName);
+}
+
+QString LoginDialog::getLableName() const
+{
+    return _lableName;
+}
 

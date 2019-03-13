@@ -32,17 +32,12 @@ ClientDialog::ClientDialog(RedisCluster *redisClient, QWidget *parent) :
     ui->_tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     ui->_tableWidget->setFrameShape(QFrame::NoFrame);
 
-    QString tmpStr;
     for(int i = 0; i < clientInfo.size(); ++i) {
         ui->_tableWidget->setItem(i,0,new QTableWidgetItem(clientInfo[i]._nodeId.isEmpty() ? "Empty" : clientInfo[i]._nodeId));
         ui->_tableWidget->setItem(i,1,new QTableWidgetItem(clientInfo[i]._host));
         ui->_tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(clientInfo[i]._port)));
         ui->_tableWidget->setItem(i,3,new QTableWidgetItem(clientInfo[i]._passwd));
-        if(clientInfo[i]._master)
-            tmpStr = "Master";
-        else
-            tmpStr = "Slave";
-        ui->_tableWidget->setItem(i,4,new QTableWidgetItem(tmpStr));
+        ui->_tableWidget->setItem(i,4,new QTableWidgetItem(clientInfo[i]._master ? "Master" : "Slave"));
         ui->_tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(clientInfo[i]._startSlot)));
         ui->_tableWidget->setItem(i,6,new QTableWidgetItem(QString::number(clientInfo[i]._endSlot)));
         ui->_tableWidget->setItem(i,7,new QTableWidgetItem(QString::number(clientInfo[i]._slotNum)));

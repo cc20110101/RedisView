@@ -85,6 +85,9 @@
 #define ICON_RECONNECT             ":/Resources/reconnect.ico"
 #define ICON_DELKEY                ":/Resources/delkey.ico"
 #define ICON_BATCHOP               ":/Resources/batchop.ico"
+#define ICON_ENCODE                ":/Resources/encode.ico"
+#define ICON_SELECT                ":/Resources/select.ico"
+
 
 #define THREAD_SCAN_KEY_TASK                       1
 #define THREAD_SCAN_VALUE_TASK                     2
@@ -98,8 +101,8 @@ public:
     ~Global();
 
 public:
-    static QString gLeftDay;
-    static QTranslator * trans;
+    static QString gEncode;
+    static QTranslator * gTrans;
 };
 
 class ClientInfoDialog
@@ -119,11 +122,13 @@ public:
         _name.clear();
         _addr.clear();
         _passwd.clear();
+        _encode.clear();
     }
 
     QString _name;
     QString _addr;
     QString _passwd;
+    QString _encode;
 };
 
 class TaskMsg {

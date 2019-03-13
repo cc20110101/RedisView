@@ -11,6 +11,9 @@ public:
     explicit LoginDialog(QWidget *parent = nullptr);
     void resizeEvent(QResizeEvent *event);
     RedisCluster * getClient();
+    QString getEncode(QString lableName);
+    QString getEncode();
+    QString getLableName() const;
 
 private:
 
@@ -34,6 +37,8 @@ private:
     ClientInfoDialog _clientInfo;
     QList<ClientInfoDialog> _vClientInfo;
     RedisCluster *_redisClient;
+    QString _lableName;
+
 private:
 
     void saveSet(QList<ClientInfoDialog> &vClientInfo);

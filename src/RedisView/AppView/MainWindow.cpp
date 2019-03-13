@@ -74,11 +74,88 @@ void MainWindow::createMenu() {
 
     QAction *lanCnAct = langMenu->addAction(tr("中文"), this, &MainWindow::langCnAction);
     lanCnAct->setStatusTip(tr("设置中文语言..."));
-    setMenu->addSeparator();
+    langMenu->addSeparator();
 
     QAction *lanEnAct = langMenu->addAction(tr("英文"), this, &MainWindow::langEnAction);
     lanEnAct->setStatusTip(tr("设置英文语言..."));
+    langMenu->addSeparator();
     setMenu->addSeparator();
+
+    QMenu* encodeMenu = setMenu->addMenu(tr("设置编码"));
+
+    _big5Act = encodeMenu->addAction(tr("Big5"), this, &MainWindow::big5Action);
+    _big5Act->setStatusTip(tr("设置Big5编码..."));
+
+    _big5HkscsAct = encodeMenu->addAction(tr("Big5-HKSCS"), this, &MainWindow::big5HkscsAction);
+    _big5HkscsAct->setStatusTip(tr("设置Big5-HKSCS编码..."));
+
+    _cp949Act = encodeMenu->addAction(tr("CP949"), this, &MainWindow::cp949Action);
+    _cp949Act->setStatusTip(tr("设置CP949编码..."));
+
+    _eucjpAct = encodeMenu->addAction(tr("EUC-JP"), this, &MainWindow::eucjpAction);
+    _eucjpAct->setStatusTip(tr("设置UTF-8编码..."));
+
+    _euckrAct = encodeMenu->addAction(tr("EUC-KR"), this, &MainWindow::euckrAction);
+    _euckrAct->setStatusTip(tr("设置EUC-KR编码..."));
+
+    _gb18030Act = encodeMenu->addAction(tr("GB18030"), this, &MainWindow::gb18030Action);
+    _gb18030Act->setStatusTip(tr("设置GB18030编码..."));
+
+    _hproman8Act = encodeMenu->addAction(tr("HP-ROMAN8"), this, &MainWindow::hproman8Action);
+    _hproman8Act->setStatusTip(tr("设置HP-ROMAN8编码..."));
+
+    _ibm850Act = encodeMenu->addAction(tr("IBM 850"), this, &MainWindow::ibm850Action);
+    _ibm850Act->setStatusTip(tr("设置IBM 850编码..."));
+
+    _ibm866Act = encodeMenu->addAction(tr("IBM 866"), this, &MainWindow::ibm866Action);
+    _ibm866Act->setStatusTip(tr("设置IBM 866编码..."));
+
+    _ibm874Act = encodeMenu->addAction(tr("IBM 874"), this, &MainWindow::ibm874Action);
+    _ibm874Act->setStatusTip(tr("设置IBM 874编码..."));
+
+    _iso2022jpAct = encodeMenu->addAction(tr("ISO 2022-JP"), this, &MainWindow::iso2022jpAction);
+    _iso2022jpAct->setStatusTip(tr("设置ISO 2022-JP编码..."));
+
+    _koi8rAct = encodeMenu->addAction(tr("KOI8-R"), this, &MainWindow::koi8rAction);
+    _koi8rAct->setStatusTip(tr("设置KOI8-R编码..."));
+
+    _koi8uAct = encodeMenu->addAction(tr("KOI8-U"), this, &MainWindow::koi8uAction);
+    _koi8uAct->setStatusTip(tr("设置KOI8-U编码..."));
+
+    _macintoshAcy = encodeMenu->addAction(tr("Macintosh"), this, &MainWindow::macintoshAction);
+    _macintoshAcy->setStatusTip(tr("设置Macintosh编码..."));
+
+    _shiftjisAct = encodeMenu->addAction(tr("Shift-JIS"), this, &MainWindow::shiftjisAction);
+    _shiftjisAct->setStatusTip(tr("设置Shift-JIS编码..."));
+
+    _tis620Act = encodeMenu->addAction(tr("TIS-620"), this, &MainWindow::tis620Action);
+    _tis620Act->setStatusTip(tr("设置TIS-620编码..."));
+
+    _tsciiAct = encodeMenu->addAction(tr("TSCII"), this, &MainWindow::tsciiAction);
+    _tsciiAct->setStatusTip(tr("设置TSCII编码..."));
+
+    _utf8Act = encodeMenu->addAction(tr("UTF-8"), this, &MainWindow::utf8Action);
+    _utf8Act->setStatusTip(tr("设置UTF-8编码..."));
+
+    _utf16Act = encodeMenu->addAction(tr("UTF-16"), this, &MainWindow::utf16Action);
+    _utf16Act->setStatusTip(tr("设置UTF-16编码..."));
+
+    _utf16beAct = encodeMenu->addAction(tr("UTF-16BE"), this, &MainWindow::utf16beAction);
+    _utf16beAct->setStatusTip(tr("设置UTF-16BE编码..."));
+
+    _utf16leAct = encodeMenu->addAction(tr("UTF-16LE"), this, &MainWindow::utf16leAction);
+    _utf16leAct->setStatusTip(tr("设置UTF-16LE编码..."));
+
+    _utf32Act = encodeMenu->addAction(tr("UTF-32"), this, &MainWindow::utf32Action);
+    _utf32Act->setStatusTip(tr("设置UTF-32编码..."));
+
+    _utf32beAct = encodeMenu->addAction(tr("UTF-32BE"), this, &MainWindow::utf32beAction);
+    _utf32beAct->setStatusTip(tr("设置UTF-32BE编码..."));
+
+    _utf32leAct = encodeMenu->addAction(tr("UTF-32LE"), this, &MainWindow::utf32leAction);
+    _utf32leAct->setStatusTip(tr("设置UTF-32LE编码..."));
+    setMenu->addSeparator();
+
 
     // 帮助菜单
     QMenu *helpMenu = menuBar()->addMenu(tr("帮助"));
@@ -133,9 +210,11 @@ void MainWindow::createMenu() {
     donateAct->setIcon(QIcon(ICON_DONATE));
     batchOperateAct->setIcon(QIcon(ICON_BATCHOP));
     langMenu->setIcon(QIcon(ICON_LANGUAGE));
+    encodeMenu->setIcon(QIcon(ICON_ENCODE));
     lanCnAct->setIcon(QIcon(ICON_CN));
     lanEnAct->setIcon(QIcon(ICON_EN));
     instructionAct->setIcon(QIcon(ICON_INSTRUCTION));
+    setEncodeIcon();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -294,4 +373,285 @@ void MainWindow::writeSettings() {
     settings.setIniCodec("UTF-8");
     settings.setValue("geometry", saveGeometry());
     QMessageBox::about(this, tr("保存信息"), tr("成功保存窗口大小与位置信息！"));
+}
+
+void MainWindow::setEncode(QString encode) {
+    QList<ClientInfoDialog> vClientInfo;
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encode = settings.value("encode","GBK").toString().trimmed();
+        vClientInfo << clientInfo;
+    }
+    settings.endArray();
+    settings.remove("logins");
+    settings.beginWriteArray("logins");
+    for(int j =0; j < vClientInfo.size(); ++j) {
+        settings.setArrayIndex(j);
+        settings.setValue("name", vClientInfo[j]._name);
+        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("passwd", vClientInfo[j]._passwd);
+        if(_redisClient->getConnectName() == vClientInfo[j]._name)
+            settings.setValue("encode", encode);
+        else
+            settings.setValue("encode", vClientInfo[j]._encode);
+    }
+    settings.endArray();
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName(encode.toLatin1()));
+    Global::gEncode = encode;
+}
+
+void MainWindow::setEncodeIcon() {
+    if(Global::gEncode == "Big5") {
+        _big5Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Big5-HKSCS") {
+        _big5HkscsAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "CP949") {
+        _cp949Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "EUC-JP") {
+        _eucjpAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "EUC-KR") {
+        _euckrAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "GB18030") {
+        _gb18030Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "HP-ROMAN8") {
+        _hproman8Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "IBM 850") {
+        _hproman8Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "IBM 866") {
+        _ibm866Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "IBM 874") {
+        _ibm874Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 2022-JP") {
+        _iso2022jpAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "KOI8-R") {
+        _koi8rAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "KOI8-U") {
+        _koi8uAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Macintosh") {
+        _macintoshAcy->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Shift-JIS") {
+        _shiftjisAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "TIS-620") {
+        _tis620Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "TSCII") {
+        _tsciiAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-8") {
+        _utf8Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-16") {
+        _utf16Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-16BE") {
+        _utf16beAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-16LE") {
+        _utf16leAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-32") {
+        _utf32Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-32BE") {
+        _utf32beAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "UTF-32LE") {
+        _utf32leAct->setIcon(QIcon(ICON_SELECT));
+    }
+}
+
+void MainWindow::clearEncodeIcon() {
+    if(Global::gEncode == "Big5") {
+        _big5Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Big5-HKSCS") {
+        _big5HkscsAct->setIcon(QIcon());
+    } else if(Global::gEncode == "CP949") {
+        _cp949Act->setIcon(QIcon());
+    } else if(Global::gEncode == "EUC-JP") {
+        _eucjpAct->setIcon(QIcon());
+    } else if(Global::gEncode == "EUC-KR") {
+        _euckrAct->setIcon(QIcon());
+    } else if(Global::gEncode == "GB18030") {
+        _gb18030Act->setIcon(QIcon());
+    } else if(Global::gEncode == "HP-ROMAN8") {
+        _hproman8Act->setIcon(QIcon());
+    } else if(Global::gEncode == "IBM 850") {
+        _hproman8Act->setIcon(QIcon());
+    } else if(Global::gEncode == "IBM 866") {
+        _ibm866Act->setIcon(QIcon());
+    } else if(Global::gEncode == "IBM 874") {
+        _ibm874Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 2022-JP") {
+        _iso2022jpAct->setIcon(QIcon());
+    } else if(Global::gEncode == "KOI8-R") {
+        _koi8rAct->setIcon(QIcon());
+    } else if(Global::gEncode == "KOI8-U") {
+        _koi8uAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Macintosh") {
+        _macintoshAcy->setIcon(QIcon());
+    } else if(Global::gEncode == "Shift-JIS") {
+        _shiftjisAct->setIcon(QIcon());
+    } else if(Global::gEncode == "TIS-620") {
+        _tis620Act->setIcon(QIcon());
+    } else if(Global::gEncode == "TSCII") {
+        _tsciiAct->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-8") {
+        _utf8Act->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-16") {
+        _utf16Act->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-16BE") {
+        _utf16beAct->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-16LE") {
+        _utf16leAct->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-32") {
+        _utf32Act->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-32BE") {
+        _utf32beAct->setIcon(QIcon());
+    } else if(Global::gEncode == "UTF-32LE") {
+        _utf32leAct->setIcon(QIcon());
+    }
+}
+
+void MainWindow::big5Action() {
+    clearEncodeIcon();
+    setEncode("Big5");
+    setEncodeIcon();
+}
+
+void MainWindow::big5HkscsAction() {
+    clearEncodeIcon();
+    setEncode("Big5-HKSCS");
+    setEncodeIcon();
+}
+
+void MainWindow::cp949Action() {
+    clearEncodeIcon();
+    setEncode("CP949");
+    setEncodeIcon();
+}
+
+void MainWindow::eucjpAction() {
+    clearEncodeIcon();
+    setEncode("EUC-JP");
+    setEncodeIcon();
+}
+
+void MainWindow::euckrAction() {
+    clearEncodeIcon();
+    setEncode("EUC-KR");
+    setEncodeIcon();
+}
+
+void MainWindow::gb18030Action() {
+    clearEncodeIcon();
+    setEncode("GB18030");
+    setEncodeIcon();
+}
+
+void MainWindow::hproman8Action() {
+    clearEncodeIcon();
+    setEncode("HP-ROMAN8");
+    setEncodeIcon();
+}
+
+void MainWindow::ibm850Action() {
+    clearEncodeIcon();
+    setEncode("IBM 850");
+    setEncodeIcon();
+}
+
+void MainWindow::ibm866Action() {
+    clearEncodeIcon();
+    setEncode("IBM 866");
+    setEncodeIcon();
+}
+
+void MainWindow::ibm874Action() {
+    clearEncodeIcon();
+    setEncode("IBM 874");
+    setEncodeIcon();
+}
+
+void MainWindow::iso2022jpAction() {
+    clearEncodeIcon();
+    setEncode("ISO 2022-JP");
+    setEncodeIcon();
+}
+
+void MainWindow::koi8rAction() {
+    clearEncodeIcon();
+    setEncode("KOI8-R");
+    setEncodeIcon();
+}
+
+void MainWindow::koi8uAction() {
+    clearEncodeIcon();
+    setEncode("KOI8-U");
+    setEncodeIcon();
+}
+
+void MainWindow::macintoshAction() {
+    clearEncodeIcon();
+    setEncode("Macintosh");
+    setEncodeIcon();
+}
+
+void MainWindow::shiftjisAction() {
+    clearEncodeIcon();
+    setEncode("Shift-JIS");
+    setEncodeIcon();
+}
+
+void MainWindow::tis620Action() {
+    clearEncodeIcon();
+    setEncode("TIS-620");
+    setEncodeIcon();
+}
+
+void MainWindow::tsciiAction() {
+    clearEncodeIcon();
+    setEncode("TSCII");
+    setEncodeIcon();
+}
+
+void MainWindow::utf8Action() {
+    clearEncodeIcon();
+    setEncode("UTF-8");
+    setEncodeIcon();
+}
+
+void MainWindow::utf16Action() {
+    clearEncodeIcon();
+    setEncode("UTF-16");
+    setEncodeIcon();
+}
+
+void MainWindow::utf16beAction() {
+    clearEncodeIcon();
+    setEncode("UTF-16BE");
+    setEncodeIcon();
+}
+
+void MainWindow::utf16leAction() {
+    clearEncodeIcon();
+    setEncode("UTF-16LE");
+    setEncodeIcon();
+}
+
+void MainWindow::utf32Action() {
+    clearEncodeIcon();
+    setEncode("UTF-32");
+    setEncodeIcon();
+}
+
+void MainWindow::utf32beAction() {
+    clearEncodeIcon();
+    setEncode("UTF-32BE");
+    setEncodeIcon();
+}
+
+void MainWindow::utf32leAction() {
+    clearEncodeIcon();
+    setEncode("UTF-32LE");
+    setEncodeIcon();
 }
