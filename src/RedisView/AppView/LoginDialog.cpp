@@ -197,7 +197,7 @@ void LoginDialog::saveSet(QList<ClientInfoDialog> &vClientInfo) {
         settings.setValue("name", vClientInfo[i]._name);
         settings.setValue("addr", vClientInfo[i]._addr);
         settings.setValue("passwd", vClientInfo[i]._passwd);
-        settings.setValue("encode", "GB18030");
+        settings.setValue("encode", vClientInfo[i]._encode.isEmpty() ? "GB18030" : vClientInfo[i]._encode);
     }
     settings.endArray();
 }

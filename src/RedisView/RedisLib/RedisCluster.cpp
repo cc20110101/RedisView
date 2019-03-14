@@ -962,7 +962,7 @@ bool RedisCluster::openCluster(const QString &hostAddress,
                 }
             }
             open = true;
-			break;
+            break;
         } else {
             _sErrorInfo = "connect client failed";
             _redisClient->close();

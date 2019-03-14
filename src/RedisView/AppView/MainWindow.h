@@ -103,6 +103,31 @@ private slots:
     void keyView();
     // 订阅发布
     void subscribe();
+    // 修改编码函数
+    void big5Action();
+    void big5HkscsAction();
+    void cp949Action();
+    void eucjpAction();
+    void euckrAction();
+    void gb18030Action();
+    void hproman8Action();
+    void ibm850Action();
+    void ibm866Action();
+    void ibm874Action();
+    void iso2022jpAction();
+    void koi8rAction();
+    void koi8uAction();
+    void macintoshAction();
+    void shiftjisAction();
+    void tis620Action();
+    void tsciiAction();
+    void utf8Action();
+    void utf16Action();
+    void utf16beAction();
+    void utf16leAction();
+    void utf32Action();
+    void utf32beAction();
+    void utf32leAction();
 };
 
 #endif // MAINWINDOW_H
