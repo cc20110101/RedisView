@@ -387,7 +387,7 @@ void MainWindow::setEncode(QString encode) {
         clientInfo._name = settings.value("name").toString().trimmed();
         clientInfo._addr = settings.value("addr").toString().trimmed();
         clientInfo._passwd = settings.value("passwd").toString().trimmed();
-        clientInfo._encode = settings.value("encode","GBK").toString().trimmed();
+        clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         vClientInfo << clientInfo;
     }
     settings.endArray();
