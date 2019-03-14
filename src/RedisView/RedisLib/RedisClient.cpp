@@ -268,7 +268,7 @@ bool RedisClient::isCluster(bool &value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         QByteArray sValue;
@@ -281,12 +281,12 @@ bool RedisClient::isCluster(bool &value) {
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -308,7 +308,7 @@ bool RedisClient::getReplicationInfo(QMap<QString,QString> &infoMap) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         QString sValue;
@@ -330,12 +330,12 @@ bool RedisClient::getReplicationInfo(QMap<QString,QString> &infoMap) {
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -357,7 +357,7 @@ bool RedisClient::isMaster(bool &value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         QByteArray sValue;
@@ -370,12 +370,12 @@ bool RedisClient::isMaster(bool &value) {
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -401,7 +401,7 @@ bool RedisClient::getClusterSlots(RespType &value) {
             _bRet = true;
         }
     } else {
-        _sErrorInfo = "parser resp error info falied";
+        _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     }
 
@@ -425,7 +425,7 @@ bool RedisClient::getClusterNodes(QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -436,12 +436,12 @@ bool RedisClient::getClusterNodes(QByteArray & value) {
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -467,17 +467,17 @@ bool RedisClient::publish(const QString & channel, const QString & message, qlon
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -513,7 +513,7 @@ bool RedisClient::pubsub(const QString &subcommand, const QString &argument, Res
             _bRet = true;
         }
     } else {
-        _sErrorInfo = "parser resp error info falied";
+        _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     }
 
@@ -629,7 +629,7 @@ bool RedisClient::auth(const QString & password) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -638,12 +638,12 @@ bool RedisClient::auth(const QString & password) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -675,16 +675,16 @@ qlonglong RedisClient::append(const QString & key, const QString & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _llRet = 0;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _llRet = 0;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _llRet;
 }
@@ -708,17 +708,17 @@ bool RedisClient::dbsize(qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -747,17 +747,17 @@ bool RedisClient::del(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -788,17 +788,17 @@ bool RedisClient::decr(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -832,17 +832,17 @@ bool RedisClient::decrby(const QString & key, int interval, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -873,17 +873,17 @@ bool RedisClient::incr(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -917,17 +917,17 @@ bool RedisClient::incrby(const QString & key, int interval, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -966,17 +966,17 @@ bool RedisClient::hincrby(const QString & key, const QString & field, int increm
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1013,7 +1013,7 @@ bool RedisClient::hincrbyfloat(const QString & key, const QString & field, doubl
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,_sValue, _iRet)) {
@@ -1025,12 +1025,12 @@ bool RedisClient::hincrbyfloat(const QString & key, const QString & field, doubl
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1058,11 +1058,11 @@ bool RedisClient::exists(const QString & key) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet)
             _bRet = true;
@@ -1070,7 +1070,7 @@ bool RedisClient::exists(const QString & key) {
             _bRet = false;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1101,7 +1101,7 @@ bool RedisClient::set(const QString & key, const QString & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -1110,12 +1110,12 @@ bool RedisClient::set(const QString & key, const QString & value) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1144,7 +1144,7 @@ bool RedisClient::get(const QString & key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -1154,12 +1154,12 @@ bool RedisClient::get(const QString & key, QByteArray & value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1191,11 +1191,11 @@ bool RedisClient::expire(const QString & key, uint seconds) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet)
             _bRet = true;
@@ -1203,7 +1203,7 @@ bool RedisClient::expire(const QString & key, uint seconds) {
             _bRet = false;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1235,11 +1235,11 @@ bool RedisClient::pexpire(const QString & key, uint mseconds) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet)
             _bRet = true;
@@ -1247,7 +1247,7 @@ bool RedisClient::pexpire(const QString & key, uint mseconds) {
             _bRet = false;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1279,11 +1279,11 @@ bool RedisClient::pexpireat(const QString & key, uint mstimestamp) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet)
             _bRet = true;
@@ -1291,7 +1291,7 @@ bool RedisClient::pexpireat(const QString & key, uint mstimestamp) {
             _bRet = false;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1323,11 +1323,11 @@ bool RedisClient::expireat(const QString & key, uint timestamp) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet)
             _bRet = true;
@@ -1335,7 +1335,7 @@ bool RedisClient::expireat(const QString & key, uint timestamp) {
             _bRet = false;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1365,17 +1365,17 @@ bool RedisClient::ttl(const QString & key, qlonglong & seconds) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,seconds)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1405,17 +1405,17 @@ bool RedisClient::pttl(const QString & key, qlonglong & mseconds) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,mseconds)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else
             _bRet = true;
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1461,18 +1461,18 @@ bool RedisClient::type(const QString & key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1525,7 +1525,7 @@ bool RedisClient::dump(const QString & key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -1535,12 +1535,12 @@ bool RedisClient::dump(const QString & key, QByteArray & value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1576,7 +1576,7 @@ bool RedisClient::getrange(const QString & key, int start, int stop, QByteArray 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -1586,12 +1586,12 @@ bool RedisClient::getrange(const QString & key, int start, int stop, QByteArray 
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1629,18 +1629,18 @@ bool RedisClient::hset(const QString & key, const QString & field, const QString
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1676,11 +1676,11 @@ bool RedisClient::hsetnx(const QString & key, const QString & field, const QStri
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(!parseRespInteger(_cmdReault,_llRet)) {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         } else if(_llRet > 0) {
             _bRet = true;
@@ -1690,7 +1690,7 @@ bool RedisClient::hsetnx(const QString & key, const QString & field, const QStri
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1722,18 +1722,18 @@ bool RedisClient::hdel(const QString & key, const QString & field, qlonglong & l
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1764,7 +1764,7 @@ bool RedisClient::hexists(const QString & key, const QString & field) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -1773,12 +1773,12 @@ bool RedisClient::hexists(const QString & key, const QString & field) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1810,7 +1810,7 @@ bool RedisClient::hget(const QString & key, const QString & field, QByteArray & 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -1820,12 +1820,12 @@ bool RedisClient::hget(const QString & key, const QString & field, QByteArray & 
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1854,18 +1854,18 @@ bool RedisClient::hlen(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1905,7 +1905,7 @@ bool RedisClient::hmset(const QString & key, QMap<QString, QVariant> & map) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -1914,12 +1914,12 @@ bool RedisClient::hmset(const QString & key, QMap<QString, QVariant> & map) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -1954,7 +1954,7 @@ bool RedisClient::lindex(const QString & key, qlonglong index, QByteArray & valu
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -1964,12 +1964,12 @@ bool RedisClient::lindex(const QString & key, qlonglong index, QByteArray & valu
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2001,18 +2001,18 @@ bool RedisClient::lpush(const QString & key, const QString & value, qlonglong & 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2044,18 +2044,18 @@ bool RedisClient::rpush(const QString & key, const QString & value, qlonglong & 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2088,18 +2088,18 @@ bool RedisClient::rpushx(const QString & key, const QString & value, qlonglong &
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2132,18 +2132,18 @@ bool RedisClient::lpushx(const QString & key, const QString & value, qlonglong &
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2172,18 +2172,18 @@ bool RedisClient::llen(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2224,18 +2224,18 @@ bool RedisClient::linsert(const QString & key, const int position, const QString
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2264,7 +2264,7 @@ bool RedisClient::lpop(const QString & key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -2274,12 +2274,12 @@ bool RedisClient::lpop(const QString & key, QByteArray & value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2308,18 +2308,18 @@ bool RedisClient::refcount(const QString& key, qlonglong & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2348,18 +2348,18 @@ bool RedisClient::idletime(const QString& key, qlonglong & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2388,7 +2388,7 @@ bool RedisClient::encoding(const QString& key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -2398,12 +2398,12 @@ bool RedisClient::encoding(const QString& key, QByteArray & value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2441,7 +2441,7 @@ bool RedisClient::blpop(const QString & key, QString & outkey, QByteArray & valu
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         _vListResult.clear();
@@ -2458,12 +2458,12 @@ bool RedisClient::blpop(const QString & key, QString & outkey, QByteArray & valu
                 _sErrorInfo = "unkown exception";
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2501,7 +2501,7 @@ bool RedisClient::brpop(const QString & key, QString & outkey, QByteArray & valu
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         _vListResult.clear();
@@ -2518,12 +2518,12 @@ bool RedisClient::brpop(const QString & key, QString & outkey, QByteArray & valu
                 _sErrorInfo = "unkown exception";
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2560,18 +2560,18 @@ bool RedisClient::lrem(const QString & key, int count, const QString & value, ql
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2606,7 +2606,7 @@ bool RedisClient::lset(const QString & key, int index, const QString & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -2615,12 +2615,12 @@ bool RedisClient::lset(const QString & key, int index, const QString & value) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2660,7 +2660,7 @@ bool RedisClient::ltrim(const QString & key, int start, int stop) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -2669,12 +2669,12 @@ bool RedisClient::ltrim(const QString & key, int start, int stop) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2708,7 +2708,7 @@ bool RedisClient::move(const QString & key, int database) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -2717,12 +2717,12 @@ bool RedisClient::move(const QString & key, int database) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2758,7 +2758,7 @@ bool RedisClient::mset(QMap<QString, QVariant> & map) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -2767,12 +2767,12 @@ bool RedisClient::mset(QMap<QString, QVariant> & map) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2801,7 +2801,7 @@ bool RedisClient::persist(const QString & key) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -2810,12 +2810,12 @@ bool RedisClient::persist(const QString & key) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2852,7 +2852,7 @@ bool RedisClient::rename(const QString & key, const QString & newkey) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -2861,12 +2861,12 @@ bool RedisClient::rename(const QString & key, const QString & newkey) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2903,7 +2903,7 @@ bool RedisClient::renamex(const QString & key, const QString & newkey) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -2914,12 +2914,12 @@ bool RedisClient::renamex(const QString & key, const QString & newkey) {
                 _bRet = false;
             }
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -2948,7 +2948,7 @@ bool RedisClient::rpop(const QString & key, QByteArray & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -2958,12 +2958,12 @@ bool RedisClient::rpop(const QString & key, QByteArray & value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3001,7 +3001,7 @@ bool RedisClient::rpoplpush(const QString & source, const QString & destination,
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -3011,12 +3011,12 @@ bool RedisClient::rpoplpush(const QString & source, const QString & destination,
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3065,7 +3065,7 @@ bool RedisClient::brpoplpush(const QString & source, const QString & destination
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         _vListResult.clear();
@@ -3076,7 +3076,7 @@ bool RedisClient::brpoplpush(const QString & source, const QString & destination
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else if(_cmdReault[0] == '*') {
@@ -3093,12 +3093,12 @@ bool RedisClient::brpoplpush(const QString & source, const QString & destination
                 _sErrorInfo = "unkown exception";
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3135,18 +3135,18 @@ bool RedisClient::zadd(const QString &key, const QString &member, const double &
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3180,18 +3180,18 @@ bool RedisClient::sadd(const QString & key, const QString & member, qlonglong & 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3220,18 +3220,18 @@ bool RedisClient::scard(const QString & key, qlonglong & llRet) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3260,7 +3260,7 @@ bool RedisClient::spop(const QString & key, QByteArray &value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '$') {
         if(parseRespBulkString(_cmdReault,value, _iRet)) {
@@ -3270,12 +3270,12 @@ bool RedisClient::spop(const QString & key, QByteArray &value) {
             } else
                 _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3313,7 +3313,7 @@ bool RedisClient::smove(const QString & source, const QString & destination, con
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -3322,12 +3322,12 @@ bool RedisClient::smove(const QString & source, const QString & destination, con
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3358,7 +3358,7 @@ bool RedisClient::sismember(const QString & key, const QString & member) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,_llRet)) {
@@ -3367,12 +3367,12 @@ bool RedisClient::sismember(const QString & key, const QString & member) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3409,18 +3409,18 @@ bool RedisClient::setrange(const QString & key, int offset, const QString & valu
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3456,18 +3456,18 @@ bool RedisClient::sdiffstore(const QString & destkey, const QString & keys, qlon
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3503,18 +3503,18 @@ bool RedisClient::sinterstore(const QString & destkey, const QString & keys, qlo
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3550,18 +3550,18 @@ bool RedisClient::sunionstore(const QString & destkey, const QString & keys, qlo
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3593,18 +3593,18 @@ bool RedisClient::srem(const QString & key, const QString & member, qlonglong & 
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3636,18 +3636,18 @@ bool RedisClient::zrem(const QString &key, const QString &member, qlonglong & ll
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == ':') {
         if(parseRespInteger(_cmdReault,llRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp integer info falied";
+            _sErrorInfo = "parser resp integer info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3668,7 +3668,7 @@ bool RedisClient::scriptflush() {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -3677,12 +3677,12 @@ bool RedisClient::scriptflush() {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3703,7 +3703,7 @@ bool RedisClient::scriptkill() {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -3712,12 +3712,12 @@ bool RedisClient::scriptkill() {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3745,7 +3745,7 @@ bool RedisClient::scriptload(const QString & script) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -3754,12 +3754,12 @@ bool RedisClient::scriptload(const QString & script) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3808,7 +3808,7 @@ bool RedisClient::migrate(const QString & host, int port, const QString & key,
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -3817,12 +3817,12 @@ bool RedisClient::migrate(const QString & host, int port, const QString & key,
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3852,7 +3852,7 @@ bool RedisClient::hgetall(const QString & key, QMap<QString, QString> & vKeyPair
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         _vListResult.clear();
@@ -3873,12 +3873,12 @@ bool RedisClient::hgetall(const QString & key, QMap<QString, QString> & vKeyPair
                 _sErrorInfo = "unkown exception";
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3911,7 +3911,7 @@ bool RedisClient::hmget(const QString & key, const QString & field, QList<QByteA
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
@@ -3922,12 +3922,12 @@ bool RedisClient::hmget(const QString & key, const QString & field, QList<QByteA
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3957,18 +3957,18 @@ bool RedisClient::hvals(const QString & key, QList<QByteArray> & value, int & _i
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -3998,7 +3998,7 @@ bool RedisClient::mget(const QString & key, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
@@ -4009,12 +4009,12 @@ bool RedisClient::mget(const QString & key, QList<QByteArray> & value) {
                 _bRet = true;
             }
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4044,18 +4044,18 @@ bool RedisClient::smembers(const QString & key, QList<QByteArray> & value, int &
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4084,18 +4084,18 @@ bool RedisClient::scriptexists(const QString & script, QList<QByteArray> & value
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4124,18 +4124,18 @@ bool RedisClient::hkeys(const QString & key, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4164,18 +4164,18 @@ bool RedisClient::keys(const QString & pattern, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp single array info falied";
+            _sErrorInfo = "parser resp single array info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4213,18 +4213,18 @@ bool RedisClient::lrange(const QString & key, int start, int stop, QList<QByteAr
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4254,18 +4254,18 @@ bool RedisClient::sdiff(const QString & keys, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4295,18 +4295,18 @@ bool RedisClient::sinter(const QString & keys, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4336,18 +4336,18 @@ bool RedisClient::sunion(const QString & keys, QList<QByteArray> & value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4384,13 +4384,13 @@ bool RedisClient::srandmember(const QString & key, QList<QByteArray> & value, in
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else if(_cmdReault[0] == '$') {
@@ -4401,12 +4401,12 @@ bool RedisClient::srandmember(const QString & key, QList<QByteArray> & value, in
             }
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4440,18 +4440,18 @@ bool RedisClient::sort(const QString & key, QList<QByteArray> & value, const QSt
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseRespSingelArray(_cmdReault,value, _iRet)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4483,18 +4483,18 @@ bool RedisClient::scan(const QString &pattern, RespType &value, qulonglong curso
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseResp(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4534,18 +4534,18 @@ bool RedisClient::hscan(const QString& key, const QString &pattern, RespType &va
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseResp(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4585,18 +4585,18 @@ bool RedisClient::sscan(const QString& key, const QString &pattern, RespType &va
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseResp(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4636,18 +4636,18 @@ bool RedisClient::zscan(const QString& key, const QString &pattern, RespType &va
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseResp(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4676,18 +4676,18 @@ bool RedisClient::getcfg(const QString& parameter, RespType &value) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '*') {
         if(parseResp(_cmdReault,value)) {
             _bRet = true;
         } else {
-            _sErrorInfo = "parser resp bulk string info falied";
+            _sErrorInfo = "parser resp bulk string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
@@ -4710,7 +4710,7 @@ bool RedisClient::select(const int &index) {
         if(parseRespError(_cmdReault,_sValue))
             _sErrorInfo = _sValue;
         else
-            _sErrorInfo = "parser resp error info falied";
+            _sErrorInfo = "parser resp error info failed";
         _bRet = false;
     } else if(_cmdReault[0] == '+') {
         if(parseRespString(_cmdReault,_sValue)) {
@@ -4719,12 +4719,12 @@ bool RedisClient::select(const int &index) {
             else
                 _bRet = false;
         } else {
-            _sErrorInfo = "parser resp string info falied";
+            _sErrorInfo = "parser resp string info failed";
             _bRet = false;
         }
     } else {
         _bRet = false;
-        _sErrorInfo = QString("parser resp type falied:") + _cmdReault[0];
+        _sErrorInfo = QString("parser resp type failed:") + _cmdReault[0];
     }
     return _bRet;
 }
