@@ -454,6 +454,7 @@ void MainWindow::connectHost() {
     _redisClient = loginDialog.getClient();
     _mainWidget = new MainWidget(_redisClient);
     setCentralWidget(_mainWidget);
+    createSlot();
 }
 
 void MainWindow::batchOprate() {
