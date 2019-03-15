@@ -52,6 +52,10 @@ void MainWindow::createMenu() {
     refreshConnAct->setStatusTip(tr("刷新连接信息..."));
     beginMenu->addSeparator();
 
+    QAction *conectHostAct = beginMenu->addAction(tr("连接主机"), this, SLOT(connectHost()));
+    conectHostAct->setStatusTip(tr("连接主机..."));
+    beginMenu->addSeparator();
+
     QAction *saveAct = beginMenu->addAction(tr("保存窗口"), this, SLOT(writeSettings()));
     saveAct->setStatusTip(tr("保存窗口大小位置信息..."));
     beginMenu->addSeparator();
@@ -116,6 +120,75 @@ void MainWindow::createMenu() {
     _iso2022jpAct = encodeMenu->addAction(tr("ISO 2022-JP"), this, &MainWindow::iso2022jpAction);
     _iso2022jpAct->setStatusTip(tr("设置ISO 2022-JP编码..."));
 
+    _iso88591Act = encodeMenu->addAction(tr("ISO 8859-1"), this, &MainWindow::iso88591Action);
+    _iso88591Act->setStatusTip(tr("设置ISO 8859-1编码..."));
+
+    _iso88592Act = encodeMenu->addAction(tr("ISO 8859-2"), this, &MainWindow::iso88592Action);
+    _iso88592Act->setStatusTip(tr("设置ISO 8859-2编码..."));
+
+    _iso88593Act = encodeMenu->addAction(tr("ISO 8859-3"), this, &MainWindow::iso88593Action);
+    _iso88593Act->setStatusTip(tr("设置ISO 8859-3编码..."));
+
+    _iso88594Act = encodeMenu->addAction(tr("ISO 8859-4"), this, &MainWindow::iso88594Action);
+    _iso88594Act->setStatusTip(tr("设置ISO 8859-4编码..."));
+
+    _iso88595Act = encodeMenu->addAction(tr("ISO 8859-5"), this, &MainWindow::iso88595Action);
+    _iso88595Act->setStatusTip(tr("设置ISO 8859-5编码..."));
+
+    _iso88596Act = encodeMenu->addAction(tr("ISO 8859-6"), this, &MainWindow::iso88596Action);
+    _iso88596Act->setStatusTip(tr("设置ISO 8859-6编码..."));
+
+    _iso88597Act = encodeMenu->addAction(tr("ISO 8859-7"), this, &MainWindow::iso88597Action);
+    _iso88597Act->setStatusTip(tr("设置ISO 8859-7编码..."));
+
+    _iso88598Act = encodeMenu->addAction(tr("ISO 8859-8"), this, &MainWindow::iso88598Action);
+    _iso88598Act->setStatusTip(tr("设置ISO 8859-8编码..."));
+
+    _iso88599Act = encodeMenu->addAction(tr("ISO 8859-9"), this, &MainWindow::iso88599Action);
+    _iso88599Act->setStatusTip(tr("设置ISO 8859-9编码..."));
+
+    _iso885910Act = encodeMenu->addAction(tr("ISO 8859-10"), this, &MainWindow::iso885910Action);
+    _iso885910Act->setStatusTip(tr("设置ISO 8859-10编码..."));
+
+    _iso885913Act = encodeMenu->addAction(tr("ISO 8859-13"), this, &MainWindow::iso885913Action);
+    _iso885913Act->setStatusTip(tr("设置ISO 8859-13编码..."));
+
+    _iso885914Act = encodeMenu->addAction(tr("ISO 8859-14"), this, &MainWindow::iso885914Action);
+    _iso885914Act->setStatusTip(tr("设置ISO 8859-14编码..."));
+
+    _iso885915Act = encodeMenu->addAction(tr("ISO 8859-15"), this, &MainWindow::iso885915Action);
+    _iso885915Act->setStatusTip(tr("设置ISO 8859-15编码..."));
+
+    _iso885916Act = encodeMenu->addAction(tr("ISO 8859-16"), this, &MainWindow::iso885916Action);
+    _iso885916Act->setStatusTip(tr("设置ISO 8859-16编码..."));
+
+    _isciibngAct = encodeMenu->addAction(tr("Iscii-Bng"), this, &MainWindow::isciibngAction);
+    _isciibngAct->setStatusTip(tr("设置Iscii-Bng编码..."));
+
+    _isciidevAct = encodeMenu->addAction(tr("Iscii-Dev"), this, &MainWindow::isciidevAction);
+    _isciidevAct->setStatusTip(tr("设置Iscii-Dev编码..."));
+
+    _isciigjrAct = encodeMenu->addAction(tr("Iscii-Gjr"), this, &MainWindow::isciigjrAction);
+    _isciigjrAct->setStatusTip(tr("设置Iscii-Gjr编码..."));
+
+    _isciikndAct = encodeMenu->addAction(tr("Iscii-Knd"), this, &MainWindow::isciikndAction);
+    _isciikndAct->setStatusTip(tr("设置Iscii-Knd编码..."));
+
+    _isciimlmAct = encodeMenu->addAction(tr("Iscii-Mlm"), this, &MainWindow::isciimlmAction);
+    _isciimlmAct->setStatusTip(tr("设置Iscii-Mlm编码..."));
+
+    _isciioriAct = encodeMenu->addAction(tr("Iscii-Ori"), this, &MainWindow::isciioriAction);
+    _isciioriAct->setStatusTip(tr("设置Iscii-Ori编码..."));
+
+    _isciipnjAct = encodeMenu->addAction(tr("Iscii-Pnj"), this, &MainWindow::isciipnjAction);
+    _isciipnjAct->setStatusTip(tr("设置Iscii-Pnj编码..."));
+
+    _isciitlgAct = encodeMenu->addAction(tr("Iscii-Tlg"), this, &MainWindow::isciitlgAction);
+    _isciitlgAct->setStatusTip(tr("设置Iscii-Tlg编码..."));
+
+    _isciitmlAct = encodeMenu->addAction(tr("Iscii-Tml"), this, &MainWindow::isciitmlAction);
+    _isciitmlAct->setStatusTip(tr("设置Iscii-Tml编码..."));
+
     _koi8rAct = encodeMenu->addAction(tr("KOI8-R"), this, &MainWindow::koi8rAction);
     _koi8rAct->setStatusTip(tr("设置KOI8-R编码..."));
 
@@ -154,6 +227,33 @@ void MainWindow::createMenu() {
 
     _utf32leAct = encodeMenu->addAction(tr("UTF-32LE"), this, &MainWindow::utf32leAction);
     _utf32leAct->setStatusTip(tr("设置UTF-32LE编码..."));
+
+    _windows1250Act = encodeMenu->addAction(tr("Windows-1250"), this, &MainWindow::windows1250Action);
+    _windows1250Act->setStatusTip(tr("设置Windows-1250编码..."));
+
+    _windows1251Act = encodeMenu->addAction(tr("Windows-1251"), this, &MainWindow::windows1251Action);
+    _windows1251Act->setStatusTip(tr("设置Windows-1251编码..."));
+
+    _windows1252Act = encodeMenu->addAction(tr("Windows-1252"), this, &MainWindow::windows1252Action);
+    _windows1252Act->setStatusTip(tr("设置Windows-1252编码..."));
+
+    _windows1253Act = encodeMenu->addAction(tr("Windows-1253"), this, &MainWindow::windows1253Action);
+    _windows1253Act->setStatusTip(tr("设置Windows-1253编码..."));
+
+    _windows1254Act = encodeMenu->addAction(tr("Windows-1254"), this, &MainWindow::windows1254Action);
+    _windows1254Act->setStatusTip(tr("设置Windows-1254编码..."));
+
+    _windows1255Act = encodeMenu->addAction(tr("Windows-1255"), this, &MainWindow::windows1255Action);
+    _windows1255Act->setStatusTip(tr("设置Windows-1255编码..."));
+
+    _windows1256Act = encodeMenu->addAction(tr("Windows-1256"), this, &MainWindow::windows1256Action);
+    _windows1256Act->setStatusTip(tr("设置Windows-1256编码..."));
+
+    _windows1257Act = encodeMenu->addAction(tr("Windows-1257"), this, &MainWindow::windows1257Action);
+    _windows1257Act->setStatusTip(tr("设置Windows-1257编码..."));
+
+    _windows1258Act = encodeMenu->addAction(tr("Windows-1258"), this, &MainWindow::windows1258Action);
+    _windows1258Act->setStatusTip(tr("设置Windows-1258编码..."));
     setMenu->addSeparator();
 
 
@@ -164,16 +264,16 @@ void MainWindow::createMenu() {
     instructionAct->setStatusTip(tr("使用说明..."));
     helpMenu->addSeparator();
 
-    QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
-    aboutAct->setStatusTip(tr("显示帮助信息..."));
-    helpMenu->addSeparator();
-
     QAction *historyAct = helpMenu->addAction(tr("版本历史"), this, &MainWindow::history);
     historyAct->setStatusTip(tr("显示版本历史记录信息..."));
     helpMenu->addSeparator();
 
     QAction *donateAct = helpMenu->addAction(tr("捐赠作者"), this, &MainWindow::donate);
     donateAct->setStatusTip(tr("捐赠作者..."));
+    helpMenu->addSeparator();
+
+    QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
+    aboutAct->setStatusTip(tr("显示帮助信息..."));
     helpMenu->addSeparator();
 
 
@@ -191,6 +291,8 @@ void MainWindow::createMenu() {
     toolBar->addAction(refreshConnAct);
     toolBar->addSeparator();
     toolBar->addAction(batchOperateAct);
+    toolBar->addSeparator();
+    toolBar->addAction(donateAct);
     toolBar->addSeparator();
     toolBar->addAction(aboutAct);
     toolBar->addSeparator();
@@ -214,6 +316,7 @@ void MainWindow::createMenu() {
     lanCnAct->setIcon(QIcon(ICON_CN));
     lanEnAct->setIcon(QIcon(ICON_EN));
     instructionAct->setIcon(QIcon(ICON_INSTRUCTION));
+    conectHostAct->setIcon(QIcon(ICON_LONGIN));
     setEncodeIcon();
 }
 
@@ -273,9 +376,9 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：菜鸟小白<br>"
-                           "版本 ：Community v1.6.0<br>"
+                           "版本 ：Community v1.6.1<br>"
                            "邮箱 ：cc20110101@126.com<br>"
-                           "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a><br>"
+                           "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
                            "版权 ：Copyright 2018 Powered By CC<br>"
                            )
                        );
@@ -284,6 +387,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/03/15&nbsp;&nbsp;Version 1.6.1&nbsp;&nbsp;支持编码选择.<br>"
                            "<br>2019/02/21&nbsp;&nbsp;Version 1.6.0&nbsp;&nbsp;支持复制集模式.<br>"
                            "<br>2019/01/20&nbsp;&nbsp;Version 1.5.0&nbsp;&nbsp;增加批量删除键功能.<br>"
                            "<br>2019/01/19&nbsp;&nbsp;Version 1.4.0&nbsp;&nbsp;增加订阅发布模式.<br>"
@@ -323,6 +427,33 @@ void MainWindow::keyView() {
 
 void MainWindow::subscribe() {
     _mainWidget->openMsg();
+}
+
+void MainWindow::connectHost() {
+
+    if(_mainWidget->getTaskSize() > 0) {
+        QMessageBox::information(this,tr("错误"),tr("后台任务未完成,请稍后刷新连接!"));
+        return;
+    }
+
+    LoginDialog loginDialog;
+    if(loginDialog.exec() != QDialog::Accepted) {
+        return;
+    }
+
+    // 设置编码
+    Global::gEncode = loginDialog.getEncode();
+    Global::gEncode = Global::gEncode.isEmpty() ? "GB18030" : Global::gEncode;
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName(Global::gEncode.toLatin1()));
+
+    if(_redisClient) {
+        _redisClient->close();
+        delete _redisClient;
+        _redisClient = nullptr;
+    }
+    _redisClient = loginDialog.getClient();
+    _mainWidget = new MainWidget(_redisClient);
+    setCentralWidget(_mainWidget);
 }
 
 void MainWindow::batchOprate() {
@@ -431,6 +562,52 @@ void MainWindow::setEncodeIcon() {
         _ibm874Act->setIcon(QIcon(ICON_SELECT));
     } else if(Global::gEncode == "ISO 2022-JP") {
         _iso2022jpAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-1") {
+        _iso88591Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-2") {
+        _iso88592Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-3") {
+        _iso88593Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-4") {
+        _iso88594Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-5") {
+        _iso88595Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-6") {
+        _iso88596Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-7") {
+        _iso88597Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-8") {
+        _iso88598Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-9") {
+        _iso88599Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-10") {
+        _iso885910Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-13") {
+        _iso885913Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-14") {
+        _iso885914Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-15") {
+        _iso885915Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "ISO 8859-16") {
+        _iso885916Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Bng") {
+        _isciibngAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Dev") {
+        _isciidevAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Gjr") {
+        _isciigjrAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Knd") {
+        _isciikndAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Mlm") {
+        _isciimlmAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Ori") {
+        _isciioriAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Pnj") {
+        _isciipnjAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Tlg") {
+        _isciitlgAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Iscii-Tml") {
+        _isciitmlAct->setIcon(QIcon(ICON_SELECT));
     } else if(Global::gEncode == "KOI8-R") {
         _koi8rAct->setIcon(QIcon(ICON_SELECT));
     } else if(Global::gEncode == "KOI8-U") {
@@ -457,6 +634,24 @@ void MainWindow::setEncodeIcon() {
         _utf32beAct->setIcon(QIcon(ICON_SELECT));
     } else if(Global::gEncode == "UTF-32LE") {
         _utf32leAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1250") {
+        _windows1250Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1251") {
+        _windows1251Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1252") {
+        _windows1252Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1253") {
+        _windows1253Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1254") {
+        _windows1254Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1255") {
+        _windows1255Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1256") {
+        _windows1256Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1257") {
+        _windows1257Act->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gEncode == "Windows-1258") {
+        _windows1258Act->setIcon(QIcon(ICON_SELECT));
     }
 }
 
@@ -483,6 +678,52 @@ void MainWindow::clearEncodeIcon() {
         _ibm874Act->setIcon(QIcon());
     } else if(Global::gEncode == "ISO 2022-JP") {
         _iso2022jpAct->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-1") {
+        _iso88591Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-2") {
+        _iso88592Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-3") {
+        _iso88593Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-4") {
+        _iso88594Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-5") {
+        _iso88595Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-6") {
+        _iso88596Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-7") {
+        _iso88597Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-8") {
+        _iso88598Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-9") {
+        _iso88599Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-10") {
+        _iso885910Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-13") {
+        _iso885913Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-14") {
+        _iso885914Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-15") {
+        _iso885915Act->setIcon(QIcon());
+    } else if(Global::gEncode == "ISO 8859-16") {
+        _iso885916Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Bng") {
+        _isciibngAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Dev") {
+        _isciidevAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Gjr") {
+        _isciigjrAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Knd") {
+        _isciikndAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Mlm") {
+        _isciimlmAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Ori") {
+        _isciioriAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Pnj") {
+        _isciipnjAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Tlg") {
+        _isciitlgAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Iscii-Tml") {
+        _isciitmlAct->setIcon(QIcon());
     } else if(Global::gEncode == "KOI8-R") {
         _koi8rAct->setIcon(QIcon());
     } else if(Global::gEncode == "KOI8-U") {
@@ -509,6 +750,24 @@ void MainWindow::clearEncodeIcon() {
         _utf32beAct->setIcon(QIcon());
     } else if(Global::gEncode == "UTF-32LE") {
         _utf32leAct->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1250") {
+        _windows1250Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1251") {
+        _windows1251Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1252") {
+        _windows1252Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1253") {
+        _windows1253Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1254") {
+        _windows1254Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1255") {
+        _windows1255Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1256") {
+        _windows1256Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1257") {
+        _windows1257Act->setIcon(QIcon());
+    } else if(Global::gEncode == "Windows-1258") {
+        _windows1258Act->setIcon(QIcon());
     }
 }
 
@@ -575,6 +834,144 @@ void MainWindow::ibm874Action() {
 void MainWindow::iso2022jpAction() {
     clearEncodeIcon();
     setEncode("ISO 2022-JP");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88591Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-1");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88592Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-2");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88593Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-3");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88594Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-4");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88595Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-5");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88596Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-6");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88597Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-7");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88598Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-8");
+    setEncodeIcon();
+}
+
+void MainWindow::iso88599Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-9");
+    setEncodeIcon();
+}
+
+void MainWindow::iso885910Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-10");
+    setEncodeIcon();
+}
+
+void MainWindow::iso885913Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-13");
+    setEncodeIcon();
+}
+
+void MainWindow::iso885914Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-14");
+    setEncodeIcon();
+}
+
+void MainWindow::iso885915Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-15");
+    setEncodeIcon();
+}
+
+void MainWindow::iso885916Action() {
+    clearEncodeIcon();
+    setEncode("ISO 8859-16");
+    setEncodeIcon();
+}
+
+void MainWindow::isciibngAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Bng");
+    setEncodeIcon();
+}
+
+void MainWindow::isciidevAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Dev");
+    setEncodeIcon();
+}
+
+void MainWindow::isciigjrAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Gjr");
+    setEncodeIcon();
+}
+
+void MainWindow::isciikndAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Knd");
+    setEncodeIcon();
+}
+
+void MainWindow::isciimlmAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Mlm");
+    setEncodeIcon();
+}
+
+void MainWindow::isciioriAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Ori");
+    setEncodeIcon();
+}
+
+void MainWindow::isciipnjAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Pnj");
+    setEncodeIcon();
+}
+
+void MainWindow::isciitlgAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Tlg");
+    setEncodeIcon();
+}
+
+void MainWindow::isciitmlAction() {
+    clearEncodeIcon();
+    setEncode("Iscii-Tml");
     setEncodeIcon();
 }
 
@@ -653,5 +1050,59 @@ void MainWindow::utf32beAction() {
 void MainWindow::utf32leAction() {
     clearEncodeIcon();
     setEncode("UTF-32LE");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1250Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1250");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1251Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1251");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1252Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1252");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1253Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1253");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1254Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1254");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1255Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1255");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1256Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1256");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1257Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1257");
+    setEncodeIcon();
+}
+
+void MainWindow::windows1258Action() {
+    clearEncodeIcon();
+    setEncode("Windows-1258");
     setEncodeIcon();
 }

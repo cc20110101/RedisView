@@ -1,5 +1,4 @@
 #include "AppView/MainWindow.h"
-#include "AppView/LoginDialog.h"
 
 // PLEASE USE UTF-8 CODE
 int main(int argc, char *argv[]) {

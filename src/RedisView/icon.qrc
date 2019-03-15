@@ -38,7 +38,8 @@
         <file>Resources/reconnect.ico</file>
         <file>Resources/delkey.ico</file>
         <file>Resources/batchop.ico</file>
-		<file>Resources/encode.ico</file>
-		<file>Resources/select.ico</file>
+        <file>Resources/encode.ico</file>
+        <file>Resources/select.ico</file>
+        <file>Resources/weiPay.png</file>
     </qresource>
 </RCC>

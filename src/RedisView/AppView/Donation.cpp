@@ -6,7 +6,7 @@ Donation::Donation(QWidget *parent) :
     ui(new Ui::Donation)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("支付宝捐赠"));
+    setWindowTitle(tr("捐赠"));
     setFixedSize(this->size());
 }
 

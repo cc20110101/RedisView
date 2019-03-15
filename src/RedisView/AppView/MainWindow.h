@@ -6,6 +6,7 @@
 #include "AppView/MainWidget.h"
 #include "AppView/ClientDialog.h"
 #include "AppView/BatchOperateDialog.h"
+#include "AppView/LoginDialog.h"
 
 // 主窗口
 class MainWindow : public QMainWindow {
@@ -35,6 +36,29 @@ private:
     QAction *_ibm866Act;
     QAction *_ibm874Act;
     QAction *_iso2022jpAct;
+    QAction *_iso88591Act;
+    QAction *_iso88592Act;
+    QAction *_iso88593Act;
+    QAction *_iso88594Act;
+    QAction *_iso88595Act;
+    QAction *_iso88596Act;
+    QAction *_iso88597Act;
+    QAction *_iso88598Act;
+    QAction *_iso88599Act;
+    QAction *_iso885910Act;
+    QAction *_iso885913Act;
+    QAction *_iso885914Act;
+    QAction *_iso885915Act;
+    QAction *_iso885916Act;
+    QAction *_isciibngAct;
+    QAction *_isciidevAct;
+    QAction *_isciigjrAct;
+    QAction *_isciikndAct;
+    QAction *_isciimlmAct;
+    QAction *_isciioriAct;
+    QAction *_isciipnjAct;
+    QAction *_isciitlgAct;
+    QAction *_isciitmlAct;
     QAction *_koi8rAct;
     QAction *_koi8uAct;
     QAction *_macintoshAcy;
@@ -48,6 +72,15 @@ private:
     QAction *_utf32Act;
     QAction *_utf32beAct;
     QAction *_utf32leAct;
+    QAction *_windows1250Act;
+    QAction *_windows1251Act;
+    QAction *_windows1252Act;
+    QAction *_windows1253Act;
+    QAction *_windows1254Act;
+    QAction *_windows1255Act;
+    QAction *_windows1256Act;
+    QAction *_windows1257Act;
+    QAction *_windows1258Act;
 
 private:
     // 读取窗口位置大小信息
@@ -103,6 +136,8 @@ private slots:
     void keyView();
     // 订阅发布
     void subscribe();
+    // 连接主机
+    void connectHost();
     // 修改编码函数
     void big5Action();
     void big5HkscsAction();
@@ -115,6 +150,29 @@ private slots:
     void ibm866Action();
     void ibm874Action();
     void iso2022jpAction();
+    void iso88591Action();
+    void iso88592Action();
+    void iso88593Action();
+    void iso88594Action();
+    void iso88595Action();
+    void iso88596Action();
+    void iso88597Action();
+    void iso88598Action();
+    void iso88599Action();
+    void iso885910Action();
+    void iso885913Action();
+    void iso885914Action();
+    void iso885915Action();
+    void iso885916Action();
+    void isciibngAction();
+    void isciidevAction();
+    void isciigjrAction();
+    void isciikndAction();
+    void isciimlmAction();
+    void isciioriAction();
+    void isciipnjAction();
+    void isciitlgAction();
+    void isciitmlAction();
     void koi8rAction();
     void koi8uAction();
     void macintoshAction();
@@ -128,6 +186,16 @@ private slots:
     void utf32Action();
     void utf32beAction();
     void utf32leAction();
+    void windows1250Action();
+    void windows1251Action();
+    void windows1252Action();
+    void windows1253Action();
+    void windows1254Action();
+    void windows1255Action();
+    void windows1256Action();
+    void windows1257Action();
+    void windows1258Action();
+
 };
 
 #endif // MAINWINDOW_H

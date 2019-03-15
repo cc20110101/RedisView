@@ -46,7 +46,7 @@
 #include "RedisLib/RedisCluster.h"
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.0"
+#define WindowTitle             "RedisView Community v1.6.1"
 #define IniFileName             "conf.ini"
 
 // 图标动画

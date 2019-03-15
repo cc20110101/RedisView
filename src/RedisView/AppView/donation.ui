@@ -6,60 +6,88 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
+    <width>592</width>
     <height>366</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>320</y>
-     <width>293</width>
-     <height>31</height>
+     <x>20</x>
+     <y>11</y>
+     <width>552</width>
+     <height>308</height>
     </rect>
    </property>
-   <property name="text">
-    <string>感谢支持，祝您万事如意、事事顺心...</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>10</y>
-     <width>295</width>
-     <height>304</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="_labelQRCode">
-      <property name="text">
-       <string/>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0" colspan="4">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QLabel" name="_labelWeCode">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../icon.qrc">:/Resources/weiPay.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="_labelAlCode">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../icon.qrc">:/Resources/alipay.png</pixmap>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="pixmap">
-       <pixmap resource="../icon.qrc">:/Resources/alipay.png</pixmap>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>128</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="_labelThank">
+      <property name="text">
+       <string>感谢支持，祝您万事如意、事事顺心...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>68</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>OK</string>
       </property>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>394</x>
-     <y>310</y>
-     <width>41</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>OK</string>
-   </property>
   </widget>
  </widget>
  <resources>
