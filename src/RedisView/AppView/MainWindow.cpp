@@ -432,7 +432,7 @@ void MainWindow::subscribe() {
 void MainWindow::connectHost() {
 
     if(_mainWidget->getTaskSize() > 0) {
-        QMessageBox::information(this,tr("错误"),tr("后台任务未完成,请稍后刷新连接!"));
+        QMessageBox::information(this,tr("错误"),tr("后台任务未完成,请稍后连接主机!"));
         return;
     }
 
