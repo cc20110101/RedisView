@@ -97,7 +97,7 @@ void MainWindow::createMenu() {
     _cp949Act->setStatusTip(tr("设置CP949编码..."));
 
     _eucjpAct = encodeMenu->addAction(tr("EUC-JP"), this, &MainWindow::eucjpAction);
-    _eucjpAct->setStatusTip(tr("设置UTF-8编码..."));
+    _eucjpAct->setStatusTip(tr("设置EUC-JP编码..."));
 
     _euckrAct = encodeMenu->addAction(tr("EUC-KR"), this, &MainWindow::euckrAction);
     _euckrAct->setStatusTip(tr("设置EUC-KR编码..."));

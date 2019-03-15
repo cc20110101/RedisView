@@ -1244,7 +1244,6 @@ the best, everything goes well...</translation>
         <translation>EUC-JP</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="100"/>
         <location filename="AppView/MainWindow.cpp" line="211"/>
         <source>设置UTF-8编码...</source>
         <translatorcomment>Set UTF-8 Encoding...</translatorcomment>
@@ -1255,6 +1254,12 @@ the best, everything goes well...</translation>
         <source>EUC-KR</source>
         <translatorcomment>EUC-KR</translatorcomment>
         <translation>EUC-KR</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="100"/>
+        <source>设置EUC-JP编码...</source>
+        <translatorcomment>Set EUC-JP Encoding...</translatorcomment>
+        <translation>Set EUC-JP Encoding...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="103"/>
@@ -1958,47 +1963,52 @@ the best, everything goes well...</translation>
         <location filename="AppView/MainWindow.cpp" line="417"/>
         <location filename="AppView/MainWindow.cpp" line="420"/>
         <location filename="AppView/MainWindow.cpp" line="435"/>
-        <location filename="AppView/MainWindow.cpp" line="461"/>
+        <location filename="AppView/MainWindow.cpp" line="462"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="409"/>
-        <location filename="AppView/MainWindow.cpp" line="435"/>
         <source>后台任务未完成,请稍后刷新连接!</source>
         <translatorcomment>Background task not completed, please refresh the connection later!</translatorcomment>
         <translation>Background task not completed, please refresh the connection later!</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="420"/>
-        <location filename="AppView/MainWindow.cpp" line="461"/>
+        <location filename="AppView/MainWindow.cpp" line="462"/>
         <source>客户端连接为空!</source>
         <translatorcomment>Client connect is empty!</translatorcomment>
         <translation>Client connect is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="474"/>
-        <location filename="AppView/MainWindow.cpp" line="483"/>
+        <location filename="AppView/MainWindow.cpp" line="435"/>
+        <source>后台任务未完成,请稍后连接主机!</source>
+        <translatorcomment>Background task not completed, please connect host later!</translatorcomment>
+        <translation>Background task not completed, please connect host later!</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="475"/>
+        <location filename="AppView/MainWindow.cpp" line="484"/>
         <source>提示</source>
         <translatorcomment>Prompt</translatorcomment>
         <translation>Prompt</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="474"/>
-        <location filename="AppView/MainWindow.cpp" line="483"/>
+        <location filename="AppView/MainWindow.cpp" line="475"/>
+        <location filename="AppView/MainWindow.cpp" line="484"/>
         <source>语言设置成功，重启生效!</source>
         <translatorcomment>Language Settings Successful, Restart Effective!</translatorcomment>
         <translation>Language Settings Successful, Restart Effective!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="506"/>
+        <location filename="AppView/MainWindow.cpp" line="507"/>
         <source>保存信息</source>
         <translatorcomment>Save</translatorcomment>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="506"/>
+        <location filename="AppView/MainWindow.cpp" line="507"/>
         <source>成功保存窗口大小与位置信息！</source>
         <translatorcomment>Successfully save window size and location information!</translatorcomment>
         <translation>Successfully save window size and location information!</translation>
