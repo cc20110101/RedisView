@@ -33,10 +33,10 @@ Function:
 Donate
 -------
 Power the RedisView Community with your donation by scanning WeiPay or AliPay two-dimension code.<br>
-AliPay:<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/alipay.png)<br>
-WeiPay:<br>
+AliPay:<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/weiPay.png)<br>
+WeiPay:<br>
 
 More Use Information 
 -------
