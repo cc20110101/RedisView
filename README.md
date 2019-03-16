@@ -1,6 +1,7 @@
 ﻿RedisView
 -------
 RedisView is a redis cross-platform gui tool, provides simple add, delete, alter and basic commands, supports cluster mode. Copy set or cluster mode only need to fill out an IP and port.
+
 Function:
 -------
 		1.Redis database view tool, providing CURD functionality
@@ -11,9 +12,11 @@ Function:
 		6.Support tens of millions of orders of magnitude, fast speed
 		7.Support set language and encoding
 
+
 RedisView
 -------
 RedisView是跨平台的Redis数据库图形化界面工具，提供简单的增删改查和基本命令，支持集群模式。复制集或是集群模式只需要填写一个ip和端口即可。
+
 Function:
 -------
 		1、Redis数据库视图工具，提供CURD功能
@@ -25,5 +28,4 @@ Function:
 		7、支持设置语言和编码
 
 
-More information reference:https://blog.csdn.net/cc20110101/article/details/87301562
--------
+###More information reference:https://blog.csdn.net/cc20110101/article/details/87301562
