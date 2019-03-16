@@ -11,8 +11,10 @@ Function:
 		5.support batch delete
 		6.Support tens of millions of orders of magnitude, fast speed
 		7.Support set language and encoding
-
-
+<br>
+<br>
+<br>
+<br>
 RedisView
 -------
 RedisView是跨平台的Redis数据库图形化界面工具，提供简单的增删改查和基本命令，支持集群模式。复制集或是集群模式只需要填写一个ip和端口即可。
