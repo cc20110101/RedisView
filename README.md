@@ -30,4 +30,6 @@ Function:
 7、支持设置语言和编码<br>
 
 
-### More information reference:https://blog.csdn.net/cc20110101/article/details/87301562
+More Use Information 
+-------
+https://blog.csdn.net/cc20110101/article/details/87301562
