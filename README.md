@@ -13,7 +13,6 @@ Function:
 7.Support set language and encoding<br>
 
 <br>
-<br>
 
 RedisView
 -------
@@ -29,6 +28,15 @@ Function:
 6、支持千万级别数据量<br>
 7、支持设置语言和编码<br>
 
+<br>
+
+Donate
+-------
+Power the RedisView Community with your donation by scanning WeiPay or AliPay two-dimension code.<br>
+AliPay:<br>
+![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/alipay.png)
+WeiPay:<br>
+![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/weiPay..png)
 
 More Use Information 
 -------
