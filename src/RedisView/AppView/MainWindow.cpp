@@ -442,9 +442,11 @@ void MainWindow::connectHost() {
     }
 
     // 设置编码
+    clearEncodeIcon();
     Global::gEncode = loginDialog.getEncode();
     Global::gEncode = Global::gEncode.isEmpty() ? "GB18030" : Global::gEncode;
     QTextCodec::setCodecForLocale(QTextCodec::codecForName(Global::gEncode.toLatin1()));
+    setEncodeIcon();
 
     if(_redisClient) {
         _redisClient->close();
