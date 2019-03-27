@@ -24,6 +24,7 @@ public:
     void openMsg();
     int getTaskSize();
     void reOpenClient();
+    void resizeEvent(QResizeEvent *event);
 
 private:
 
@@ -34,6 +35,7 @@ private:
     void initKeyListData(int dbIndex = -1);
     void initValueListData(const InitValueMsg &initValueMsg);
     void commitValue(QList<CmdMsg> &cmd);
+    void runWait(bool isRun = false);
 
 signals:
     void runStart();
@@ -117,6 +119,8 @@ private:
     QMenu *_treeMenu;
     QMenu *_tabMenu;
     QTabBar *_tabBar;
+    QLabel *_waitLabel;
+    QMovie *_movie;
     KeyTreeModel* _itemKeyModel;
     KeyTreeItem *_treeItemKey;
     KeyTreeItem *_subTreeItem;

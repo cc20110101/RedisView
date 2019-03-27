@@ -23,8 +23,6 @@ public:
     RedisRespParser();
 
     // 打包成RESP协议格式消息
-    bool packRespCmd(const QByteArray &sInCmd, QByteArray &sOutRespCmd);
-    // 打包成RESP协议格式消息
     bool packRespCmd(const QList<QString> &vInCmd, QByteArray &sOutRespCmd);
     // 打包成RESP协议格式消息
     bool packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd);
@@ -64,9 +62,8 @@ public:
 private:
 
     QString _sErrorInfo;
-    QByteArray _strCmd;
-    QByteArray _strBuffer;
-    QList<QByteArray> _strList;
+    QString _strBuffer;
+    QList<QString> _strList;
 
 };
 

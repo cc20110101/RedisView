@@ -155,9 +155,9 @@ public:
         return *this;
     }
 
-    QByteArray _cmd;
-    QByteArray _key;
-    QByteArray _value;
+    QString _cmd;
+    QString _key;
+    QString _value;
 };
 
 #endif // REDISDEFINE_H

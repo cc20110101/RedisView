@@ -206,9 +206,9 @@ void DataView::addHead() {
         _inputDialog->setType(_type);
         if(_inputDialog->exec() != QDialog::Accepted)
             return;
-        QList<QByteArray> valueList = _inputDialog->getTextList();
+        QList<QString> valueList = _inputDialog->getTextList();
         for(int i =0; i < valueList.size(); ++i) {
-            _tableItemValue = new ValueTableItem(QString(valueList[i]));
+            _tableItemValue = new ValueTableItem(valueList[i]);
             _itemTableModel->insertRow(0, _tableItemValue);
 
             _cmdMsg.init();
@@ -233,7 +233,7 @@ void DataView::addTail() {
             return;
 
         _listIndex = _itemTableModel->rowCount();
-        QList<QByteArray> valueList = _inputDialog->getTextList();
+        QList<QString> valueList = _inputDialog->getTextList();
         for(int i =0; i < valueList.size(); ++i) {
             _tableItemValue = new ValueTableItem(QString(valueList[i]));
             _itemTableModel->insertRow(_listIndex,_tableItemValue);
@@ -297,7 +297,7 @@ void DataView::add() {
         _inputDialog->setType(_type);
         if(_inputDialog->exec() != QDialog::Accepted)
             return;
-        QList<QByteArray> valueList = _inputDialog->getTextList();
+        QList<QString> valueList = _inputDialog->getTextList();
         QVector<QVariant> data;
         for(int i =0; i < valueList.size(); ++++i) {
             data.clear();
@@ -325,9 +325,9 @@ void DataView::add() {
         _inputDialog->setType(_type);
         if(_inputDialog->exec() != QDialog::Accepted)
             return;
-        QList<QByteArray> valueList = _inputDialog->getTextList();
+        QList<QString> valueList = _inputDialog->getTextList();
         for(int i =0; i < valueList.size(); ++i) {
-            _tableItemValue = new ValueTableItem(QString(valueList[i]));
+            _tableItemValue = new ValueTableItem(valueList[i]);
             _itemTableModel->insertRow(0,_tableItemValue);
 
             _cmdMsg.init();
@@ -348,7 +348,7 @@ void DataView::add() {
 
         double dscore;
         QVector<QVariant> data;
-        QList<QByteArray> valueList = _inputDialog->getTextList();
+        QList<QString> valueList = _inputDialog->getTextList();
         for(int i =0; i < valueList.size(); ++++i) {
             data.clear();
             dscore = valueList[i+1].toDouble();
@@ -531,47 +531,46 @@ void DataView::initValueListData() {
     }
 }
 
-void DataView::appendValue(const QList<QByteArray> & vList, const QByteArray flag) {
+void DataView::appendValue(const TaskMsg & taskMsg, const QByteArray flag) {
     if(flag == "hash") {
-        for(int i = 0; i < vList.size(); ++++i) {
+        for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++++i) {
             vRowData.clear();
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i]);
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
             vRowData.push_back(QVariant(_value));
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i+1]);
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i+1]._stringValue);
             vRowData.push_back(QVariant(_value));
             _tableItemValue = new ValueTableItem(vRowData);
             _itemTableModel->insertRow(_tableItemValue);
         }
     } else if(flag == "zset") {
-        for(int i = 0; i < vList.size(); ++++i) {
+        for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++++i) {
             vRowData.clear();
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i]);
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
             vRowData.push_back(QVariant(_value));
-            vRowData.push_back(QVariant(vList[i+1].toDouble()));
+            vRowData.push_back(QVariant(taskMsg._respResult._arrayValue[1]._arrayValue[i+1]._stringValue.toDouble()));
             _tableItemValue = new ValueTableItem(vRowData);
             _itemTableModel->insertRow(_tableItemValue);
         }
     } else if(flag == "set") {
-        for(int i = 0; i < vList.size(); ++i) {
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i]);
+        for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++i) {
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
             _tableItemValue = new ValueTableItem(_value);
             _itemTableModel->insertRow(_tableItemValue);
         }
     } else if(flag == "string") {
-        for(int i = 0; i < vList.size(); ++i) {
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i]);
+        for(int i = 0; i < taskMsg._list.size(); ++i) {
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
             _tableItemValue = new ValueTableItem(_value);
             _itemTableModel->insertRow(_tableItemValue);
             break;
         }
     } else if(flag == "list") {
-        for(int i = 0; i < vList.size(); ++i) {
-            _value = QTextCodec::codecForLocale()->toUnicode(vList[i]);
+        for(int i = 0; i < taskMsg._list.size(); ++i) {
+            _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
             _tableItemValue = new ValueTableItem(_value);
             _itemTableModel->insertRow(_tableItemValue);
         }
     }
-    _tableView->resizeColumnsToContents();
 }
 
 void DataView::setDbIndex(const int &index) {
@@ -661,4 +660,5 @@ void DataView::setIdleTimeS(const qlonglong &times) {
 void DataView::setRecvEnd(bool recvEnd)
 {
     _recvEnd = recvEnd;
+    _tableView->resizeColumnsToContents();
 }

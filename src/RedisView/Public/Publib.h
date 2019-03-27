@@ -6,7 +6,7 @@
 class PubLib
 {
 public:
-    static void getList(const QString & str, QList<QByteArray> & strList);
+    static void getList(const QString & str, QList<QString> & strList);
     static void setConfig(const QString & key, const QString & value);
     static QString getConfig(const QString & key, const QString &defaultValue = "");
 

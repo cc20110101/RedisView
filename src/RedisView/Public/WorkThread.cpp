@@ -86,18 +86,15 @@ void WorkThread::doKeyListWork()
 
     _sendMsg = *_taskMsg;
     _sendMsg._list.clear();
+    _sendMsg._respResult.init();
     do {
-        if(_redisClient->scan(_taskMsg->_keyPattern, _respValue, _cursor)) {
-            _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
-            for(int i = 0; i < _respValue._arrayValue[1]._arrayValue.size(); ++i) {
-                _sendMsg._list << _respValue._arrayValue[1]._arrayValue[i]._stringValue;
-            }
+        if(_redisClient->scan(_sendMsg._keyPattern, _sendMsg._respResult, _cursor)) {
+            _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
             emit sendData(_sendMsg);
         } else {
             _cursor = 0;
         }
-        _respValue.init();
-        _sendMsg._list.clear();
+        _sendMsg._respResult.init();
     } while(_cursor);
 
     emit finishWork(_taskMsg->_taskid);
@@ -163,59 +160,48 @@ void WorkThread::doValueListWork() {
 
     _sendMsg = *_taskMsg;
     _sendMsg._list.clear();
+    _sendMsg._respResult.init();
     if(_taskMsg->_type == "hash") {
         do {
-            if(_redisClient->hscan(_taskMsg->_key, _taskMsg->_keyPattern, _respValue, _cursor)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
-                for(int i = 0; i < _respValue._arrayValue[1]._arrayValue.size(); ++i) {
-                    _sendMsg._list << _respValue._arrayValue[1]._arrayValue[i]._stringValue;
-                }
+            if(_redisClient->hscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor)) {
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
                 _cursor = 0;
             }
-            _respValue.init();
-            _sendMsg._list.clear();
+            _sendMsg._respResult.init();
         } while(_cursor);
     } else if(_taskMsg->_type == "zset") {
         do {
-            if(_redisClient->zscan(_taskMsg->_key, _taskMsg->_keyPattern, _respValue, _cursor)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
-                for(int i = 0; i < _respValue._arrayValue[1]._arrayValue.size(); ++i) {
-                    _sendMsg._list << _respValue._arrayValue[1]._arrayValue[i]._stringValue;
-                }
+            if(_redisClient->zscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor)) {
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
                 _cursor = 0;
             }
-            _respValue.init();
-            _sendMsg._list.clear();
+            _sendMsg._respResult.init();
         } while(_cursor);
     } else if(_taskMsg->_type == "set") {
         do {
-            if(_redisClient->sscan(_taskMsg->_key, _taskMsg->_keyPattern, _respValue, _cursor)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
-                for(int i = 0; i < _respValue._arrayValue[1]._arrayValue.size(); ++i) {
-                    _sendMsg._list << _respValue._arrayValue[1]._arrayValue[i]._stringValue;
-                }
+            if(_redisClient->sscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult , _cursor)) {
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
                 _cursor = 0;
             }
-            _respValue.init();
-            _sendMsg._list.clear();
+            _sendMsg._respResult.init();
         } while(_cursor);
     } else if(_taskMsg->_type == "list") {
         int start = 0;
         int stop = start + 1000;
         do {
-            if(_redisClient->lrange(_taskMsg->_key, start, stop, _sendMsg._list)) {
+            if(_redisClient->lrange(_sendMsg._key, start, stop, _sendMsg._list)) {
                 emit sendData(_sendMsg);
                 start = stop + 1;
                 stop = start + 1000;
@@ -228,7 +214,7 @@ void WorkThread::doValueListWork() {
             _sendMsg._list.clear();
         } while(_cursor);
     } else if(_taskMsg->_type == "string") {
-        if(_redisClient->get(_taskMsg->_key, _byteArray)) {
+        if(_redisClient->get(_sendMsg._key, _byteArray)) {
             _sendMsg._list << _byteArray;
             emit sendData(_sendMsg);
         } else {

@@ -45,7 +45,6 @@ const unsigned short RedisRoute::_crc16tab[256] = {
 };
 
 RedisRoute::RedisRoute() {
-    _strCmd.clear();
     _strBuffer.clear();
     _strList.clear();
 }
@@ -78,9 +77,9 @@ unsigned int RedisRoute::getKeySlot(char *key, int keylen) {
     return crc16(key+s+1,e-s-1) & 0x3FFF;
 }
 
-QByteArray RedisRoute::getRandKey () {
+QString RedisRoute::getRandKey () {
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    return QByteArray::number(qrand());
+    return QString::number(qrand());
 }
 
 bool RedisRoute::getKey(const QString & str, QList<ClusterCmdRoute> &cmd,
@@ -89,16 +88,15 @@ bool RedisRoute::getKey(const QString & str, QList<ClusterCmdRoute> &cmd,
     if(kpos <= 0)
         return false;
 
-    char c = '\0', nextC = '\0';
+    QChar c, nextC;
     bool bCheck = false;
     ClusterCmdRoute clusterCmdRoute;
     cmd.clear();
-    _strCmd = str.trimmed().toLocal8Bit();
 
-    for(int i = 0; i < _strCmd.length(); ++i) {
-        c = _strCmd.at(i);
+    for(int i = 0; i < str.length(); ++i) {
+        c = str.at(i);
         if (bCheck) {
-            nextC = i < _strCmd.length() - 1 ? _strCmd.at(i + 1) : ' ';
+            nextC = i < str.length() - 1 ? str.at(i + 1) : ' ';
             if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                 i++;
                 continue;
@@ -107,7 +105,7 @@ bool RedisRoute::getKey(const QString & str, QList<ClusterCmdRoute> &cmd,
             }
             _strBuffer += c;
         } else {
-            if (!isspace(c)) {
+            if (!c.isSpace()) {
                 if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                     i++;
                     continue;
@@ -152,25 +150,23 @@ bool RedisRoute::getKey(const QString & str, QList<ClusterCmdRoute> &cmd,
     }
 
     _strList.clear();
-    _strCmd.clear();
     _strBuffer.clear();
 
     return true;
 }
 
-bool RedisRoute::getKey(const QString & str, QByteArray &key, int pos, int end) {
+bool RedisRoute::getKey(const QString & str, QString &key, int pos, int end) {
 
     if(pos <=0)
         return false;
 
-    char c = '\0', nextC = '\0';
+    QChar c, nextC;
     bool bCheck = false;
-    _strCmd = str.trimmed().toLocal8Bit();
 
-    for(int i = 0; i < _strCmd.length(); ++i) {
-        c = _strCmd.at(i);
+    for(int i = 0; i < str.length(); ++i) {
+        c = str.at(i);
         if (bCheck) {
-            nextC = i < _strCmd.length() - 1 ? _strCmd.at(i + 1) : ' ';
+            nextC = i < str.length() - 1 ? str.at(i + 1) : ' ';
             if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                 i++;
                 continue;
@@ -179,7 +175,7 @@ bool RedisRoute::getKey(const QString & str, QByteArray &key, int pos, int end) 
             }
             _strBuffer += c;
         } else {
-            if (!isspace(c)) {
+            if (!c.isSpace()) {
                 if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                     i++;
                     continue;
@@ -210,7 +206,6 @@ bool RedisRoute::getKey(const QString & str, QByteArray &key, int pos, int end) 
     key.clear();
     key = _strList[pos];
     _strList.clear();
-    _strCmd.clear();
     _strBuffer.clear();
 
     return true;

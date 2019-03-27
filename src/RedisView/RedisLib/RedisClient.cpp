@@ -201,44 +201,6 @@ QByteArray RedisClient::command(const QList<QString> &list) {
 }
 
 /**
- * 发送REDIS命令到服务端
- * @param[in]    str 命令
- * @return       服务端RESP协议返回值
- * @see
- * @note
- */
-QByteArray RedisClient::command(const QByteArray & str) {
-    if(str.isEmpty()) {
-        return "-str is empty\r\n";
-    }
-
-    _msg.clear();
-    _sErrorInfo.clear();
-    _sendData.clear();
-    _bTimeout = false;
-    packRespCmd(str,_sendData);
-
-    if(_sendData.isEmpty()) {
-        return "-pack resp cmd is empty\r\n";
-    }
-
-    _redisTransMgr->write(_sendData);
-
-    if(!_qTimer.isActive())
-        _qTimer.start();
-    _qEventloop.exec();
-    if(_qTimer.isActive())
-        _qTimer.stop();
-
-    if (_bTimeout) {
-        _sErrorInfo = "-run " + QTextCodec::codecForLocale()->toUnicode(str) + " timeout\r\n";
-        return QByteArray(_sErrorInfo.toUtf8());
-    }
-
-    return _msg;
-}
-
-/**
  * 解析命令为REDIS协议格式
  * @param[in]    str 命令
  * @return       命令RESP协议格式

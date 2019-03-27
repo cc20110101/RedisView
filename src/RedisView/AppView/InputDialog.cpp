@@ -19,7 +19,7 @@ QString InputDialog::getText() {
     return ui->_textEdit->document()->toPlainText().trimmed();
 }
 
-QList<QByteArray> InputDialog::getTextList() {
+QList<QString> InputDialog::getTextList() {
     return _textList;
 }
 
@@ -57,11 +57,11 @@ void InputDialog::on__pushButtonY_clicked()
             return;
         }
 
-        char c;
+        QChar c;
         for(int i =0 ; i < _textList.size(); ++++i) {
             for(int j = 0; j < _textList[i+1].size(); ++j) {
                 c = _textList[i+1].at(j);
-                if(c < '0' || c > '9') {
+                if(!c.isDigit()) {
                     QMessageBox::critical(this, tr("错误"), tr("数据错误，分数不是有效数值"));
                     return;
                 }

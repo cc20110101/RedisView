@@ -80,7 +80,7 @@ QString KeyDialog::getValue() const
     return _strValue;
 }
 
-QList<QByteArray> KeyDialog::getTextList() const
+QList<QString> KeyDialog::getTextList() const
 {
     return _textList;
 }
@@ -129,11 +129,11 @@ void KeyDialog::onOK() {
     }
 
     _strTtl = _editTtl->text().trimmed();
-    char c;
+    QChar c;
     _strbTtl = _strTtl.toLocal8Bit();
     for(int i = 0; i < _strbTtl.size(); ++i) {
         c = _strbTtl.at(i);
-        if(c < '0' || c > '9') {
+        if(!c.isDigit()) {
             if(c != '-') {
                 QMessageBox::critical(this, tr("错误"), tr("数据错误，键超时时间不是有效数值"));
                 return;
@@ -170,7 +170,7 @@ void KeyDialog::onOK() {
             for(int i =0 ; i < _textList.size(); ++++i) {
                 for(int j = 0; j < _textList[i+1].size(); ++j) {
                     c = _textList[i+1].at(j);
-                    if(c < '0' || c > '9') {
+                    if(!c.isDigit()) {
                         QMessageBox::critical(this, tr("错误"), tr("数据错误，分数不是有效数值"));
                         return;
                     }

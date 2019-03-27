@@ -1,4 +1,5 @@
 /**
+* 部分代码参考https://github.com/LZkila/QtRedisClient库，在此鸣谢
 * @file      RedisRespParser.cpp
 * @brief     REDIS客户端RESP解析类
 * @author    wangcc3
@@ -11,7 +12,6 @@
 
 RedisRespParser::RedisRespParser() {
     _strList.clear();
-    _strCmd.clear();
     _strBuffer.clear();
 }
 
@@ -39,16 +39,14 @@ bool RedisRespParser::packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd
     if(sInCmd.isEmpty())
         return false;
 
-    _strCmd = sInCmd.trimmed().toLocal8Bit();
-
-    char c = '\0', nextC = '\0';
+    QChar c, nextC;
     bool bCheck = false;
-    for (int i = 0; i < _strCmd.length(); ++i)
+    for (int i = 0; i < sInCmd.length(); ++i)
     {
-        c = _strCmd.at(i);
+        c = sInCmd.at(i);
         if (bCheck)
         {
-            nextC = i < _strCmd.length() - 1 ? _strCmd.at(i + 1) : ' ';
+            nextC = i < sInCmd.length() - 1 ? sInCmd.at(i + 1) : ' ';
             if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
             {
                 i++;
@@ -58,7 +56,7 @@ bool RedisRespParser::packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd
             }
             _strBuffer += c;
         } else {
-            if (!isspace(c))
+            if (!c.isSpace())
             {
                 if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
                 {
@@ -88,81 +86,13 @@ bool RedisRespParser::packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd
     for (int j = 0; j < _strList.length(); ++j)
     {
         sOutRespCmd.append("$");
-        sOutRespCmd.append(QByteArray::number(_strList.at(j).length()));
+        sOutRespCmd.append(QByteArray::number(_strList.at(j).toLocal8Bit().length()));
         sOutRespCmd.append("\r\n");
-        sOutRespCmd.append(_strList.at(j));
-        sOutRespCmd.append("\r\n");
-    }
-
-    _strList.clear();
-    _strCmd.clear();
-    _strBuffer.clear();
-
-    return true;
-}
-
-bool RedisRespParser::packRespCmd(const QByteArray &sInCmd, QByteArray &sOutRespCmd)
-{
-    if(sInCmd.isEmpty())
-        return false;
-
-    _strCmd = sInCmd;
-
-    char c = '\0', nextC = '\0';
-    bool bCheck = false;
-    for (int i = 0; i < _strCmd.length(); ++i)
-    {
-        c = _strCmd.at(i);
-        if (bCheck)
-        {
-            nextC = i < _strCmd.length() - 1 ? _strCmd.at(i + 1) : ' ';
-            if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
-            {
-                i++;
-                continue;
-            } else if (c == '"') { // 遇到了第二个"
-                bCheck = false;
-            }
-            _strBuffer += c;
-        } else {
-            if (!isspace(c))
-            {
-                if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
-                {
-                    i++;
-                    continue;
-                } else if (c == '"') { // 遇到第一个"
-                    bCheck = true;
-                }
-
-                _strBuffer += c;
-            } else if (!_strBuffer.isEmpty()) {
-                _strList << _strBuffer; // 追加一个单词
-                _strBuffer.clear();
-            }
-        }
-    }
-
-    if (!_strBuffer.isEmpty()) // 当最后一个字母不是' '也不是'"'时
-    {
-        _strList << _strBuffer;
-    }
-
-    sOutRespCmd.clear();
-    sOutRespCmd.append("*");
-    sOutRespCmd.append(QByteArray::number(_strList.length()));
-    sOutRespCmd.append("\r\n");
-    for (int j = 0; j < _strList.length(); ++j)
-    {
-        sOutRespCmd.append("$");
-        sOutRespCmd.append(QByteArray::number(_strList.at(j).length()));
-        sOutRespCmd.append("\r\n");
-        sOutRespCmd.append(_strList.at(j));
+        sOutRespCmd.append(_strList.at(j).toLocal8Bit());
         sOutRespCmd.append("\r\n");
     }
 
     _strList.clear();
-    _strCmd.clear();
     _strBuffer.clear();
 
     return true;

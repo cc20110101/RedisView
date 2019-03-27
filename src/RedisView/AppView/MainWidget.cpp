@@ -139,7 +139,7 @@ void MainWidget::initKeyListData(int dbIndex)
     }
 
     _SCAN_KEY_LOCK.lockForWrite();
-
+    runWait(true);
     ++_iScanKeySeq;
     if(dbIndex == -1) {
         _vTreeItemKey.clear();
@@ -229,6 +229,7 @@ void MainWidget::initValueListData(const InitValueMsg &initValueMsg) {
     _SCAN_VALUE_LOCK.lockForWrite();
 
     ++_iScanValueSeq;
+    runWait(true);
     _taskMsg = new TaskMsg();
     _taskMsg->_taskid = THREAD_SCAN_VALUE_TASK;
     _vTaskId.push_back(THREAD_SCAN_VALUE_TASK);
@@ -257,6 +258,7 @@ void MainWidget::initValueListData(const InitValueMsg &initValueMsg) {
 void MainWidget::commitValue(QList<CmdMsg> &cmd) {
     if(cmd.size() <= 0)
         return;
+    runWait(true);
     _haveError = false;
     _taskMsg = new TaskMsg();
     _taskMsg->_taskid = THREAD_COMMIT_VALUE_TASK;
@@ -281,8 +283,8 @@ void MainWidget::recvData(const TaskMsg taskMsg) {
         _SCAN_KEY_LOCK.lockForRead();
         if(_iScanKeySeq == taskMsg._sequence) {
             QString strKey;
-            for(int i = 0; i < taskMsg._list.size(); ++i) {
-                strKey = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
+            for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++i) {
+                strKey = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
                 if(_isClusterMode) {
                     _subTreeItem = new KeyTreeItem(strKey,_treeItemKey);
                 } else {
@@ -295,7 +297,7 @@ void MainWidget::recvData(const TaskMsg taskMsg) {
     } else if(taskMsg._taskid == THREAD_SCAN_VALUE_TASK) {
         _SCAN_VALUE_LOCK.lockForRead();
         if(_iScanValueSeq == taskMsg._sequence) {
-            _dataView->appendValue(taskMsg._list, taskMsg._type);
+            _dataView->appendValue(taskMsg, taskMsg._type);
         }
         _SCAN_VALUE_LOCK.unlock();
     }
@@ -312,19 +314,24 @@ void MainWidget::finishWork(const int taskid) {
                     _itemKeyModel->sortItem(_vTreeItemKey[i]);
                 }
             }
+            runWait(false);
         }
     } else if(taskid == THREAD_COMMIT_VALUE_TASK) {
         if(_vTaskId.indexOf(taskid) == -1) {
-            if(_haveError)
+            runWait(false);
+            if(_haveError) {
                 _dataView->initValueListData();
+            }
         }
     } else if(taskid == THREAD_DEL_KEY_TASK) {
         if(_vTaskId.indexOf(taskid) == -1) {
+            runWait(false);
             if(_haveError)
                 flush();
         }
     } else if(taskid == THREAD_SCAN_VALUE_TASK) {
         _dataView->setRecvEnd(true);
+        runWait(false);
     }
 }
 
@@ -482,6 +489,15 @@ void MainWidget::initView()
     _closeMsg->setIcon(QIcon(ICON_TAB));
     _treeMenu = new QMenu(this);
     _tabMenu = new QMenu(this);
+    _movie = new QMovie(GIF_WAIT);
+    _waitLabel = new QLabel(this);
+    _waitLabel->setFixedSize(50,50);
+    _waitLabel->setContentsMargins(0,0,0,0);
+    QRect rect = geometry();
+    _waitLabel->move(rect.x() + rect.width()/2 - _waitLabel->width() /2,
+                     rect.y() + rect.height()/4 - _waitLabel->height());
+    _waitLabel->setMovie(_movie);
+    runWait();
 }
 
 void MainWidget::showTabRightMenu(const QPoint &pos) {
@@ -660,6 +676,7 @@ void MainWidget::del() {
 
     _haveError = false;
     _vCmdMsg.clear();
+    runWait(true);
     while(delRow.size() > 0) {
         _subTreeItem = delRow.at(0);
         delRow.removeAll(_subTreeItem);
@@ -786,7 +803,7 @@ void MainWidget::add() {
     QString _strType = _keyDialog->getType();
     QString _strKey = _keyDialog->getKey();
     QString _strTtl = _keyDialog->getTtl();
-    QList<QByteArray> textList = _keyDialog->getTextList();
+    QList<QString> textList = _keyDialog->getTextList();
 
     if(_idbIndex >= 0) {
         if(!_redisClient->select(_idbIndex)) {
@@ -1264,4 +1281,24 @@ void MainWidget::on__msgInfoButton_clicked()
 
 int MainWidget::getTaskSize() {
     return _vTaskId.size();
+}
+
+void MainWidget::resizeEvent(QResizeEvent *) {
+    QRect rect = geometry();
+    _waitLabel->move(rect.x() + rect.width()/2 - _waitLabel->width() /2,
+                     rect.y() + rect.height()/4 - _waitLabel->height());
+}
+
+void MainWidget::runWait(bool isRun) {
+    if(isRun) {
+        setEnabled(false);
+        _waitLabel->raise();
+        _waitLabel->setVisible(true);
+        _movie->start();
+    } else {
+        setEnabled(true);
+        _movie->stop();
+        _waitLabel->lower();
+        _waitLabel->setVisible(false);
+    }
 }

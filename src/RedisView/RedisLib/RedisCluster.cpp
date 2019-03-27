@@ -45,7 +45,7 @@ QString RedisCluster::getErrorInfo() const {
 //下一个PSUBSCRIBE
 QList<QByteArray> RedisCluster::clusterCommand(QString &str) {
 
-    QByteArray key = "";
+    QString key = "";
     RedisClient * redisClient = nullptr;
     QList<QByteArray> result;
     QList<ClusterCmdRoute> cmd;

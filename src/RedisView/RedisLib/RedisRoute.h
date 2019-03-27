@@ -23,15 +23,14 @@ public:
     bool getKey(const QString & str, QList<ClusterCmdRoute> & cmd,
                 int kpos = 1, int kskip = -1, int vpos = 1, int vskip = -1);
     // 分析str字符串，从pos位置取key[pos最小1开始]，end为key后命令结束标识[0未结束，1结束，2可结束]
-    bool getKey(const QString & str, QByteArray &key, int pos =1, int end = 1);
+    bool getKey(const QString & str, QString &key, int pos =1, int end = 1);
     // 获取随机KEY
-    QByteArray getRandKey();
+    QString getRandKey();
 private:
     unsigned short crc16(const char *buf, int len);
     static const unsigned short _crc16tab[256];
-    QByteArray _strCmd;
-    QByteArray _strBuffer;
-    QList<QByteArray> _strList;
+    QString _strBuffer;
+    QList<QString> _strList;
 };
 
 #endif // REDISROUTE_H

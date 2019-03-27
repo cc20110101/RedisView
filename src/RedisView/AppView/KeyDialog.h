@@ -17,7 +17,7 @@ public:
     QString getKey() const;
     QString getTtl() const;
     QString getValue() const;
-    QList<QByteArray> getTextList() const;
+    QList<QString> getTextList() const;
 
 private:
 
@@ -27,7 +27,7 @@ private:
     QString _strTtl;
     QString _strValue;
     QByteArray _strbTtl;
-    QList<QByteArray> _textList;
+    QList<QString> _textList;
     QLineEdit *_editKey;
     QLineEdit *_editTtl;
     QComboBox *_combType;

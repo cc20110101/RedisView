@@ -1,17 +1,14 @@
 #include "Public/Publib.h"
 
-
-void PubLib::getList(const QString & str, QList<QByteArray> & strList) {
-
-    char c = '\0', nextC = '\0';
+void PubLib::getList(const QString & str, QList<QString> & strList) {
+    QChar c = '\0', nextC = '\0';
     bool bCheck = false;
-    QByteArray strCmd = str.trimmed().toLocal8Bit();
-    QByteArray strBuffer;
+    QString strBuffer;
 
-    for(int i = 0; i < strCmd.length(); ++i) {
-        c = strCmd.at(i);
+    for(int i = 0; i < str.length(); ++i) {
+        c = str.at(i);
         if (bCheck) {
-            nextC = i < strCmd.length() - 1 ? strCmd.at(i + 1) : ' ';
+            nextC = i < str.length() - 1 ? str.at(i + 1) : ' ';
             if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                 i++;
                 continue;
@@ -20,7 +17,7 @@ void PubLib::getList(const QString & str, QList<QByteArray> & strList) {
             }
             strBuffer += c;
         } else {
-            if (!isspace(c)) {
+            if (!c.isSpace()) {
                 if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
                     i++;
                     continue;

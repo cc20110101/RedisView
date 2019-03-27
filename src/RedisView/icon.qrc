@@ -41,5 +41,6 @@
         <file>Resources/encode.ico</file>
         <file>Resources/select.ico</file>
         <file>Resources/weiPay.png</file>
+        <file>Resources/wait.gif</file>
     </qresource>
 </RCC>

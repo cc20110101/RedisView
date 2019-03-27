@@ -71,15 +71,6 @@ public:
 
     /**
      * 发送REDIS命令到服务端
-     * @param[in]    str 命令
-     * @return       服务端RESP协议返回值
-     * @see
-     * @note
-     */
-    QByteArray command(const QByteArray &str);
-
-    /**
-     * 发送REDIS命令到服务端
      * @param[in]    list 命令
      * @return       服务端RESP协议返回值
      * @see

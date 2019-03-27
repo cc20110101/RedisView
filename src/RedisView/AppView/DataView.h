@@ -18,7 +18,7 @@ public:
 
     void clearData();
     void initValueListData();
-    void appendValue(const QList<QByteArray> & vList, const QByteArray flag);
+    void appendValue(const TaskMsg & taskMsg, const QByteArray flag);
     void setDbIndex(const int &index);
     void setIndex(const int &index);
     void setKey(const QString &key);

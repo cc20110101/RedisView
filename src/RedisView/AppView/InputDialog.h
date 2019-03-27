@@ -20,7 +20,7 @@ public:
     void setFlag(int flag);
     void clear();
     QString getText();
-    QList<QByteArray> getTextList();
+    QList<QString> getTextList();
 
 private slots:
     void on__pushButtonY_clicked();
@@ -32,7 +32,7 @@ private:
     Ui::InputDialog *ui;
     QByteArray _type;
     QString _text;
-    QList<QByteArray> _textList;
+    QList<QString> _textList;
 };
 
 #endif // INPUTDIALOG_H

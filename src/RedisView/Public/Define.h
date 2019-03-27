@@ -46,7 +46,7 @@
 #include "RedisLib/RedisCluster.h"
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.1"
+#define WindowTitle             "RedisView Community v1.6.2"
 #define IniFileName             "conf.ini"
 
 // 图标动画
@@ -87,6 +87,8 @@
 #define ICON_BATCHOP               ":/Resources/batchop.ico"
 #define ICON_ENCODE                ":/Resources/encode.ico"
 #define ICON_SELECT                ":/Resources/select.ico"
+#define GIF_WAIT                   ":/Resources/wait.gif"
+
 
 
 #define THREAD_SCAN_KEY_TASK                       1
@@ -150,6 +152,7 @@ public:
         _passwd.clear();
         _list.clear();
         _keyPattern.clear();
+        _respResult.init();
     }
 
     TaskMsg &operator=(const TaskMsg &rhs)
@@ -169,6 +172,7 @@ public:
         this->_keyPattern = rhs._keyPattern;
         this->_list.clear();
         this->_list = rhs._list;
+        this->_respResult = _respResult;
 
         return *this;
     }
@@ -184,6 +188,7 @@ public:
     QString _passwd;
     QString _keyPattern;
     QList<QByteArray> _list;
+    RespType _respResult;
 };
 
 class CmdMsg {
