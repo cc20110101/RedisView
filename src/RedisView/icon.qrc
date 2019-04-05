@@ -42,5 +42,6 @@
         <file>Resources/select.ico</file>
         <file>Resources/weiPay.png</file>
         <file>Resources/wait.gif</file>
+        <file>Resources/sort.ico</file>
     </qresource>
 </RCC>

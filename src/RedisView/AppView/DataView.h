@@ -3,6 +3,7 @@
 
 #include "AppView/InputDialog.h"
 #include "Model/ValueTableModel.h"
+#include "Model/ItemDelegate.h"
 
 namespace Ui {
 class DataView;
@@ -29,6 +30,9 @@ public:
     void setRefcount(const qlonglong &count);
     void setIdleTimeS(const qlonglong &times);
     void setRecvEnd(bool recvEnd);
+    void setValuePattern(QString valuePattern);
+    QString getKey();
+    QString getValuePattern();
 
 private:
     bool _recvEnd; //暂时未使用

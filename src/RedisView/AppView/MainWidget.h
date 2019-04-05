@@ -36,6 +36,8 @@ private:
     void initValueListData(const InitValueMsg &initValueMsg);
     void commitValue(QList<CmdMsg> &cmd);
     void runWait(bool isRun = false);
+    void setKeyPattern(QString keyPattern);
+    QString getKeyPattern();
 
 signals:
     void runStart();
@@ -51,6 +53,7 @@ private slots:
     void closeCmd();
     void closeMsg();
     void count();
+    void keySort();
     void flush();
     void del();
     void alter();
@@ -99,6 +102,7 @@ private:
     QString _strCmd;
     QString _strCmdSplit;
     QString _strConnectName;
+    QString _keyPattern;
     QByteArray _byteArray;
     QJsonArray _jsonArray;
     QJsonDocument _jsonDocument;
@@ -108,6 +112,7 @@ private:
     DataView *_dataView;
     KeyDialog * _keyDialog;
     Ui::MainWidget *ui;
+    QAction* _mKeySort;
     QAction* _mCount;
     QAction* _mRefresh;
     QAction* _mCreated;
@@ -134,6 +139,7 @@ private:
     QList<int> _vTaskId;
     CmdMsg _cmdMsg;
     QList<CmdMsg> _vCmdMsg;
+    QMap<int, Qt::SortOrder> _vSortMap;
     QVector<QWidget *> _tabPage;
     QReadWriteLock _SCAN_KEY_LOCK;
     QReadWriteLock _SCAN_VALUE_LOCK;

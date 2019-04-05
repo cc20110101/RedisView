@@ -23,7 +23,8 @@ SOURCES += \
     Model/ValueTableModel.cpp \
     AppView/ClientDialog.cpp \
     AppView/PubsubDialog.cpp \
-    AppView/BatchOperateDialog.cpp
+    AppView/BatchOperateDialog.cpp \
+    Model/ItemDelegate.cpp
 
 
 HEADERS += \
@@ -51,7 +52,8 @@ HEADERS += \
     Model/ValueTableModel.h \
     AppView/ClientDialog.h \
     AppView/PubsubDialog.h \
-    AppView/BatchOperateDialog.h
+    AppView/BatchOperateDialog.h \
+    Model/ItemDelegate.h
 
 
 TARGET = RedisView

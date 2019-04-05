@@ -6,5 +6,6 @@ Global::~Global() {
 }
 
 QString Global::gEncode = "";
+QString Global::gConnectName = "";
 QTranslator * Global::gTrans = nullptr;
 

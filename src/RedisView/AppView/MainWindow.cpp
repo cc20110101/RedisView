@@ -376,7 +376,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：菜鸟小白<br>"
-                           "版本 ：Community v1.6.2<br>"
+                           "版本 ：Community v1.6.3<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
                            "版权 ：Copyright 2018 Powered By CC<br>"
@@ -387,6 +387,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/04/05&nbsp;&nbsp;Version 1.6.3&nbsp;&nbsp;修复键值过长显示不全Bug.<br>"
                            "<br>2019/03/24&nbsp;&nbsp;Version 1.6.2&nbsp;&nbsp;增加操作进度提示,修复中文乱码Bug.<br>"
                            "<br>2019/03/15&nbsp;&nbsp;Version 1.6.1&nbsp;&nbsp;支持编码选择.<br>"
                            "<br>2019/02/21&nbsp;&nbsp;Version 1.6.0&nbsp;&nbsp;支持复制集模式.<br>"
@@ -523,6 +524,8 @@ void MainWindow::setEncode(QString encode) {
         clientInfo._addr = settings.value("addr").toString().trimmed();
         clientInfo._passwd = settings.value("passwd").toString().trimmed();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
+        clientInfo._keyPattern = settings.value("keypattern","").toString();
+        clientInfo._valuePattern = settings.value("valuepattern","").toString();
         vClientInfo << clientInfo;
     }
     settings.endArray();
@@ -537,6 +540,8 @@ void MainWindow::setEncode(QString encode) {
             settings.setValue("encode", encode);
         else
             settings.setValue("encode", vClientInfo[j]._encode);
+        settings.setValue("keypattern", vClientInfo[j]._keyPattern);
+        settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
     }
     settings.endArray();
     QTextCodec::setCodecForLocale(QTextCodec::codecForName(encode.toLatin1()));

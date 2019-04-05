@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 
     // 设置编码
     Global::gEncode = loginDialog.getEncode();
+    Global::gConnectName = loginDialog.getLableName();
     Global::gEncode = Global::gEncode.isEmpty() ? "GB18030" : Global::gEncode;
     QTextCodec::setCodecForLocale(QTextCodec::codecForName(Global::gEncode.toLatin1()));
 

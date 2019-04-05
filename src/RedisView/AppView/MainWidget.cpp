@@ -113,6 +113,7 @@ void MainWidget::initSlot() {
     connect(_closeView, &QAction::triggered, this, &MainWidget::closeView);
     connect(_closeCmd, &QAction::triggered, this, &MainWidget::closeCmd);
     connect(_closeMsg, &QAction::triggered, this, &MainWidget::closeMsg);
+    connect(_mKeySort, &QAction::triggered, this, &MainWidget::keySort);
     connect(_mCount, &QAction::triggered, this, &MainWidget::count);
     connect(_mRefresh, &QAction::triggered, this, &MainWidget::flush);
     connect(_mCreated, &QAction::triggered, this, &MainWidget::add);
@@ -307,13 +308,6 @@ void MainWidget::finishWork(const int taskid) {
     _vTaskId.removeOne(taskid);
     if(taskid == THREAD_SCAN_KEY_TASK) {
         if(_vTaskId.indexOf(taskid) == -1) {
-            if(_isClusterMode) {
-                _itemKeyModel->sortItem(_treeItemKey);
-            } else {
-                for(int i = 0; i < _vTreeItemKey.size(); ++i) {
-                    _itemKeyModel->sortItem(_vTreeItemKey[i]);
-                }
-            }
             runWait(false);
         }
     } else if(taskid == THREAD_COMMIT_VALUE_TASK) {
@@ -435,7 +429,7 @@ void MainWidget::initView()
     ui->_treeView->setContextMenuPolicy(Qt::CustomContextMenu);
 
     ui->_refreshEdit->setPlaceholderText(tr("键初始化模式"));
-    ui->_refreshEdit->setText(PubLib::getConfig("initKeyPattern"));
+    ui->_refreshEdit->setText(getKeyPattern());
     ui->_refreshEdit->setEnabled(true);
 
     for(int i = 0; i < ui->_tabWidget->count(); ++i)
@@ -471,6 +465,8 @@ void MainWidget::initView()
     _tabBar = ui->_tabWidget->tabBar();
     _tabBar->setContextMenuPolicy(Qt::CustomContextMenu);
     _keyDialog = new KeyDialog();
+    _mKeySort = new QAction(tr("键值排序"));
+    _mKeySort->setIcon(QIcon(ICON_SORT));
     _mCount = new QAction(tr("总数统计"));
     _mCount->setIcon(QIcon(ICON_COUNT));
     _mRefresh = new QAction(tr("刷新键值"));
@@ -569,6 +565,7 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
         if(_subTreeItem == _treeItemKey) {
             _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mKeySort);
             _treeMenu->addAction(_mCreated);
         } else {
             _treeMenu->addAction(_mAlter);
@@ -579,10 +576,12 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
         if(_idbIndex != -1) {
             _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mKeySort);
             _treeMenu->addAction(_mCreated);
         } else if(_treeItemKey == _subTreeItem) {
             _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mKeySort);
             _idbIndex = -1;
         } else {
             _idbIndex = _vTreeItemKey.indexOf(_subTreeItem->parent());
@@ -592,6 +591,37 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
     }
     _treeMenu->move(ui->_treeView->cursor().pos());
     _treeMenu->show();
+}
+
+void MainWidget::keySort() {
+    runWait(true);
+    if(_isClusterMode) {
+        _itemKeyModel->sortItem(_treeItemKey, _vSortMap.value(0,Qt::AscendingOrder));
+        if(_vSortMap.value(0,Qt::AscendingOrder) == Qt::AscendingOrder) {
+            _vSortMap[0] = Qt::DescendingOrder;
+        } else {
+            _vSortMap[0] = Qt::AscendingOrder;
+        }
+    } else {
+        if(_idbIndex == -1) {
+            for(int i = 0; i < _vTreeItemKey.size(); ++i) {
+                _itemKeyModel->sortItem(_vTreeItemKey[i], _vSortMap.value(i,Qt::AscendingOrder));
+                if(_vSortMap.value(i,Qt::AscendingOrder) == Qt::AscendingOrder) {
+                    _vSortMap[i] = Qt::DescendingOrder;
+                } else {
+                    _vSortMap[i] = Qt::AscendingOrder;
+                }
+            }
+        } else {
+            _itemKeyModel->sortItem(_vTreeItemKey[_idbIndex], _vSortMap.value(_idbIndex,Qt::AscendingOrder));
+            if(_vSortMap.value(_idbIndex,Qt::AscendingOrder) == Qt::AscendingOrder) {
+                _vSortMap[_idbIndex] = Qt::DescendingOrder;
+            } else {
+                _vSortMap[_idbIndex] = Qt::AscendingOrder;
+            }
+        }
+    }
+    runWait(false);
 }
 
 void MainWidget::count() {
@@ -622,7 +652,7 @@ void MainWidget::flush() {
     if(_isClusterMode && _idbIndex == 0)
         _idbIndex = -1;
     initKeyListData(_idbIndex);
-    PubLib::setConfig("initKeyPattern", ui->_refreshEdit->text());
+    setKeyPattern(ui->_refreshEdit->text());
 }
 
 void MainWidget::del() {
@@ -695,6 +725,10 @@ void MainWidget::del() {
             _cmdMsg._key = _subTreeItem->text();
             _itemKeyModel->removeChild(_vTreeItemKey[_cmdMsg._dbIndex],_subTreeItem->childNumber());
         }
+
+        if(_cmdMsg._key == _dataView->getKey())
+            _dataView->clearData();
+
         _vCmdMsg << _cmdMsg;
 
         if(_vCmdMsg.size() > 5000) {
@@ -1301,4 +1335,60 @@ void MainWidget::runWait(bool isRun) {
         _waitLabel->lower();
         _waitLabel->setVisible(false);
     }
+}
+
+QString MainWidget::getKeyPattern() {
+    _keyPattern.clear();
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        if(_redisClient->getConnectName() == clientInfo._name) {
+            _keyPattern = settings.value("keypattern","").toString();
+            break;
+        }
+    }
+    settings.endArray();
+    return _keyPattern;
+}
+
+void MainWidget::setKeyPattern(QString keyPattern) {
+    if(_keyPattern == keyPattern)
+        return;
+    QList<ClientInfoDialog> vClientInfo;
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
+        clientInfo._keyPattern = settings.value("keypattern","").toString();
+        clientInfo._valuePattern = settings.value("valuepattern","").toString();
+        vClientInfo << clientInfo;
+    }
+    settings.endArray();
+    settings.remove("logins");
+    settings.beginWriteArray("logins");
+    for(int j =0; j < vClientInfo.size(); ++j) {
+        settings.setArrayIndex(j);
+        settings.setValue("name", vClientInfo[j]._name);
+        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("passwd", vClientInfo[j]._passwd);
+        settings.setValue("encode", vClientInfo[j]._encode);
+        if(_redisClient->getConnectName() == vClientInfo[j]._name)
+            settings.setValue("keypattern", keyPattern);
+        else
+            settings.setValue("keypattern", vClientInfo[j]._keyPattern);
+        settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
+    }
+    settings.endArray();
 }

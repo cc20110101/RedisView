@@ -8,7 +8,6 @@ DataView::DataView(QWidget *parent) :
     ui->setupUi(this);
 
     _keyLineEdit = new QLineEdit();
-    //_keyLineEdit->setReadOnly(true);
     _timeLineEdit = new QLineEdit();
     _typeLineEdit = new QLineEdit();
     _typeLineEdit->setEnabled(false);
@@ -43,7 +42,8 @@ DataView::DataView(QWidget *parent) :
     _itemTableModel = new ValueTableModel(this);
     _tableView->setContextMenuPolicy(Qt::ActionsContextMenu);
     _tableView->setAlternatingRowColors(false);
-     _tableView->setModel(_itemTableModel);
+    //_tableView->setItemDelegate(new ValueTableDelegate());
+    _tableView->setModel(_itemTableModel);
     _leftVlayout = new QVBoxLayout();
     _leftVlayout->addWidget(_tableView);
 
@@ -76,8 +76,7 @@ DataView::DataView(QWidget *parent) :
 
     _valueScanPattern = new QLineEdit();
     _valueScanPattern->setPlaceholderText("value scan pattern");
-    _valuePattern = PubLib::getConfig("initValuePattern");
-    _valueScanPattern->setText(_valuePattern);
+    _valueScanPattern->setText(getValuePattern());
 
     _searchHLayout = new QHBoxLayout();
     _searchHLayout->addWidget(new QLabel("Init Pattern:"),1);
@@ -484,11 +483,7 @@ void DataView::initValueListData() {
     _vCmdMsg.clear();
     _itemTableModel->clear();
     _initValueMsg.init();
-
-    if(_valuePattern != _valueScanPattern->text()) {
-        _valuePattern = _valueScanPattern->text();
-        PubLib::setConfig("initValuePattern", _valuePattern);
-    }
+    setValuePattern(_valueScanPattern->text());
 
     _initValueMsg._key = _key;
     _initValueMsg._type = _type;
@@ -588,6 +583,10 @@ void DataView::setKey(const QString &key) {
     _keyLineEdit->setText(key);
 }
 
+QString DataView::getKey() {
+    return _key;
+}
+
 void DataView::setValue(const QString &value) {
     _value = value;
 }
@@ -660,5 +659,65 @@ void DataView::setIdleTimeS(const qlonglong &times) {
 void DataView::setRecvEnd(bool recvEnd)
 {
     _recvEnd = recvEnd;
-    _tableView->resizeColumnsToContents();
+    //_tableView->resizeRowsToContents();
+    //_tableView->resizeColumnsToContents();
+    //_tableView->setColumnWidth(0,_tableView->width());
+
 }
+
+QString DataView::getValuePattern() {
+    _valuePattern.clear();
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        if(Global::gConnectName == clientInfo._name) {
+            _valuePattern = settings.value("valuepattern","").toString();
+            break;
+        }
+    }
+    settings.endArray();
+    return _valuePattern;
+}
+
+void DataView::setValuePattern(QString valuePattern) {
+    if(_valuePattern == valuePattern)
+        return;
+    QList<ClientInfoDialog> vClientInfo;
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
+        clientInfo._keyPattern = settings.value("keypattern","").toString();
+        clientInfo._valuePattern = settings.value("valuepattern","").toString();
+        vClientInfo << clientInfo;
+    }
+    settings.endArray();
+    settings.remove("logins");
+    settings.beginWriteArray("logins");
+    for(int j =0; j < vClientInfo.size(); ++j) {
+        settings.setArrayIndex(j);
+        settings.setValue("name", vClientInfo[j]._name);
+        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("passwd", vClientInfo[j]._passwd);
+        settings.setValue("encode", vClientInfo[j]._encode);
+        settings.setValue("keypattern", vClientInfo[j]._keyPattern);
+        if(Global::gConnectName == vClientInfo[j]._name)
+            settings.setValue("valuepattern", valuePattern);
+        else
+            settings.setValue("valuepattern", vClientInfo[j]._keyPattern);
+    }
+    settings.endArray();
+}
+
