@@ -687,6 +687,7 @@ QString DataView::getValuePattern() {
 void DataView::setValuePattern(QString valuePattern) {
     if(_valuePattern == valuePattern)
         return;
+    _valuePattern = valuePattern;
     QList<ClientInfoDialog> vClientInfo;
     ClientInfoDialog clientInfo;
     QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
@@ -716,7 +717,7 @@ void DataView::setValuePattern(QString valuePattern) {
         if(Global::gConnectName == vClientInfo[j]._name)
             settings.setValue("valuepattern", valuePattern);
         else
-            settings.setValue("valuepattern", vClientInfo[j]._keyPattern);
+            settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
     }
     settings.endArray();
 }

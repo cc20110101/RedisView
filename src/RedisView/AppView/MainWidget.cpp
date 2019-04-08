@@ -594,7 +594,6 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
 }
 
 void MainWidget::keySort() {
-    runWait(true);
     if(_isClusterMode) {
         _itemKeyModel->sortItem(_treeItemKey, _vSortMap.value(0,Qt::AscendingOrder));
         if(_vSortMap.value(0,Qt::AscendingOrder) == Qt::AscendingOrder) {
@@ -621,7 +620,6 @@ void MainWidget::keySort() {
             }
         }
     }
-    runWait(false);
 }
 
 void MainWidget::count() {

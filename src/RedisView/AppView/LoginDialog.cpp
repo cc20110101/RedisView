@@ -80,6 +80,8 @@ void LoginDialog::initConnect(int index) {
         _clientInfo._addr = settings.value("addr").toString().trimmed();
         _clientInfo._passwd = settings.value("passwd").toString().trimmed();
         _clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
+        _clientInfo._keyPattern = settings.value("keypattern","").toString();
+        _clientInfo._valuePattern = settings.value("valuepattern","").toString();
         if(_clientInfo._name.isEmpty())
             continue;
         _treeWidgetItem = new QTreeWidgetItem();
@@ -198,6 +200,8 @@ void LoginDialog::saveSet(QList<ClientInfoDialog> &vClientInfo) {
         settings.setValue("addr", vClientInfo[i]._addr);
         settings.setValue("passwd", vClientInfo[i]._passwd);
         settings.setValue("encode", vClientInfo[i]._encode.isEmpty() ? "GB18030" : vClientInfo[i]._encode);
+        settings.setValue("keypattern", vClientInfo[i]._keyPattern);
+        settings.setValue("valuepattern", vClientInfo[i]._valuePattern);
     }
     settings.endArray();
 }

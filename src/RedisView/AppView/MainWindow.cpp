@@ -376,7 +376,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：菜鸟小白<br>"
-                           "版本 ：Community v1.6.3<br>"
+                           "版本 ：Community v1.6.4<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
                            "版权 ：Copyright 2018 Powered By CC<br>"
@@ -387,6 +387,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/04/08&nbsp;&nbsp;Version 1.6.4&nbsp;&nbsp;修复值初始化模式Bug.<br>"
                            "<br>2019/04/05&nbsp;&nbsp;Version 1.6.3&nbsp;&nbsp;修复键值过长显示不全Bug.<br>"
                            "<br>2019/03/24&nbsp;&nbsp;Version 1.6.2&nbsp;&nbsp;增加操作进度提示,修复中文乱码Bug.<br>"
                            "<br>2019/03/15&nbsp;&nbsp;Version 1.6.1&nbsp;&nbsp;支持编码选择.<br>"
@@ -445,6 +446,7 @@ void MainWindow::connectHost() {
 
     // 设置编码
     clearEncodeIcon();
+    Global::gConnectName =loginDialog.getLableName();
     Global::gEncode = loginDialog.getEncode();
     Global::gEncode = Global::gEncode.isEmpty() ? "GB18030" : Global::gEncode;
     QTextCodec::setCodecForLocale(QTextCodec::codecForName(Global::gEncode.toLatin1()));
