@@ -79,6 +79,15 @@ public:
     QByteArray command(const QList<QString> &list);
 
     /**
+     * 发送REDIS命令到服务端
+     * @param[in]    list 命令
+     * @return       执行是否成功
+     * @see
+     * @note
+     */
+    bool command(const QList<QString> &list, QByteArray &result);
+
+    /**
      * 解析命令为REDIS协议格式
      * @param[in]    str 命令
      * @return       命令RESP协议格式
@@ -240,8 +249,8 @@ public:
     bool decrby(const QString &key, int interval, qlonglong & llRet);
 
     /**
-     * 删除给定的一个或多个key，不存在的key会被忽略
-     * @param[in]    key 一个或多个键
+     * 删除给定的一个key，不存在的key会被忽略
+     * @param[in]    key 一个键
      * @param[out]   llRet 删除数量
      * @return       成功rue,失败false
      * @see
@@ -1290,7 +1299,7 @@ private:
     /**
      * 命令运行后REDIS服务端返回RESP消息
      */
-    QByteArray _cmdReault;
+    QByteArray _cmdResult;
 
     /**
      * REDIS服务端返回RESP原始消息

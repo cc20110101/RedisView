@@ -44,6 +44,7 @@ DataView::DataView(QWidget *parent) :
     _tableView->setAlternatingRowColors(false);
     //_tableView->setItemDelegate(new ValueTableDelegate());
     _tableView->setModel(_itemTableModel);
+    _tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
     _leftVlayout = new QVBoxLayout();
     _leftVlayout->addWidget(_tableView);
 
