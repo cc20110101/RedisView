@@ -87,7 +87,11 @@ bool RedisTransMgr::open(const QHostAddress & hostAddress, quint16 port, int tim
     _hostAddress = hostAddress;
     _nPort = port;
     _socket->connectToHost(hostAddress, port);
-    return _socket->waitForConnected(timeOut); // 默认超时1秒
+    if(!_socket->waitForConnected(timeOut)) { // 默认超时1.5秒
+        emit sigError(_socket->errorString());
+        return false;
+    }
+    return true;
 }
 
 void RedisTransMgr::close()

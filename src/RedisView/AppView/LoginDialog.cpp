@@ -246,7 +246,7 @@ void LoginDialog::onOK() {
 
         if(_redisClient->openCluster(_treeWidgetItem->text(1),
                                      _treeWidgetItem->text(2),
-                                     false, 1000)) {
+                                     false, 1500)) {
             _lableName = _treeWidgetItem->text(0);
             _redisClient->setConnectName(_lableName);
             accept();

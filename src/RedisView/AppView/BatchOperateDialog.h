@@ -13,7 +13,7 @@ class BatchOperateDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit BatchOperateDialog(RedisCluster *redisClient = nullptr, QWidget *parent = 0);
+    explicit BatchOperateDialog(RedisCluster *redisClient = nullptr, QWidget *parent = nullptr);
     ~BatchOperateDialog();
 
 private slots:

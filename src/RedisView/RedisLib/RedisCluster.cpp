@@ -895,7 +895,7 @@ bool RedisCluster::openSingel(const QString &hostAddress, const QString passwd, 
 
     _redisClient = new RedisClient();
     if(!_redisClient->open(_host, _port, timeOut)) {
-        _sErrorInfo = "connect client failed";
+        _sErrorInfo = _redisClient->getErrorInfo();
         return false;
     }
 
@@ -958,16 +958,14 @@ bool RedisCluster::openCluster(const QString &hostAddress,
                     _sErrorInfo = _redisClient->getErrorInfo();
                     _redisClient->close();
                     continue;
-                    //return false;
                 }
             }
             open = true;
             break;
         } else {
-            _sErrorInfo = "connect client failed";
+            _sErrorInfo = _redisClient->getErrorInfo();
             _redisClient->close();
             continue;
-            //return false;
         }
     }
 
@@ -976,7 +974,6 @@ bool RedisCluster::openCluster(const QString &hostAddress,
             delete _redisClient;
             _redisClient = nullptr;
         }
-        _sErrorInfo = "connect client failed";
         return false;
     }
 
@@ -1023,7 +1020,7 @@ bool RedisCluster::openCluster(const QString &hostAddress,
                     }
                 }
             } else {
-                _sErrorInfo = "connect client failed";
+                _sErrorInfo = _redisClient->getErrorInfo();
                 _redisClient->close();
                 return false;
             }
