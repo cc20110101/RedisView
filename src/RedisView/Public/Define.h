@@ -46,7 +46,7 @@
 #include "RedisLib/RedisCluster.h"
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.4"
+#define WindowTitle             "RedisView Community v1.6.5"
 #define IniFileName             "conf.ini"
 
 // 图标动画
@@ -179,7 +179,7 @@ public:
         this->_keyPattern = rhs._keyPattern;
         this->_list.clear();
         this->_list = rhs._list;
-        this->_respResult = _respResult;
+        this->_respResult = rhs._respResult;
 
         return *this;
     }

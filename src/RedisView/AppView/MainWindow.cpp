@@ -370,38 +370,6 @@ void MainWindow::instruction() {
     instructions.exec();
 }
 
-void MainWindow::about() {
-    QMessageBox::about(this, tr("关于"),
-                       tr(
-                           "<br>"
-                           "<b>RedisView</b><br><br>"
-                           "作者 ：菜鸟小白<br>"
-                           "版本 ：Community v1.6.4<br>"
-                           "邮箱 ：cc20110101@126.com<br>"
-                           "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
-                           "版权 ：Copyright 2018 Powered By CC<br>"
-                           )
-                       );
-}
-
-void MainWindow::history() {
-    QMessageBox::about(this, tr("版本历史"),
-                       tr(
-                           "<br>2019/04/08&nbsp;&nbsp;Version 1.6.4&nbsp;&nbsp;修复值初始化模式Bug.<br>"
-                           "<br>2019/04/05&nbsp;&nbsp;Version 1.6.3&nbsp;&nbsp;修复键值过长显示不全Bug.<br>"
-                           "<br>2019/03/24&nbsp;&nbsp;Version 1.6.2&nbsp;&nbsp;增加操作进度提示,修复中文乱码Bug.<br>"
-                           "<br>2019/03/15&nbsp;&nbsp;Version 1.6.1&nbsp;&nbsp;支持编码选择.<br>"
-                           "<br>2019/02/21&nbsp;&nbsp;Version 1.6.0&nbsp;&nbsp;支持复制集模式.<br>"
-                           "<br>2019/01/20&nbsp;&nbsp;Version 1.5.0&nbsp;&nbsp;增加批量删除键功能.<br>"
-                           "<br>2019/01/19&nbsp;&nbsp;Version 1.4.0&nbsp;&nbsp;增加订阅发布模式.<br>"
-                           "<br>2019/01/10&nbsp;&nbsp;Version 1.3.0&nbsp;&nbsp;界面调整,增加键值初始化扫描模式.<br>"
-                           "<br>2019/01/07&nbsp;&nbsp;Version 1.2.0&nbsp;&nbsp;自定义值模型,内存优化;新增Mac、Linux版本.<br>"
-                           "<br>2018/12/30&nbsp;&nbsp;Version 1.1.0&nbsp;&nbsp;自定义键模型,内存优化.<br>"
-                           "<br>2018/12/25&nbsp;&nbsp;Version 1.0.0&nbsp;&nbsp;Windows初版发布.<br>"
-                           )
-                       );
-}
-
 void MainWindow::connectInfo() {
     ClientDialog clientDialog(_redisClient);
     clientDialog.exec();
@@ -1117,3 +1085,37 @@ void MainWindow::windows1258Action() {
     setEncode("Windows-1258");
     setEncodeIcon();
 }
+
+void MainWindow::about() {
+    QMessageBox::about(this, tr("关于"),
+                       tr(
+                           "<br>"
+                           "<b>RedisView</b><br><br>"
+                           "作者 ：王长春<br>"
+                           "版本 ：Community v1.6.5<br>"
+                           "邮箱 ：cc20110101@126.com<br>"
+                           "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
+                           "版权 ：Copyright 2018 Powered By CC<br>"
+                           )
+                       );
+}
+
+void MainWindow::history() {
+    QMessageBox::about(this, tr("版本历史"),
+                       tr(
+                           "<br>2019/05/08&nbsp;&nbsp;Version 1.6.5&nbsp;&nbsp;修复设置含空格值失败Bug.<br>"
+                           "<br>2019/04/08&nbsp;&nbsp;Version 1.6.4&nbsp;&nbsp;修复值初始化模式Bug.<br>"
+                           "<br>2019/04/05&nbsp;&nbsp;Version 1.6.3&nbsp;&nbsp;修复键值过长显示不全Bug.<br>"
+                           "<br>2019/03/24&nbsp;&nbsp;Version 1.6.2&nbsp;&nbsp;增加操作进度提示,修复中文乱码Bug.<br>"
+                           "<br>2019/03/15&nbsp;&nbsp;Version 1.6.1&nbsp;&nbsp;支持编码选择.<br>"
+                           "<br>2019/02/21&nbsp;&nbsp;Version 1.6.0&nbsp;&nbsp;支持复制集模式.<br>"
+                           "<br>2019/01/20&nbsp;&nbsp;Version 1.5.0&nbsp;&nbsp;增加批量删除键功能.<br>"
+                           "<br>2019/01/19&nbsp;&nbsp;Version 1.4.0&nbsp;&nbsp;增加订阅发布模式.<br>"
+                           "<br>2019/01/10&nbsp;&nbsp;Version 1.3.0&nbsp;&nbsp;界面调整,增加键值初始化扫描模式.<br>"
+                           "<br>2019/01/07&nbsp;&nbsp;Version 1.2.0&nbsp;&nbsp;自定义值模型,内存优化;新增Mac、Linux版本.<br>"
+                           "<br>2018/12/30&nbsp;&nbsp;Version 1.1.0&nbsp;&nbsp;自定义键模型,内存优化.<br>"
+                           "<br>2018/12/25&nbsp;&nbsp;Version 1.0.0&nbsp;&nbsp;Windows初版发布.<br>"
+                           )
+                       );
+}
+
