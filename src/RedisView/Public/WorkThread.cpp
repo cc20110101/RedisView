@@ -42,7 +42,7 @@ void WorkThread::doKeyListWork()
 
     _redisClient = new RedisClient();
     if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -63,7 +63,7 @@ void WorkThread::doKeyListWork()
     }
 
     if(!_redisClient->isOpen()) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -116,7 +116,7 @@ void WorkThread::doValueListWork() {
 
     _redisClient = new RedisClient();
     if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -137,7 +137,7 @@ void WorkThread::doValueListWork() {
     }
 
     if(!_redisClient->isOpen()) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -249,7 +249,7 @@ void WorkThread::doCommitValueWork() {
 
     _redisClient = new RedisClient();
     if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -270,7 +270,7 @@ void WorkThread::doCommitValueWork() {
     }
 
     if(!_redisClient->isOpen()) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -443,7 +443,7 @@ void WorkThread::doDelKeyWork() {
                                              arg(_taskMsg->_host).
                                              arg(_taskMsg->_port),
                                              _taskMsg->_passwd)) {
-            _string = "connect host failed";
+            _string = _redisClusterClient->getErrorInfo();
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
             _redisClusterClient->close();
@@ -466,7 +466,7 @@ void WorkThread::doDelKeyWork() {
     } else {
         _redisClient = new RedisClient();
         if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
-            _string = "connect host failed";
+            _string = _redisClient->getErrorInfo();
             _redisClient->close();
             delete _redisClient;
             _redisClient = nullptr;
@@ -488,7 +488,7 @@ void WorkThread::doDelKeyWork() {
         }
 
         if(!_redisClient->isOpen()) {
-            _string = "connect host failed";
+            _string = _redisClient->getErrorInfo();
             _redisClient->close();
             emit runError(_taskMsg->_taskid,_string);
             emit finishWork(_taskMsg->_taskid);
@@ -540,7 +540,7 @@ void WorkThread::doBatchDelKeyWork() {
 
     _redisClient = new RedisClient();
     if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
@@ -561,7 +561,7 @@ void WorkThread::doBatchDelKeyWork() {
     }
 
     if(!_redisClient->isOpen()) {
-        _string = "connect host failed";
+        _string = _redisClient->getErrorInfo();
         _redisClient->close();
         delete _redisClient;
         _redisClient = nullptr;
