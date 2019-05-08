@@ -38,6 +38,6 @@ AliPay↑<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/weiPay.png)<br>
 WeiPay↑<br>
 
-More Use Information 
+More use information 
 -------
 https://blog.csdn.net/cc20110101/article/details/87301562
