@@ -40,6 +40,7 @@ DataView::DataView(QWidget *parent) :
 
     _tableView = new QTableView(this);
     _itemTableModel = new ValueTableModel(this);
+    _itemTableModel->setColumnCount(0);
     _tableView->setContextMenuPolicy(Qt::ActionsContextMenu);
     _tableView->setAlternatingRowColors(false);
     //_tableView->setItemDelegate(new ValueTableDelegate());
