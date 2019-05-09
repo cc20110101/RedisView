@@ -14,8 +14,8 @@ void PubLib::getList(const QString & str, QList<QString> & strList) {
                 continue;
             } else if (c == '"') { // 遇到了第二个"
                 bCheck = false;
-            }
-            strBuffer += c;
+            } else
+                strBuffer += c;
         } else {
             if (!c.isSpace()) {
                 if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
@@ -23,8 +23,8 @@ void PubLib::getList(const QString & str, QList<QString> & strList) {
                     continue;
                 } else if (c == '"') { // 遇到第一个"
                     bCheck = true;
-                }
-                strBuffer += c;
+                } else
+                    strBuffer += c;
             } else if (!strBuffer.isEmpty()) {
                 strList << strBuffer; // 追加一个单词
                 strBuffer.clear();
