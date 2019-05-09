@@ -1,27 +1,27 @@
 #include "Public/Publib.h"
 
 void PubLib::getList(const QString & str, QList<QString> & strList) {
-    QChar c = '\0', nextC = '\0';
+    QChar c = '\0', lastC='\0', nextC = '\0';
     bool bCheck = false;
     QString strBuffer;
 
     for(int i = 0; i < str.length(); ++i) {
         c = str.at(i);
+        nextC = i < str.length() - 1 ? str.at(i + 1) : ' ';
         if (bCheck) {
-            nextC = i < str.length() - 1 ? str.at(i + 1) : ' ';
             if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
-                i++;
+                lastC = c;
                 continue;
-            } else if (c == '"') { // 遇到了第二个"
+            } else if (lastC != '\\' && c == '"') { // 遇到了第二个"
                 bCheck = false;
             } else
                 strBuffer += c;
         } else {
             if (!c.isSpace()) {
                 if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
-                    i++;
+                    lastC = c;
                     continue;
-                } else if (c == '"') { // 遇到第一个"
+                } else if (lastC != '\\' && c == '"') { // 遇到第一个"
                     bCheck = true;
                 } else
                     strBuffer += c;
@@ -30,6 +30,7 @@ void PubLib::getList(const QString & str, QList<QString> & strList) {
                 strBuffer.clear();
             }
         }
+        lastC = c;
     }
     if (!strBuffer.isEmpty()) // 当最后一个字母不是' '也不是'"'时
         strList << strBuffer;

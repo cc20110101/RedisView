@@ -39,43 +39,38 @@ bool RedisRespParser::packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd
     if(sInCmd.isEmpty())
         return false;
 
-    QChar c, nextC;
+    QChar c, lastC ,nextC;
     bool bCheck = false;
-    for (int i = 0; i < sInCmd.length(); ++i)
-    {
+    for (int i = 0; i < sInCmd.length(); ++i) {
         c = sInCmd.at(i);
-        if (bCheck)
-        {
-            nextC = i < sInCmd.length() - 1 ? sInCmd.at(i + 1) : ' ';
-            if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
-            {
-                i++;
-                continue;
-            } else if (c == '"') { // 遇到了第二个"
-                bCheck = false;
-            }
-            _strBuffer += c;
-        } else {
-            if (!c.isSpace())
-            {
-                if (c == '\\' && nextC == '"') // 略过转义\"中的'\'
-                {
-                    i++;
-                    continue;
-                } else if (c == '"') { // 遇到第一个"
-                    bCheck = true;
-                }
+        nextC = i < sInCmd.length() - 1 ? sInCmd.at(i + 1) : ' ';
 
+        if (bCheck) {
+            if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
+                lastC = c;
+                continue;
+            } else if (lastC != '\\' && c == '"') { // 遇到了第二个"
+                bCheck = false;
+            } else
                 _strBuffer += c;
+        } else {
+            if (!c.isSpace()) {
+                if (c == '\\' && nextC == '"') { // 略过转义\"中的'\'
+                    lastC = c;
+                    continue;
+                } else if (lastC != '\\' && c == '"') { // 遇到第一个"
+                    bCheck = true;
+                } else
+                    _strBuffer += c;
             } else if (!_strBuffer.isEmpty()) {
                 _strList << _strBuffer; // 追加一个单词
                 _strBuffer.clear();
             }
         }
+        lastC = c;
     }
 
-    if (!_strBuffer.isEmpty()) // 当最后一个字母不是' '也不是'"'时
-    {
+    if (!_strBuffer.isEmpty()) { // 当最后一个字母不是' '也不是'"'时
         _strList << _strBuffer;
     }
 
@@ -83,8 +78,7 @@ bool RedisRespParser::packRespCmd(const QString &sInCmd, QByteArray &sOutRespCmd
     sOutRespCmd.append("*");
     sOutRespCmd.append(QByteArray::number(_strList.length()));
     sOutRespCmd.append("\r\n");
-    for (int j = 0; j < _strList.length(); ++j)
-    {
+    for (int j = 0; j < _strList.length(); ++j) {
         sOutRespCmd.append("$");
         sOutRespCmd.append(QByteArray::number(_strList.at(j).toLocal8Bit().length()));
         sOutRespCmd.append("\r\n");
