@@ -40,7 +40,7 @@ WeiPay↑<br>
 
 Thank
 -------
-20190510124440  *才
+*才
 
 More use information 
 -------
