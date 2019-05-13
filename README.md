@@ -38,9 +38,13 @@ AliPay↑<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/weiPay.png)<br>
 WeiPay↑<br>
 
-Thank
+<br>
+
+Thanks
 -------
 *才
+
+<br>
 
 More use information 
 -------
