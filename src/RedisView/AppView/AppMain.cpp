@@ -1,6 +1,14 @@
+/**
+* @file      AppMain.cpp
+* @brief     程序主函数入口
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "AppView/MainWindow.h"
 
-// PLEASE USE UTF-8 CODE
+// PLEASE USE UTF-8 CODE BROWSE CODE
 int main(int argc, char *argv[]) {
     // 程序框架
     QApplication app(argc, argv);
