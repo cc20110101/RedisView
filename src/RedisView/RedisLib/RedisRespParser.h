@@ -1,7 +1,7 @@
 /**
 * @file      RedisRespParser.h
 * @brief     REDIS客户端RESP解析类
-* @author    wangcc3
+* @author    王长春
 * @date      2018-11-24
 * @version   001
 * @copyright Copyright (c) 2018

@@ -1,3 +1,11 @@
+/**
+* @file      MainWidget.h
+* @brief     主控件视图
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 

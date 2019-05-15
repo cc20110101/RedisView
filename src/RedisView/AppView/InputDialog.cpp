@@ -1,3 +1,11 @@
+/**
+* @file      InputDialog.cpp
+* @brief     键值设置输入
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "AppView/InputDialog.h"
 #include "ui_inputdialog.h"
 

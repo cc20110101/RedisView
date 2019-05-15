@@ -1,3 +1,11 @@
+/**
+* @file      LoginSet.h
+* @brief     登入信息设置
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef LOGINSET_H
 #define LOGINSET_H
 

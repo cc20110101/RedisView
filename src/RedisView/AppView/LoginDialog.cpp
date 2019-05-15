@@ -1,3 +1,11 @@
+/**
+* @file      LoginDialog.cpp
+* @brief     登入对话框
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "AppView/LoginDialog.h"
 
 

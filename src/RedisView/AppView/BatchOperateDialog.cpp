@@ -1,3 +1,11 @@
+/**
+* @file      BatchOperateDialog.cpp
+* @brief     批量操作
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "BatchOperateDialog.h"
 #include "ui_batchoperatedialog.h"
 

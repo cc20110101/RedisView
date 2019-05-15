@@ -1,3 +1,11 @@
+/**
+* @file      ClientDialog.h
+* @brief     客户端信息
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef CLIENTDIALOG_H
 #define CLIENTDIALOG_H
 

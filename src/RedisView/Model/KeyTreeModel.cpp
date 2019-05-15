@@ -1,3 +1,11 @@
+/**
+* @file      KeyTreeModel.cpp
+* @brief     树模型
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "Model/KeyTreeModel.h"
 
 KeyTreeModel::KeyTreeModel(QObject *parent)

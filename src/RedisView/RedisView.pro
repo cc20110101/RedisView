@@ -1,5 +1,6 @@
 SOURCES += \
     AppView/AppMain.cpp \
+    AppView/ContributorDialog.cpp \
     AppView/MainWindow.cpp \
     Public/Define.cpp \
     RedisLib/RedisClient.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 
 HEADERS += \
+    AppView/ContributorDialog.h \
     AppView/MainWindow.h \
     Public/Define.h \
     RedisLib/RedisClient.h \
@@ -67,6 +69,7 @@ RC_ICONS = Resources/tray.ico
 CONFIG += C++11
 
 FORMS += \
+    AppView/contributordialog.ui \
     AppView/mainwidget.ui \
     AppView/dataview.ui \
     AppView/donation.ui \
@@ -77,5 +80,3 @@ FORMS += \
     AppView/batchoperatedialog.ui
 
 TRANSLATIONS = en.ts cn.ts
-
-DISTFILES +=

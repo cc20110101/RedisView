@@ -1,3 +1,11 @@
+/**
+* @file      LoginSet.cpp
+* @brief     登入信息设置
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "AppView/LoginSet.h"
 
 LoginSet::LoginSet(QWidget *parent) :

@@ -2,7 +2,7 @@
 * 部分代码参考https://github.com/LZkila/QtRedisClient库，在此鸣谢
 * @file      RedisRespParser.cpp
 * @brief     REDIS客户端RESP解析类
-* @author    wangcc3
+* @author    王长春
 * @date      2018-11-24
 * @version   001
 * @copyright Copyright (c) 2018

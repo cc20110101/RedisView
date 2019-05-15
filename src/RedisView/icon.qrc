@@ -43,5 +43,6 @@
         <file>Resources/weiPay.png</file>
         <file>Resources/wait.gif</file>
         <file>Resources/sort.ico</file>
+        <file>Resources/contributor.ico</file>
     </qresource>
 </RCC>

@@ -1,3 +1,11 @@
+/**
+* @file      MainWindow.cpp
+* @brief     主窗口
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "AppView/MainWindow.h"
 
 MainWindow::MainWindow(RedisCluster *redisClient,
@@ -272,6 +280,10 @@ void MainWindow::createMenu() {
     donateAct->setStatusTip(tr("捐赠作者..."));
     helpMenu->addSeparator();
 
+    QAction *ContributorAct = helpMenu->addAction(tr("特别鸣谢"), this, &MainWindow::contribute);
+    ContributorAct->setStatusTip(tr("鸣谢贡献者信息..."));
+    helpMenu->addSeparator();
+
     QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
     aboutAct->setStatusTip(tr("显示帮助信息..."));
     helpMenu->addSeparator();
@@ -294,6 +306,8 @@ void MainWindow::createMenu() {
     toolBar->addSeparator();
     toolBar->addAction(donateAct);
     toolBar->addSeparator();
+    toolBar->addAction(ContributorAct);
+    toolBar->addSeparator();
     toolBar->addAction(aboutAct);
     toolBar->addSeparator();
     toolBar->addAction(exitAct);
@@ -310,6 +324,7 @@ void MainWindow::createMenu() {
     historyAct->setIcon(QIcon(ICON_HISTORY));
     exitAct->setIcon(QIcon(ICON_EXIT));
     donateAct->setIcon(QIcon(ICON_DONATE));
+    ContributorAct->setIcon(QIcon(ICON_CONTRIBUTOR));
     batchOperateAct->setIcon(QIcon(ICON_BATCHOP));
     langMenu->setIcon(QIcon(ICON_LANGUAGE));
     encodeMenu->setIcon(QIcon(ICON_ENCODE));
@@ -335,6 +350,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::donate() {
     Donation donation(this);
     donation.exec();
+}
+
+void MainWindow::contribute() {
+    ContributorDialog contributor(this);
+    contributor.exec();
 }
 
 void MainWindow::createSlot() {

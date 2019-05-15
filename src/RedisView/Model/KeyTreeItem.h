@@ -1,3 +1,11 @@
+/**
+* @file      KeyTreeItem.h
+* @brief     树项
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef KEYTREEITEM_H
 #define KEYTREEITEM_H
 #include <QVariant>

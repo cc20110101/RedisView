@@ -1,3 +1,11 @@
+/**
+* @file      Define.cpp
+* @brief     公共定义
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef DEFINE_H
 #define DEFINE_H
 #include <QString>
@@ -45,9 +53,11 @@
 #include <QWidgetAction>
 #include "RedisLib/RedisCluster.h"
 
+
 // 定义字符串
 #define WindowTitle             "RedisView Community v1.6.5"
 #define IniFileName             "conf.ini"
+
 
 // 图标动画
 #define ICON_TRAY                  ":/Resources/tray.ico"
@@ -88,8 +98,8 @@
 #define ICON_ENCODE                ":/Resources/encode.ico"
 #define ICON_SELECT                ":/Resources/select.ico"
 #define ICON_SORT                  ":/Resources/sort.ico"
+#define ICON_CONTRIBUTOR           ":/Resources/contributor.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
-
 
 
 #define THREAD_SCAN_KEY_TASK                       1
@@ -97,6 +107,7 @@
 #define THREAD_COMMIT_VALUE_TASK                   3
 #define THREAD_DEL_KEY_TASK                        4
 #define THREAD_BATCH_DEL_KEY_TASK                  5
+
 
 class Global {
 public:

@@ -1,3 +1,11 @@
+/**
+* @file      ItemDelegate.cpp
+* @brief     项代理
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "ItemDelegate.h"
 
 ValueTableDelegate::ValueTableDelegate(QObject *parent)

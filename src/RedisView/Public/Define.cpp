@@ -1,3 +1,11 @@
+/**
+* @file      Define.cpp
+* @brief     公共定义
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #include "Public/Define.h"
 
 Global::Global() {

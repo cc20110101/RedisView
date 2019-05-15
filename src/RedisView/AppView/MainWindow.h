@@ -1,3 +1,11 @@
+/**
+* @file      MainWindow.h
+* @brief     主窗口
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -7,6 +15,7 @@
 #include "AppView/ClientDialog.h"
 #include "AppView/BatchOperateDialog.h"
 #include "AppView/LoginDialog.h"
+#include "AppView/ContributorDialog.h"
 
 // 主窗口
 class MainWindow : public QMainWindow {
@@ -122,6 +131,8 @@ private slots:
     void runStart();
     // 捐赠
     void donate();
+    // 贡献者
+    void contribute();
     // 删除键值
     void batchOprate();
     // 中文

@@ -1,3 +1,11 @@
+/**
+* @file      PubsubDialog.h
+* @brief     订阅发布模式
+* @author    王长春
+* @date      2018-11-24
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef PUBSUBDIALOG_H
 #define PUBSUBDIALOG_H
 
