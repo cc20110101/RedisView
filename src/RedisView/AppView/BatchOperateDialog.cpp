@@ -32,8 +32,8 @@ BatchOperateDialog::BatchOperateDialog(RedisCluster *redisClient, QWidget *paren
         _vMasterClients = _redisCluster->getClients(true);
     }
     _threadPool = QThreadPool::globalInstance();
-    _threadPool->setMaxThreadCount(10);
-    _threadPool->setExpiryTimeout(10000); //10s
+    _threadPool->setMaxThreadCount(6);
+    _threadPool->setExpiryTimeout(5000); //5s
     ui->_batchComboBox->addItem("Delete");
     ui->_progressBar->setMinimum(0);
     ui->_progressBar->setMaximum(100);

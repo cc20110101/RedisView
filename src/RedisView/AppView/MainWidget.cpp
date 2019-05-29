@@ -101,8 +101,8 @@ void MainWidget::initSet(RedisCluster *redisClient) {
 
     // 线程池至少会存在一个线程
     _threadPool = QThreadPool::globalInstance(); //全局线程池
-    _threadPool->setMaxThreadCount(10); //最大线程数
-    _threadPool->setExpiryTimeout(10000); //10s
+    _threadPool->setMaxThreadCount(6); //最大线程数
+    _threadPool->setExpiryTimeout(5000); //5s
 
     _tabIndex = -1;
     _idbIndex = 0;
