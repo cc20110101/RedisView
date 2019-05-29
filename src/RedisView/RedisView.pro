@@ -2,6 +2,7 @@ SOURCES += \
     AppView/AppMain.cpp \
     AppView/ContributorDialog.cpp \
     AppView/MainWindow.cpp \
+    AppView/RedisInfoDialog.cpp \
     Public/Define.cpp \
     RedisLib/RedisClient.cpp \
     RedisLib/RedisRespParser.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 HEADERS += \
     AppView/ContributorDialog.h \
     AppView/MainWindow.h \
+    AppView/RedisInfoDialog.h \
     Public/Define.h \
     RedisLib/RedisClient.h \
     RedisLib/RedisRespParser.h \
@@ -77,6 +79,7 @@ FORMS += \
     AppView/instructions.ui \
     AppView/clientdialog.ui \
     AppView/pubsubdialog.ui \
-    AppView/batchoperatedialog.ui
+    AppView/batchoperatedialog.ui \
+    AppView/redisinfodialog.ui
 
 TRANSLATIONS = en.ts cn.ts

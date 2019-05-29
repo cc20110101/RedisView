@@ -21,7 +21,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="_patternLabel">
          <property name="text">
-          <string>Key Pattern:</string>
+          <string>键值模式:</string>
          </property>
         </widget>
        </item>
@@ -37,21 +37,21 @@
        <item row="0" column="0">
         <widget class="QLabel" name="_batchOplabel">
          <property name="text">
-          <string>Batch Operate:</string>
+          <string>批量操作:</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="_patternCountLabel">
          <property name="text">
-          <string>Pattern Count:</string>
+          <string>模式计数:</string>
          </property>
         </widget>
        </item>
        <item row="1" column="3">
         <widget class="QLabel" name="_patternSeparatorLabel">
          <property name="text">
-          <string>Pattern Separator:</string>
+          <string>模式分割:</string>
          </property>
         </widget>
        </item>

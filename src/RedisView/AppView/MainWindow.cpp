@@ -79,6 +79,10 @@ void MainWindow::createMenu() {
     batchOperateAct->setStatusTip(tr("批量操作键值..."));
     maintainMenu->addSeparator();
 
+    QAction *redisInfoAct = maintainMenu->addAction(tr("实例信息"), this, &MainWindow::redisInfo);
+    redisInfoAct->setStatusTip(tr("查看Redis实例信息..."));
+    maintainMenu->addSeparator();
+
     // 设置菜单
     QMenu *setMenu = menuBar()->addMenu(tr("设置"));
 
@@ -304,6 +308,8 @@ void MainWindow::createMenu() {
     toolBar->addSeparator();
     toolBar->addAction(batchOperateAct);
     toolBar->addSeparator();
+    toolBar->addAction(redisInfoAct);
+    toolBar->addSeparator();
     toolBar->addAction(donateAct);
     toolBar->addSeparator();
     toolBar->addAction(ContributorAct);
@@ -326,6 +332,7 @@ void MainWindow::createMenu() {
     donateAct->setIcon(QIcon(ICON_DONATE));
     ContributorAct->setIcon(QIcon(ICON_CONTRIBUTOR));
     batchOperateAct->setIcon(QIcon(ICON_BATCHOP));
+    redisInfoAct->setIcon(QIcon(ICON_REDISINFO));
     langMenu->setIcon(QIcon(ICON_LANGUAGE));
     encodeMenu->setIcon(QIcon(ICON_ENCODE));
     lanCnAct->setIcon(QIcon(ICON_CN));
@@ -449,6 +456,15 @@ void MainWindow::connectHost() {
     _mainWidget = new MainWidget(_redisClient);
     setCentralWidget(_mainWidget);
     createSlot();
+}
+
+void MainWindow::redisInfo() {
+    if(!_redisClient) {
+        QMessageBox::information(this,tr("错误"),tr("客户端连接为空!"));
+        return;
+    }
+    RedisInfoDialog redisInfoDialog(_redisClient);
+    redisInfoDialog.exec();
 }
 
 void MainWindow::batchOprate() {

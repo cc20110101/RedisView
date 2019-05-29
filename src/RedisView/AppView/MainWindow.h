@@ -14,6 +14,7 @@
 #include "AppView/MainWidget.h"
 #include "AppView/ClientDialog.h"
 #include "AppView/BatchOperateDialog.h"
+#include "AppView/RedisInfoDialog.h"
 #include "AppView/LoginDialog.h"
 #include "AppView/ContributorDialog.h"
 
@@ -135,6 +136,8 @@ private slots:
     void contribute();
     // 删除键值
     void batchOprate();
+    // Redis实例信息
+    void redisInfo();
     // 中文
     void langCnAction();
     // 英文

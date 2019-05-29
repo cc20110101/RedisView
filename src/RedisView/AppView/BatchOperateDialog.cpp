@@ -19,6 +19,22 @@ BatchOperateDialog::BatchOperateDialog(RedisCluster *redisClient, QWidget *paren
     _isRun = false;
     _workThread = nullptr;
     _redisCluster = redisClient;
+    ui->_batchComboBox->addItem("Delete");
+    // 生产环境有RedisTool可用,RedisView工具不在实现
+    ui->_batchComboBox->addItem("Scan key");
+    ui->_batchComboBox->addItem("Import from oracle");
+    ui->_batchComboBox->addItem("Import from mysql");
+    ui->_batchComboBox->addItem("Export to oracle");
+    ui->_batchComboBox->addItem("Export to mysql");
+    ui->_batchComboBox->addItem("Delete oracle key");
+    ui->_batchComboBox->addItem("Delete mysql key");
+    ui->_progressBar->setMinimum(0);
+    ui->_progressBar->setMaximum(100);
+    ui->_progressBar->setValue(0);
+    QRegExp regx("[0-9]+$");
+    QValidator *validator = new QRegExpValidator(regx, ui->_patternCountLineEdit);
+    ui->_patternCountLineEdit->setValidator(validator);
+
     if(_redisCluster) {
         _isClusterMode = _redisCluster->getClusterMode();
         if(_isClusterMode) {
@@ -30,26 +46,46 @@ BatchOperateDialog::BatchOperateDialog(RedisCluster *redisClient, QWidget *paren
             }
         }
         _vMasterClients = _redisCluster->getClients(true);
+        for(int i = 0; i < _vMasterClients.size(); ++i) {
+            _vMasterClients[i]._client = nullptr;
+        }
     }
+
     _threadPool = QThreadPool::globalInstance();
     _threadPool->setMaxThreadCount(6);
     _threadPool->setExpiryTimeout(5000); //5s
-    ui->_batchComboBox->addItem("Delete");
-    ui->_progressBar->setMinimum(0);
-    ui->_progressBar->setMaximum(100);
-    ui->_progressBar->setValue(100);
-    ui->_patternCountLineEdit->setPlaceholderText("2");
-    ui->_patternSeparatorLineEdit->setPlaceholderText("|");
-    ui->_patternlineEdit->setPlaceholderText("a*|b*");
-    ui->_textBrowser->setPlaceholderText("Delete key values starting with a or b");
-    QRegExp regx("[0-9]+$");
-    QValidator *validator = new QRegExpValidator(regx, ui->_patternCountLineEdit);
-    ui->_patternCountLineEdit->setValidator(validator);
+
+    connect(ui->_batchComboBox, SIGNAL(currentTextChanged(const QString)), this,
+            SLOT(changeOperate(const QString)));
+    emit ui->_batchComboBox->currentTextChanged(ui->_batchComboBox->currentText());
 }
 
 BatchOperateDialog::~BatchOperateDialog()
 {
     delete ui;
+}
+
+void BatchOperateDialog::changeOperate(const QString operate) {
+    if(operate == "Delete") {
+        ui->_patternCountLineEdit->setPlaceholderText("2");
+        ui->_patternSeparatorLineEdit->setPlaceholderText("|");
+        ui->_patternlineEdit->setPlaceholderText("a*|b*");
+        ui->_textBrowser->setPlaceholderText(tr("删除以a或b开头的键"));
+    } else if(operate == "Scan key") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Import from oracle") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Export to oracle") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Import from mysql") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Export to mysql") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Delete oracle key") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    } else if(operate == "Delete mysql key") {
+        ui->_textBrowser->setText(tr("暂不实现此功能"));
+    }
 }
 
 void BatchOperateDialog::recvData(const TaskMsg taskMsg) {
@@ -147,8 +183,8 @@ void BatchOperateDialog::on__okPushButton_clicked()
         ui->_batchComboBox->setEnabled(false);
         QDateTime nowDateTime = QDateTime::currentDateTime();
         ui->_textBrowser->append(QString("[%1] %2")
-                                  .arg(nowDateTime.toString("yyyy-MM-dd HH:mm:ss"))
-                                  .arg("Begin delete key..."));
+                                 .arg(nowDateTime.toString("yyyy-MM-dd HH:mm:ss"))
+                                 .arg("Begin delete key..."));
         ui->_textBrowser->append("");
         for(int i = 0; i < _vMasterClients.size(); ++i) {
             if(_isClusterMode) {
@@ -197,6 +233,20 @@ void BatchOperateDialog::on__okPushButton_clicked()
                 }
             }
         }
+    } else if(_operate == "Scan key") {
+
+    } else if(_operate == "Import from oracle") {
+
+    } else if(_operate == "Export to oracle") {
+
+    } else if(_operate == "Import from mysql") {
+
+    } else if(_operate == "Export to mysql") {
+
+    } else if(_operate == "Delete oracle key") {
+
+    } else if(_operate == "Delete mysql key") {
+
     }
 }
 

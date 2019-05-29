@@ -16,7 +16,7 @@ ClientDialog::ClientDialog(RedisCluster *redisClient, QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle(tr("客户端信息"));
 
-    QRect availableGeometry = QApplication::desktop()->availableGeometry( this);
+    QRect availableGeometry = QApplication::desktop()->availableGeometry(this);
     resize(availableGeometry.width() * 6 / 7, availableGeometry.height() * 5 / 7);
     move((availableGeometry.width() - width()) / 2,
          (availableGeometry.height() - height()) / 2);

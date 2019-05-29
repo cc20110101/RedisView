@@ -41,6 +41,7 @@ void MainWidget::reOpenClient() {
         QString clientInfo;
         ui->_ipComboBox->addItem("Cluster mode");
         for(int j = 0; j < vClients.size(); ++j) {
+            vClients[j]._client = nullptr;
             clientInfo = QString("%1:%2:%3")
                     .arg(vClients[j]._host)
                     .arg(vClients[j]._port)
@@ -54,6 +55,7 @@ void MainWidget::reOpenClient() {
         QString clientInfo;
         ui->_ipComboBox->addItem("Replication mode");
         for(int j = 0; j < vClients.size(); ++j) {
+            vClients[j]._client = nullptr;
             clientInfo = QString("%1:%2:%3")
                     .arg(vClients[j]._host)
                     .arg(vClients[j]._port)
@@ -61,6 +63,9 @@ void MainWidget::reOpenClient() {
             ui->_ipComboBox->addItem(clientInfo);
         }
     } else {
+        for(int j = 0; j < vClients.size(); ++j) {
+            vClients[j]._client = nullptr;
+        }
         if(!_redisClient->getDbNum(_idbNums)) {
             _idbNums = 1;
         }

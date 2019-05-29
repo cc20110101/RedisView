@@ -863,19 +863,7 @@ QList<ClusterClient> RedisCluster::getClients(bool isMaster) const
         else
             return _vClusterClients;
     } else {
-        QList<ClusterClient> clients;
-        ClusterClient clusterClient;
-        clusterClient._client = _redisClient;
-        clusterClient._endSlot = 16383;
-        clusterClient._host = _host;
-        clusterClient._master = true;
-        clusterClient._passwd = _passwd;
-        clusterClient._startSlot = 0;
-        clusterClient._port = _port;
-        clusterClient._slotNum = 16384;
-        clusterClient._nodeId.clear();
-        clients << clusterClient;
-        return clients;
+        return _vClusterClients;;
     }
 }
 
@@ -1045,6 +1033,14 @@ bool RedisCluster::openCluster(const QString &hostAddress,
                 _isReplicationMode = false;
                 _host = clusterClient._host;
                 _port = clusterClient._port;
+                clusterClient._client = _redisClient;
+                clusterClient._endSlot = 16383;
+                clusterClient._master = true;
+                clusterClient._passwd = _passwd;
+                clusterClient._startSlot = 0;
+                clusterClient._slotNum = 16384;
+                clusterClient._nodeId.clear();
+                _vClusterClients << clusterClient;
                 return true;
             } else {
                 _isReplicationMode = true;
@@ -1150,8 +1146,8 @@ bool RedisCluster::openCluster(const QString &hostAddress,
         return false;
     }
 
-    if(_isReplicationMode && _vClusterClients[0]._master) {
-        _redisClient = _vClusterClients[0]._client;
+    if(_isReplicationMode && _vClusterMasterClients[0]._master) {
+        _redisClient = _vClusterMasterClients[0]._client;
     } else {
         _redisClient = nullptr;
     }

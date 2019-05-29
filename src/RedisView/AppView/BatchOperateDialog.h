@@ -31,6 +31,7 @@ private slots:
     void recvData(const TaskMsg taskMsg);
     void runError(const int taskid, const QString & error);
     void finishWork(const int taskid);
+    void changeOperate(const QString operate);
 
 signals:
     void cancelWork(const int taskid);

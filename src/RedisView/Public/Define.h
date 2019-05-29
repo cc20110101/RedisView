@@ -99,6 +99,7 @@
 #define ICON_SELECT                ":/Resources/select.ico"
 #define ICON_SORT                  ":/Resources/sort.ico"
 #define ICON_CONTRIBUTOR           ":/Resources/contributor.ico"
+#define ICON_REDISINFO             ":/Resources/redisinfo.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
 
 

@@ -44,5 +44,6 @@
         <file>Resources/wait.gif</file>
         <file>Resources/sort.ico</file>
         <file>Resources/contributor.ico</file>
+        <file>Resources/redisinfo.ico</file>
     </qresource>
 </RCC>
