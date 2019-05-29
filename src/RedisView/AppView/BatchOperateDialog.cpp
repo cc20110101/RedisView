@@ -71,6 +71,7 @@ void BatchOperateDialog::changeOperate(const QString operate) {
         ui->_patternSeparatorLineEdit->setPlaceholderText("|");
         ui->_patternlineEdit->setPlaceholderText("a*|b*");
         ui->_textBrowser->setPlaceholderText(tr("删除以a或b开头的键"));
+		ui->_textBrowser->clear();
     } else if(operate == "Scan key") {
         ui->_textBrowser->setText(tr("暂不实现此功能"));
     } else if(operate == "Import from oracle") {
