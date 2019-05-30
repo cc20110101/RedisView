@@ -188,6 +188,15 @@ public:
     bool getReplicationInfo(QMap<QString,QString> &infoMap);
 
     /**
+     * 获取Redis信息
+     * @param[out]    infoMap信息
+     * @return        成功是ture，否false
+     * @see
+     * @note
+     */
+    bool getRedisInfo(QMap<QString,QString> &infoMap);
+
+    /**
      * 判断是否是集群模式下主节点
      * @param[out]    value 是否集群主
      * @return       是ture，否false

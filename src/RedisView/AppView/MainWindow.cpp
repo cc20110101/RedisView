@@ -1128,7 +1128,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：王长春<br>"
-                           "版本 ：Community v1.6.5<br>"
+                           "版本 ：Community v1.6.6<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
                            "版权 ：Copyright 2018 Powered By CC<br>"
@@ -1139,6 +1139,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/05/30&nbsp;&nbsp;Version 1.6.6&nbsp;&nbsp;新增集群信息查看分析功能.<br>"
                            "<br>2019/05/08&nbsp;&nbsp;Version 1.6.5&nbsp;&nbsp;修复设置含空格值失败Bug.<br>"
                            "<br>2019/04/08&nbsp;&nbsp;Version 1.6.4&nbsp;&nbsp;修复值初始化模式Bug.<br>"
                            "<br>2019/04/05&nbsp;&nbsp;Version 1.6.3&nbsp;&nbsp;修复键值过长显示不全Bug.<br>"

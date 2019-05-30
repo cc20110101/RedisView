@@ -59,13 +59,13 @@
     </message>
     <message>
         <location filename="AppView/BatchOperateDialog.cpp" line="45"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="114"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="145"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="150"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="158"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="163"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="169"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="175"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="115"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="146"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="151"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="159"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="164"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="170"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="176"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
@@ -83,61 +83,61 @@
         <translation>Delete key values starting with a or b</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="75"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="77"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="79"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="81"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="83"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="85"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="87"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="76"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="78"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="80"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="82"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="84"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="86"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="88"/>
         <source>暂不实现此功能</source>
         <translatorcomment>Temporarily not implementing this feature</translatorcomment>
         <translation>Temporarily not implementing this feature</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="145"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="146"/>
         <source>存在未完成任务,稍后重试!</source>
         <translatorcomment>There are unfinished tasks, try again later!</translatorcomment>
         <translation>There are unfinished tasks, try again later!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="150"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="151"/>
         <source>客户端连接为空!</source>
         <translatorcomment>The client connection is null!</translatorcomment>
         <translation>The client connection is null!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="158"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="159"/>
         <source>键模式个数最小为1！</source>
         <translatorcomment>The minimum number of key patterns is 1!</translatorcomment>
         <translation>The minimum number of key patterns is 1!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="163"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="164"/>
         <source>键模式分隔符不可为空！</source>
         <translatorcomment>Key mode separator cannot be empty!</translatorcomment>
         <translation>Key mode separator cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="169"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="170"/>
         <source>键模式与个数不匹配！</source>
         <translatorcomment>Key pattern does not match number!</translatorcomment>
         <translation>Key pattern does not match number!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="175"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="176"/>
         <source>获取数据库键总数失败!</source>
         <translatorcomment>Failed to get the total number of database keys!</translatorcomment>
         <translation>Failed to get the total number of database keys!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="256"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="257"/>
         <source>确认</source>
         <translatorcomment>Confirm</translatorcomment>
         <translation>Confirm</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="256"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="257"/>
         <source>任务未结束，确定退出么？</source>
         <translatorcomment>The task is not over. are you sure you want to quit?</translatorcomment>
         <translation>The task is not over. are you sure you want to quit?</translation>
@@ -1975,15 +1975,17 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="1127"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.5&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
-        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Changchun Wang&lt;br&gt;Version : Community v1.6.5&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Changchun Wang&lt;br&gt;Version : Community v1.6.5&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translation>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.6&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.5&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</oldsource>
+        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.6&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translatorcomment>
+        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.6&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="1141"/>
-        <source>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
-        <translatorcomment>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
+        <source>&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</oldsource>
+        <translatorcomment>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
+        <translation>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="279"/>
@@ -2172,22 +2174,124 @@ the best, everything goes well...</translation>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="10"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="18"/>
         <source>实例信息</source>
         <translatorcomment>Instance Information</translatorcomment>
         <translation>Instance Information</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="78"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="78"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
         <source>客户端连接为空!</source>
         <translatorcomment>The client connection is empty!</translatorcomment>
         <translation>The client connection is empty!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="134"/>
+        <source>主机实例:</source>
+        <translatorcomment>host_instance:</translatorcomment>
+        <translation>host_instance:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="137"/>
+        <source>最大内存:</source>
+        <translatorcomment>maxmemory:</translatorcomment>
+        <translation>maxmemory:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="140"/>
+        <source>使用内存:</source>
+        <translatorcomment>used_memory:</translatorcomment>
+        <translation>used_memory:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="143"/>
+        <source>内存碎片率:</source>
+        <translatorcomment>mem_fragmentation_ratio:</translatorcomment>
+        <translation>mem_fragmentation_ratio:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="146"/>
+        <source>客户端连接数:</source>
+        <translatorcomment>connected_clients:</translatorcomment>
+        <translation>connected_clients:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="149"/>
+        <source>拒绝连接请求数:</source>
+        <translatorcomment>rejected_connections:</translatorcomment>
+        <translation>rejected_connections:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="152"/>
+        <source>每秒执行命令数:</source>
+        <translatorcomment>instantaneous_ops_per_sec:</translatorcomment>
+        <translation>instantaneous_ops_per_sec:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="155"/>
+        <source>内存限制被删除键数:</source>
+        <translatorcomment>evicted_keys:</translatorcomment>
+        <translation>evicted_keys:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="158"/>
+        <source>连接从实例数:</source>
+        <translatorcomment>connected_slaves:</translatorcomment>
+        <translation>connected_slaves:</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="163"/>
+        <source>当evicted_keys&gt;0时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
+        <translatorcomment>When evicted_keys&gt;0, it means that there are too many fragments or insufficient space, which can be solved by defragmentation, increasing maxmemory parameter values or cluster expansion!</translatorcomment>
+        <translation>When evicted_keys&gt;0, it means that there are too many fragments or insufficient space, which can be solved by defragmentation, increasing maxmemory parameter values or cluster expansion!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="167"/>
+        <source>当rejected_connections&gt;0时,表示客户端数量过多,请减小不必要的应用或通过增加maxclients参数值解决!</source>
+        <translatorcomment>When rejected_connections&gt;0, it means that the number of clients is too much, please reduce unnecessary applications or solve by increasing the maxclients parameter value!</translatorcomment>
+        <translation>When rejected_connections&gt;0, it means that the number of clients is too much, please reduce unnecessary applications or solve by increasing the maxclients parameter value!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="171"/>
+        <source>当instantaneous_ops_per_sec&gt;12000时,表示该实例压力较大,可以通过slot迁移或进行集群扩容解决!</source>
+        <translatorcomment>When instantaneous_ops_per_sec&gt;12000, it indicates that the instance is under a lot of pressure and can be solved by slot migration or cluster expansion!</translatorcomment>
+        <translation>When instantaneous_ops_per_sec&gt;12000, it indicates that the instance is under a lot of pressure and can be solved by slot migration or cluster expansion!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="176"/>
+        <source>当内存使用率大于60%时,可以通过数据清理、slot迁移或进行集群扩容解决!</source>
+        <translatorcomment>When the memory usage is greater than 60%, it can be solved by data cleaning, slot migration or cluster expansion!</translatorcomment>
+        <translation>When the memory usage is greater than 60%, it can be solved by data cleaning, slot migration or cluster expansion!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="184"/>
+        <source>当使用内存*(1+内存碎片率)&gt;最大内存时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
+        <translatorcomment>When used_memory * (1 + mem_fragmentation_ratio) &gt; maxmemory, it means that there are too many fragments or insufficient space, you can solve it by defragmentation, increase the maxmemory parameter value or perform cluster expansion!</translatorcomment>
+        <translation>When used_memory * (1 + mem_fragmentation_ratio) &gt; maxmemory, it means that there are too many fragments or insufficient space, you can solve it by defragmentation, increase the maxmemory parameter value or perform cluster expansion!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="210"/>
+        <source>集群状态:正常</source>
+        <translatorcomment>cluster_state:ok</translatorcomment>
+        <translation>cluster_state:ok</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="213"/>
+        <source>集群状态:异常</source>
+        <translatorcomment>cluster_state:abnormal</translatorcomment>
+        <translation>cluster_state:abnormal</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="220"/>
+        <source>非集群模式</source>
+        <translatorcomment>non cluster mode</translatorcomment>
+        <translation>non cluster mode</translation>
     </message>
 </context>
 </TS>

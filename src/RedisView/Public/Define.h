@@ -55,7 +55,7 @@
 
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.5"
+#define WindowTitle             "RedisView Community v1.6.6"
 #define IniFileName             "conf.ini"
 
 

@@ -322,6 +322,55 @@ bool RedisClient::getReplicationInfo(QMap<QString,QString> &infoMap) {
 }
 
 /**
+ * 获取Redis信息
+ * @param[out]    infoMap信息
+ * @return        成功是ture，否false
+ * @see
+ * @note
+ */
+bool RedisClient::getRedisInfo(QMap<QString,QString> &infoMap) {
+    _sErrorInfo.clear();
+    _cmd.clear();
+    _cmd.append("info");
+
+    _cmdResult = command(_cmd);
+    if(_cmdResult[0] == '-') {
+        if(parseRespError(_cmdResult,_sValue))
+            _sErrorInfo = _sValue;
+        else
+            _sErrorInfo = "parser resp error info failed";
+        _bRet = false;
+    } else if(_cmdResult[0] == '$') {
+        QString sValue;
+        if(parseRespBulkString(_cmdResult,sValue, _iRet)) {
+            if(_iRet == -1) {
+                _bRet = false;
+                _sErrorInfo = "value is nil";
+            } else {
+                int index = -1;
+                QStringList infoList = sValue.split("\r\n",QString::SkipEmptyParts);
+                for(int i = 0; i < infoList.size(); ++i) {
+                    index = infoList[i].indexOf(":");
+                    if(index == -1) {
+                        infoMap[infoList[i]] = "nil";
+                        continue;
+                    }
+                    infoMap[infoList[i].mid(0, index)] = infoList[i].mid(index + 1);
+                }
+                _bRet = true;
+            }
+        } else {
+            _sErrorInfo = "parser resp bulk string info failed";
+            _bRet = false;
+        }
+    } else {
+        _bRet = false;
+        _sErrorInfo = QString("parser resp type failed:") + _cmdResult[0];
+    }
+    return _bRet;
+}
+
+/**
  * 判断是否是集群模式下主节点
  * @param[out]    value 是否集群主
  * @return       是ture，否false

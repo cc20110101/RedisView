@@ -1,3 +1,11 @@
+/**
+* @file      RedisInfoDialog.h
+* @brief     Redis服务端信息与分析
+* @author    王长春
+* @date      2019-05-30
+* @version   001
+* @copyright Copyright (c) 2018
+*/
 #ifndef REDISINFODIALOG_H
 #define REDISINFODIALOG_H
 

@@ -50,13 +50,13 @@
     </message>
     <message>
         <location filename="AppView/BatchOperateDialog.cpp" line="45"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="114"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="145"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="150"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="158"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="163"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="169"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="175"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="115"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="146"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="151"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="159"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="164"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="170"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="176"/>
         <source>错误</source>
         <translation type="unfinished"></translation>
     </message>
@@ -71,53 +71,53 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="75"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="77"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="79"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="81"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="83"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="85"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="87"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="76"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="78"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="80"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="82"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="84"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="86"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="88"/>
         <source>暂不实现此功能</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="145"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="146"/>
         <source>存在未完成任务,稍后重试!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="150"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="151"/>
         <source>客户端连接为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="158"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="159"/>
         <source>键模式个数最小为1！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="163"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="164"/>
         <source>键模式分隔符不可为空！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="169"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="170"/>
         <source>键模式与个数不匹配！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="175"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="176"/>
         <source>获取数据库键总数失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="256"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="257"/>
         <source>确认</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="256"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="257"/>
         <source>任务未结束，确定退出么？</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1668,12 +1668,14 @@
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="1127"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.5&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.6&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.5&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="1141"/>
-        <source>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <source>&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1835,18 +1837,109 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="10"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="18"/>
         <source>实例信息</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="78"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
         <source>错误</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="78"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
         <source>客户端连接为空!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="134"/>
+        <source>主机实例:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="140"/>
+        <source>使用内存:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="146"/>
+        <source>客户端连接数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="152"/>
+        <source>每秒执行命令数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="155"/>
+        <source>内存限制被删除键数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="158"/>
+        <source>连接从实例数:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="163"/>
+        <source>当evicted_keys&gt;0时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="167"/>
+        <source>当rejected_connections&gt;0时,表示客户端数量过多,请减小不必要的应用或通过增加maxclients参数值解决!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="171"/>
+        <source>当instantaneous_ops_per_sec&gt;12000时,表示该实例压力较大,可以通过slot迁移或进行集群扩容解决!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="176"/>
+        <source>当内存使用率大于60%时,可以通过数据清理、slot迁移或进行集群扩容解决!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="184"/>
+        <source>当使用内存*(1+内存碎片率)&gt;最大内存时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="210"/>
+        <source>集群状态:正常</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="213"/>
+        <source>集群状态:异常</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="137"/>
+        <source>最大内存:</source>
+        <oldsource>
+使用内存:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="143"/>
+        <source>内存碎片率:</source>
+        <oldsource>
+拒绝连接请求数:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="149"/>
+        <source>拒绝连接请求数:</source>
+        <oldsource>
+连接从实例数:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="220"/>
+        <source>非集群模式</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
