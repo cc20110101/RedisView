@@ -17,6 +17,8 @@
 #include "AppView/RedisInfoDialog.h"
 #include "AppView/LoginDialog.h"
 #include "AppView/ContributorDialog.h"
+#include "AppView/FeedBack.h"
+#include "AppView/UpdateSystem.h"
 
 // 主窗口
 class MainWindow : public QMainWindow {
@@ -26,14 +28,17 @@ public:
                         QWidget *parent = nullptr);
 
     virtual void keyPressEvent(QKeyEvent *event);
+    void closeEvent(QCloseEvent *e);
 
 signals:
 
 private:
 
+    bool _exitFlag;
     MainWidget * _mainWidget;
     QAction *_runAct;
     RedisCluster *_redisClient;
+    QSystemTrayIcon *_sysTrayIcon;
 
     QAction *_big5Act;
     QAction *_big5HkscsAct;
@@ -111,6 +116,8 @@ private:
     void setEncodeIcon();
     // 清理编码图标
     void clearEncodeIcon();
+    // 反馈信息
+    void feedback();
 
 private slots:
 
@@ -152,6 +159,16 @@ private slots:
     void subscribe();
     // 连接主机
     void connectHost();
+    // 检测系统更新
+    void updatesys();
+    // 托盘退出系统
+    void trayExit();
+    // 托盘显示窗口
+    void trayShowWindow();
+    // 托盘显示窗口
+    void trayHideWindow();
+    // 托盘单击显示隐藏窗口
+    void slotActivated(QSystemTrayIcon::ActivationReason);
     // 修改编码函数
     void big5Action();
     void big5HkscsAction();

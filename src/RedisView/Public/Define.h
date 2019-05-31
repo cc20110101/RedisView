@@ -52,14 +52,27 @@
 #include <QToolButton>
 #include <QWidgetAction>
 #include "RedisLib/RedisCluster.h"
-
+#include "Public/AesEncrypt.h"
 
 // 定义字符串
 #define WindowTitle             "RedisView Community v1.6.6"
 #define IniFileName             "conf.ini"
 
+// 定义线程任务
+#define THREAD_SCAN_KEY_TASK                       1
+#define THREAD_SCAN_VALUE_TASK                     2
+#define THREAD_COMMIT_VALUE_TASK                   3
+#define THREAD_DEL_KEY_TASK                        4
+#define THREAD_BATCH_DEL_KEY_TASK                  5
 
-// 图标动画
+// 定义操作符
+#define OPERATION_ADD                              1
+#define OPERATION_DELETE                           2
+#define OPERATION_ALTER                            3
+#define OPERATION_TIMEOUT                          4
+#define OPERATION_RENAME                           5
+
+// 定义图标动画
 #define ICON_TRAY                  ":/Resources/tray.ico"
 #define ICON_FLUSHK                ":/Resources/keyflush.ico"
 #define ICON_ABOUT                 ":/Resources/about.ico"
@@ -100,16 +113,11 @@
 #define ICON_SORT                  ":/Resources/sort.ico"
 #define ICON_CONTRIBUTOR           ":/Resources/contributor.ico"
 #define ICON_REDISINFO             ":/Resources/redisinfo.ico"
+#define ICON_FEEDBACK              ":/Resources/feedback.ico"
+#define ICON_UPDATE                ":/Resources/update.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
 
-
-#define THREAD_SCAN_KEY_TASK                       1
-#define THREAD_SCAN_VALUE_TASK                     2
-#define THREAD_COMMIT_VALUE_TASK                   3
-#define THREAD_DEL_KEY_TASK                        4
-#define THREAD_BATCH_DEL_KEY_TASK                  5
-
-
+// 定义公共类
 class Global {
 public:
     Global();
@@ -141,6 +149,7 @@ public:
         _encode.clear();
         _keyPattern.clear();
         _valuePattern.clear();
+        _encodePasswd.clear();
     }
 
     QString _name;
@@ -149,6 +158,7 @@ public:
     QString _encode;
     QString _keyPattern;
     QString _valuePattern;
+    QByteArray _encodePasswd;
 
 };
 

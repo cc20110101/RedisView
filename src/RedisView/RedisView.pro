@@ -1,9 +1,13 @@
 SOURCES += \
     AppView/AppMain.cpp \
     AppView/ContributorDialog.cpp \
+    AppView/FeedBack.cpp \
     AppView/MainWindow.cpp \
     AppView/RedisInfoDialog.cpp \
+    AppView/UpdateSystem.cpp \
+    Public/AesEncrypt.cpp \
     Public/Define.cpp \
+    Public/QaesEncryption.cpp \
     RedisLib/RedisClient.cpp \
     RedisLib/RedisRespParser.cpp \
     RedisLib/RedisRoute.cpp \
@@ -31,9 +35,13 @@ SOURCES += \
 
 HEADERS += \
     AppView/ContributorDialog.h \
+    AppView/FeedBack.h \
     AppView/MainWindow.h \
     AppView/RedisInfoDialog.h \
+    AppView/UpdateSystem.h \
+    Public/AesEncrypt.h \
     Public/Define.h \
+    Public/QaesEncryption.h \
     RedisLib/RedisClient.h \
     RedisLib/RedisRespParser.h \
     RedisLib/RedisRoute.h \

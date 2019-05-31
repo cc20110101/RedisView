@@ -86,7 +86,8 @@ void LoginDialog::initConnect(int index) {
         settings.setArrayIndex(i);
         _clientInfo._name = settings.value("name").toString().trimmed();
         _clientInfo._addr = settings.value("addr").toString().trimmed();
-        _clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        _clientInfo._encodePasswd = settings.value("passwd").toByteArray();
+        _clientInfo._passwd = AesEncrypt::CBC256Decrypt(_clientInfo._encodePasswd).trimmed();
         _clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         _clientInfo._keyPattern = settings.value("keypattern","").toString();
         _clientInfo._valuePattern = settings.value("valuepattern","").toString();
@@ -96,7 +97,9 @@ void LoginDialog::initConnect(int index) {
         _treeWidgetItem->setText(0,_clientInfo._name);
         _treeWidgetItem->setIcon(0,QIcon(ICON_LONGIN));
         _treeWidgetItem->setText(1,_clientInfo._addr);
-        _treeWidgetItem->setText(2,_clientInfo._passwd);
+        _byteArray.clear();
+        _byteArray.append(_clientInfo._passwd.length(), '*');
+        _treeWidgetItem->setText(2,QString(_byteArray));
         _treeWidget->addTopLevelItem(_treeWidgetItem);
         _vClientInfo << _clientInfo;
     }
@@ -121,11 +124,13 @@ void LoginDialog::onLink(const QString &url) {
         LoginSet loginSet;
         if(loginSet.exec() == QDialog::Accepted) {
             loginSet.getClientInfo(_clientInfo);
+            _clientInfo._encodePasswd = AesEncrypt::CBC256Crypt(_clientInfo._passwd);
             bool isFind = false;
             for(int i = 0; i < _vClientInfo.size(); ++i) {
                 if(_clientInfo._name == _vClientInfo[i]._name ) {
                     _vClientInfo[i]._addr = _clientInfo._addr;
                     _vClientInfo[i]._passwd = _clientInfo._passwd;
+                    _vClientInfo[i]._encodePasswd = _clientInfo._encodePasswd;
                     selectIndex = i;
                     isFind = true;
                     break;
@@ -143,12 +148,13 @@ void LoginDialog::onLink(const QString &url) {
         if(_treeWidgetItem) {
             _clientInfo._name = _treeWidgetItem->text(0);
             _clientInfo._addr = _treeWidgetItem->text(1);
-            _clientInfo._passwd = _treeWidgetItem->text(2);
+            _clientInfo._passwd = _vClientInfo[_treeWidget->currentIndex().row()]._passwd;
             LoginSet loginSet;
             loginSet.setClientInfo(_clientInfo);
             if(loginSet.exec() == QDialog::Accepted) {
                 ClientInfoDialog clientInfo;
                 loginSet.getClientInfo(clientInfo);
+                clientInfo._encodePasswd = AesEncrypt::CBC256Crypt(clientInfo._passwd);
                 if(_clientInfo._name != clientInfo._name) {
                     _vClientInfo.removeOne(_clientInfo);
                 }
@@ -157,6 +163,7 @@ void LoginDialog::onLink(const QString &url) {
                     if(clientInfo._name == _vClientInfo[i]._name ) {
                         _vClientInfo[i]._addr = clientInfo._addr;
                         _vClientInfo[i]._passwd = clientInfo._passwd;
+                        _vClientInfo[i]._encodePasswd = clientInfo._encodePasswd;
                         isFind = true;
                         selectIndex = i;
                         break;
@@ -206,7 +213,7 @@ void LoginDialog::saveSet(QList<ClientInfoDialog> &vClientInfo) {
         settings.setArrayIndex(i);
         settings.setValue("name", vClientInfo[i]._name);
         settings.setValue("addr", vClientInfo[i]._addr);
-        settings.setValue("passwd", vClientInfo[i]._passwd);
+        settings.setValue("passwd", vClientInfo[i]._encodePasswd);
         settings.setValue("encode", vClientInfo[i]._encode.isEmpty() ? "GB18030" : vClientInfo[i]._encode);
         settings.setValue("keypattern", vClientInfo[i]._keyPattern);
         settings.setValue("valuepattern", vClientInfo[i]._valuePattern);
@@ -252,9 +259,10 @@ void LoginDialog::onOK() {
         if(!_redisClient)
             _redisClient = new RedisCluster();
 
-        if(_redisClient->openCluster(_treeWidgetItem->text(1),
-                                     _treeWidgetItem->text(2),
-                                     false, 1500)) {
+        if(_redisClient->openCluster(
+                    _treeWidgetItem->text(1),
+                    _vClientInfo[_treeWidget->currentIndex().row()]._passwd,
+                    false, 1500)) {
             _lableName = _treeWidgetItem->text(0);
             _redisClient->setConnectName(_lableName);
             accept();

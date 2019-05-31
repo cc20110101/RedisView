@@ -46,6 +46,7 @@ private:
     QList<ClientInfoDialog> _vClientInfo;
     RedisCluster *_redisClient;
     QString _lableName;
+    QByteArray _byteArray;
 
 private:
 

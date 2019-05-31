@@ -284,8 +284,16 @@ void MainWindow::createMenu() {
     donateAct->setStatusTip(tr("捐赠作者..."));
     helpMenu->addSeparator();
 
-    QAction *ContributorAct = helpMenu->addAction(tr("特别鸣谢"), this, &MainWindow::contribute);
-    ContributorAct->setStatusTip(tr("鸣谢贡献者信息..."));
+    QAction *contributorAct = helpMenu->addAction(tr("特别鸣谢"), this, &MainWindow::contribute);
+    contributorAct->setStatusTip(tr("鸣谢贡献者信息..."));
+    helpMenu->addSeparator();
+
+    QAction *feedbackAct = helpMenu->addAction(tr("我要反馈"), this, &MainWindow::feedback);
+    feedbackAct->setStatusTip(tr("反馈BUG或提交建议..."));
+    helpMenu->addSeparator();
+
+    QAction *updateAct = helpMenu->addAction(tr("检查更新"), this, &MainWindow::updatesys);
+    updateAct->setStatusTip(tr("检查是否有新版本"));
     helpMenu->addSeparator();
 
     QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
@@ -312,7 +320,7 @@ void MainWindow::createMenu() {
     toolBar->addSeparator();
     toolBar->addAction(donateAct);
     toolBar->addSeparator();
-    toolBar->addAction(ContributorAct);
+    toolBar->addAction(contributorAct);
     toolBar->addSeparator();
     toolBar->addAction(aboutAct);
     toolBar->addSeparator();
@@ -330,7 +338,7 @@ void MainWindow::createMenu() {
     historyAct->setIcon(QIcon(ICON_HISTORY));
     exitAct->setIcon(QIcon(ICON_EXIT));
     donateAct->setIcon(QIcon(ICON_DONATE));
-    ContributorAct->setIcon(QIcon(ICON_CONTRIBUTOR));
+    contributorAct->setIcon(QIcon(ICON_CONTRIBUTOR));
     batchOperateAct->setIcon(QIcon(ICON_BATCHOP));
     redisInfoAct->setIcon(QIcon(ICON_REDISINFO));
     langMenu->setIcon(QIcon(ICON_LANGUAGE));
@@ -339,7 +347,71 @@ void MainWindow::createMenu() {
     lanEnAct->setIcon(QIcon(ICON_EN));
     instructionAct->setIcon(QIcon(ICON_INSTRUCTION));
     conectHostAct->setIcon(QIcon(ICON_LONGIN));
+    feedbackAct->setIcon(QIcon(ICON_FEEDBACK));
+    updateAct->setIcon(QIcon(ICON_UPDATE));
+
+    // 托盘菜单
+    QMenu *exitMenu = new QMenu(this);
+    exitMenu->addAction(QIcon(ICON_DISPLAY), tr("显示窗口"), this, SLOT(trayShowWindow()));
+    exitMenu->addAction(QIcon(ICON_HIDE), tr("隐藏窗口"), this, SLOT(trayHideWindow()));
+    exitMenu->addAction(QIcon(ICON_EXIT), tr("退出系统"), this, SLOT(trayExit()));
+
+    _sysTrayIcon = new QSystemTrayIcon(this);
+    _sysTrayIcon->setIcon(QIcon(ICON_TRAY));
+    _sysTrayIcon->setToolTip(WindowTitle);
+    _sysTrayIcon->show();
+    _sysTrayIcon->setContextMenu(exitMenu);
+    connect(_sysTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+            this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
+    // 关闭标准
+    _exitFlag = false;
     setEncodeIcon();
+}
+
+void MainWindow::slotActivated(QSystemTrayIcon::ActivationReason reason) {
+    if(reason == QSystemTrayIcon::Trigger) {
+        if(this->isHidden())
+            this->show();
+        else
+            this->hide();
+    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *e) {
+
+    if(_exitFlag == false && !this->isHidden()) {
+        e->ignore();
+        this->hide();
+    } else
+        e->accept();
+}
+
+void MainWindow::exit() {
+    int ret = QMessageBox::question(this, tr("确认"), tr("是否要退出系统？"));
+    if(ret == QMessageBox::Yes) {
+        _exitFlag = true;
+        this->close();
+    } else {
+        _exitFlag = false;
+    }
+}
+
+void MainWindow::trayExit() {
+    _exitFlag = true;
+    this->close();
+}
+
+void MainWindow::trayShowWindow() {
+    if(this->isHidden())
+        this->show();
+    if(this->isMinimized()) {
+        this->showNormal();
+    }
+}
+
+void  MainWindow::trayHideWindow() {
+    if(!this->isHidden())
+        this->hide();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -352,6 +424,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         _mainWidget->on_CmdClear();
     }
     QMainWindow::keyPressEvent(event);
+}
+
+void MainWindow::updatesys() {
+    UpdateView *updateView = new UpdateView();
+    updateView->show();
 }
 
 void MainWindow::donate() {
@@ -367,13 +444,6 @@ void MainWindow::contribute() {
 void MainWindow::createSlot() {
     connect(_mainWidget, SIGNAL(runEnd(bool)) , this, SLOT(runEnd(bool)));
     connect(_mainWidget, &MainWidget::runStart , this, &MainWindow::runStart);
-}
-
-void MainWindow::exit() {
-    int ret = QMessageBox::question(this, tr("确认"), tr("是否要退出系统？"));
-    if(ret == QMessageBox::Yes) {
-        this->close();
-    }
 }
 
 void MainWindow::runEnd(bool bEnd)
@@ -476,6 +546,11 @@ void MainWindow::batchOprate() {
     batchOperateDialog.exec();
 }
 
+void MainWindow::feedback() {
+    FeedBack feedback;
+    feedback.exec();
+}
+
 void MainWindow::langCnAction() {
     QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
     //settings.setPath(QSettings::IniFormat, QSettings::SystemScope, sPath);
@@ -528,7 +603,7 @@ void MainWindow::setEncode(QString encode) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
         clientInfo._addr = settings.value("addr").toString().trimmed();
-        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
         clientInfo._valuePattern = settings.value("valuepattern","").toString();
@@ -541,7 +616,7 @@ void MainWindow::setEncode(QString encode) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
         settings.setValue("addr", vClientInfo[j]._addr);
-        settings.setValue("passwd", vClientInfo[j]._passwd);
+        settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         if(_redisClient->getConnectName() == vClientInfo[j]._name)
             settings.setValue("encode", encode);
         else

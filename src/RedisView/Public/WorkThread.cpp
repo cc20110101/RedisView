@@ -302,7 +302,7 @@ void WorkThread::doCommitValueWork() {
     qlonglong llret;
     for(int i =0; i < _cmd.size(); ++i) {
         switch (_cmd[i]._operate) {
-        case 1:
+        case OPERATION_ADD:
             if(_cmd[i]._type == "hash") {
                 if(!_redisClient->hset(_cmd[i]._key,_cmd[i]._filed,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
@@ -337,7 +337,7 @@ void WorkThread::doCommitValueWork() {
                 }
             }
             break;
-        case 2:
+        case OPERATION_DELETE:
             if(_cmd[i]._type == "hash") {
                 if(!_redisClient->hdel(_cmd[i]._key,_cmd[i]._filed,llret)) {
                     _string = _redisClient->getErrorInfo();
@@ -372,7 +372,7 @@ void WorkThread::doCommitValueWork() {
                 }
             }
             break;
-        case 3:
+        case OPERATION_ALTER:
             if(_cmd[i]._type == "hash") {
                 if(!_redisClient->hset(_cmd[i]._key,_cmd[i]._filed,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
@@ -393,7 +393,7 @@ void WorkThread::doCommitValueWork() {
                 }
             }
             break;
-        case 4:
+        case OPERATION_TIMEOUT:
             if(!_cmd[i]._value.isEmpty() && _cmd[i]._value.toLongLong() >= 0) {
                 if(!_redisClient->pexpire(_cmd[i]._key,_cmd[i]._value.toLongLong())) {
                     _string = _redisClient->getErrorInfo();
@@ -410,7 +410,7 @@ void WorkThread::doCommitValueWork() {
                 }
             }
             break;
-        case 5:
+        case OPERATION_RENAME:
             if(!_redisClient->renamex(_cmd[i]._key,_cmd[i]._value)) {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid,_string);

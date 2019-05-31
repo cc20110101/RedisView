@@ -181,7 +181,7 @@ void DataView::commit() {
         _cmdMsg._type = _type;
         _cmdMsg._value = str;
         _cmdMsg._valueIndex = _time;
-        _cmdMsg._operate = 4;
+        _cmdMsg._operate = OPERATION_TIMEOUT;
         _vCmdMsg << _cmdMsg;
     }
 
@@ -198,7 +198,7 @@ void DataView::commit() {
         _cmdMsg._key = _key;
         _cmdMsg._type = _type;
         _cmdMsg._value = str;
-        _cmdMsg._operate = 5;
+        _cmdMsg._operate = OPERATION_RENAME;
         _vCmdMsg << _cmdMsg;
     }
 
@@ -227,7 +227,7 @@ void DataView::addHead() {
             _cmdMsg._type = _type;
             _cmdMsg._valueIndex = -1;
             _cmdMsg._value = valueList[i];
-            _cmdMsg._operate = 1;
+            _cmdMsg._operate = OPERATION_ADD;
             _vCmdMsg << _cmdMsg;
         }
     }
@@ -254,7 +254,7 @@ void DataView::addTail() {
             _cmdMsg._type = _type;
             _cmdMsg._valueIndex = 1;
             _cmdMsg._value = valueList[i];
-            _cmdMsg._operate = 1;
+            _cmdMsg._operate = OPERATION_ADD;
             _vCmdMsg << _cmdMsg;
         }
     }
@@ -273,7 +273,7 @@ void DataView::delHead() {
         _cmdMsg._key = _key;
         _cmdMsg._type = _type;
         _cmdMsg._valueIndex = -1;
-        _cmdMsg._operate = 2;
+        _cmdMsg._operate = OPERATION_DELETE;
     }
     _vCmdMsg << _cmdMsg;
     _itemTableModel->removeRow(0);
@@ -293,7 +293,7 @@ void DataView::delTail() {
         _cmdMsg._key = _key;
         _cmdMsg._type = _type;
         _cmdMsg._valueIndex = 1;
-        _cmdMsg._operate = 2;
+        _cmdMsg._operate = OPERATION_DELETE;
     }
     _vCmdMsg << _cmdMsg;
     _itemTableModel->removeRow(_listIndex - 1);
@@ -322,7 +322,7 @@ void DataView::add() {
             _cmdMsg._type = _type;
             _cmdMsg._filed = valueList[i];
             _cmdMsg._value = valueList[i+1];
-            _cmdMsg._operate = 1;
+            _cmdMsg._operate = OPERATION_ADD;
             if(_vCmdMsg.contains(_cmdMsg)) {
                 _vCmdMsg.removeAll(_cmdMsg);
             }
@@ -345,7 +345,7 @@ void DataView::add() {
             _cmdMsg._key = _key;
             _cmdMsg._type = _type;
             _cmdMsg._value = valueList[i];
-            _cmdMsg._operate = 1;
+            _cmdMsg._operate = OPERATION_ADD;
             _vCmdMsg << _cmdMsg;
         }
     } else if(_type == "zset") {
@@ -373,7 +373,7 @@ void DataView::add() {
             _cmdMsg._type = _type;
             _cmdMsg._value = valueList[i];
             _cmdMsg._score = dscore;
-            _cmdMsg._operate = 1;
+            _cmdMsg._operate = OPERATION_ADD;
             _vCmdMsg << _cmdMsg;
         }
     }
@@ -422,7 +422,7 @@ void DataView::del() {
             _cmdMsg._key = _key;
             _cmdMsg._type = _type;
             _cmdMsg._filed = _tableSubItem->text();
-            _cmdMsg._operate = 2;
+            _cmdMsg._operate = OPERATION_DELETE;
             if(_vCmdMsg.contains(_cmdMsg)) {
                 _vCmdMsg.removeAll(_cmdMsg);
             }
@@ -430,7 +430,7 @@ void DataView::del() {
             _cmdMsg._key = _key;
             _cmdMsg._type = _type;
             _cmdMsg._value = _tableSubItem->text();
-            _cmdMsg._operate = 2;
+            _cmdMsg._operate = OPERATION_DELETE;
         }
         _vCmdMsg << _cmdMsg;
 
@@ -443,7 +443,7 @@ void DataView::valueChanged(ValueTableItem *item, int column) {
     _cmdMsg.init();
     _cmdMsg._dbIndex = _dbIndex;
     _cmdMsg._clientIndex = _clientIndex;
-    _cmdMsg._operate = 3;
+    _cmdMsg._operate = OPERATION_ALTER;
     _cmdMsg._type = _type;
     _cmdMsg._key = _key;
     if(_type == "string") {
@@ -708,7 +708,7 @@ void DataView::setValuePattern(QString valuePattern) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
         clientInfo._addr = settings.value("addr").toString().trimmed();
-        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
         clientInfo._valuePattern = settings.value("valuepattern","").toString();
@@ -721,7 +721,7 @@ void DataView::setValuePattern(QString valuePattern) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
         settings.setValue("addr", vClientInfo[j]._addr);
-        settings.setValue("passwd", vClientInfo[j]._passwd);
+        settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         settings.setValue("encode", vClientInfo[j]._encode);
         settings.setValue("keypattern", vClientInfo[j]._keyPattern);
         if(Global::gConnectName == vClientInfo[j]._name)

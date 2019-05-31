@@ -45,5 +45,7 @@
         <file>Resources/sort.ico</file>
         <file>Resources/contributor.ico</file>
         <file>Resources/redisinfo.ico</file>
+        <file>Resources/feedback.ico</file>
+        <file>Resources/update.ico</file>
     </qresource>
 </RCC>

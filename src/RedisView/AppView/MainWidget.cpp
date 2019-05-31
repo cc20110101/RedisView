@@ -1380,7 +1380,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
         clientInfo._addr = settings.value("addr").toString().trimmed();
-        clientInfo._passwd = settings.value("passwd").toString().trimmed();
+        clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
         clientInfo._valuePattern = settings.value("valuepattern","").toString();
@@ -1393,7 +1393,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
         settings.setValue("addr", vClientInfo[j]._addr);
-        settings.setValue("passwd", vClientInfo[j]._passwd);
+        settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         settings.setValue("encode", vClientInfo[j]._encode);
         if(_redisClient->getConnectName() == vClientInfo[j]._name)
             settings.setValue("keypattern", keyPattern);

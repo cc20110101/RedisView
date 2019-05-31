@@ -25,6 +25,7 @@ LoginSet::LoginSet(QWidget *parent) :
 
     _lb_passwd = new QLabel(tr("密码:"));
     _le_passwd = new QLineEdit();
+    _le_passwd->setEchoMode(QLineEdit::Password);
 
     QPushButton *OK = new QPushButton(tr("确定"));
     QPushButton *Exit = new QPushButton(tr("取消"));
