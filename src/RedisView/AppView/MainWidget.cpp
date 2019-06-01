@@ -25,12 +25,12 @@ MainWidget::~MainWidget()
 
 void MainWidget::reOpenClient() {
     _idbIndex = 0;
-    vClients.clear();
-    vMasterClients.clear();
-    vClients = _redisClient->getClients(false);
-    vMasterClients = _redisClient->getClients(true);
-    for(int i = 0; i < vMasterClients.size(); ++i) {
-        vMasterClients[i]._client = nullptr;
+    _vClients.clear();
+    _vMasterClients.clear();
+    _vClients = _redisClient->getClients(false);
+    _vMasterClients = _redisClient->getClients(true);
+    for(int i = 0; i < _vMasterClients.size(); ++i) {
+        _vMasterClients[i]._client = nullptr;
     }
 
     ui->_ipComboBox->clear();
@@ -40,12 +40,12 @@ void MainWidget::reOpenClient() {
         _idbNums = 1;
         QString clientInfo;
         ui->_ipComboBox->addItem("Cluster mode");
-        for(int j = 0; j < vClients.size(); ++j) {
-            vClients[j]._client = nullptr;
+        for(int j = 0; j < _vClients.size(); ++j) {
+            _vClients[j]._client = nullptr;
             clientInfo = QString("%1:%2:%3")
-                    .arg(vClients[j]._host)
-                    .arg(vClients[j]._port)
-                    .arg(vClients[j]._master ? "Master" : "Slave");
+                    .arg(_vClients[j]._host)
+                    .arg(_vClients[j]._port)
+                    .arg(_vClients[j]._master ? "Master" : "Slave");
             ui->_ipComboBox->addItem(clientInfo);
         }
     } else if(_isReplicationMode) {
@@ -54,17 +54,17 @@ void MainWidget::reOpenClient() {
         }
         QString clientInfo;
         ui->_ipComboBox->addItem("Replication mode");
-        for(int j = 0; j < vClients.size(); ++j) {
-            vClients[j]._client = nullptr;
+        for(int j = 0; j < _vClients.size(); ++j) {
+            _vClients[j]._client = nullptr;
             clientInfo = QString("%1:%2:%3")
-                    .arg(vClients[j]._host)
-                    .arg(vClients[j]._port)
-                    .arg(vClients[j]._master ? "Master" : "Slave");
+                    .arg(_vClients[j]._host)
+                    .arg(_vClients[j]._port)
+                    .arg(_vClients[j]._master ? "Master" : "Slave");
             ui->_ipComboBox->addItem(clientInfo);
         }
     } else {
-        for(int j = 0; j < vClients.size(); ++j) {
-            vClients[j]._client = nullptr;
+        for(int j = 0; j < _vClients.size(); ++j) {
+            _vClients[j]._client = nullptr;
         }
         if(!_redisClient->getDbNum(_idbNums)) {
             _idbNums = 1;
@@ -98,10 +98,10 @@ void MainWidget::initSet(RedisCluster *redisClient) {
             _idbNums = 1;
         }
     }
-    vClients = _redisClient->getClients(false);
-    vMasterClients = _redisClient->getClients(true);
-    for(int i = 0; i < vMasterClients.size(); ++i) {
-        vMasterClients[i]._client = nullptr;
+    _vClients = _redisClient->getClients(false);
+    _vMasterClients = _redisClient->getClients(true);
+    for(int i = 0; i < _vMasterClients.size(); ++i) {
+        _vMasterClients[i]._client = nullptr;
     }
 
     // 线程池至少会存在一个线程
@@ -165,15 +165,15 @@ void MainWidget::initKeyListData(int dbIndex)
         _itemKeyModel->removeChild(_vTreeItemKey[dbIndex]);
     }
 
-    for(int i = 0; i < vMasterClients.size(); ++i) {
+    for(int i = 0; i < _vMasterClients.size(); ++i) {
         if(_isClusterMode) {
             _taskMsg = new TaskMsg();
             _taskMsg->_taskid = THREAD_SCAN_KEY_TASK;
             _vTaskId.push_back(THREAD_SCAN_KEY_TASK);
             _taskMsg->_sequence = _iScanKeySeq;
-            _taskMsg->_host = vMasterClients[i]._host;
-            _taskMsg->_port = vMasterClients[i]._port;
-            _taskMsg->_passwd = vMasterClients[i]._passwd;
+            _taskMsg->_host = _vMasterClients[i]._host;
+            _taskMsg->_port = _vMasterClients[i]._port;
+            _taskMsg->_passwd = _vMasterClients[i]._passwd;
             _taskMsg->_keyPattern = ui->_refreshEdit->text();
             _taskMsg->_dbIndex = 0;
             _workThread = new WorkThread(_taskMsg);
@@ -187,7 +187,7 @@ void MainWidget::initKeyListData(int dbIndex)
             _workThread = nullptr;
         } else {
             if(_isReplicationMode) {
-                if(!vMasterClients[i]._master)
+                if(!_vMasterClients[i]._master)
                     continue;
             }
             for(int j = 0; j < _idbNums; ++j) {
@@ -207,9 +207,9 @@ void MainWidget::initKeyListData(int dbIndex)
                 _taskMsg->_taskid = THREAD_SCAN_KEY_TASK;
                 _vTaskId.push_back(THREAD_SCAN_KEY_TASK);
                 _taskMsg->_sequence = _iScanKeySeq;
-                _taskMsg->_host = vMasterClients[i]._host;
-                _taskMsg->_port = vMasterClients[i]._port;
-                _taskMsg->_passwd = vMasterClients[i]._passwd;
+                _taskMsg->_host = _vMasterClients[i]._host;
+                _taskMsg->_port = _vMasterClients[i]._port;
+                _taskMsg->_passwd = _vMasterClients[i]._passwd;
                 _taskMsg->_keyPattern = ui->_refreshEdit->text();
                 _taskMsg->_dbIndex = j;
                 _workThread = new WorkThread(_taskMsg);
@@ -248,9 +248,9 @@ void MainWidget::initValueListData(const InitValueMsg &initValueMsg) {
     _taskMsg->_taskid = THREAD_SCAN_VALUE_TASK;
     _vTaskId.push_back(THREAD_SCAN_VALUE_TASK);
     _taskMsg->_sequence = _iScanValueSeq;
-    _taskMsg->_host = vMasterClients[initValueMsg._clientIndex]._host;
-    _taskMsg->_port = vMasterClients[initValueMsg._clientIndex]._port;
-    _taskMsg->_passwd = vMasterClients[initValueMsg._clientIndex]._passwd;
+    _taskMsg->_host = _vMasterClients[initValueMsg._clientIndex]._host;
+    _taskMsg->_port = _vMasterClients[initValueMsg._clientIndex]._port;
+    _taskMsg->_passwd = _vMasterClients[initValueMsg._clientIndex]._passwd;
     _taskMsg->_clientIndex = initValueMsg._clientIndex;
     _taskMsg->_dbIndex = initValueMsg._dbindex;
     _taskMsg->_key = initValueMsg._key;
@@ -277,9 +277,9 @@ void MainWidget::commitValue(QList<CmdMsg> &cmd) {
     _taskMsg = new TaskMsg();
     _taskMsg->_taskid = THREAD_COMMIT_VALUE_TASK;
     _vTaskId.push_back(THREAD_COMMIT_VALUE_TASK);
-    _taskMsg->_host = vMasterClients[cmd[0]._clientIndex]._host;
-    _taskMsg->_port = vMasterClients[cmd[0]._clientIndex]._port;
-    _taskMsg->_passwd = vMasterClients[cmd[0]._clientIndex]._passwd;
+    _taskMsg->_host = _vMasterClients[cmd[0]._clientIndex]._host;
+    _taskMsg->_port = _vMasterClients[cmd[0]._clientIndex]._port;
+    _taskMsg->_passwd = _vMasterClients[cmd[0]._clientIndex]._passwd;
     _taskMsg->_clientIndex = cmd[0]._clientIndex;
     _taskMsg->_dbIndex = cmd[0]._dbIndex;
     _workThread = new WorkThread(cmd,_taskMsg);
@@ -454,21 +454,21 @@ void MainWidget::initView()
     if(_isClusterMode) {
         QString clientInfo;
         ui->_ipComboBox->addItem("Cluster mode");
-        for(int k = 0; k < vClients.size(); ++k) {
+        for(int k = 0; k < _vClients.size(); ++k) {
             clientInfo = QString("%1:%2:%3")
-                    .arg(vClients[k]._host)
-                    .arg(vClients[k]._port)
-                    .arg(vClients[k]._master ? "Master" : "Slave");
+                    .arg(_vClients[k]._host)
+                    .arg(_vClients[k]._port)
+                    .arg(_vClients[k]._master ? "Master" : "Slave");
             ui->_ipComboBox->addItem(clientInfo);
         }
     } else if(_isReplicationMode) {
         QString clientInfo;
         ui->_ipComboBox->addItem("Replication mode");
-        for(int j = 0; j < vClients.size(); ++j) {
+        for(int j = 0; j < _vClients.size(); ++j) {
             clientInfo = QString("%1:%2:%3")
-                    .arg(vClients[j]._host)
-                    .arg(vClients[j]._port)
-                    .arg(vClients[j]._master ? "Master" : "Slave");
+                    .arg(_vClients[j]._host)
+                    .arg(_vClients[j]._port)
+                    .arg(_vClients[j]._master ? "Master" : "Slave");
             ui->_ipComboBox->addItem(clientInfo);
         }
     } else {
@@ -710,7 +710,7 @@ void MainWidget::del() {
         return;
     }
 
-    if(vMasterClients.size() <= 0) {
+    if(_vMasterClients.size() <= 0) {
         QMessageBox::critical(this, tr("提示"), tr("客户端连接信息异常!"));
         return;
     }
@@ -746,9 +746,9 @@ void MainWidget::del() {
             _taskMsg = new TaskMsg();
             _taskMsg->_taskid = THREAD_DEL_KEY_TASK;
             _vTaskId.push_back(THREAD_DEL_KEY_TASK);
-            _taskMsg->_host = vMasterClients[0]._host;
-            _taskMsg->_port = vMasterClients[0]._port;
-            _taskMsg->_passwd = vMasterClients[0]._passwd;
+            _taskMsg->_host = _vMasterClients[0]._host;
+            _taskMsg->_port = _vMasterClients[0]._port;
+            _taskMsg->_passwd = _vMasterClients[0]._passwd;
             _taskMsg->_clientIndex = _isClusterMode;
             _workThread = new WorkThread(_vCmdMsg,_taskMsg);
 
@@ -766,9 +766,9 @@ void MainWidget::del() {
         _taskMsg = new TaskMsg();
         _taskMsg->_taskid = THREAD_DEL_KEY_TASK;
         _vTaskId.push_back(THREAD_DEL_KEY_TASK);
-        _taskMsg->_host = vMasterClients[0]._host;
-        _taskMsg->_port = vMasterClients[0]._port;
-        _taskMsg->_passwd = vMasterClients[0]._passwd;
+        _taskMsg->_host = _vMasterClients[0]._host;
+        _taskMsg->_port = _vMasterClients[0]._port;
+        _taskMsg->_passwd = _vMasterClients[0]._passwd;
         _taskMsg->_clientIndex = _isClusterMode;
         _workThread = new WorkThread(_vCmdMsg,_taskMsg);
 
@@ -1196,15 +1196,15 @@ void MainWidget::on__publishButton_clicked()
     }
 
     if(!_redisSendClient) {
-        if(vMasterClients.size() <= 0) {
+        if(_vMasterClients.size() <= 0) {
             QMessageBox::about(this, tr("错误"), tr("客户端连接信息为空!"));
             return;
         } else {
             _redisSendClient = new RedisClient();
-            _redisSendClient->open(vMasterClients[vMasterClients.size() - 1]._host,
-                    vMasterClients[vMasterClients.size() - 1]._port);
-            if(!vMasterClients[vMasterClients.size() - 1]._passwd.isEmpty()) {
-                if(!_redisSendClient->auth(vMasterClients[vMasterClients.size() - 1]._passwd)) {
+            _redisSendClient->open(_vMasterClients[_vMasterClients.size() - 1]._host,
+                    _vMasterClients[_vMasterClients.size() - 1]._port);
+            if(!_vMasterClients[_vMasterClients.size() - 1]._passwd.isEmpty()) {
+                if(!_redisSendClient->auth(_vMasterClients[_vMasterClients.size() - 1]._passwd)) {
                     QMessageBox::about(this, tr("错误"), _redisSendClient->getErrorInfo());
                     return;
                 }
@@ -1237,15 +1237,15 @@ void MainWidget::on__subscribeButton_clicked()
     }
 
     if(!_redisRecvClient) {
-        if(vMasterClients.size() <= 0) {
+        if(_vMasterClients.size() <= 0) {
             QMessageBox::about(this, tr("错误"), tr("客户端连接信息为空!"));
             return;
         } else {
             _redisRecvClient = new RedisClient();
-            _redisRecvClient->open(vMasterClients[vMasterClients.size() - 1]._host,
-                    vMasterClients[vMasterClients.size() - 1]._port);
-            if(!vMasterClients[vMasterClients.size() - 1]._passwd.isEmpty()) {
-                if(!_redisRecvClient->auth(vMasterClients[vMasterClients.size() - 1]._passwd)) {
+            _redisRecvClient->open(_vMasterClients[_vMasterClients.size() - 1]._host,
+                    _vMasterClients[_vMasterClients.size() - 1]._port);
+            if(!_vMasterClients[_vMasterClients.size() - 1]._passwd.isEmpty()) {
+                if(!_redisRecvClient->auth(_vMasterClients[_vMasterClients.size() - 1]._passwd)) {
                     QMessageBox::about(this, tr("错误"), _redisRecvClient->getErrorInfo());
                     return;
                 }
@@ -1300,15 +1300,15 @@ void MainWidget::on__msgClearButton_clicked()
 void MainWidget::on__msgInfoButton_clicked()
 {
     if(!_redisSendClient) {
-        if(vMasterClients.size() <= 0) {
+        if(_vMasterClients.size() <= 0) {
             QMessageBox::about(this, tr("错误"), tr("客户端连接信息为空!"));
             return;
         } else {
             _redisSendClient = new RedisClient();
-            _redisSendClient->open(vMasterClients[vMasterClients.size() - 1]._host,
-                    vMasterClients[vMasterClients.size() - 1]._port);
-            if(!vMasterClients[vMasterClients.size() - 1]._passwd.isEmpty()) {
-                if(!_redisSendClient->auth(vMasterClients[vMasterClients.size() - 1]._passwd)) {
+            _redisSendClient->open(_vMasterClients[_vMasterClients.size() - 1]._host,
+                    _vMasterClients[_vMasterClients.size() - 1]._port);
+            if(!_vMasterClients[_vMasterClients.size() - 1]._passwd.isEmpty()) {
+                if(!_redisSendClient->auth(_vMasterClients[_vMasterClients.size() - 1]._passwd)) {
                     QMessageBox::about(this, tr("错误"), _redisSendClient->getErrorInfo());
                     return;
                 }

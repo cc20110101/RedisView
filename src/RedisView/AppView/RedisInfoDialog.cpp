@@ -27,35 +27,24 @@ RedisInfoDialog::RedisInfoDialog(RedisCluster *redisClient,
     if(_redisClient) {
         QString clientInfo;
         _vClients.clear();
+        _vMasterClients.clear();
         _vClients = _redisClient->getClients(false);
         _isClusterMode = _redisClient->getClusterMode();
         _isReplicationMode = _redisClient->getReplicationMode();
+
+        for(int j = 0; j < _vClients.size(); ++j) {
+            _vClients[j]._client = nullptr;
+            clientInfo = QString("%1:%2:%3")
+                    .arg(_vClients[j]._host)
+                    .arg(_vClients[j]._port)
+                    .arg(_vClients[j]._master ? "Master" : "Slave");
+            ui->_hostComboBox->addItem(clientInfo);
+        }
+
         if(_isClusterMode) {
-            for(int j = 0; j < _vClients.size(); ++j) {
-                _vClients[j]._client = nullptr;
-                clientInfo = QString("%1:%2:%3")
-                        .arg(_vClients[j]._host)
-                        .arg(_vClients[j]._port)
-                        .arg(_vClients[j]._master ? "Master" : "Slave");
-                ui->_hostComboBox->addItem(clientInfo);
-            }
-        } else if(_isReplicationMode) {
-            for(int j = 0; j < _vClients.size(); ++j) {
-                _vClients[j]._client = nullptr;
-                clientInfo = QString("%1:%2:%3")
-                        .arg(_vClients[j]._host)
-                        .arg(_vClients[j]._port)
-                        .arg(_vClients[j]._master ? "Master" : "Slave");
-                ui->_hostComboBox->addItem(clientInfo);
-            }
-        } else {
-            for(int j = 0; j < _vClients.size(); ++j) {
-                _vClients[j]._client = nullptr;
-                clientInfo = QString("%1:%2:%3")
-                        .arg(_vClients[j]._host)
-                        .arg(_vClients[j]._port)
-                        .arg(_vClients[j]._master ? "Master" : "Slave");
-                ui->_hostComboBox->addItem(clientInfo);
+            _vMasterClients = _redisClient->getClients(true);
+            for(int i = 0; i < _vMasterClients.size(); ++i) {
+                _vMasterClients[i]._client = nullptr;
             }
         }
 
@@ -207,12 +196,29 @@ void RedisInfoDialog::on__queryPushButton_clicked()
                 infoMap[infoList[k].mid(0, index)] = infoList[k].mid(index + 1);
             }
             if(infoMap.value("cluster_state","no") == "ok") {
-                ui->_textBrowser->append(tr("集群状态:正常"));
-                ui->_textBrowser->append("\r\n");
+                _appendInfo = tr("集群状态:正常");
             } else {
-                ui->_textBrowser->append(tr("集群状态:异常"));
-                ui->_textBrowser->append("\r\n");
+                _appendInfo = tr("集群状态:异常");
             }
+
+            for(int m = 0; m < _vMasterClients.size(); ++m) {
+                index = 0;
+                for(int n = 0; n < _vMasterClients.size(); ++n) {
+                    if(_vMasterClients[m]._host == _vMasterClients[n]._host)
+                        ++index;
+                }
+                if(index * 2 >= _vMasterClients.size()) {
+                    _appendInfo += "\r\n";
+                    _appendInfo += tr("主实例分布:异常");
+                    _appendInfo += "\r\n";
+                    _appendInfo += tr("超过半数主实例分布在");
+                    _appendInfo += QString("%1").arg(_vMasterClients[m]._host);
+                    _appendInfo += tr("主机,若发生宕机无法切主，请修复!");
+                    break;
+                }
+            }
+            _appendInfo += "\r\n";
+            ui->_textBrowser->append(_appendInfo);
         }
         return;
     } else if(_strCmd == "Clusterinfo") {

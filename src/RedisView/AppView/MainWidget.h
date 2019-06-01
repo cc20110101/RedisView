@@ -141,8 +141,8 @@ private:
     QThreadPool *_threadPool;
     WorkThread *_workThread;
     TaskMsg *_taskMsg;
-    QList<ClusterClient> vMasterClients;
-    QList<ClusterClient> vClients;
+    QList<ClusterClient> _vMasterClients;
+    QList<ClusterClient> _vClients;
     QList<QByteArray> _cmdRsult;
     QList<int> _vTaskId;
     CmdMsg _cmdMsg;

@@ -340,6 +340,63 @@ the best, everything goes well...</translation>
     </message>
 </context>
 <context>
+    <name>FeedBack</name>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="14"/>
+        <source>反馈信息</source>
+        <translatorcomment>Feedback</translatorcomment>
+        <translation>Feedback</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="16"/>
+        <source>请输入你要提交的内容...</source>
+        <translatorcomment>Please enter the content you want to submit...</translatorcomment>
+        <translation>Please enter the content you want to submit...</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="21"/>
+        <source>1、这个问题的详细描述，有何现象？</source>
+        <translatorcomment>1. What is the detailed description of this problem?</translatorcomment>
+        <translation>1. What is the detailed description of this problem?</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="23"/>
+        <source>2、是如何产生的，造成了什么影响？</source>
+        <translatorcomment>2. How was it produced and what effect was it?</translatorcomment>
+        <translation>2. How was it produced and what effect was it?</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="28"/>
+        <source>联系方式: </source>
+        <translatorcomment>Contact Information: </translatorcomment>
+        <translation>Contact Information: </translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="30"/>
+        <source>留下您的QQ或手机号</source>
+        <translatorcomment>Leave your QQ or mobile number</translatorcomment>
+        <translation>Leave your QQ or mobile number</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="35"/>
+        <source>确定</source>
+        <translatorcomment>OK</translatorcomment>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="36"/>
+        <source>取消</source>
+        <translatorcomment>Cancel</translatorcomment>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="AppView/FeedBack.cpp" line="54"/>
+        <source>感谢反馈，但是鉴于服务端成本压力，此功能暂时不实现，请到下载网站进行反馈，谢谢</source>
+        <translatorcomment>Thanks for the feedback, but due to server cost pressure, this feature is temporarily not implemented, please go to the download site for feedback, thank you</translatorcomment>
+        <translation>Thanks for the feedback, but due to server cost pressure, this feature is temporarily not implemented, please go to the download site for feedback, thank you</translation>
+    </message>
+</context>
+<context>
     <name>InputDialog</name>
     <message>
         <location filename="AppView/inputdialog.ui" line="14"/>
@@ -570,19 +627,19 @@ the best, everything goes well...</translation>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="AppView/LoginDialog.cpp" line="176"/>
+        <location filename="AppView/LoginDialog.cpp" line="183"/>
         <source>确认</source>
         <translatorcomment>Determine</translatorcomment>
         <translation>Determine</translation>
     </message>
     <message>
-        <location filename="AppView/LoginDialog.cpp" line="176"/>
+        <location filename="AppView/LoginDialog.cpp" line="183"/>
         <source>是否要删除此登入信息？</source>
         <translatorcomment>Do you want to delete this login information?</translatorcomment>
         <translation>Do you want to delete this login information?</translation>
     </message>
     <message>
-        <location filename="AppView/LoginDialog.cpp" line="262"/>
+        <location filename="AppView/LoginDialog.cpp" line="270"/>
         <source>连接错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
@@ -615,32 +672,32 @@ the best, everything goes well...</translation>
         <translation>Password:</translation>
     </message>
     <message>
-        <location filename="AppView/LoginSet.cpp" line="29"/>
+        <location filename="AppView/LoginSet.cpp" line="30"/>
         <source>确定</source>
         <translatorcomment>OK</translatorcomment>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="AppView/LoginSet.cpp" line="30"/>
+        <location filename="AppView/LoginSet.cpp" line="31"/>
         <source>取消</source>
         <translatorcomment>NO</translatorcomment>
         <translation>NO</translation>
     </message>
     <message>
-        <location filename="AppView/LoginSet.cpp" line="77"/>
-        <location filename="AppView/LoginSet.cpp" line="84"/>
+        <location filename="AppView/LoginSet.cpp" line="78"/>
+        <location filename="AppView/LoginSet.cpp" line="85"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/LoginSet.cpp" line="77"/>
+        <location filename="AppView/LoginSet.cpp" line="78"/>
         <source>数据库连接标签名称不可为空!</source>
         <translatorcomment>Database connection label name cannot be empty!</translatorcomment>
         <translation>Database connection label name cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/LoginSet.cpp" line="84"/>
+        <location filename="AppView/LoginSet.cpp" line="85"/>
         <source>数据库连接串不可为空!</source>
         <translatorcomment>Database connection string cannot be empty!</translatorcomment>
         <translation>Database connection string cannot be empty!</translation>
@@ -1175,9 +1232,10 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="71"/>
+        <location filename="AppView/MainWindow.cpp" line="357"/>
         <source>退出系统</source>
-        <translatorcomment>Exit</translatorcomment>
-        <translation>Exit</translation>
+        <translatorcomment>Exit System</translatorcomment>
+        <translation>Exit System</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="72"/>
@@ -1963,33 +2021,57 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="291"/>
+        <source>我要反馈</source>
+        <translatorcomment>Feedback</translatorcomment>
+        <translation>Feedback</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="292"/>
+        <source>反馈BUG或提交建议...</source>
+        <translatorcomment>Feedback bug or submit a suggestion...</translatorcomment>
+        <translation>Feedback bug or submit a suggestion...</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="295"/>
+        <source>检查更新</source>
+        <translatorcomment>Check Updates</translatorcomment>
+        <translation>Check Updates</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="296"/>
+        <source>检查是否有新版本...</source>
+        <oldsource>检查是否有新版本</oldsource>
+        <translatorcomment>Check for new versions...</translatorcomment>
+        <translation>Check for new versions...</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="299"/>
         <source>关于系统</source>
         <translatorcomment>About System</translatorcomment>
         <translation>About System</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="292"/>
-        <source>显示帮助信息...</source>
-        <translatorcomment>Display help information...</translatorcomment>
-        <translation>Display help information...</translation>
+        <location filename="AppView/MainWindow.cpp" line="300"/>
+        <source>显示系统信息...</source>
+        <oldsource>显示帮助信息...</oldsource>
+        <translatorcomment>Display system information...</translatorcomment>
+        <translation>Display system information...</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1127"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.6&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
-        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.5&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</oldsource>
-        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.6&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.6&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt;</translation>
+        <location filename="AppView/MainWindow.cpp" line="1202"/>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.6.7&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2018 Powered By CC&lt;br&gt;</source>
+        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.7&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt; {1.6.7&lt;?} {20110101@126.?} {20110101/?} {2018 ?}</translatorcomment>
+        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : Wang Changchun&lt;br&gt;Version : Community v1.6.7&lt;br&gt;Email : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2018 Powered By CC&lt;br&gt; {1.6.7&lt;?} {20110101@126.?} {20110101/?} {2018 ?}</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1141"/>
-        <source>&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
-        <oldsource>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</oldsource>
-        <translatorcomment>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
+        <location filename="AppView/MainWindow.cpp" line="1216"/>
+        <source>&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <translatorcomment>&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
+        <translation>&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="279"/>
-        <location filename="AppView/MainWindow.cpp" line="1140"/>
+        <location filename="AppView/MainWindow.cpp" line="1215"/>
         <source>版本历史</source>
         <translatorcomment>Version Log</translatorcomment>
         <translation>Version Log</translation>
@@ -2013,76 +2095,88 @@ the best, everything goes well...</translation>
         <translation>Donation author...</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="373"/>
+        <location filename="AppView/MainWindow.cpp" line="390"/>
         <source>确认</source>
         <translatorcomment>Confirm</translatorcomment>
         <translation>Confirm</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="373"/>
+        <location filename="AppView/MainWindow.cpp" line="390"/>
         <source>是否要退出系统？</source>
         <translatorcomment>Do you want to quit the system?</translatorcomment>
         <translation>Do you want to quit the system?</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1126"/>
+        <location filename="AppView/MainWindow.cpp" line="1201"/>
         <source>关于</source>
         <translatorcomment>About</translatorcomment>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="407"/>
-        <location filename="AppView/MainWindow.cpp" line="415"/>
-        <location filename="AppView/MainWindow.cpp" line="418"/>
-        <location filename="AppView/MainWindow.cpp" line="433"/>
-        <location filename="AppView/MainWindow.cpp" line="463"/>
-        <location filename="AppView/MainWindow.cpp" line="472"/>
+        <location filename="AppView/MainWindow.cpp" line="477"/>
+        <location filename="AppView/MainWindow.cpp" line="485"/>
+        <location filename="AppView/MainWindow.cpp" line="488"/>
+        <location filename="AppView/MainWindow.cpp" line="503"/>
+        <location filename="AppView/MainWindow.cpp" line="533"/>
+        <location filename="AppView/MainWindow.cpp" line="542"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="407"/>
+        <location filename="AppView/MainWindow.cpp" line="355"/>
+        <source>显示窗口</source>
+        <translatorcomment>Display Window</translatorcomment>
+        <translation>Display Window</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="356"/>
+        <source>隐藏窗口</source>
+        <translatorcomment>Hide window</translatorcomment>
+        <translation>Hide window</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWindow.cpp" line="477"/>
         <source>后台任务未完成,请稍后刷新连接!</source>
         <translatorcomment>Background task not completed, please refresh the connection later!</translatorcomment>
         <translation>Background task not completed, please refresh the connection later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="418"/>
-        <location filename="AppView/MainWindow.cpp" line="463"/>
-        <location filename="AppView/MainWindow.cpp" line="472"/>
+        <location filename="AppView/MainWindow.cpp" line="488"/>
+        <location filename="AppView/MainWindow.cpp" line="533"/>
+        <location filename="AppView/MainWindow.cpp" line="542"/>
         <source>客户端连接为空!</source>
         <translatorcomment>Client connect is empty!</translatorcomment>
         <translation>Client connect is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="433"/>
+        <location filename="AppView/MainWindow.cpp" line="503"/>
         <source>后台任务未完成,请稍后连接主机!</source>
         <translatorcomment>Background task not completed, please connect host later!</translatorcomment>
         <translation>Background task not completed, please connect host later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="485"/>
-        <location filename="AppView/MainWindow.cpp" line="494"/>
+        <location filename="AppView/MainWindow.cpp" line="560"/>
+        <location filename="AppView/MainWindow.cpp" line="569"/>
         <source>提示</source>
         <translatorcomment>Prompt</translatorcomment>
         <translation>Prompt</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="485"/>
-        <location filename="AppView/MainWindow.cpp" line="494"/>
+        <location filename="AppView/MainWindow.cpp" line="560"/>
+        <location filename="AppView/MainWindow.cpp" line="569"/>
         <source>语言设置成功，重启生效!</source>
         <translatorcomment>Language Settings Successful, Restart Effective!</translatorcomment>
         <translation>Language Settings Successful, Restart Effective!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="517"/>
+        <location filename="AppView/MainWindow.cpp" line="592"/>
         <source>保存信息</source>
         <translatorcomment>Save</translatorcomment>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="517"/>
+        <location filename="AppView/MainWindow.cpp" line="592"/>
         <source>成功保存窗口大小与位置信息！</source>
         <translatorcomment>Successfully save window size and location information!</translatorcomment>
         <translation>Successfully save window size and location information!</translation>
@@ -2180,118 +2274,157 @@ the best, everything goes well...</translation>
         <translation>Instance Information</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="75"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="86"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="75"/>
         <source>客户端连接为空!</source>
         <translatorcomment>The client connection is empty!</translatorcomment>
         <translation>The client connection is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="134"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="123"/>
         <source>主机实例:</source>
         <translatorcomment>host_instance:</translatorcomment>
         <translation>host_instance:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="137"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="126"/>
         <source>最大内存:</source>
         <translatorcomment>maxmemory:</translatorcomment>
         <translation>maxmemory:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="140"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="129"/>
         <source>使用内存:</source>
         <translatorcomment>used_memory:</translatorcomment>
         <translation>used_memory:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="143"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="132"/>
         <source>内存碎片率:</source>
         <translatorcomment>mem_fragmentation_ratio:</translatorcomment>
         <translation>mem_fragmentation_ratio:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="146"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="135"/>
         <source>客户端连接数:</source>
         <translatorcomment>connected_clients:</translatorcomment>
         <translation>connected_clients:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="149"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="138"/>
         <source>拒绝连接请求数:</source>
         <translatorcomment>rejected_connections:</translatorcomment>
         <translation>rejected_connections:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="152"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="141"/>
         <source>每秒执行命令数:</source>
         <translatorcomment>instantaneous_ops_per_sec:</translatorcomment>
         <translation>instantaneous_ops_per_sec:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="155"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="144"/>
         <source>内存限制被删除键数:</source>
         <translatorcomment>evicted_keys:</translatorcomment>
         <translation>evicted_keys:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="158"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="147"/>
         <source>连接从实例数:</source>
         <translatorcomment>connected_slaves:</translatorcomment>
         <translation>connected_slaves:</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="163"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="152"/>
         <source>当evicted_keys&gt;0时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
         <translatorcomment>When evicted_keys&gt;0, it means that there are too many fragments or insufficient space, which can be solved by defragmentation, increasing maxmemory parameter values or cluster expansion!</translatorcomment>
         <translation>When evicted_keys&gt;0, it means that there are too many fragments or insufficient space, which can be solved by defragmentation, increasing maxmemory parameter values or cluster expansion!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="167"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="156"/>
         <source>当rejected_connections&gt;0时,表示客户端数量过多,请减小不必要的应用或通过增加maxclients参数值解决!</source>
         <translatorcomment>When rejected_connections&gt;0, it means that the number of clients is too much, please reduce unnecessary applications or solve by increasing the maxclients parameter value!</translatorcomment>
         <translation>When rejected_connections&gt;0, it means that the number of clients is too much, please reduce unnecessary applications or solve by increasing the maxclients parameter value!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="171"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="160"/>
         <source>当instantaneous_ops_per_sec&gt;12000时,表示该实例压力较大,可以通过slot迁移或进行集群扩容解决!</source>
         <translatorcomment>When instantaneous_ops_per_sec&gt;12000, it indicates that the instance is under a lot of pressure and can be solved by slot migration or cluster expansion!</translatorcomment>
         <translation>When instantaneous_ops_per_sec&gt;12000, it indicates that the instance is under a lot of pressure and can be solved by slot migration or cluster expansion!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="176"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="165"/>
         <source>当内存使用率大于60%时,可以通过数据清理、slot迁移或进行集群扩容解决!</source>
         <translatorcomment>When the memory usage is greater than 60%, it can be solved by data cleaning, slot migration or cluster expansion!</translatorcomment>
         <translation>When the memory usage is greater than 60%, it can be solved by data cleaning, slot migration or cluster expansion!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="184"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="173"/>
         <source>当使用内存*(1+内存碎片率)&gt;最大内存时,表示碎片过多或空间不足,可以通过碎片整理、增加maxmemory参数值或进行集群扩容解决!</source>
         <translatorcomment>When used_memory * (1 + mem_fragmentation_ratio) &gt; maxmemory, it means that there are too many fragments or insufficient space, you can solve it by defragmentation, increase the maxmemory parameter value or perform cluster expansion!</translatorcomment>
         <translation>When used_memory * (1 + mem_fragmentation_ratio) &gt; maxmemory, it means that there are too many fragments or insufficient space, you can solve it by defragmentation, increase the maxmemory parameter value or perform cluster expansion!</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="210"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="199"/>
         <source>集群状态:正常</source>
         <translatorcomment>cluster_state:ok</translatorcomment>
         <translation>cluster_state:ok</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="213"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="201"/>
         <source>集群状态:异常</source>
         <translatorcomment>cluster_state:abnormal</translatorcomment>
         <translation>cluster_state:abnormal</translation>
     </message>
     <message>
-        <location filename="AppView/RedisInfoDialog.cpp" line="220"/>
+        <location filename="AppView/RedisInfoDialog.cpp" line="212"/>
+        <source>主实例分布:异常</source>
+        <translatorcomment>master_distribution:abnormal</translatorcomment>
+        <translation>master_distribution: abnormal</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="214"/>
+        <source>超过半数主实例分布在</source>
+        <translatorcomment>More than half of the master instances are distributed </translatorcomment>
+        <translation>More than half of the master instances are distributed </translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="216"/>
+        <source>主机,若发生宕机无法切主，请修复!</source>
+        <translatorcomment> host,if the machine fails,the master cannot be mastered, please fix it!</translatorcomment>
+        <translation> host,if the machine fails,the master cannot be mastered, please fix it!</translation>
+    </message>
+    <message>
+        <location filename="AppView/RedisInfoDialog.cpp" line="226"/>
         <source>非集群模式</source>
         <translatorcomment>non cluster mode</translatorcomment>
         <translation>non cluster mode</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateView</name>
+    <message>
+        <location filename="AppView/UpdateSystem.cpp" line="12"/>
+        <source>检查更新</source>
+        <translatorcomment>Check Update</translatorcomment>
+        <translation>Check Update</translation>
+    </message>
+    <message>
+        <location filename="AppView/UpdateSystem.cpp" line="19"/>
+        <source>努力检查中,请稍后...</source>
+        <translatorcomment>Try hard to check, please wait...</translatorcomment>
+        <translation>Try hard to check, please wait...</translation>
+    </message>
+    <message>
+        <location filename="AppView/UpdateSystem.cpp" line="38"/>
+        <source>功能不实现，请到下载网站更新...</source>
+        <translatorcomment>Please check  update from website</translatorcomment>
+        <translation>Please check  update from website</translation>
     </message>
 </context>
 </TS>

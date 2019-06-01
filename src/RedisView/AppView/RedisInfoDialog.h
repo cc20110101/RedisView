@@ -43,6 +43,7 @@ private:
     Ui::RedisInfoDialog *ui;
     QList<QByteArray> _cmdRsult;
     QList<ClusterClient> _vClients;
+    QList<ClusterClient> _vMasterClients;
 };
 
 #endif // REDISINFODIALOG_H

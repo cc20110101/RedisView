@@ -55,7 +55,7 @@
 #include "Public/AesEncrypt.h"
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.6"
+#define WindowTitle             "RedisView Community v1.6.7"
 #define IniFileName             "conf.ini"
 
 // 定义线程任务

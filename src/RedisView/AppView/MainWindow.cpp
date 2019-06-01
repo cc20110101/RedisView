@@ -293,11 +293,11 @@ void MainWindow::createMenu() {
     helpMenu->addSeparator();
 
     QAction *updateAct = helpMenu->addAction(tr("检查更新"), this, &MainWindow::updatesys);
-    updateAct->setStatusTip(tr("检查是否有新版本"));
+    updateAct->setStatusTip(tr("检查是否有新版本..."));
     helpMenu->addSeparator();
 
     QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
-    aboutAct->setStatusTip(tr("显示帮助信息..."));
+    aboutAct->setStatusTip(tr("显示系统信息..."));
     helpMenu->addSeparator();
 
 
@@ -363,7 +363,7 @@ void MainWindow::createMenu() {
     _sysTrayIcon->setContextMenu(exitMenu);
     connect(_sysTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
-    // 关闭标准
+    // 关闭标志
     _exitFlag = false;
     setEncodeIcon();
 }
@@ -1203,7 +1203,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：王长春<br>"
-                           "版本 ：Community v1.6.6<br>"
+                           "版本 ：Community v1.6.7<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
                            "版权 ：Copyright 2018 Powered By CC<br>"
@@ -1214,6 +1214,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/06/01&nbsp;&nbsp;Version 1.6.7&nbsp;&nbsp;密码AES加密存储.<br>"
                            "<br>2019/05/30&nbsp;&nbsp;Version 1.6.6&nbsp;&nbsp;新增集群信息查看分析功能.<br>"
                            "<br>2019/05/08&nbsp;&nbsp;Version 1.6.5&nbsp;&nbsp;修复设置含空格值失败Bug.<br>"
                            "<br>2019/04/08&nbsp;&nbsp;Version 1.6.4&nbsp;&nbsp;修复值初始化模式Bug.<br>"

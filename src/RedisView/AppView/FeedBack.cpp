@@ -18,15 +18,18 @@ FeedBack::FeedBack(QWidget *parent) :
 
     QHBoxLayout *hBox_ED = new QHBoxLayout;
     QTextEdit *te_infomation = new QTextEdit;
-    te_infomation->setPlaceholderText(tr("1、这个问题的详细描述，有何现象？\n2、是如何产生的，造成了什么影响？"));
+    QString sPlaceholderText = tr("1、这个问题的详细描述，有何现象？");
+    sPlaceholderText += "\r\n";
+    sPlaceholderText += tr("2、是如何产生的，造成了什么影响？");
+    te_infomation->setPlaceholderText(sPlaceholderText);
     hBox_ED->addWidget(te_infomation);
 
     QHBoxLayout *hBox_LE = new QHBoxLayout;
     QLabel *lb_contact = new QLabel(tr("联系方式: "));
     QLineEdit *le_contact = new QLineEdit;
     le_contact->setPlaceholderText(tr("留下您的QQ或手机号"));
-    hBox_LE->addWidget(lb_contact);
-    hBox_LE->addWidget(le_contact);
+    hBox_LE->addWidget(lb_contact, 1);
+    hBox_LE->addWidget(le_contact, 3);
 
     QHBoxLayout *hBox_BT = new QHBoxLayout;
     QPushButton *OK = new QPushButton(tr("确定"));
@@ -35,13 +38,13 @@ FeedBack::FeedBack(QWidget *parent) :
     hBox_BT->addWidget(Exit);
 
     QGridLayout *mainLayout = new QGridLayout;
-    mainLayout->addLayout(hBox_LB, 0, 1);
-    mainLayout->addLayout(hBox_ED, 1, 1);
-    mainLayout->addLayout(hBox_LE, 2, 1);
-    mainLayout->addLayout(hBox_BT, 4, 1);
-    mainLayout->setRowStretch(3, 1);
-    mainLayout->setColumnStretch(0, 1);
-    mainLayout->setColumnStretch(2, 1);
+    mainLayout->addLayout(hBox_LB, 0, 0, 1, 6);
+    mainLayout->addLayout(hBox_ED, 1, 0, 5, 6);
+    mainLayout->addLayout(hBox_LE, 6, 0, 1, 6);
+    mainLayout->addLayout(hBox_BT, 7, 4, 1, 2);
+//    mainLayout->setRowStretch(3, 1);
+//    mainLayout->setColumnStretch(0, 1);
+//    mainLayout->setColumnStretch(2, 1);
 
     setLayout(mainLayout);
 
