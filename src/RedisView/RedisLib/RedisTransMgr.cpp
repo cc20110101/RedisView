@@ -14,6 +14,7 @@ RedisTransMgr::RedisTransMgr(QObject *parent)
 {
     _socket = nullptr;
     _nPort = 0;
+    _msg.clear();
     _hostAddress.clear();
     initTransMgr();
 }
@@ -23,6 +24,7 @@ RedisTransMgr::RedisTransMgr(const QString &hostAddress, quint16 port, QObject *
 {
     _socket = nullptr;
     _nPort = 0;
+    _msg.clear();
     _hostAddress.clear();
     setHostAddress(hostAddress);
     setPort(port);
@@ -111,8 +113,8 @@ void RedisTransMgr::initTransMgr()
         _msg.append(_socket->readAll());
         if(getTcpResp(_msg,_length)) {
             // 接收RESP协议原始消息完成
-            emit sigReply(_msg, _length);
-            _msg.clear();
+            emit sigReply(_msg.left(_length), _length);
+            _msg = _msg.mid(_length);
         }
     });
 

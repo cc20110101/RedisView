@@ -1176,7 +1176,7 @@ void MainWidget::on__radioButtonText_toggled(bool checked)
 
 void MainWidget::on__refreshButton_clicked()
 {
-    if(_isReplicationMode)
+    if(!_isClusterMode)
         _idbIndex = -1;
     flush();
 }
