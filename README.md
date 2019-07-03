@@ -32,8 +32,7 @@ RedisView是跨平台的Redis数据库图形化界面工具，提供简单的增
 
 Donate
 -------
-Power the RedisView Community with your donation by scanning WeiPay or AliPay two-dimension code.<br>
-Please leave your mailbox for a special version when donating.<br>
+Power the RedisView Community with your donation by scanning WeiPay or AliPay two-dimension code,Please leave your mailbox for a special version when donating.<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/alipay.png)<br>
 AliPay↑<br>
 ![My code](https://github.com/cc20110101/RedisView/raw/master/src/RedisView/Resources/weiPay.png)<br>
