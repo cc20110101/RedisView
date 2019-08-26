@@ -6,38 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>605</width>
-    <height>410</height>
+    <width>641</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="2" column="0">
-        <widget class="QLabel" name="_patternLabel">
-         <property name="text">
-          <string>键值模式:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="_patternCountLineEdit"/>
-       </item>
-       <item row="1" column="4">
-        <widget class="QLineEdit" name="_patternSeparatorLineEdit"/>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="_batchComboBox"/>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="_batchOplabel">
          <property name="text">
           <string>批量操作:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="_batchComboBox"/>
+       </item>
+       <item row="0" column="3">
+        <widget class="QRadioButton" name="_radioButton">
+         <property name="text">
+          <string>计算超时</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="_setPushButton">
+         <property name="text">
+          <string>设置</string>
          </property>
         </widget>
        </item>
@@ -48,19 +49,42 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="3">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="_patternCountLineEdit"/>
+       </item>
+       <item row="1" column="2">
         <widget class="QLabel" name="_patternSeparatorLabel">
          <property name="text">
           <string>模式分割:</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1" colspan="4">
+       <item row="1" column="3" colspan="2">
+        <widget class="QLineEdit" name="_patternSeparatorLineEdit"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="_patternLabel">
+         <property name="text">
+          <string>键值模式:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
         <widget class="QLineEdit" name="_patternlineEdit"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="_tableLabel">
+         <property name="text">
+          <string>数据库表:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3" colspan="2">
+        <widget class="QLineEdit" name="_tablelineEdit"/>
        </item>
       </layout>
      </item>
-     <item row="1" column="0">
+     <item>
       <spacer name="_verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -68,22 +92,22 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>40</height>
+         <height>18</height>
         </size>
        </property>
       </spacer>
      </item>
-     <item row="2" column="0">
+     <item>
       <widget class="QProgressBar" name="_progressBar">
        <property name="value">
         <number>24</number>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item>
       <widget class="QTextBrowser" name="_textBrowser"/>
      </item>
-     <item row="4" column="0">
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <spacer name="_buttonHorizontalSpacer">
@@ -101,21 +125,21 @@
        <item>
         <widget class="QPushButton" name="_cancelPushButton">
          <property name="text">
-          <string>Cancel</string>
+          <string>取消</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="_okPushButton">
          <property name="text">
-          <string>Execute</string>
+          <string>执行</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="_exitPushButton">
          <property name="text">
-          <string>Exit</string>
+          <string>退出</string>
          </property>
         </widget>
        </item>

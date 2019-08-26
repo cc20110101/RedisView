@@ -76,6 +76,20 @@ void MainWidget::reOpenClient() {
 }
 
 void MainWidget::initSet(RedisCluster *redisClient) {
+    _tabIndex = -1;
+    _idbIndex = 0;
+    _iScanKeySeq = 0;
+    _iScanValueSeq = 0;
+    _displayViewTab = true;
+    _displayCmdTab = false;
+    _displayMsgTab = false;
+    _redisSendClient = nullptr;
+    _redisRecvClient = nullptr;
+    _tabPage.clear();
+    _vTaskId.clear();
+    _cmdRsult.clear();
+    _vTreeItemKey.clear();
+
     QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
     QSettings settings(sPath, QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
@@ -84,9 +98,8 @@ void MainWidget::initSet(RedisCluster *redisClient) {
     _isResp = settings.value("resp", false).toBool();
     _isText = settings.value("text", true).toBool();
     _isJson = settings.value("json", false).toBool();
+    _isEnterSend = settings.value("enterSend", true).toBool();
 
-    _redisSendClient = nullptr;
-    _redisRecvClient = nullptr;
     _redisClient = redisClient;
     _strConnectName = _redisClient->getConnectName();
     _isClusterMode = _redisClient->getClusterMode();
@@ -96,6 +109,7 @@ void MainWidget::initSet(RedisCluster *redisClient) {
     } else {
         if(!_redisClient->getDbNum(_idbNums)) {
             _idbNums = 1;
+            PubLib::log(tr("获取DB数失败，默认为1"));
         }
     }
     _vClients = _redisClient->getClients(false);
@@ -106,20 +120,8 @@ void MainWidget::initSet(RedisCluster *redisClient) {
 
     // 线程池至少会存在一个线程
     _threadPool = QThreadPool::globalInstance(); //全局线程池
-    _threadPool->setMaxThreadCount(6); //最大线程数
+    _threadPool->setMaxThreadCount(MAX_THREAD_COUNT); //最大线程数
     _threadPool->setExpiryTimeout(5000); //5s
-
-    _tabIndex = -1;
-    _idbIndex = 0;
-    _iScanKeySeq = 0;
-    _iScanValueSeq = 0;
-    _displayViewTab = true;
-    _displayCmdTab = false;
-    _displayMsgTab = false;
-    _tabPage.clear();
-    _vTaskId.clear();
-    _cmdRsult.clear();
-    _vTreeItemKey.clear();
 }
 
 void MainWidget::initSlot() {
@@ -297,14 +299,15 @@ void MainWidget::recvData(const TaskMsg taskMsg) {
         _SCAN_KEY_LOCK.lockForRead();
         if(_iScanKeySeq == taskMsg._sequence) {
             QString strKey;
+            KeyTreeItem *subTreeItem;
             for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++i) {
                 strKey = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
                 if(_isClusterMode) {
-                    _subTreeItem = new KeyTreeItem(strKey,_treeItemKey);
+                    subTreeItem = new KeyTreeItem(strKey,_treeItemKey);
                 } else {
-                    _subTreeItem = new KeyTreeItem(strKey,_vTreeItemKey[taskMsg._dbIndex]);
+                    subTreeItem = new KeyTreeItem(strKey,_vTreeItemKey[taskMsg._dbIndex]);
                 }
-                _itemKeyModel->insertRow(_subTreeItem);
+                _itemKeyModel->insertRow(subTreeItem);
             }
         }
         _SCAN_KEY_LOCK.unlock();
@@ -405,7 +408,9 @@ void MainWidget::initView()
     ui->_subHorizontalLayout->setStretch(11,1);
     ui->_channelHorizontalLayout->setStretch(0,1);
     ui->_channelHorizontalLayout->setStretch(1,3);
-    ui->_channelHorizontalLayout->setStretch(2,10);
+    ui->_channelHorizontalLayout->setStretch(2,1);
+    ui->_channelHorizontalLayout->setStretch(3,2);
+    ui->_channelHorizontalLayout->setStretch(4,10);
 
     QFont font;
     //font.setFamily(QString::fromLocal8Bit("微软雅黑"));
@@ -429,6 +434,7 @@ void MainWidget::initView()
     ui->_radioButtonResp->setChecked(_isResp);
     ui->_radioButtonJson->setChecked(_isJson);
     ui->_radioButtonText->setChecked(_isText);
+    ui->_enterRadioButton->setChecked(_isEnterSend);
 
     _itemKeyModel = new KeyTreeModel(ui->_treeView);
     ui->_treeView->setModel(_itemKeyModel);
@@ -502,10 +508,14 @@ void MainWidget::initView()
     _waitLabel = new QLabel(this);
     _waitLabel->setFixedSize(50,50);
     _waitLabel->setContentsMargins(0,0,0,0);
+
     QRect rect = geometry();
     _waitLabel->move(rect.x() + rect.width()/2 - _waitLabel->width() /2,
                      rect.y() + rect.height()/4 - _waitLabel->height());
     _waitLabel->setMovie(_movie);
+
+    ui->_publishPlainTextEdit->installEventFilter(this);
+
     runWait();
 }
 
@@ -725,14 +735,14 @@ void MainWidget::del() {
             _cmdMsg.init();
             _cmdMsg._dbIndex = -1;
             _cmdMsg._clientIndex = -1;
-            _cmdMsg._operate = 2;
+            _cmdMsg._operate = OPERATION_DELETE;
             _cmdMsg._key = _subTreeItem->text();
             _itemKeyModel->removeChild(_subTreeItem->parent(), _subTreeItem->childNumber());
         } else {
             _cmdMsg.init();
             _cmdMsg._dbIndex = _vTreeItemKey.indexOf(_subTreeItem->parent());
             _cmdMsg._clientIndex = -1;
-            _cmdMsg._operate = 2;
+            _cmdMsg._operate = OPERATION_DELETE;
             _cmdMsg._key = _subTreeItem->text();
             _itemKeyModel->removeChild(_vTreeItemKey[_cmdMsg._dbIndex],_subTreeItem->childNumber());
         }
@@ -1130,10 +1140,7 @@ void MainWidget::autoScroll() {
 void MainWidget::on__checkBoxFomat_stateChanged(int arg1)
 {
     _isFormat = arg1;
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("format", _isFormat);
+    PubLib::setConfigB("format", _isFormat);
 }
 
 void MainWidget::on__checkBoxSplit_stateChanged(int arg1)
@@ -1141,37 +1148,25 @@ void MainWidget::on__checkBoxSplit_stateChanged(int arg1)
     _isCmdSplit = arg1;
     ui->_lineEditsplit->setEnabled(_isCmdSplit);
     _strCmdSplit.clear();
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("cmdSplit", _isFormat);
+    PubLib::setConfigB("cmdSplit", _isFormat);
 }
 
 void MainWidget::on__radioButtonResp_toggled(bool checked)
 {
     _isResp = checked;
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("resp", _isResp);
+    PubLib::setConfigB("resp", _isResp);
 }
 
 void MainWidget::on__radioButtonJson_toggled(bool checked)
 {
     _isJson = checked;
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("json", _isJson);
+    PubLib::setConfigB("json", _isJson);
 }
 
 void MainWidget::on__radioButtonText_toggled(bool checked)
 {
     _isText = checked;
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("text", _isText);
+    PubLib::setConfigB("text", _isText);
 }
 
 void MainWidget::on__refreshButton_clicked()
@@ -1328,6 +1323,19 @@ int MainWidget::getTaskSize() {
     return _vTaskId.size();
 }
 
+bool MainWidget::eventFilter(QObject *target, QEvent *event) {
+    if(target == ui->_publishPlainTextEdit) {
+        if(event->type() == QEvent::KeyPress) {
+            QKeyEvent *k = static_cast<QKeyEvent *>(event);
+            if(k->key() == Qt::Key_Return) {
+                on__publishButton_clicked();
+                return true;
+            }
+        }
+    }
+    return QWidget::eventFilter(target,event);
+}
+
 void MainWidget::resizeEvent(QResizeEvent *) {
     QRect rect = geometry();
     _waitLabel->move(rect.x() + rect.width()/2 - _waitLabel->width() /2,
@@ -1379,7 +1387,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
     for(int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
-        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._encodeAddr = settings.value("addr").toByteArray();
         clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
@@ -1392,7 +1400,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
     for(int j =0; j < vClientInfo.size(); ++j) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
-        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("addr", vClientInfo[j]._encodeAddr);
         settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         settings.setValue("encode", vClientInfo[j]._encode);
         if(_redisClient->getConnectName() == vClientInfo[j]._name)
@@ -1402,4 +1410,16 @@ void MainWidget::setKeyPattern(QString keyPattern) {
         settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
     }
     settings.endArray();
+}
+
+void MainWidget::on__enterRadioButton_toggled(bool checked)
+{
+    if(checked) {
+        ui->_publishButton->setVisible(false);
+        _isEnterSend = checked;
+    } else {
+        ui->_publishButton->setVisible(true);
+        _isEnterSend = checked;
+    }
+    PubLib::setConfigB("enterSend", _isEnterSend);
 }

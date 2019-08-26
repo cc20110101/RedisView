@@ -34,6 +34,9 @@ public:
     void reOpenClient();
     void resizeEvent(QResizeEvent *event);
 
+protected:
+    bool eventFilter(QObject *target, QEvent *event);
+
 private:
 
     void initKeyView();
@@ -86,8 +89,10 @@ private slots:
     void recvMessage(const RespType &msg);
     void on__msgClearButton_clicked();
     void on__msgInfoButton_clicked();
+    void on__enterRadioButton_toggled(bool checked);
 
 private:
+    bool _isEnterSend;
     bool _isOpen;
     bool _isFormat;
     bool _isJson;

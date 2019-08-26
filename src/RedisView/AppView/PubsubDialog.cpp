@@ -20,7 +20,7 @@ PubsubDialog::PubsubDialog(RedisClient *redisClient, QWidget *parent) :
     ui->_comboBox->addItem("CHANNELS");
     ui->_comboBox->addItem("NUMSUB");
     ui->_comboBox->addItem("NUMPAT");
-    emit ui->_comboBox->currentIndexChanged(ui->_comboBox->currentText());
+    emit ui->_comboBox->currentTextChanged(ui->_comboBox->currentText());
 }
 
 PubsubDialog::~PubsubDialog()
@@ -66,7 +66,7 @@ void PubsubDialog::on__queryButton_clicked()
     }
 }
 
-void PubsubDialog::on__comboBox_currentIndexChanged(const QString &arg1)
+void PubsubDialog::on__comboBox_currentTextChanged(const QString &arg1)
 {
     if(arg1 == "CHANNELS") {
         ui->_lineEdit->setEnabled(true);

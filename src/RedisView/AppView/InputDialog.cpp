@@ -24,7 +24,7 @@ InputDialog::~InputDialog()
 }
 
 QString InputDialog::getText() {
-    return ui->_textEdit->document()->toPlainText().trimmed();
+    return ui->_inputTextEdit->document()->toPlainText().trimmed();
 }
 
 QList<QString> InputDialog::getTextList() {
@@ -32,7 +32,7 @@ QList<QString> InputDialog::getTextList() {
 }
 
 void InputDialog::setTip(const QString & info) {
-    ui->_textEdit->setPlaceholderText(info);
+    ui->_inputTextEdit->setPlaceholderText(info);
 }
 
 void InputDialog::setType(const QByteArray & type) {
@@ -82,7 +82,7 @@ void InputDialog::on__pushButtonY_clicked()
 
 void InputDialog::clear() {
     _textList.clear();
-    ui->_textEdit->clear();
+    ui->_inputTextEdit->clear();
 }
 
 void InputDialog::on__pushButtonN_clicked()

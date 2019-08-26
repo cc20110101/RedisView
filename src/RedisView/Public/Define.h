@@ -51,12 +51,43 @@
 #include <QActionGroup>
 #include <QToolButton>
 #include <QWidgetAction>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QMutex>
+#include <QNetworkInterface>
 #include "RedisLib/RedisCluster.h"
 #include "Public/AesEncrypt.h"
+#ifdef __GNUC__
+#include <cpuid.h>
+#elif defined(_MSC_VER)
+#if _MSC_VER >= 1400
+#include <intrin.h>
+#endif
+#else
+#error Only supports MSVC or GCC
+#endif
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.6.7"
+#define WindowTitle             "RedisView Community v1.7.0"
 #define IniFileName             "conf.ini"
+#define LogName                 "process.log"
+#define OrganizationName        "CC20110101"
+#define ApplicationName         "RedisView"
+#define ApplicationVersion      "1.7.0"
+
+// 定义常量
+#define BATCH_SCAN_NUM                             5000
+#define MAX_THREAD_COUNT                           6
+#define ORACLE_DB                                  0
+#define MYSQL_DB                                   1
+#define CORACLE_DB                                 "oracledb"
+#define CMYSQL_DB                                  "mysqldb"
+#define ORACLE_DRIVE                               "QOCI"
+#define MYSQL_DRIVE                                "QMYSQL"
+#define SQLITE_DRIVE                               "QSQLITE"
+#define WORK_THREAD_MODE0                           0
+#define WORK_THREAD_MODE1                           1
 
 // 定义线程任务
 #define THREAD_SCAN_KEY_TASK                       1
@@ -64,6 +95,13 @@
 #define THREAD_COMMIT_VALUE_TASK                   3
 #define THREAD_DEL_KEY_TASK                        4
 #define THREAD_BATCH_DEL_KEY_TASK                  5
+#define THREAD_BATCH_SCAN_KEY_TASK                 6
+#define THREAD_BATCH_OIM_KEY_TASK                  7
+#define THREAD_BATCH_MIM_KEY_TASK                  8
+#define THREAD_BATCH_OEM_KEY_TASK                  9
+#define THREAD_BATCH_MEM_KEY_TASK                  10
+#define THREAD_BATCH_MDE_KEY_TASK                  11
+#define THREAD_BATCH_ODE_KEY_TASK                  12
 
 // 定义操作符
 #define OPERATION_ADD                              1
@@ -71,6 +109,19 @@
 #define OPERATION_ALTER                            3
 #define OPERATION_TIMEOUT                          4
 #define OPERATION_RENAME                           5
+
+// 定义样式
+#define DEEPDARK_THEME        "DeepDarkTheme"
+#define DARK_THEME            "DarkTheme"
+#define GRAY_THEME            "GrayTheme"
+#define PINK_THEME            "PinkTheme"
+#define NO_THEME              "NoTheme"
+
+// 定义样式文件
+#define DARK_THEME_FILE            ":/Resources/DarkTheme.qss"
+#define GRAY_THEME_FILE            ":/Resources/GrayTheme.qss"
+#define PINK_THEME_FILE            ":/Resources/PinkTheme.qss"
+#define DEEPDARK_THEME_FILE        ":/Resources/DeepDarkTheme.qss"
 
 // 定义图标动画
 #define ICON_TRAY                  ":/Resources/tray.ico"
@@ -117,6 +168,10 @@
 #define ICON_UPDATE                ":/Resources/update.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
 
+extern  QMutex  G_DB_MUTEX;
+extern  QMutex  G_SEQUENCE_MUTEX;
+extern  QMutex  G_PUBLIC_LIB_MUTEX;
+
 // 定义公共类
 class Global {
 public:
@@ -125,6 +180,7 @@ public:
 
 public:
     static QString gEncode;
+    static QString gTheme;
     static QString gConnectName;
     static QTranslator * gTrans;
 };
@@ -145,6 +201,7 @@ public:
     void init() {
         _name.clear();
         _addr.clear();
+        _encodeAddr.clear();
         _passwd.clear();
         _encode.clear();
         _keyPattern.clear();
@@ -159,6 +216,7 @@ public:
     QString _keyPattern;
     QString _valuePattern;
     QByteArray _encodePasswd;
+    QByteArray _encodeAddr;
 
 };
 
@@ -181,6 +239,7 @@ public:
         _passwd.clear();
         _list.clear();
         _keyPattern.clear();
+        _tableName.clear();
         _respResult.init();
     }
 
@@ -202,6 +261,7 @@ public:
         this->_list.clear();
         this->_list = rhs._list;
         this->_respResult = rhs._respResult;
+        this->_tableName = rhs._tableName;
 
         return *this;
     }
@@ -216,6 +276,7 @@ public:
     QString _host;
     QString _passwd;
     QString _keyPattern;
+    QString _tableName;
     QList<QByteArray> _list;
     RespType _respResult;
 };
@@ -358,6 +419,31 @@ public:
     QString _key;
     QString _valuePattern;
 };
+
+typedef struct DbCfg {
+    QString userName;
+    QString password;
+    QByteArray encodePasswd;
+    QString port;
+    QString hostname;
+    QByteArray encodeHostname;
+    QString database;
+    QString tagname;
+} DbCfg;
+
+typedef struct ImpExpData
+{
+    int32_t iState;
+    int64_t lWeight;
+    int64_t lTimeOut;
+    QString sKey;
+    QString sKeyType;
+    QString sFiled;
+    QString sValue;
+    QString sExpDate;
+
+} ImpExpData;
+
 
 Q_DECLARE_METATYPE(InitValueMsg)
 Q_DECLARE_METATYPE(TaskMsg)

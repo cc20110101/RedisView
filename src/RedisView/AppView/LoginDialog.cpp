@@ -85,7 +85,8 @@ void LoginDialog::initConnect(int index) {
     for(int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
         _clientInfo._name = settings.value("name").toString().trimmed();
-        _clientInfo._addr = settings.value("addr").toString().trimmed();
+        _clientInfo._encodeAddr = settings.value("addr").toByteArray();
+        _clientInfo._addr = AesEncrypt::CBC256Decrypt(_clientInfo._encodeAddr).trimmed();
         _clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         _clientInfo._passwd = AesEncrypt::CBC256Decrypt(_clientInfo._encodePasswd).trimmed();
         _clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
@@ -125,12 +126,14 @@ void LoginDialog::onLink(const QString &url) {
         if(loginSet.exec() == QDialog::Accepted) {
             loginSet.getClientInfo(_clientInfo);
             _clientInfo._encodePasswd = AesEncrypt::CBC256Crypt(_clientInfo._passwd);
+            _clientInfo._encodeAddr = AesEncrypt::CBC256Crypt(_clientInfo._addr);
             bool isFind = false;
             for(int i = 0; i < _vClientInfo.size(); ++i) {
                 if(_clientInfo._name == _vClientInfo[i]._name ) {
                     _vClientInfo[i]._addr = _clientInfo._addr;
                     _vClientInfo[i]._passwd = _clientInfo._passwd;
                     _vClientInfo[i]._encodePasswd = _clientInfo._encodePasswd;
+                    _vClientInfo[i]._encodeAddr = _clientInfo._encodeAddr;
                     selectIndex = i;
                     isFind = true;
                     break;
@@ -155,6 +158,7 @@ void LoginDialog::onLink(const QString &url) {
                 ClientInfoDialog clientInfo;
                 loginSet.getClientInfo(clientInfo);
                 clientInfo._encodePasswd = AesEncrypt::CBC256Crypt(clientInfo._passwd);
+                clientInfo._encodeAddr = AesEncrypt::CBC256Crypt(clientInfo._addr);
                 if(_clientInfo._name != clientInfo._name) {
                     _vClientInfo.removeOne(_clientInfo);
                 }
@@ -164,6 +168,7 @@ void LoginDialog::onLink(const QString &url) {
                         _vClientInfo[i]._addr = clientInfo._addr;
                         _vClientInfo[i]._passwd = clientInfo._passwd;
                         _vClientInfo[i]._encodePasswd = clientInfo._encodePasswd;
+                        _vClientInfo[i]._encodeAddr = clientInfo._encodeAddr;
                         isFind = true;
                         selectIndex = i;
                         break;
@@ -212,7 +217,7 @@ void LoginDialog::saveSet(QList<ClientInfoDialog> &vClientInfo) {
     for(int i =0; i < vClientInfo.size(); ++i) {
         settings.setArrayIndex(i);
         settings.setValue("name", vClientInfo[i]._name);
-        settings.setValue("addr", vClientInfo[i]._addr);
+        settings.setValue("addr", vClientInfo[i]._encodeAddr);
         settings.setValue("passwd", vClientInfo[i]._encodePasswd);
         settings.setValue("encode", vClientInfo[i]._encode.isEmpty() ? "GB18030" : vClientInfo[i]._encode);
         settings.setValue("keypattern", vClientInfo[i]._keyPattern);

@@ -32,7 +32,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>Ok</string>
+        <string>确定</string>
        </property>
       </widget>
      </item>

@@ -137,7 +137,7 @@ void ValueTableItem::clear() {
 void ValueTableItem::sort(int column, Qt::SortOrder order) {
     globalColumn = column;
     if(order == Qt::AscendingOrder)
-        qSort(childItems.begin(),childItems.end(),compareTableItemAsc);
+        std::sort(childItems.begin(),childItems.end(),compareTableItemAsc);
     else
-        qSort(childItems.begin(),childItems.end(),compareTableItemDesc);
+        std::sort(childItems.begin(),childItems.end(),compareTableItemDesc);
 }

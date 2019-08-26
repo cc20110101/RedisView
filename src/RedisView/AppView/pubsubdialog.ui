@@ -54,14 +54,14 @@
        <item>
         <widget class="QPushButton" name="_queryButton">
          <property name="text">
-          <string>Query</string>
+          <string>查询</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="_cancelButton">
          <property name="text">
-          <string>Cancel</string>
+          <string>取消</string>
          </property>
         </widget>
        </item>

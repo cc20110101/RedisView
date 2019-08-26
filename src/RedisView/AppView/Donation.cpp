@@ -23,7 +23,7 @@ Donation::~Donation()
     delete ui;
 }
 
-void Donation::on_pushButton_clicked()
+void Donation::on__donationButton_clicked()
 {
     accept();
 }

@@ -9,7 +9,8 @@
 #ifndef WORKTHREAD_H
 #define WORKTHREAD_H
 
-#include "Public/Define.h"
+#include "Public/DbMgr.h"
+#include "Public/Publib.h"
 
 class WorkThread : public QObject, public QRunnable
 {
@@ -22,17 +23,31 @@ protected:
     void run();
 
 private:
+    bool prepare(int mode = WORK_THREAD_MODE0, int cluster = 0);
+    void destroy(int mode = WORK_THREAD_MODE0);
+    bool cancle(int mode = WORK_THREAD_MODE0);
+    int exportData(std::vector<ImpExpData> &vImpExpData, int taskid);
+    int imporData(int taskid);
+    int deleteData(int taskid);
+
+private:
     int _taskid;
+    int _thread;
+    int _dbindex;
     TaskMsg *_taskMsg;
     TaskMsg _sendMsg;
     RedisClient *_redisClient;
     RedisCluster *_redisClusterClient;
     QString _string;
+    QString _tableName;
+    QString _sql;
     QByteArray _byteArray;
     RespType _respValue;
     qulonglong _cursor;
     qulonglong _count;
     QList<CmdMsg> _cmd;
+    DbMgr _dbMgr;
+    QSqlDatabase *_db;
 
 signals:
     //注意！要使用信号，采用QObejct 和 QRunnable多继承，记得QObject要放在前面
@@ -47,6 +62,10 @@ public slots:
     void doCommitValueWork();
     void doDelKeyWork();
     void doBatchDelKeyWork();
+    void doBatchScanKeyWork();
+    void doBatchExportWork(int taskid);
+    void doBatchDbDeleWork(int taskid);
+    void doBatchImportWork(int taskid);
 };
 
 #endif // WORKTHREAD_H

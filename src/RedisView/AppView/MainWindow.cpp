@@ -42,11 +42,11 @@ void MainWindow::createMenu() {
 
     QAction *viewAct = beginMenu->addAction(tr("查看键值"), this, &MainWindow::keyView);
     viewAct->setStatusTip(tr("视图查看键值..."));
-    beginMenu->addSeparator();
+    //beginMenu->addSeparator();
 
     _runAct = beginMenu->addAction(tr("运行命令"), this, &MainWindow::run);
     _runAct->setStatusTip(tr("运行命令，F8快捷键..."));
-    beginMenu->addSeparator();
+    //beginMenu->addSeparator();
 
     QAction *msgAct = beginMenu->addAction(tr("订阅发布"), this, &MainWindow::subscribe);
     msgAct->setStatusTip(tr("订阅与发布模式..."));
@@ -54,11 +54,11 @@ void MainWindow::createMenu() {
 
     QAction *connectAct = beginMenu->addAction(tr("连接信息"), this, SLOT(connectInfo()));
     connectAct->setStatusTip(tr("查看客户端连接信息..."));
-    beginMenu->addSeparator();
+    //beginMenu->addSeparator();
 
     QAction *refreshConnAct = beginMenu->addAction(tr("刷新连接"), this, SLOT(refreshConnInfo()));
     refreshConnAct->setStatusTip(tr("刷新连接信息..."));
-    beginMenu->addSeparator();
+    //beginMenu->addSeparator();
 
     QAction *conectHostAct = beginMenu->addAction(tr("连接主机"), this, SLOT(connectHost()));
     conectHostAct->setStatusTip(tr("连接主机..."));
@@ -66,7 +66,7 @@ void MainWindow::createMenu() {
 
     QAction *saveAct = beginMenu->addAction(tr("保存窗口"), this, SLOT(writeSettings()));
     saveAct->setStatusTip(tr("保存窗口大小位置信息..."));
-    beginMenu->addSeparator();
+    //beginMenu->addSeparator();
 
     QAction *exitAct = beginMenu->addAction(tr("退出系统"), this, SLOT(exit()));
     exitAct->setStatusTip(tr("退出系统..."));
@@ -77,7 +77,7 @@ void MainWindow::createMenu() {
 
     QAction *batchOperateAct = maintainMenu->addAction(tr("批量操作"), this, &MainWindow::batchOprate);
     batchOperateAct->setStatusTip(tr("批量操作键值..."));
-    maintainMenu->addSeparator();
+    //maintainMenu->addSeparator();
 
     QAction *redisInfoAct = maintainMenu->addAction(tr("实例信息"), this, &MainWindow::redisInfo);
     redisInfoAct->setStatusTip(tr("查看Redis实例信息..."));
@@ -86,16 +86,36 @@ void MainWindow::createMenu() {
     // 设置菜单
     QMenu *setMenu = menuBar()->addMenu(tr("设置"));
 
+
+    QMenu* themeMenu = setMenu->addMenu(tr("设置主题"));
+
+    _nothemeAct = themeMenu->addAction(tr("默认主题"), this, &MainWindow::Notheme);
+    _nothemeAct->setStatusTip(tr("默认不设置主题信息..."));
+
+    _deepdarkthemeAct = themeMenu->addAction(tr("深黑主题"), this, &MainWindow::DeepDarktheme);
+    _deepdarkthemeAct->setStatusTip(tr("设置深黑主题..."));
+
+    _darkthemeAct = themeMenu->addAction(tr("黑色主题"), this, &MainWindow::Darktheme);
+    _darkthemeAct->setStatusTip(tr("设置黑色主题..."));
+
+    _graythemeAct = themeMenu->addAction(tr("灰色主题"), this, &MainWindow::Graytheme);
+    _graythemeAct->setStatusTip(tr("设置灰色主题..."));
+
+    _pinkthemeAct = themeMenu->addAction(tr("粉色主题"), this, &MainWindow::Pinktheme);
+    _pinkthemeAct->setStatusTip(tr("设置粉色主题..."));
+
+
     QMenu* langMenu = setMenu->addMenu(tr("设置语言"));
 
     QAction *lanCnAct = langMenu->addAction(tr("中文"), this, &MainWindow::langCnAction);
     lanCnAct->setStatusTip(tr("设置中文语言..."));
-    langMenu->addSeparator();
+    //langMenu->addSeparator();
 
     QAction *lanEnAct = langMenu->addAction(tr("英文"), this, &MainWindow::langEnAction);
     lanEnAct->setStatusTip(tr("设置英文语言..."));
     langMenu->addSeparator();
-    setMenu->addSeparator();
+
+    //setMenu->addSeparator();
 
     QMenu* encodeMenu = setMenu->addMenu(tr("设置编码"));
 
@@ -266,7 +286,11 @@ void MainWindow::createMenu() {
 
     _windows1258Act = encodeMenu->addAction(tr("Windows-1258"), this, &MainWindow::windows1258Action);
     _windows1258Act->setStatusTip(tr("设置Windows-1258编码..."));
-    setMenu->addSeparator();
+    //setMenu->addSeparator();
+
+    //QAction *fontAct = setMenu->addAction(tr("设置字体"), this, &MainWindow::setFontAction);
+    //fontAct->setStatusTip(tr("设置程序字体..."));
+    //setMenu->addSeparator();
 
 
     // 帮助菜单
@@ -274,7 +298,7 @@ void MainWindow::createMenu() {
 
     QAction *instructionAct = helpMenu->addAction(tr("使用说明"), this, &MainWindow::instruction);
     instructionAct->setStatusTip(tr("使用说明..."));
-    helpMenu->addSeparator();
+    //helpMenu->addSeparator();
 
     QAction *historyAct = helpMenu->addAction(tr("版本历史"), this, &MainWindow::history);
     historyAct->setStatusTip(tr("显示版本历史记录信息..."));
@@ -282,7 +306,6 @@ void MainWindow::createMenu() {
 
     QAction *donateAct = helpMenu->addAction(tr("捐赠作者"), this, &MainWindow::donate);
     donateAct->setStatusTip(tr("捐赠作者..."));
-    helpMenu->addSeparator();
 
     QAction *contributorAct = helpMenu->addAction(tr("特别鸣谢"), this, &MainWindow::contribute);
     contributorAct->setStatusTip(tr("鸣谢贡献者信息..."));
@@ -290,11 +313,11 @@ void MainWindow::createMenu() {
 
     QAction *feedbackAct = helpMenu->addAction(tr("我要反馈"), this, &MainWindow::feedback);
     feedbackAct->setStatusTip(tr("反馈BUG或提交建议..."));
-    helpMenu->addSeparator();
+    //helpMenu->addSeparator();
 
     QAction *updateAct = helpMenu->addAction(tr("检查更新"), this, &MainWindow::updatesys);
     updateAct->setStatusTip(tr("检查是否有新版本..."));
-    helpMenu->addSeparator();
+    //helpMenu->addSeparator();
 
     QAction *aboutAct = helpMenu->addAction(tr("关于系统"), this, &MainWindow::about);
     aboutAct->setStatusTip(tr("显示系统信息..."));
@@ -303,29 +326,29 @@ void MainWindow::createMenu() {
 
     /* 设置工具条 */
     QToolBar *toolBar = addToolBar("MyToolBar");
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(_runAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(viewAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(msgAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(connectAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(refreshConnAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(batchOperateAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(redisInfoAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(donateAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(contributorAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(aboutAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
     toolBar->addAction(exitAct);
-    toolBar->addSeparator();
+    //toolBar->addSeparator();
 
     //设置图标
     _runAct->setIcon(QIcon(ICON_RUN));
@@ -339,6 +362,7 @@ void MainWindow::createMenu() {
     exitAct->setIcon(QIcon(ICON_EXIT));
     donateAct->setIcon(QIcon(ICON_DONATE));
     contributorAct->setIcon(QIcon(ICON_CONTRIBUTOR));
+    themeMenu->setIcon(QIcon(ICON_CONTRIBUTOR));
     batchOperateAct->setIcon(QIcon(ICON_BATCHOP));
     redisInfoAct->setIcon(QIcon(ICON_REDISINFO));
     langMenu->setIcon(QIcon(ICON_LANGUAGE));
@@ -366,6 +390,7 @@ void MainWindow::createMenu() {
     // 关闭标志
     _exitFlag = false;
     setEncodeIcon();
+    setThemeIcon();
 }
 
 void MainWindow::slotActivated(QSystemTrayIcon::ActivationReason reason) {
@@ -441,6 +466,70 @@ void MainWindow::contribute() {
     contributor.exec();
 }
 
+void MainWindow::Darktheme() {
+    clearThemeIcon();
+    setTheme(DARK_THEME);
+    setThemeIcon();
+}
+
+void MainWindow::DeepDarktheme() {
+    clearThemeIcon();
+    setTheme(DEEPDARK_THEME);
+    setThemeIcon();
+}
+
+void MainWindow::Notheme() {
+    clearThemeIcon();
+    setTheme(NO_THEME);
+    setThemeIcon();
+}
+
+void MainWindow::Graytheme() {
+    clearThemeIcon();
+    setTheme(GRAY_THEME);
+    setThemeIcon();
+}
+
+void MainWindow::Pinktheme() {
+    clearThemeIcon();
+    setTheme(PINK_THEME);
+    setThemeIcon();
+}
+
+void MainWindow::setTheme(QString theme) {
+    PubLib::setConfig("Theme",theme);
+    Global::gTheme = theme;
+    QMessageBox::about(this, tr("提示"), tr("主题设置成功，重启生效!"));
+}
+
+void MainWindow::setThemeIcon() {
+    if(Global::gTheme == DARK_THEME) {
+        _darkthemeAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gTheme == GRAY_THEME) {
+        _graythemeAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gTheme == PINK_THEME) {
+        _pinkthemeAct->setIcon(QIcon(ICON_SELECT));
+    } else if(Global::gTheme == DEEPDARK_THEME) {
+        _deepdarkthemeAct->setIcon(QIcon(ICON_SELECT));
+    } else {
+        _nothemeAct->setIcon(QIcon(ICON_SELECT));
+    }
+}
+
+void MainWindow::clearThemeIcon() {
+    if(Global::gTheme == DARK_THEME) {
+        _darkthemeAct->setIcon(QIcon());
+    } else if(Global::gTheme == GRAY_THEME) {
+        _graythemeAct->setIcon(QIcon());
+    } else if(Global::gTheme == PINK_THEME) {
+        _pinkthemeAct->setIcon(QIcon());
+    } else if(Global::gTheme == DEEPDARK_THEME) {
+        _deepdarkthemeAct->setIcon(QIcon());
+    } else {
+        _nothemeAct->setIcon(QIcon());
+    }
+}
+
 void MainWindow::createSlot() {
     connect(_mainWidget, SIGNAL(runEnd(bool)) , this, SLOT(runEnd(bool)));
     connect(_mainWidget, &MainWidget::runStart , this, &MainWindow::runStart);
@@ -460,6 +549,14 @@ void MainWindow::run()
 void MainWindow::runStart()
 {
     runEnd(false);
+}
+
+void MainWindow::setFontAction() {
+    bool isok;
+    QFont qf = QFontDialog::getFont(
+                &isok, QFont("Courier New", 10), this, tr("选择字体"));
+    if(isok)
+        qApp->setFont(qf);
 }
 
 void MainWindow::instruction() {
@@ -552,20 +649,12 @@ void MainWindow::feedback() {
 }
 
 void MainWindow::langCnAction() {
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    //settings.setPath(QSettings::IniFormat, QSettings::SystemScope, sPath);
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("language", "cn");
+    PubLib::setConfig("language", "cn");
     QMessageBox::about(this, tr("提示"), tr("语言设置成功，重启生效!"));
 }
 
 void MainWindow::langEnAction() {
-    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
-    //settings.setPath(QSettings::IniFormat, QSettings::SystemScope, sPath);
-    QSettings settings(sPath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-    settings.setValue("language", "en");
+    PubLib::setConfig("language", "en");
     QMessageBox::about(this, tr("提示"), tr("语言设置成功，重启生效!"));
 }
 
@@ -574,10 +663,10 @@ void MainWindow::readSettings() {
     //settings.setPath(QSettings::IniFormat, QSettings::SystemScope, sPath);
     QSettings settings(sPath, QSettings::IniFormat);
     settings.setIniCodec("UTF-8");
-    const QByteArray geometry = settings.value("geometry",
-                                               QByteArray()).toByteArray();
+    const QByteArray geometry = settings.value("geometry", QByteArray()).toByteArray();
     if(geometry.isEmpty()) {
         this->showMaximized();
+        settings.setValue("geometry", saveGeometry());
     } else {
         restoreGeometry(geometry);
     }
@@ -602,7 +691,7 @@ void MainWindow::setEncode(QString encode) {
     for(int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
-        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._encodeAddr = settings.value("addr").toByteArray();
         clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
@@ -615,7 +704,7 @@ void MainWindow::setEncode(QString encode) {
     for(int j =0; j < vClientInfo.size(); ++j) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
-        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("addr", vClientInfo[j]._encodeAddr);
         settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         if(_redisClient->getConnectName() == vClientInfo[j]._name)
             settings.setValue("encode", encode);
@@ -1203,10 +1292,10 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：王长春<br>"
-                           "版本 ：Community v1.6.7<br>"
+                           "版本 ：Community v1.7.0<br>"
                            "邮箱 ：cc20110101@126.com<br>"
-                           "地址 ：<a href='https://sourceforge.net/projects/redisview/'>sourceforge</a> <a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a><br>"
-                           "版权 ：Copyright 2018 Powered By CC<br>"
+                           "地址 ：<a href='https://github.com/cc20110101/RedisView'>github</a> <a href='https://www.oschina.net/p/RedisView'>oschina</a> <a href='https://sourceforge.net/projects/redisview/'>sourceforge</a><br>"
+                           "版权 ：Copyright 2019 Powered By CC<br>"
                            )
                        );
 }
@@ -1214,6 +1303,7 @@ void MainWindow::about() {
 void MainWindow::history() {
     QMessageBox::about(this, tr("版本历史"),
                        tr(
+                           "<br>2019/06/26&nbsp;&nbsp;Version 1.7.0&nbsp;&nbsp;新增主题设置和数据库导入导出.<br>"
                            "<br>2019/06/01&nbsp;&nbsp;Version 1.6.7&nbsp;&nbsp;密码AES加密存储.<br>"
                            "<br>2019/05/30&nbsp;&nbsp;Version 1.6.6&nbsp;&nbsp;新增集群信息查看分析功能.<br>"
                            "<br>2019/05/08&nbsp;&nbsp;Version 1.6.5&nbsp;&nbsp;修复设置含空格值失败Bug.<br>"

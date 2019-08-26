@@ -123,9 +123,9 @@ bool KeyTreeItem::setData(int column, const QVariant &value)
 
 void KeyTreeItem::sort(Qt::SortOrder order) {
     if(order == Qt::AscendingOrder)
-        qSort(childItems.begin(),childItems.end(),compareTreeItemAsc);
+        std::sort(childItems.begin(),childItems.end(),compareTreeItemAsc);
     else
-        qSort(childItems.begin(),childItems.end(),compareTreeItemDesc);
+        std::sort(childItems.begin(),childItems.end(),compareTreeItemDesc);
 }
 
 void KeyDbTreeItem::setIconId(const qint8 &value)

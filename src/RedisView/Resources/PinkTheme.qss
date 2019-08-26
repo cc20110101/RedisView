@@ -1,0 +1,230 @@
+QWidget {	
+  background: #FFF8DC;	
+  font-family: "Segoe UI";
+}
+
+QToolBar {
+    background-color: #FFF8DC;
+}
+
+QDialog, QFileDialog {
+    background-color: #FFF8DC;
+}
+
+QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid #FFF8DC;
+}
+
+QMainWindow::title {
+  border-color: #FFF8DC;
+  background-color: #FFF8DC;	
+}
+
+QMenu::item:selected {
+    border-color: #68C5E9;
+    background: #EEE8AA;
+}
+
+QTabWidget::tab-bar {
+    left: 5px; /* move to the right by 5px */
+}
+
+QTabBar, QTabWidget {
+    background-color: beige;
+}
+
+
+QTabBar::tab {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+     border: 1px solid darkkhaki;
+     border-bottom-color: #C2C7CB; /* same as the pane color */
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 2px;
+ }
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C2C7CB; /* same as pane color */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; /* make non-selected tabs look smaller */
+}
+
+/* Nice Windows-XP-style password character. */
+QLineEdit[echoMode="2"] {
+    lineedit-password-character: 9679;
+}
+
+QHeaderView::section {
+     background-color: #FFF8DC;
+     color: #000000;
+     padding-left: 1px;
+     border: 0px solid #6c6c6c;
+ }
+
+QTableView QHeaderView::section {
+  background-color: #EEE8AA;
+  color: #000000;
+  border: 0px;
+ }
+
+ QHeaderView::section:checked
+ {
+  background-color: #F8A1A4;
+  color: #FFFFFF;
+ }
+
+
+/* We provide a min-width and min-height for push buttons
+   so that they look elegant regardless of the width of the text. */
+QPushButton {
+    background-color: palegoldenrod;
+    border-width: 2px;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 5;
+    padding: 3px;
+    min-width: 13ex;
+    min-height: 3ex;
+}
+
+QPushButton:hover {
+   background-color: khaki;
+}
+
+/* Increase the padding, so the text is shifted when the button is
+   pressed. */
+QPushButton:pressed {
+    padding-left: 3px;
+    padding-top: 3px;
+    background-color: #d0d67c;
+}
+
+QLabel, QAbstractButton {
+    font: bold;
+}
+
+/* Mark mandatory fields with a brownish color. */
+.mandatory {
+    color: brown;
+}
+
+/* Bold text on status bar looks awful. */
+QStatusBar QLabel {
+   font: normal;
+}
+
+QStatusBar::item {
+    border-width: 1;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 2;
+}
+
+QStackedWidget, QComboBox, QLineEdit, QSpinBox, QListView, QWebView, QTreeView, QHeaderView {
+  background-color: cornsilk;
+  selection-color: #0a214c; 
+  selection-background-color: #C19A6B;
+}
+
+QLineEdit {
+  background-color: #EEE8AA;	
+}
+
+QLineEdit:disabled {
+ background-color: #FFF8DC;	
+}
+
+QTextBrowser {
+  background-color: #FFF8DC;	
+}
+
+QListView {
+  show-decoration-selected: 1;
+}
+
+QListView::item:hover {
+  background-color: wheat;
+}
+
+/* We reserve 1 pixel space in padding. When we get the focus,
+   we kill the padding and enlarge the border. This makes the items
+   glow. */
+QLineEdit, QFrame {
+    border-width: 1px;
+    padding: 1px;
+    border-style: solid;
+    border-color: darkkhaki;
+    border-radius: 3px;
+}
+
+/* As mentioned above, eliminate the padding and increase the border. */
+QLineEdit:focus, QFrame:focus {
+    border-width: 3px;
+    padding: 0px;
+}
+
+/* A QLabel is a QFrame  */
+QLabel {
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+/* A QToolTip is a QLabel  */
+QToolTip {
+    border: 0px solid darkkhaki;
+    padding: 0px;
+}
+
+/* Nice to have the background color change when hovered. */
+QRadioButton:hover, QCheckBox:hover {
+    background-color: wheat;
+}
+
+/* Force the dialog's buttons to follow the Windows guidelines. */
+QDialogButtonBox {
+    button-layout: 0;
+}
+
+QPushButton#_subscribeButton, QPushButton#_unSubcribeButton {
+    min-width: 90px;
+}
+
+QTextEdit {
+  background-color: #EEE8AA;
+}
+
+#_plainTextEdit, #_publishPlainTextEdit,#_inputTextEdit,#te_infomation {
+  background-color: #EEE8AA;	
+}
+
+QProgressBar {
+  border: 2px solid #EEE8AA;
+  background-color: #EEE8AA;
+  text-align: center;		
+}
+
+QProgressBar::chunk {
+  background-color: #F8A1A4;		
+}
+
+/* === QTableView === */
+QTableView QTableCornerButton::section {
+  background-color: #EEE8AA;	
+}
+
+QAbstractItemView {
+  background-color: #EEE8AA;
+}

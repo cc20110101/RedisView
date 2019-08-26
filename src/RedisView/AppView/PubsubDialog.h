@@ -28,7 +28,7 @@ private slots:
 
     void on__queryButton_clicked();
 
-    void on__comboBox_currentIndexChanged(const QString &arg1);
+    void on__comboBox_currentTextChanged(const QString &arg1);
 
 private:
     Ui::PubsubDialog *ui;

@@ -20,26 +20,26 @@ KeyDialog::KeyDialog(QWidget *parent) :
     _combType = new QComboBox();
 
     _textEdit = new QTextEdit();
-    _buttonOk= new QPushButton("OK");
-    _buttonNo = new QPushButton("Cancle");
+    _buttonOk= new QPushButton(tr("确定"));
+    _buttonNo = new QPushButton(tr("取消"));
 
     _grid = new QGridLayout(this);
     _grid->addWidget(_labelKey,0,0,1,1);
-    _grid->addWidget(_editKey,0,1,1,4);
-    _grid->addWidget(_labelTtl,0,6,1,1);
-    _grid->addWidget(_editTtl,0,7,1,4);
+    _grid->addWidget(_editKey,0,1,1,9);
+    _grid->addWidget(_labelTtl,0,11,1,1);
+    _grid->addWidget(_editTtl,0,12,1,5);
     _grid->addWidget(_labelType,1,0,1,1);
-    _grid->addWidget(_combType,1,1,1,4);
-    _grid->addWidget(_textEdit,2,0,3,11);
-    _grid->addWidget(_buttonOk,5,7,1,2);
-    _grid->addWidget(_buttonNo,5,9,1,2);
+    _grid->addWidget(_combType,1,1,1,9);
+    _grid->addWidget(_textEdit,2,0,3,17);
+    _grid->addWidget(_buttonOk,5,13,1,2);
+    _grid->addWidget(_buttonNo,5,15,1,2);
 
     _combType->addItem("String");
     _combType->addItem("Hash");
     _combType->addItem("Set");
     _combType->addItem("ZSet");
     _combType->addItem("List");
-    _editTtl->setPlaceholderText(tr("空不修改，负数为永久..."));
+    _editTtl->setPlaceholderText(tr("空不修改，负为永久"));
 
     connect(_buttonOk, SIGNAL(clicked()), this, SLOT(onOK()));
     connect(_buttonNo, SIGNAL(clicked()), this, SLOT(onExit()));

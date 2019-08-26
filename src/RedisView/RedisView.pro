@@ -1,11 +1,14 @@
 SOURCES += \
     AppView/AppMain.cpp \
+    AppView/CheckCodeDialog.cpp \
     AppView/ContributorDialog.cpp \
+    AppView/DbCfgdialog.cpp \
     AppView/FeedBack.cpp \
     AppView/MainWindow.cpp \
     AppView/RedisInfoDialog.cpp \
     AppView/UpdateSystem.cpp \
     Public/AesEncrypt.cpp \
+    Public/DbMgr.cpp \
     Public/Define.cpp \
     Public/QaesEncryption.cpp \
     RedisLib/RedisClient.cpp \
@@ -34,12 +37,15 @@ SOURCES += \
 
 
 HEADERS += \
+    AppView/CheckCodeDialog.h \
     AppView/ContributorDialog.h \
+    AppView/DbCfgdialog.h \
     AppView/FeedBack.h \
     AppView/MainWindow.h \
     AppView/RedisInfoDialog.h \
     AppView/UpdateSystem.h \
     Public/AesEncrypt.h \
+    Public/DbMgr.h \
     Public/Define.h \
     Public/QaesEncryption.h \
     RedisLib/RedisClient.h \
@@ -72,13 +78,14 @@ TARGET = RedisView
 
 RESOURCES += icon.qrc
 
-QT += gui widgets core network
+QT += gui widgets core network sql
 
 RC_ICONS = Resources/tray.ico
 
 CONFIG += C++11
 
 FORMS += \
+    AppView/checkcodedialog.ui \
     AppView/contributordialog.ui \
     AppView/mainwidget.ui \
     AppView/dataview.ui \

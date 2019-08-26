@@ -24,7 +24,7 @@ public:
     ~Donation();
 
 private slots:
-    void on_pushButton_clicked();
+    void on__donationButton_clicked();
 
 private:
     Ui::Donation *ui;

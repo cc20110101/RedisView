@@ -57,14 +57,14 @@ DataView::DataView(QWidget *parent) :
     _leftVlayout = new QVBoxLayout();
     _leftVlayout->addWidget(_tableView);
 
-    _bodyAddButton = new QPushButton("Insert");
-    _bodyDelButton = new QPushButton("Delete");
-    _bodyRefreshButton = new QPushButton("Refresh");
-    _bodyOkButton = new QPushButton("Submit");
-    _bodyAddHeadButton = new QPushButton("InsertHead");
-    _bodyAddTailButton = new QPushButton("InsertTail");
-    _bodyDelHeadButton = new QPushButton("DeleteHead");
-    _bodyDelTailButton = new QPushButton("DeleteTail");
+    _bodyAddButton = new QPushButton(tr("插入"));  //Insert
+    _bodyDelButton = new QPushButton(tr("删除"));  //Delete
+    _bodyRefreshButton = new QPushButton(tr("刷新")); //Refresh
+    _bodyOkButton = new QPushButton(tr("提交")); //Submit
+    _bodyAddHeadButton = new QPushButton(tr("链头插入")); //InsertHead
+    _bodyAddTailButton = new QPushButton(tr("链尾插入")); //InsertTail
+    _bodyDelHeadButton = new QPushButton(tr("删除链头")); //DeleteHead
+    _bodyDelTailButton = new QPushButton(tr("删除链尾")); //DeleteTail
     _bodyAddHeadButton->setVisible(false);
     _bodyAddTailButton->setVisible(false);
     _bodyDelHeadButton->setVisible(false);
@@ -89,7 +89,7 @@ DataView::DataView(QWidget *parent) :
     _valueScanPattern->setText(getValuePattern());
 
     _searchHLayout = new QHBoxLayout();
-    _searchHLayout->addWidget(new QLabel("Init Pattern:"),1);
+    _searchHLayout->addWidget(new QLabel(tr("扫描模式:")),1);
     _searchHLayout->addWidget(_valueScanPattern,4);
     _searchHLayout->addStretch(16);
 
@@ -106,15 +106,15 @@ DataView::DataView(QWidget *parent) :
     _vCmdMsg.clear();
     _recvEnd = false;
     _inputDialog = new InputDialog(this);
-    _countAc = new QAction(QIcon(ICON_COUNT), tr("条数统计"));
+    _countAc = new QAction(QIcon(ICON_COUNT), tr("统计条数"));
     _resetAc = new QAction(QIcon(ICON_FLUSH), tr("刷新重置"));
     _addAc = new QAction(QIcon(ICON_ADD), tr("插入数据"));
     _delAc = new QAction(QIcon(ICON_DEL), tr("删除数据"));
     _commitAc = new QAction(QIcon(ICON_COMMIT), tr("提交操作"));
     _inheadAc = new QAction(QIcon(ICON_IHEAD), tr("链头插入"));
     _intailAc = new QAction(QIcon(ICON_ITAIL), tr("链尾插入"));
-    _delheadAc = new QAction(QIcon(ICON_DHEAD), tr("链头删除"));
-    _deltailAc = new QAction(QIcon(ICON_DTAIL), tr("链尾删除"));
+    _delheadAc = new QAction(QIcon(ICON_DHEAD), tr("删除链头"));
+    _deltailAc = new QAction(QIcon(ICON_DTAIL), tr("删除链尾"));
     _inheadAc->setVisible(false);
     _intailAc->setVisible(false);
     _delheadAc->setVisible(false);
@@ -707,7 +707,7 @@ void DataView::setValuePattern(QString valuePattern) {
     for(int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
         clientInfo._name = settings.value("name").toString().trimmed();
-        clientInfo._addr = settings.value("addr").toString().trimmed();
+        clientInfo._encodeAddr = settings.value("addr").toByteArray();
         clientInfo._encodePasswd = settings.value("passwd").toByteArray();
         clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
         clientInfo._keyPattern = settings.value("keypattern","").toString();
@@ -720,7 +720,7 @@ void DataView::setValuePattern(QString valuePattern) {
     for(int j =0; j < vClientInfo.size(); ++j) {
         settings.setArrayIndex(j);
         settings.setValue("name", vClientInfo[j]._name);
-        settings.setValue("addr", vClientInfo[j]._addr);
+        settings.setValue("addr", vClientInfo[j]._encodeAddr);
         settings.setValue("passwd", vClientInfo[j]._encodePasswd);
         settings.setValue("encode", vClientInfo[j]._encode);
         settings.setValue("keypattern", vClientInfo[j]._keyPattern);

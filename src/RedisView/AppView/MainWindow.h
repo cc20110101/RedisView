@@ -16,9 +16,9 @@
 #include "AppView/BatchOperateDialog.h"
 #include "AppView/RedisInfoDialog.h"
 #include "AppView/LoginDialog.h"
-#include "AppView/ContributorDialog.h"
 #include "AppView/FeedBack.h"
 #include "AppView/UpdateSystem.h"
+#include "AppView/ContributorDialog.h"
 
 // 主窗口
 class MainWindow : public QMainWindow {
@@ -39,6 +39,12 @@ private:
     QAction *_runAct;
     RedisCluster *_redisClient;
     QSystemTrayIcon *_sysTrayIcon;
+
+    QAction *_nothemeAct;
+    QAction *_deepdarkthemeAct;
+    QAction *_darkthemeAct;
+    QAction *_graythemeAct;
+    QAction *_pinkthemeAct;
 
     QAction *_big5Act;
     QAction *_big5HkscsAct;
@@ -118,9 +124,17 @@ private:
     void clearEncodeIcon();
     // 反馈信息
     void feedback();
+    // 设置主题
+    void setTheme(QString theme);
+    // 设置主题图标
+    void setThemeIcon();
+    // 清理主题图标
+    void clearThemeIcon();
 
 private slots:
 
+    // 设置字体
+    void setFontAction();
     // 使用说明
     void instruction();
     // 关于系统
@@ -141,6 +155,16 @@ private slots:
     void donate();
     // 贡献者
     void contribute();
+    // 默认主题
+    void Notheme();
+    // 黑色主题
+    void Darktheme();
+    // 灰色主题
+    void Graytheme();
+    // 粉色主题
+    void Pinktheme();
+    // 深黑主题
+    void DeepDarktheme();
     // 删除键值
     void batchOprate();
     // Redis实例信息

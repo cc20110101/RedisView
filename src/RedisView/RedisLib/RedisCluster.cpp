@@ -1153,7 +1153,7 @@ bool RedisCluster::openCluster(const QString &hostAddress,
     }
 
     // 按_startSlot升序排序
-    qSort(_vClusterMasterClients.begin(),_vClusterMasterClients.end(),
+    std::sort(_vClusterMasterClients.begin(),_vClusterMasterClients.end(),
           [](const ClusterClient &infoA,const ClusterClient &infoB) {
         return infoA._startSlot < infoB._startSlot;
     });

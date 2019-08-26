@@ -1,0 +1,139 @@
+.QWidget {
+  background: #F2F2F2;	
+}
+
+QWidget:window {
+  background: #F2F2F2;
+  color: #000000;
+}
+
+
+QTreeWidget {
+  background: #F2F2F2;
+  color: #000000;
+}
+
+QTreeView {	
+  background: #F2F2F2;
+  color: #000000;	
+}
+
+QTabWidget {
+  background: #F2F2F2;
+  color: #000000;
+}
+
+QTableView {
+  background: #DBDBDB;
+  color: #000000;	
+}
+
+QPlainTextEdit {
+  background: #F2F2F2;
+  color: #000000;		
+}
+
+QTextBrowser {	
+  background: #F2F2F2;
+  color: #000000;	
+}
+
+QDialog {	
+  background: #F2F2F2;
+  color: #000000;		
+}
+
+QTextEdit {
+  background: #F2F2F2;
+  color: #000000;		
+}
+
+QProgressBar {
+  border: 1px solid grey;
+  text-align: center;	
+}
+
+QProgressBar::chunk {
+  background-color: #53C23C;
+  width: 20px;		
+}
+
+QCheckBox {	
+  background-color: #F5F5F5;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    border-left: 1px solid #DBDBDB;
+}
+
+QComboBox::down-arrow {
+    border: 2px solid #DBDBDB;
+    width: 6px;
+    height: 6px;
+    background: #C0C0C0;
+}
+
+QComboBox:item {
+  background: #F2F2F2;
+  color: #F2F2F2;	
+}
+
+QRadioButton:hover, QCheckBox:hover {
+  background-color: wheat;
+}
+
+QHeaderView::section {
+  background-color: #F5F5F5;
+  color: #000000;
+  border: 0px;
+ }
+
+QTableView QAbstractButton {
+  background-color: #DBDBDB;
+  border:1px solid #F2F2F2;
+}
+
+QTableView QTableCornerButton::section {
+  background-color: #DBDBDB;
+  border:1px;	
+}
+
+QTableView QHeaderView {
+  background-color: #DBDBDB;
+  border:1px solid #F2F2F2;	
+}
+
+QTableView QHeaderView::section {
+  background-color: #DBDBDB;
+  color: #000000;
+  border: 0px;
+}
+
+QTableView QHeaderView::selected {
+  background-color: #DBDBDB;
+  color: #000000;
+  border: 0px;
+}
+
+QTabBar::tab:selected {
+    background-color: #DBDBDB;
+}
+
+#Donation * {
+  background: #F2F2F2;	
+}
+
+#_donationButton {
+  background: #F2F2F2;
+  color: #000000;	
+}
+
+.QTextEdit {
+  background-color: #FFFFFF;
+}
+
+#_plainTextEdit, #_publishPlainTextEdit,#_inputTextEdit,#te_infomation {
+  background-color: #FFFFFF;	
+}

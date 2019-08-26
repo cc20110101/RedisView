@@ -1440,19 +1440,19 @@ bool RedisClient::pttl(const QString & key, qlonglong & mseconds) {
 
 int RedisClient::GetDataType(QByteArray &type) {
     if ("string" == type)
-        return 1;
+        return KeyType::STRING;
     else if ("list" == type)
-        return 2;
+        return KeyType::LIST;
     else if ("set" == type)
-        return 3;
+        return KeyType::SET;
     else if ("zset" == type)
-        return 4;
+        return KeyType::ZSET;
     else if ("hash" == type)
-        return 5;
+        return KeyType::HASH;
     else if ("none" == type)
-        return 0;
+        return KeyType::NONE;
     else
-        return 0;
+        return KeyType::NONE;
 }
 
 /**

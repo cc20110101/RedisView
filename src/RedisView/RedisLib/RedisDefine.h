@@ -31,6 +31,8 @@
 
 class RedisClient;
 
+enum KeyType {NONE = 0,STRING, LIST, SET, ZSET, HASH};
+
 class RespType {
 public:
 

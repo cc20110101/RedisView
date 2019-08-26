@@ -47,5 +47,9 @@
         <file>Resources/redisinfo.ico</file>
         <file>Resources/feedback.ico</file>
         <file>Resources/update.ico</file>
+        <file>Resources/DarkTheme.qss</file>
+        <file>Resources/GrayTheme.qss</file>
+        <file>Resources/DeepDarkTheme.qss</file>
+        <file>Resources/PinkTheme.qss</file>
     </qresource>
 </RCC>
