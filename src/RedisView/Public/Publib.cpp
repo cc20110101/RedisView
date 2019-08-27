@@ -8,7 +8,7 @@
 */
 #include "Public/Publib.h"
 
-int64_t PubLib::_sequenceId = 0;
+qlonglong PubLib::_sequenceId = 0;
 
 void PubLib::log(QString info) {
     QMutexLocker locker(&G_PUBLIC_LIB_MUTEX);
@@ -26,12 +26,12 @@ void PubLib::log(QString info) {
     file.close();
 }
 
-void PubLib::setSequenceId(int64_t sequenceId) {
+void PubLib::setSequenceId(qlonglong sequenceId) {
     QMutexLocker locker(&G_SEQUENCE_MUTEX);
     _sequenceId = sequenceId;
 }
 
-int64_t PubLib::getSequenceId() {
+qlonglong PubLib::getSequenceId() {
     QMutexLocker locker(&G_SEQUENCE_MUTEX);
     ++ _sequenceId;
     return _sequenceId;

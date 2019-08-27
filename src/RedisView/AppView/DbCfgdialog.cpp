@@ -6,7 +6,7 @@
 * @version   001
 * @copyright Copyright (c) 2018
 */
-#include "DbCfgDialog.h"
+#include "AppView/DbCfgdialog.h"
 
 DbCfgDialog::DbCfgDialog(int dbtype, QWidget *parent) :
     QDialog(parent) {

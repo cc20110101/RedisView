@@ -19,8 +19,8 @@ public:
     static QString getConfig(const QString & key, const QString &defaultValue = "");
     static void setConfigB(const QString & key, const bool & value);
     static bool getConfigB(const QString & key, const bool &defaultValue = false);
-    static void setSequenceId(int64_t sequenceId);
-    static int64_t getSequenceId();
+    static void setSequenceId(qlonglong sequenceId);
+    static qlonglong getSequenceId();
     static void log(QString info);
     static QStringList getMacAddr();
     static QString getCpuId();
@@ -32,7 +32,7 @@ public:
 private:
     static void _getcpuid(unsigned int CPUInfo[4], unsigned int InfoType);
     static void _getcpuidex(unsigned int CPUInfo[4], unsigned int InfoType, unsigned int ECXValue);
-    static int64_t _sequenceId;
+    static qlonglong _sequenceId;
 };
 
 #endif // PUBLIB_H

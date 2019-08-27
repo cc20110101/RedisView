@@ -506,15 +506,15 @@ int WorkThread::exportData(std::vector<ImpExpData> &vImpExpData, int taskid)
     sql_query.prepare(_sql);
     QVariantList v0, v1, v2, v3, v4, v5, v6, v7, v8;
     for(std::size_t i = 0; i < vImpExpData.size(); ++i) {
-        v0 << PubLib::getSequenceId() ;
-        v1 << vImpExpData[i].iState;
-        v2 << vImpExpData[i].lWeight;
-        v3 << vImpExpData[i].lTimeOut;
-        v4 << vImpExpData[i].sKey;
-        v5 << vImpExpData[i].sKeyType;
-        v6 << vImpExpData[i].sFiled;
-        v7 << vImpExpData[i].sValue;
-        v8 << vImpExpData[i].sExpDate;
+        v0 << QVariant(PubLib::getSequenceId()) ;
+        v1 << QVariant(vImpExpData[i].iState);
+        v2 << QVariant(vImpExpData[i].lWeight);
+        v3 << QVariant(vImpExpData[i].lTimeOut);
+        v4 << QVariant(vImpExpData[i].sKey);
+        v5 << QVariant(vImpExpData[i].sKeyType);
+        v6 << QVariant(vImpExpData[i].sFiled);
+        v7 << QVariant(vImpExpData[i].sValue);
+        v8 << QVariant(vImpExpData[i].sExpDate);
     }
     sql_query.addBindValue(v0);
     sql_query.addBindValue(v1);
