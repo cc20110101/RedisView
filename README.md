@@ -4,13 +4,14 @@ RedisView is a redis cross-platform gui tool, provides simple add, delete, alter
 
 Function:
 -------
-1.Redis database view tool, providing CURD functionality<br>
-2.provide basic command operation<br>
-3.support singleton and replication and cluster model<br>
-4.suppport subscribe and publish mode<br>
-5.support batch delete<br>
-6.Support tens of millions of orders of magnitude, fast speed<br>
-7.Support set language and encoding<br>
+1.RedisView implements open source, cross-platform and high performance Redis interface tools through self-written RESP protocol parsing, self-written tree model and thread pool<br>
+2.Redis database view tool, providing CURD functionality<br>
+3.provide basic command operation<br>
+4.support singleton and replication and cluster model<br>
+5.suppport subscribe and publish mode<br>
+6.support batch delete<br>
+7.Supporting one-time access to tens of millions of levels of data, key mode scanning to support billions of levels of database, telecom operator level cache measurement<br>
+8.Support set language and encoding<br>
 
 <br>
 
