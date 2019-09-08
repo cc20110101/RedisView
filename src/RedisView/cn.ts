@@ -214,22 +214,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="9"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="17"/>
         <source>注册</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="10"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="18"/>
         <source>软件码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="12"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="20"/>
         <source>请输入注册码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="34"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="42"/>
         <source>注册失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1916,7 +1916,7 @@
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="303"/>
-        <location filename="AppView/MainWindow.cpp" line="1303"/>
+        <location filename="AppView/MainWindow.cpp" line="1304"/>
         <source>版本历史</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2046,28 +2046,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="680"/>
+        <location filename="AppView/MainWindow.cpp" line="681"/>
         <source>保存信息</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="680"/>
+        <location filename="AppView/MainWindow.cpp" line="681"/>
         <source>成功保存窗口大小与位置信息！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1289"/>
+        <location filename="AppView/MainWindow.cpp" line="1290"/>
         <source>关于</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1290"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
-        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Professional v1.0.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;github&lt;/a&gt; &lt;a href=&apos;https://www.oschina.net/p/RedisView&apos;&gt;oschina&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;sourceforge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</oldsource>
+        <location filename="AppView/MainWindow.cpp" line="1291"/>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn&apos;&gt;RedisView&lt;/a&gt;&lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1304"/>
+        <location filename="AppView/MainWindow.cpp" line="1305"/>
         <source>&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
