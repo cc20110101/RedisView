@@ -96,7 +96,7 @@ QPushButton {
     border-radius: 5;
     padding: 3px;
     min-width: 13ex;
-    min-height: 3ex;
+    min-height: 5ex;
 }
 
 QPushButton:hover {
@@ -198,8 +198,12 @@ QDialogButtonBox {
     button-layout: 0;
 }
 
-QPushButton#_subscribeButton, QPushButton#_unSubcribeButton {
-    min-width: 90px;
+QPushButton#_subscribeButton {
+    min-width: 100px;
+}
+
+QPushButton#_unSubcribeButton {
+    min-width: 120px;
 }
 
 QTextEdit {

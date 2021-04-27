@@ -506,15 +506,15 @@ int WorkThread::exportData(std::vector<ImpExpData> &vImpExpData, int taskid)
     sql_query.prepare(_sql);
     QVariantList v0, v1, v2, v3, v4, v5, v6, v7, v8;
     for(std::size_t i = 0; i < vImpExpData.size(); ++i) {
-        v0 << QVariant(PubLib::getSequenceId()) ;
-        v1 << QVariant(vImpExpData[i].iState);
-        v2 << QVariant(vImpExpData[i].lWeight);
-        v3 << QVariant(vImpExpData[i].lTimeOut);
-        v4 << QVariant(vImpExpData[i].sKey);
-        v5 << QVariant(vImpExpData[i].sKeyType);
-        v6 << QVariant(vImpExpData[i].sFiled);
-        v7 << QVariant(vImpExpData[i].sValue);
-        v8 << QVariant(vImpExpData[i].sExpDate);
+        v0 << PubLib::getSequenceId() ;
+        v1 << vImpExpData[i].iState;
+        v2 << vImpExpData[i].lWeight;
+        v3 << vImpExpData[i].lTimeOut;
+        v4 << vImpExpData[i].sKey;
+        v5 << vImpExpData[i].sKeyType;
+        v6 << vImpExpData[i].sFiled;
+        v7 << vImpExpData[i].sValue;
+        v8 << vImpExpData[i].sExpDate;
     }
     sql_query.addBindValue(v0);
     sql_query.addBindValue(v1);
@@ -571,7 +571,7 @@ void WorkThread::doValueListWork() {
     _sendMsg = *_taskMsg;
     _sendMsg._list.clear();
     _sendMsg._respResult.init();
-    if(_taskMsg->_type == "hash") {
+    if(_taskMsg->_type == KEY_HASH) {
         do {
             if(_redisClient->hscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor, BATCH_SCAN_NUM)) {
                 _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
@@ -583,7 +583,7 @@ void WorkThread::doValueListWork() {
             }
             _sendMsg._respResult.init();
         } while(_cursor);
-    } else if(_taskMsg->_type == "zset") {
+    } else if(_taskMsg->_type == KEY_ZSET) {
         do {
             if(_redisClient->zscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor, BATCH_SCAN_NUM)) {
                 _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
@@ -595,7 +595,7 @@ void WorkThread::doValueListWork() {
             }
             _sendMsg._respResult.init();
         } while(_cursor);
-    } else if(_taskMsg->_type == "set") {
+    } else if(_taskMsg->_type == KEY_SET) {
         do {
             if(_redisClient->sscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult , _cursor, BATCH_SCAN_NUM)) {
                 _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
@@ -607,7 +607,7 @@ void WorkThread::doValueListWork() {
             }
             _sendMsg._respResult.init();
         } while(_cursor);
-    } else if(_taskMsg->_type == "list") {
+    } else if(_taskMsg->_type == KEY_LIST) {
         int start = 0;
         int stop = start + BATCH_SCAN_NUM;
         do {
@@ -623,7 +623,7 @@ void WorkThread::doValueListWork() {
             }
             _sendMsg._list.clear();
         } while(_cursor);
-    } else if(_taskMsg->_type == "string") {
+    } else if(_taskMsg->_type == KEY_STRING) {
         if(_redisClient->get(_sendMsg._key, _byteArray)) {
             _sendMsg._list << _byteArray;
             emit sendData(_sendMsg);
@@ -654,25 +654,25 @@ void WorkThread::doCommitValueWork() {
     for(int i =0; i < _cmd.size(); ++i) {
         switch (_cmd[i]._operate) {
         case OPERATION_ADD:
-            if(_cmd[i]._type == "hash") {
+            if(_cmd[i]._type == KEY_HASH) {
                 if(!_redisClient->hset(_cmd[i]._key,_cmd[i]._filed,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "zset") {
+            } else if(_cmd[i]._type == KEY_ZSET) {
                 if(!_redisClient->zadd(_cmd[i]._key,_cmd[i]._value,_cmd[i]._score,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "set") {
+            } else if(_cmd[i]._type == KEY_SET) {
                 if(!_redisClient->sadd(_cmd[i]._key,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "list") {
+            } else if(_cmd[i]._type == KEY_LIST) {
                 if(_cmd[i]._valueIndex == 1) {
                     if(!_redisClient->rpush(_cmd[i]._key,_cmd[i]._value,llret)) {
                         _string = _redisClient->getErrorInfo();
@@ -689,25 +689,25 @@ void WorkThread::doCommitValueWork() {
             }
             break;
         case OPERATION_DELETE:
-            if(_cmd[i]._type == "hash") {
+            if(_cmd[i]._type == KEY_HASH) {
                 if(!_redisClient->hdel(_cmd[i]._key,_cmd[i]._filed,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "zset") {
+            } else if(_cmd[i]._type == KEY_ZSET) {
                 if(!_redisClient->zrem(_cmd[i]._key,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "set") {
+            } else if(_cmd[i]._type == KEY_SET) {
                 if(!_redisClient->srem(_cmd[i]._key,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "list") {
+            } else if(_cmd[i]._type == KEY_LIST) {
                 if(_cmd[i]._valueIndex == 1) {
                     if(!_redisClient->rpop(_cmd[i]._key,_byteArray)) {
                         _string = _redisClient->getErrorInfo();
@@ -724,19 +724,19 @@ void WorkThread::doCommitValueWork() {
             }
             break;
         case OPERATION_ALTER:
-            if(_cmd[i]._type == "hash") {
+            if(_cmd[i]._type == KEY_HASH) {
                 if(!_redisClient->hset(_cmd[i]._key,_cmd[i]._filed,_cmd[i]._value,llret)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "string") {
+            } else if(_cmd[i]._type == KEY_STRING) {
                 if(!_redisClient->set(_cmd[i]._key,_cmd[i]._value)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);
                     continue;
                 }
-            } else if(_cmd[i]._type == "list") {
+            } else if(_cmd[i]._type == KEY_LIST) {
                 if(!_redisClient->lset(_cmd[i]._key,_cmd[i]._valueIndex,_cmd[i]._value)) {
                     _string = _redisClient->getErrorInfo();
                     emit runError(_taskMsg->_taskid,_string);

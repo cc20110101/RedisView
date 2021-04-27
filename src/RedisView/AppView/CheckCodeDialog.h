@@ -1,11 +1,3 @@
-/**
-* @file      CheckCodeDialog.h
-* @brief     模拟注册功能
-* @author    王长春
-* @date      2019-6-23
-* @version   001
-* @copyright Copyright (c) 2018
-*/
 #ifndef CHECKCODEDIALOG_H
 #define CHECKCODEDIALOG_H
 

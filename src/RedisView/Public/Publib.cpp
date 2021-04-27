@@ -8,7 +8,7 @@
 */
 #include "Public/Publib.h"
 
-qlonglong PubLib::_sequenceId = 0;
+int64_t PubLib::_sequenceId = 0;
 
 void PubLib::log(QString info) {
     QMutexLocker locker(&G_PUBLIC_LIB_MUTEX);
@@ -26,12 +26,28 @@ void PubLib::log(QString info) {
     file.close();
 }
 
-void PubLib::setSequenceId(qlonglong sequenceId) {
+int PubLib::getKeyType(const QByteArray & type) {
+    if(type == "hash") {
+        return KEY_HASH;
+    } else if(type == "zset") {
+        return KEY_ZSET;
+    } else if(type == "set") {
+        return KEY_SET;
+    } else if(type == "string") {
+        return KEY_STRING;
+    } else if(type == "list") {
+        return KEY_LIST;
+    } else {
+        return KEY_NONE;
+    }
+}
+
+void PubLib::setSequenceId(int64_t sequenceId) {
     QMutexLocker locker(&G_SEQUENCE_MUTEX);
     _sequenceId = sequenceId;
 }
 
-qlonglong PubLib::getSequenceId() {
+int64_t PubLib::getSequenceId() {
     QMutexLocker locker(&G_SEQUENCE_MUTEX);
     ++ _sequenceId;
     return _sequenceId;

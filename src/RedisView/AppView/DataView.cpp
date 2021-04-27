@@ -102,14 +102,16 @@ DataView::DataView(QWidget *parent) :
 
     _time = 0;
     _key.clear();
-    _type.clear();
+    _type = KEY_NONE;
     _vCmdMsg.clear();
     _recvEnd = false;
     _inputDialog = new InputDialog(this);
+    _valueDialog = new ValueDialog(this);
     _countAc = new QAction(QIcon(ICON_COUNT), tr("统计条数"));
     _resetAc = new QAction(QIcon(ICON_FLUSH), tr("刷新重置"));
     _addAc = new QAction(QIcon(ICON_ADD), tr("插入数据"));
     _delAc = new QAction(QIcon(ICON_DEL), tr("删除数据"));
+    _seeAc = new QAction(QIcon(ICON_DETAILS), tr("查看数据"));
     _commitAc = new QAction(QIcon(ICON_COMMIT), tr("提交操作"));
     _inheadAc = new QAction(QIcon(ICON_IHEAD), tr("链头插入"));
     _intailAc = new QAction(QIcon(ICON_ITAIL), tr("链尾插入"));
@@ -119,6 +121,7 @@ DataView::DataView(QWidget *parent) :
     _intailAc->setVisible(false);
     _delheadAc->setVisible(false);
     _deltailAc->setVisible(false);
+    _tableView->addAction(_seeAc);
     _tableView->addAction(_resetAc);
     _tableView->addAction(_countAc);
     _tableView->addAction(_inheadAc);
@@ -133,6 +136,7 @@ DataView::DataView(QWidget *parent) :
     connect(_resetAc, SIGNAL(triggered()), this, SLOT(flush()));
     connect(_addAc, SIGNAL(triggered()), this, SLOT(add()));
     connect(_delAc, SIGNAL(triggered()), this, SLOT(del()));
+    connect(_seeAc, SIGNAL(triggered()), this, SLOT(see()));
     connect(_commitAc, SIGNAL(triggered()), this, SLOT(commit()));
     connect(_inheadAc, SIGNAL(triggered()), this, SLOT(addHead()));
     connect(_intailAc, SIGNAL(triggered()), this, SLOT(addTail()));
@@ -165,11 +169,11 @@ void DataView::count() {
 
 void DataView::commit() {
 
-    if(_type != "string" &&
-            _type != "hash" &&
-            _type != "set" &&
-            _type != "zset" &&
-            _type != "list")
+    if(_type != KEY_LIST &&
+            _type != KEY_STRING &&
+            _type != KEY_HASH &&
+            _type != KEY_SET &&
+            _type != KEY_ZSET)
         return;
 
     QString str = _timeLineEdit->text().trimmed();
@@ -209,7 +213,7 @@ void DataView::commit() {
 }
 
 void DataView::addHead() {
-    if(_type == "list") {
+    if(_type == KEY_LIST) {
         _inputDialog->clear();
         _inputDialog->setTip("member1 member2 ...");
         _inputDialog->setType(_type);
@@ -234,7 +238,7 @@ void DataView::addHead() {
 }
 
 void DataView::addTail() {
-    if(_type == "list") {
+    if(_type == KEY_LIST) {
         _inputDialog->clear();
         _inputDialog->setTip("member1 member2 ...");
         _inputDialog->setType(_type);
@@ -269,7 +273,7 @@ void DataView::delHead() {
     _cmdMsg.init();
     _cmdMsg._dbIndex = _dbIndex;
     _cmdMsg._clientIndex = _clientIndex;
-    if(_type == "list") {
+    if(_type == KEY_LIST) {
         _cmdMsg._key = _key;
         _cmdMsg._type = _type;
         _cmdMsg._valueIndex = -1;
@@ -289,7 +293,7 @@ void DataView::delTail() {
     _cmdMsg.init();
     _cmdMsg._dbIndex = _dbIndex;
     _cmdMsg._clientIndex = _clientIndex;
-    if(_type == "list") {
+    if(_type == KEY_LIST) {
         _cmdMsg._key = _key;
         _cmdMsg._type = _type;
         _cmdMsg._valueIndex = 1;
@@ -300,7 +304,7 @@ void DataView::delTail() {
 }
 
 void DataView::add() {
-    if(_type == "hash") {
+    if(_type == KEY_HASH) {
         _inputDialog->clear();
         _inputDialog->setTip("filed1 value1 filed2 value2 ...");
         _inputDialog->setType(_type);
@@ -328,7 +332,7 @@ void DataView::add() {
             }
             _vCmdMsg << _cmdMsg;
         }
-    } else if(_type == "set") {
+    } else if(_type == KEY_SET) {
         _inputDialog->clear();
         _inputDialog->setTip("member1 member2 ...");
         _inputDialog->setType(_type);
@@ -348,7 +352,7 @@ void DataView::add() {
             _cmdMsg._operate = OPERATION_ADD;
             _vCmdMsg << _cmdMsg;
         }
-    } else if(_type == "zset") {
+    } else if(_type == KEY_ZSET) {
         _inputDialog->clear();
         _inputDialog->setTip("member1 score1 member2 score2 ...");
         _inputDialog->setType(_type);
@@ -381,11 +385,11 @@ void DataView::add() {
 
 void DataView::del() {
 
-    if(_type != "string" &&
-            _type != "hash" &&
-            _type != "set" &&
-            _type != "zset" &&
-            _type != "list")
+    if(_type != KEY_STRING &&
+            _type != KEY_HASH &&
+            _type != KEY_SET &&
+            _type != KEY_ZSET &&
+            _type != KEY_LIST)
         return;
 
     if(_itemTableModel->rowCount() <= 0) {
@@ -418,7 +422,7 @@ void DataView::del() {
         _cmdMsg.init();
         _cmdMsg._dbIndex = _dbIndex;
         _cmdMsg._clientIndex = _clientIndex;
-        if(_type == "hash") {
+        if(_type == KEY_HASH) {
             _cmdMsg._key = _key;
             _cmdMsg._type = _type;
             _cmdMsg._filed = _tableSubItem->text();
@@ -426,7 +430,7 @@ void DataView::del() {
             if(_vCmdMsg.contains(_cmdMsg)) {
                 _vCmdMsg.removeAll(_cmdMsg);
             }
-        } else if(_type == "set" || _type == "zset") {
+        } else if(_type == KEY_SET || _type == KEY_ZSET) {
             _cmdMsg._key = _key;
             _cmdMsg._type = _type;
             _cmdMsg._value = _tableSubItem->text();
@@ -439,6 +443,43 @@ void DataView::del() {
     }
 }
 
+void DataView::see() {
+
+    // 通过_view去获取被选中的部分的数据model
+    QItemSelectionModel *selectModel = _tableView->selectionModel();
+    // 通过选中的数据结构，获取这些格子的ModelIndex
+    QModelIndexList selectList = selectModel->selectedIndexes();
+
+    if(selectList.size() <= 0) {
+        QMessageBox::critical(this, tr("提示"), tr("请先选择单元格！"));
+        return;
+    }
+
+    if(selectList.size() > 1) {
+        QMessageBox::critical(this, tr("提示"), tr("请选择单个单元格！"));
+        return;
+    }
+
+    QModelIndex index = selectList.at(0);
+    _tableSubItem = _itemTableModel->item(index.row());
+    QString value = _tableSubItem->data(index.column()).toString();
+
+    _valueDialog->clear();
+    _valueDialog->setText(value);
+
+    if(_type == KEY_SET || _type == KEY_ZSET ||
+            (_type == KEY_HASH && index.column() == 0)) {
+        _valueDialog->setEnableEdit(false);
+    } else { //KEY_STRING KEY_LIST
+        _valueDialog->setEnableEdit(true);
+    }
+
+    if(_valueDialog->exec() == QDialog::Accepted) {
+        _tableSubItem->setData(index.column(), _valueDialog->getText());
+        valueChanged(_tableSubItem, index.column());
+    }
+}
+
 void DataView::valueChanged(ValueTableItem *item, int column) {
     _cmdMsg.init();
     _cmdMsg._dbIndex = _dbIndex;
@@ -446,12 +487,12 @@ void DataView::valueChanged(ValueTableItem *item, int column) {
     _cmdMsg._operate = OPERATION_ALTER;
     _cmdMsg._type = _type;
     _cmdMsg._key = _key;
-    if(_type == "string") {
+    if(_type == KEY_STRING) {
         _cmdMsg._value = item->text(column);
         if(_vCmdMsg.contains(_cmdMsg)) {
             _vCmdMsg.removeAll(_cmdMsg);
         }
-    } else if(_type == "hash") {
+    } else if(_type == KEY_HASH) {
         if(item)
             _cmdMsg._filed = item->text();
         else
@@ -460,7 +501,7 @@ void DataView::valueChanged(ValueTableItem *item, int column) {
         if(_vCmdMsg.contains(_cmdMsg)) {
             _vCmdMsg.removeAll(_cmdMsg);
         }
-    } else if(_type == "list") {
+    } else if(_type == KEY_LIST) {
         _cmdMsg._valueIndex = _itemTableModel->childNumber(item);
         _cmdMsg._value = item->text(column);
     } else {
@@ -502,31 +543,31 @@ void DataView::initValueListData() {
     _initValueMsg._valuePattern = _valuePattern;
 
     _tableView->setSortingEnabled(true);
-    if(_type == "string") {
+    if(_type == KEY_STRING) {
         _itemTableModel->setColumnCount(1);
         _itemTableModel->setHeaderData(0,Qt::Horizontal, "VALUE");
         _itemTableModel->setFlags(0,_itemTableModel->flags(0) | Qt::ItemIsEditable);
         emit getData(_initValueMsg);
-    } else if(_type == "hash") {
+    } else if(_type == KEY_HASH) {
         _itemTableModel->setColumnCount(2);
         _itemTableModel->setHeaderData(0,Qt::Horizontal, "FIELD");
         _itemTableModel->setHeaderData(1,Qt::Horizontal, "VALUE");
         _itemTableModel->setFlags(0,_itemTableModel->flags(0) & (~Qt::ItemIsEditable));
         _itemTableModel->setFlags(1,_itemTableModel->flags(1) | Qt::ItemIsEditable);
         emit getData(_initValueMsg);
-    } else if(_type == "list") {
+    } else if(_type == KEY_LIST) {
         _listIndex = 0;
         _tableView->setSortingEnabled(false);
         _itemTableModel->setColumnCount(1);
         _itemTableModel->setHeaderData(0,Qt::Horizontal, "VALUE");
         _itemTableModel->setFlags(0,_itemTableModel->flags(0) | Qt::ItemIsEditable);
         emit getData(_initValueMsg);
-    } else if(_type == "set") {
+    } else if(_type == KEY_SET) {
         _itemTableModel->setColumnCount(1);
         _itemTableModel->setHeaderData(0,Qt::Horizontal, "MEMBER");
         _itemTableModel->setFlags(0,_itemTableModel->flags(0) & (~Qt::ItemIsEditable));
         emit getData(_initValueMsg);
-    } else if(_type == "zset") {
+    } else if(_type == KEY_ZSET) {
         _itemTableModel->setColumnCount(2);
         _itemTableModel->setHeaderData(0,Qt::Horizontal, "MEMBER");
         _itemTableModel->setHeaderData(1,Qt::Horizontal, "SCORE");
@@ -536,8 +577,8 @@ void DataView::initValueListData() {
     }
 }
 
-void DataView::appendValue(const TaskMsg & taskMsg, const QByteArray flag) {
-    if(flag == "hash") {
+void DataView::appendValue(const TaskMsg & taskMsg, const int flag) {
+    if(flag == KEY_HASH) {
         for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++++i) {
             vRowData.clear();
             _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
@@ -547,7 +588,7 @@ void DataView::appendValue(const TaskMsg & taskMsg, const QByteArray flag) {
             _tableItemValue = new ValueTableItem(vRowData);
             _itemTableModel->insertRow(_tableItemValue);
         }
-    } else if(flag == "zset") {
+    } else if(flag == KEY_ZSET) {
         for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++++i) {
             vRowData.clear();
             _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
@@ -556,20 +597,20 @@ void DataView::appendValue(const TaskMsg & taskMsg, const QByteArray flag) {
             _tableItemValue = new ValueTableItem(vRowData);
             _itemTableModel->insertRow(_tableItemValue);
         }
-    } else if(flag == "set") {
+    } else if(flag == KEY_SET) {
         for(int i = 0; i < taskMsg._respResult._arrayValue[1]._arrayValue.size(); ++i) {
             _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._respResult._arrayValue[1]._arrayValue[i]._stringValue);
             _tableItemValue = new ValueTableItem(_value);
             _itemTableModel->insertRow(_tableItemValue);
         }
-    } else if(flag == "string") {
+    } else if(flag == KEY_STRING) {
         for(int i = 0; i < taskMsg._list.size(); ++i) {
             _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
             _tableItemValue = new ValueTableItem(_value);
             _itemTableModel->insertRow(_tableItemValue);
             break;
         }
-    } else if(flag == "list") {
+    } else if(flag == KEY_LIST) {
         for(int i = 0; i < taskMsg._list.size(); ++i) {
             _value = QTextCodec::codecForLocale()->toUnicode(taskMsg._list[i]);
             _tableItemValue = new ValueTableItem(_value);
@@ -601,7 +642,7 @@ void DataView::setValue(const QString &value) {
     _value = value;
 }
 
-void DataView::setType(const QByteArray &type) {
+void DataView::setType(const int &type) {
     _type = type;
     _bodyAddHeadButton->setVisible(false);
     _bodyAddTailButton->setVisible(false);
@@ -613,17 +654,17 @@ void DataView::setType(const QByteArray &type) {
     _deltailAc->setVisible(false);
     _addAc->setVisible(true);
     _delAc->setVisible(true);
-    if(_type == "string") {
+    if(_type == KEY_STRING) {
         _addAc->setVisible(false);
         _delAc->setVisible(false);
         _typeLineEdit->setText("String");
         _bodyAddButton->setVisible(false);
         _bodyDelButton->setVisible(false);
-    } else if(_type == "hash") {
+    } else if(_type == KEY_HASH) {
         _typeLineEdit->setText("Hash");
         _bodyAddButton->setVisible(true);
         _bodyDelButton->setVisible(true);
-    } else if(_type == "list") {
+    } else if(_type == KEY_LIST) {
         _addAc->setVisible(false);
         _delAc->setVisible(false);
         _inheadAc->setVisible(true);
@@ -637,11 +678,11 @@ void DataView::setType(const QByteArray &type) {
         _bodyDelHeadButton->setVisible(true);
         _bodyDelTailButton->setVisible(true);
         _typeLineEdit->setText("List");
-    } else if(_type == "set") {
+    } else if(_type == KEY_SET) {
         _bodyAddButton->setVisible(true);
         _bodyDelButton->setVisible(true);
         _typeLineEdit->setText("Set");
-    } else if(_type == "zset") {
+    } else if(_type == KEY_ZSET) {
         _bodyAddButton->setVisible(true);
         _bodyDelButton->setVisible(true);
         _typeLineEdit->setText("Zset");

@@ -35,7 +35,7 @@ void InputDialog::setTip(const QString & info) {
     ui->_inputTextEdit->setPlaceholderText(info);
 }
 
-void InputDialog::setType(const QByteArray & type) {
+void InputDialog::setType(const int & type) {
     _type = type;
 }
 
@@ -47,17 +47,17 @@ void InputDialog::on__pushButtonY_clicked()
         return;
     }
 
-    if(_type == "hash") {
+    if(_type == KEY_HASH) {
         _textList.clear();
         PubLib::getList(_text,_textList);
         if(_textList.size() % 2) {
             QMessageBox::critical(this, tr("错误"), tr("数据错误，哈希字段值个数不匹配"));
             return;
         }
-    } else if(_type == "set" || _type == "list") {
+    } else if(_type == KEY_SET || _type == KEY_LIST) {
         _textList.clear();
         PubLib::getList(_text,_textList);
-    } else if(_type == "zset") {
+    } else if(_type == KEY_ZSET) {
         _textList.clear();
         PubLib::getList(_text,_textList);
         if(_textList.size() % 2) {
@@ -88,9 +88,4 @@ void InputDialog::clear() {
 void InputDialog::on__pushButtonN_clicked()
 {
     reject();
-}
-
-void InputDialog::setFlag(int flag)
-{
-    _flag = flag;
 }

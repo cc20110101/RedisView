@@ -11,6 +11,7 @@
 #include <QString>
 #include <QWidget>
 #include <QTextBrowser>
+#include <QDomDocument>
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QDialog>
@@ -69,12 +70,12 @@
 #endif
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.7.0"
+#define WindowTitle             "RedisView Community v1.7.1"
 #define IniFileName             "conf.ini"
 #define LogName                 "process.log"
 #define OrganizationName        "CC20110101"
 #define ApplicationName         "RedisView"
-#define ApplicationVersion      "1.7.0"
+#define ApplicationVersion      "1.7.1"
 
 // 定义常量
 #define BATCH_SCAN_NUM                             5000
@@ -110,12 +111,20 @@
 #define OPERATION_TIMEOUT                          4
 #define OPERATION_RENAME                           5
 
+// 定义键类型
+#define KEY_NONE                                   0
+#define KEY_STRING                                 1
+#define KEY_HASH                                   2
+#define KEY_SET                                    3
+#define KEY_ZSET                                   4
+#define KEY_LIST                                   5
+
 // 定义样式
-#define DEEPDARK_THEME        "DeepDarkTheme"
-#define DARK_THEME            "DarkTheme"
-#define GRAY_THEME            "GrayTheme"
-#define PINK_THEME            "PinkTheme"
-#define NO_THEME              "NoTheme"
+#define DEEPDARK_THEME             "DeepDarkTheme"
+#define DARK_THEME                 "DarkTheme"
+#define GRAY_THEME                 "GrayTheme"
+#define PINK_THEME                 "PinkTheme"
+#define NO_THEME                   "NoTheme"
 
 // 定义样式文件
 #define DARK_THEME_FILE            ":/Resources/DarkTheme.qss"
@@ -166,6 +175,7 @@
 #define ICON_REDISINFO             ":/Resources/redisinfo.ico"
 #define ICON_FEEDBACK              ":/Resources/feedback.ico"
 #define ICON_UPDATE                ":/Resources/update.ico"
+#define ICON_DETAILS               ":/Resources/details.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
 
 extern  QMutex  G_DB_MUTEX;
@@ -233,8 +243,8 @@ public:
         _taskid = 0;
         _sequence = 0;
         _clientIndex = 0;
+        _type = KEY_NONE;
         _key.clear();
-        _type.clear();
         _host.clear();
         _passwd.clear();
         _list.clear();
@@ -271,8 +281,8 @@ public:
     int _sequence;
     int _clientIndex;
     int _dbIndex;
+    int _type;
     QString _key;
-    QByteArray _type;
     QString _host;
     QString _passwd;
     QString _keyPattern;
@@ -294,7 +304,7 @@ public:
         _dbIndex = 0;
         _clientIndex = 0;
         _score = 0;
-        _type.clear();
+        _type = KEY_NONE;
         _key.clear();
         _value.clear();
         _filed.clear();
@@ -380,9 +390,9 @@ public:
     int _operate;  //1、2、3增删改
     int _dbIndex;
     int _clientIndex;
+    int _type;
     double _score;
     qlonglong _valueIndex;
-    QByteArray _type;
     QString _key;
     QString _filed;
     QString _value;
@@ -409,13 +419,13 @@ public:
         _dbindex = -1;
         _clientIndex = -1;
         _key.clear();
-        _type.clear();
+        _type = KEY_NONE;
         _valuePattern.clear();
     }
 
     int _dbindex;
     int _clientIndex;
-    QByteArray _type;
+    int _type;
     QString _key;
     QString _valuePattern;
 };
@@ -433,9 +443,9 @@ typedef struct DbCfg {
 
 typedef struct ImpExpData
 {
-    int iState;
-    qlonglong lWeight;
-    qlonglong lTimeOut;
+    int32_t iState;
+    int64_t lWeight;
+    int64_t lTimeOut;
     QString sKey;
     QString sKeyType;
     QString sFiled;

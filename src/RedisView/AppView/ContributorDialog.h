@@ -24,7 +24,7 @@ public:
     ~ContributorDialog();
 
 private slots:
-    void on_pushButton_clicked();
+    void on__pushButton_clicked();
 
 private:
     Ui::ContributorDialog *ui;

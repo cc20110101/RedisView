@@ -214,22 +214,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="17"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="9"/>
         <source>注册</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="18"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="10"/>
         <source>软件码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="20"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="12"/>
         <source>请输入注册码</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/CheckCodeDialog.cpp" line="42"/>
+        <location filename="AppView/CheckCodeDialog.cpp" line="34"/>
         <source>注册失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -310,25 +310,25 @@
     </message>
     <message>
         <location filename="AppView/DataView.cpp" line="64"/>
-        <location filename="AppView/DataView.cpp" line="114"/>
+        <location filename="AppView/DataView.cpp" line="116"/>
         <source>链头插入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="AppView/DataView.cpp" line="65"/>
-        <location filename="AppView/DataView.cpp" line="115"/>
+        <location filename="AppView/DataView.cpp" line="117"/>
         <source>链尾插入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="AppView/DataView.cpp" line="66"/>
-        <location filename="AppView/DataView.cpp" line="116"/>
+        <location filename="AppView/DataView.cpp" line="118"/>
         <source>删除链头</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="AppView/DataView.cpp" line="67"/>
-        <location filename="AppView/DataView.cpp" line="117"/>
+        <location filename="AppView/DataView.cpp" line="119"/>
         <source>删除链尾</source>
         <translation type="unfinished"></translation>
     </message>
@@ -338,68 +338,85 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="109"/>
+        <location filename="AppView/DataView.cpp" line="110"/>
         <source>统计条数</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="110"/>
+        <location filename="AppView/DataView.cpp" line="111"/>
         <source>刷新重置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="111"/>
+        <location filename="AppView/DataView.cpp" line="112"/>
         <source>插入数据</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="112"/>
+        <location filename="AppView/DataView.cpp" line="113"/>
         <source>删除数据</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="113"/>
+        <location filename="AppView/DataView.cpp" line="114"/>
+        <source>查看数据</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/DataView.cpp" line="115"/>
         <source>提交操作</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="162"/>
+        <location filename="AppView/DataView.cpp" line="166"/>
         <source>统计值总数为</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="163"/>
+        <location filename="AppView/DataView.cpp" line="167"/>
         <source>统计</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="190"/>
-        <location filename="AppView/DataView.cpp" line="265"/>
-        <location filename="AppView/DataView.cpp" line="285"/>
-        <location filename="AppView/DataView.cpp" line="392"/>
+        <location filename="AppView/DataView.cpp" line="194"/>
+        <location filename="AppView/DataView.cpp" line="269"/>
+        <location filename="AppView/DataView.cpp" line="289"/>
+        <location filename="AppView/DataView.cpp" line="396"/>
         <source>错误</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="190"/>
+        <location filename="AppView/DataView.cpp" line="194"/>
         <source>新KEY不可为空！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="265"/>
-        <location filename="AppView/DataView.cpp" line="285"/>
-        <location filename="AppView/DataView.cpp" line="392"/>
+        <location filename="AppView/DataView.cpp" line="269"/>
+        <location filename="AppView/DataView.cpp" line="289"/>
+        <location filename="AppView/DataView.cpp" line="396"/>
         <source>无数据行需要删除！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="403"/>
+        <location filename="AppView/DataView.cpp" line="407"/>
+        <location filename="AppView/DataView.cpp" line="454"/>
+        <location filename="AppView/DataView.cpp" line="459"/>
         <source>提示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/DataView.cpp" line="403"/>
+        <location filename="AppView/DataView.cpp" line="407"/>
         <source>请先选择要删除的行！</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/DataView.cpp" line="454"/>
+        <source>请先选择单元格！</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/DataView.cpp" line="459"/>
+        <source>请选择单个单元格！</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -772,7 +789,7 @@
     </message>
     <message>
         <location filename="AppView/mainwidget.ui" line="68"/>
-        <location filename="AppView/MainWidget.cpp" line="1061"/>
+        <location filename="AppView/MainWidget.cpp" line="1063"/>
         <source>命令</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1015,26 +1032,26 @@
         <location filename="AppView/MainWidget.cpp" line="967"/>
         <location filename="AppView/MainWidget.cpp" line="1011"/>
         <location filename="AppView/MainWidget.cpp" line="1017"/>
-        <location filename="AppView/MainWidget.cpp" line="1024"/>
-        <location filename="AppView/MainWidget.cpp" line="1031"/>
-        <location filename="AppView/MainWidget.cpp" line="1037"/>
-        <location filename="AppView/MainWidget.cpp" line="1043"/>
-        <location filename="AppView/MainWidget.cpp" line="1049"/>
-        <location filename="AppView/MainWidget.cpp" line="1073"/>
-        <location filename="AppView/MainWidget.cpp" line="1183"/>
-        <location filename="AppView/MainWidget.cpp" line="1189"/>
-        <location filename="AppView/MainWidget.cpp" line="1195"/>
-        <location filename="AppView/MainWidget.cpp" line="1203"/>
-        <location filename="AppView/MainWidget.cpp" line="1208"/>
-        <location filename="AppView/MainWidget.cpp" line="1216"/>
-        <location filename="AppView/MainWidget.cpp" line="1230"/>
-        <location filename="AppView/MainWidget.cpp" line="1236"/>
-        <location filename="AppView/MainWidget.cpp" line="1244"/>
-        <location filename="AppView/MainWidget.cpp" line="1249"/>
-        <location filename="AppView/MainWidget.cpp" line="1264"/>
-        <location filename="AppView/MainWidget.cpp" line="1299"/>
-        <location filename="AppView/MainWidget.cpp" line="1307"/>
-        <location filename="AppView/MainWidget.cpp" line="1312"/>
+        <location filename="AppView/MainWidget.cpp" line="1026"/>
+        <location filename="AppView/MainWidget.cpp" line="1033"/>
+        <location filename="AppView/MainWidget.cpp" line="1039"/>
+        <location filename="AppView/MainWidget.cpp" line="1045"/>
+        <location filename="AppView/MainWidget.cpp" line="1051"/>
+        <location filename="AppView/MainWidget.cpp" line="1075"/>
+        <location filename="AppView/MainWidget.cpp" line="1185"/>
+        <location filename="AppView/MainWidget.cpp" line="1191"/>
+        <location filename="AppView/MainWidget.cpp" line="1197"/>
+        <location filename="AppView/MainWidget.cpp" line="1205"/>
+        <location filename="AppView/MainWidget.cpp" line="1210"/>
+        <location filename="AppView/MainWidget.cpp" line="1218"/>
+        <location filename="AppView/MainWidget.cpp" line="1232"/>
+        <location filename="AppView/MainWidget.cpp" line="1238"/>
+        <location filename="AppView/MainWidget.cpp" line="1246"/>
+        <location filename="AppView/MainWidget.cpp" line="1251"/>
+        <location filename="AppView/MainWidget.cpp" line="1266"/>
+        <location filename="AppView/MainWidget.cpp" line="1301"/>
+        <location filename="AppView/MainWidget.cpp" line="1309"/>
+        <location filename="AppView/MainWidget.cpp" line="1314"/>
         <source>错误</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1067,71 +1084,71 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1024"/>
+        <location filename="AppView/MainWidget.cpp" line="1026"/>
         <source>获取键值失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1031"/>
+        <location filename="AppView/MainWidget.cpp" line="1033"/>
         <source>获取键过期时间失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1037"/>
+        <location filename="AppView/MainWidget.cpp" line="1039"/>
         <source>获取键编码信息失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1043"/>
+        <location filename="AppView/MainWidget.cpp" line="1045"/>
         <source>获取键引用计数失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1049"/>
+        <location filename="AppView/MainWidget.cpp" line="1051"/>
         <source>获取键空闲时间失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1073"/>
+        <location filename="AppView/MainWidget.cpp" line="1075"/>
         <source>多条命令执行,分隔符不可为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1114"/>
+        <location filename="AppView/MainWidget.cpp" line="1116"/>
         <source>配置出错，非json、resp、text格式之一</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1183"/>
+        <location filename="AppView/MainWidget.cpp" line="1185"/>
         <source>发送频道不可为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1189"/>
+        <location filename="AppView/MainWidget.cpp" line="1191"/>
         <source>发送消息不可为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1195"/>
-        <location filename="AppView/MainWidget.cpp" line="1236"/>
-        <location filename="AppView/MainWidget.cpp" line="1299"/>
+        <location filename="AppView/MainWidget.cpp" line="1197"/>
+        <location filename="AppView/MainWidget.cpp" line="1238"/>
+        <location filename="AppView/MainWidget.cpp" line="1301"/>
         <source>客户端连接信息为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1208"/>
-        <location filename="AppView/MainWidget.cpp" line="1249"/>
-        <location filename="AppView/MainWidget.cpp" line="1312"/>
+        <location filename="AppView/MainWidget.cpp" line="1210"/>
+        <location filename="AppView/MainWidget.cpp" line="1251"/>
+        <location filename="AppView/MainWidget.cpp" line="1314"/>
         <source>客户端连接失败!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1230"/>
+        <location filename="AppView/MainWidget.cpp" line="1232"/>
         <source>订阅频道不可为空!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1264"/>
+        <location filename="AppView/MainWidget.cpp" line="1266"/>
         <source>未执行订阅,无需取消订阅!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1916,7 +1933,6 @@
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="303"/>
-        <location filename="AppView/MainWindow.cpp" line="1304"/>
         <source>版本历史</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2062,13 +2078,7 @@
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="1291"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
-        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.0&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn&apos;&gt;RedisView&lt;/a&gt;&lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="AppView/MainWindow.cpp" line="1305"/>
-        <source>&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.1&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2286,13 +2296,100 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/UpdateSystem.cpp" line="19"/>
+        <location filename="AppView/UpdateSystem.cpp" line="22"/>
         <source>努力检查中,请稍后...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="AppView/UpdateSystem.cpp" line="38"/>
+        <location filename="AppView/UpdateSystem.cpp" line="42"/>
         <source>功能不实现，请到下载网站更新...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ValueDialog</name>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="22"/>
+        <source>格式化: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="29"/>
+        <source>text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="36"/>
+        <source>json</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="43"/>
+        <source>xml</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="50"/>
+        <source>html</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="90"/>
+        <source>确定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/valuedialog.ui" line="97"/>
+        <source>关闭</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/ValueDialog.cpp" line="17"/>
+        <source>查看</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/ValueDialog.cpp" line="92"/>
+        <location filename="AppView/ValueDialog.cpp" line="104"/>
+        <source>错误</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/ValueDialog.cpp" line="92"/>
+        <source>非xml格式</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/ValueDialog.cpp" line="104"/>
+        <source>非json格式</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VersionHistory</name>
+    <message>
+        <location filename="AppView/versionHistory.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/versionHistory.ui" line="38"/>
+        <source>确定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/VersionHistory.cpp" line="18"/>
+        <source>版本历史</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="AppView/VersionHistory.cpp" line="21"/>
+        <source>&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;新增键值查看功能.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

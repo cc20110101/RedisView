@@ -24,8 +24,7 @@ public:
     ~InputDialog();
 
     void setTip(const QString & info);
-    void setType(const QByteArray & type);
-    void setFlag(int flag);
+    void setType(const int &type);
     void clear();
     QString getText();
     QList<QString> getTextList();
@@ -36,9 +35,8 @@ private slots:
     void on__pushButtonN_clicked();
 
 private:
-    int _flag;
     Ui::InputDialog *ui;
-    QByteArray _type;
+    int _type;
     QString _text;
     QList<QString> _textList;
 };

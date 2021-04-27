@@ -7,6 +7,8 @@ SOURCES += \
     AppView/MainWindow.cpp \
     AppView/RedisInfoDialog.cpp \
     AppView/UpdateSystem.cpp \
+    AppView/ValueDialog.cpp \
+    AppView/VersionHistory.cpp \
     Public/AesEncrypt.cpp \
     Public/DbMgr.cpp \
     Public/Define.cpp \
@@ -44,6 +46,8 @@ HEADERS += \
     AppView/MainWindow.h \
     AppView/RedisInfoDialog.h \
     AppView/UpdateSystem.h \
+    AppView/ValueDialog.h \
+    AppView/VersionHistory.h \
     Public/AesEncrypt.h \
     Public/DbMgr.h \
     Public/Define.h \
@@ -78,7 +82,7 @@ TARGET = RedisView
 
 RESOURCES += icon.qrc
 
-QT += gui widgets core network sql
+QT += gui widgets core network sql xml
 
 RC_ICONS = Resources/tray.ico
 
@@ -95,6 +99,8 @@ FORMS += \
     AppView/clientdialog.ui \
     AppView/pubsubdialog.ui \
     AppView/batchoperatedialog.ui \
-    AppView/redisinfodialog.ui
+    AppView/redisinfodialog.ui \
+    AppView/valuedialog.ui \
+    AppView/versionHistory.ui
 
 TRANSLATIONS = en.ts cn.ts

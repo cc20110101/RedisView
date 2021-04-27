@@ -23,7 +23,6 @@
         <file>Resources/flush.ico</file>
         <file>Resources/commit.ico</file>
         <file>Resources/delhead.ico</file>
-        <file>Resources/deltail.ico</file>
         <file>Resources/inhead.ico</file>
         <file>Resources/intail.ico</file>
         <file>Resources/instruction.ico</file>
@@ -51,5 +50,7 @@
         <file>Resources/GrayTheme.qss</file>
         <file>Resources/DeepDarkTheme.qss</file>
         <file>Resources/PinkTheme.qss</file>
+        <file>Resources/details.ico</file>
+        <file>Resources/deltail.ico</file>
     </qresource>
 </RCC>

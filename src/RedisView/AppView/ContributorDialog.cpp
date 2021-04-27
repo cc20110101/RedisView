@@ -16,12 +16,13 @@ ContributorDialog::ContributorDialog(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle(tr("鸣谢"));
     setFixedSize(this->size());
-    ui->label->setText("<br><b>Developer:</b><br><br>"
-                       "&nbsp;&nbsp;cc20110101<br>"
-                       "<br><br>"
-                       "<br><b>Sponsor:</b><br><br>"
-                       "&nbsp;&nbsp;*才<br>"
-                       );
+    ui->_textBrowser->setEnabled(false);
+    ui->_textBrowser->setText("<br><b>Sponsor:</b><br><br>"
+                              "&nbsp;&nbsp;*才"
+                              "&nbsp;&nbsp;*帅"
+                              "&nbsp;&nbsp;*惜"
+                              "&nbsp;&nbsp;列"
+                              );
 }
 
 ContributorDialog::~ContributorDialog()
@@ -29,7 +30,7 @@ ContributorDialog::~ContributorDialog()
     delete ui;
 }
 
-void ContributorDialog::on_pushButton_clicked()
+void ContributorDialog::on__pushButton_clicked()
 {
     accept();
 }

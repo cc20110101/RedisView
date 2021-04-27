@@ -586,8 +586,8 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
     if(_isClusterMode) {
         _idbIndex = 0;
         if(_subTreeItem == _treeItemKey) {
-            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mKeySort);
             _treeMenu->addAction(_mCreated);
         } else {
@@ -597,13 +597,13 @@ void MainWidget::showTreeRightMenu(const QPoint &pos) {
     } else {
         _idbIndex = _vTreeItemKey.indexOf(_subTreeItem);
         if(_idbIndex != -1) {
-            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mKeySort);
             _treeMenu->addAction(_mCreated);
         } else if(_treeItemKey == _subTreeItem) {
-            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mRefresh);
+            _treeMenu->addAction(_mCount);
             _treeMenu->addAction(_mKeySort);
             _idbIndex = -1;
         } else {
@@ -1017,9 +1017,11 @@ void MainWidget::treeClicked(const QModelIndex &index) {
         QMessageBox::critical(this, tr("错误"), tr("获取键类型失败!"));
         return;
     }
-    _dataView->setType(byteArray);
 
-    if(byteArray == "string") {
+    int keyType = PubLib::getKeyType(byteArray);
+    _dataView->setType(keyType);
+
+    if(keyType == KEY_STRING) {
         if(!_redisClient->get(key, byteArray)) {
             QMessageBox::critical(this, tr("错误"), tr("获取键值失败!"));
             return;

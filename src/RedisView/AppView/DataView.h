@@ -10,6 +10,7 @@
 #define DATAVIEW_H
 
 #include "AppView/InputDialog.h"
+#include "AppView/ValueDialog.h"
 #include "Model/ValueTableModel.h"
 #include "Model/ItemDelegate.h"
 
@@ -27,12 +28,12 @@ public:
 
     void clearData();
     void initValueListData();
-    void appendValue(const TaskMsg & taskMsg, const QByteArray flag);
+    void appendValue(const TaskMsg & taskMsg, const int flag);
     void setDbIndex(const int &index);
     void setIndex(const int &index);
     void setKey(const QString &key);
     void setValue(const QString &value);
-    void setType(const QByteArray &type);
+    void setType(const int &type);
     void setTimeMs(const qlonglong &timeMs);
     void setEncode(const QByteArray &encode);
     void setRefcount(const qlonglong &count);
@@ -46,10 +47,10 @@ private:
     bool _recvEnd; //暂时未使用
     int _clientIndex;
     int _dbIndex;
+    int _type;
     QString _valuePattern;
     QString _key;
     QString _value;
-    QByteArray _type;
     qlonglong _time;
     qlonglong _listIndex;
     qlonglong _longLong;
@@ -60,6 +61,7 @@ private:
     QAction *_resetAc;
     QAction *_addAc;
     QAction *_delAc;
+    QAction *_seeAc;
     QAction *_commitAc;
     QAction *_inheadAc;
     QAction *_intailAc;
@@ -91,6 +93,7 @@ private:
     ValueTableModel* _itemTableModel;
     QTableView *_tableView;
     InputDialog *_inputDialog;
+    ValueDialog *_valueDialog;
     ValueTableItem *_tableItemValue;
     ValueTableItem *_tableSubItem;
     QVector<QVariant> vRowData;
@@ -104,6 +107,7 @@ public slots:
     void valueChanged(ValueTableItem *item, int column);
     void commit();
     void del();
+    void see();
     void add();
     void addHead();
     void addTail();

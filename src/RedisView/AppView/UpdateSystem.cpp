@@ -14,9 +14,14 @@ UpdateView::UpdateView() {
                    ~Qt::WindowMaximizeButtonHint &
                    ~Qt::WindowMinimizeButtonHint);
     setWindowModality(Qt::ApplicationModal);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    setFixedSize(333,380);
 
     UpdateWidget *_native = new UpdateWidget(&_updater, this);
+    _native->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     _nativeLabel = new QLabel(tr("努力检查中,请稍后..."));
+    _nativeLabel->setWordWrap(true);
+    _nativeLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     _nativeLabel->setAlignment(Qt::AlignHCenter);
 
     QGridLayout *layout = new QGridLayout;
@@ -39,7 +44,6 @@ void UpdateView::noupdate() {
     _timer->stop();
 }
 
-
 Updater::Updater() {
     QLinearGradient gradient(QPointF(50, -20), QPointF(80, 20));
     gradient.setColorAt(0.0, Qt::white);
@@ -55,7 +59,7 @@ Updater::Updater() {
 
 void Updater::paint(QPainter *painter, QPaintEvent *event, int elapsed) {
     painter->fillRect(event->rect(), _background);
-    painter->translate(100, 100);
+    painter->translate(150, 150);
 
     painter->save();
     painter->setBrush(_circleBrush);
@@ -63,27 +67,26 @@ void Updater::paint(QPainter *painter, QPaintEvent *event, int elapsed) {
     painter->rotate(elapsed * 0.030);
 
     qreal r = elapsed / 1000.0;
-    int n = 30;
+    int n = 35;
     for(int i = 0; i < n; ++i) {
         painter->rotate(30);
         qreal factor = (i + r) / n;
         qreal radius = 0 + 120.0 * factor;
         qreal circleRadius = 1 + factor * 20;
         painter->drawEllipse(QRectF(radius, -circleRadius,
-                                    circleRadius * 2, circleRadius * 2));
+                                    circleRadius * 2.5, circleRadius * 2.5));
     }
     painter->restore();
     painter->setPen(_textPen);
     painter->setFont(_textFont);
-    painter->drawText(QRect(-50, -50, 100, 100), Qt::AlignCenter,
+    painter->drawText(QRect(-75, -75, 150, 150), Qt::AlignCenter,
                       QStringLiteral("RV"));
 }
-
 
 UpdateWidget::UpdateWidget(Updater *updater, QWidget *parent)
     : QWidget(parent), _updater(updater) {
     _elapsed = 0;
-    setFixedSize(200, 200);
+    setFixedSize(300, 300);
 }
 
 void UpdateWidget::animate() {

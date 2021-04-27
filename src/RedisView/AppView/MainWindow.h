@@ -10,6 +10,7 @@
 #define MAINWINDOW_H
 
 #include "AppView/Instructions.h"
+#include "AppView/VersionHistory.h"
 #include "AppView/Donation.h"
 #include "AppView/MainWidget.h"
 #include "AppView/ClientDialog.h"
