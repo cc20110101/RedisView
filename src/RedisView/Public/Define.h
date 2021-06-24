@@ -452,8 +452,8 @@ typedef struct DbCfg {
 typedef struct ImpExpData
 {
     int32_t iState;
-    int64_t lWeight;
-    int64_t lTimeOut;
+    qlonglong lWeight;
+    qlonglong lTimeOut;
     QString sKey;
     QString sKeyType;
     QString sFiled;

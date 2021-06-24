@@ -9,7 +9,7 @@
 #ifndef BATCHOPERATEDIALOG_H
 #define BATCHOPERATEDIALOG_H
 
-#include "AppView/DbCfgdialog.h"
+#include "AppView/DbCfgDialog.h"
 #include "Public/WorkThread.h"
 
 namespace Ui {

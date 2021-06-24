@@ -3,7 +3,7 @@ SOURCES += \
     AppView/AppMain.cpp \
     AppView/CheckCodeDialog.cpp \
     AppView/ContributorDialog.cpp \
-    AppView/DbCfgdialog.cpp \
+    AppView/DbCfgDialog.cpp \
     AppView/FeedBack.cpp \
     AppView/MainWindow.cpp \
     AppView/RedisInfoDialog.cpp \
@@ -43,7 +43,7 @@ HEADERS += \
     AppView/AddIndexDialog.h \
     AppView/CheckCodeDialog.h \
     AppView/ContributorDialog.h \
-    AppView/DbCfgdialog.h \
+    AppView/DbCfgDialog.h \
     AppView/FeedBack.h \
     AppView/MainWindow.h \
     AppView/RedisInfoDialog.h \
@@ -103,6 +103,6 @@ FORMS += \
     AppView/batchoperatedialog.ui \
     AppView/redisinfodialog.ui \
     AppView/valuedialog.ui \
-    AppView/versionHistory.ui
+    AppView/versionhistory.ui
 
 TRANSLATIONS = en.ts cn.ts
