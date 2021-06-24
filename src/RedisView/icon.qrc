@@ -52,5 +52,6 @@
         <file>Resources/PinkTheme.qss</file>
         <file>Resources/details.ico</file>
         <file>Resources/deltail.ico</file>
+        <file>Resources/adddb.ico</file>
     </qresource>
 </RCC>

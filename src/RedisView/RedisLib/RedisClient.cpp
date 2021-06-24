@@ -4430,12 +4430,12 @@ bool RedisClient::sort(const QString & key, QList<QByteArray> & value, const QSt
  * @see
  * @note
  */
-bool RedisClient::scan(const QString &pattern, RespType &value, qulonglong cursor, qulonglong count) {
+bool RedisClient::scan(const QString &pattern, RespType &value, QString cursor, qulonglong count) {
     _sErrorInfo.clear();
 
     _vCmdList.clear();
     _vCmdList.push_back("SCAN");
-    _vCmdList.push_back(QString::number(cursor));
+    _vCmdList.push_back(cursor);
     if(!pattern.isEmpty()) {
         _vCmdList.push_back("MATCH");
         _vCmdList.push_back(pattern);
@@ -4475,7 +4475,7 @@ bool RedisClient::scan(const QString &pattern, RespType &value, qulonglong curso
  * @see
  * @note
  */
-bool RedisClient::hscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor, qulonglong count) {
+bool RedisClient::hscan(const QString& key, const QString &pattern, RespType &value, QString cursor, qulonglong count) {
     _sErrorInfo.clear();
     if(key.trimmed().isEmpty()) {
         _sErrorInfo = "key is empty";
@@ -4485,7 +4485,7 @@ bool RedisClient::hscan(const QString& key, const QString &pattern, RespType &va
     _vCmdList.clear();
     _vCmdList.push_back("HSCAN");
     _vCmdList.push_back(key);
-    _vCmdList.push_back(QString::number(cursor));
+    _vCmdList.push_back(cursor);
     if(!pattern.isEmpty()) {
         _vCmdList.push_back("MATCH");
         _vCmdList.push_back(pattern);
@@ -4525,7 +4525,7 @@ bool RedisClient::hscan(const QString& key, const QString &pattern, RespType &va
  * @see
  * @note
  */
-bool RedisClient::sscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor, qulonglong count) {
+bool RedisClient::sscan(const QString& key, const QString &pattern, RespType &value, QString cursor, qulonglong count) {
     _sErrorInfo.clear();
     if(key.trimmed().isEmpty()) {
         _sErrorInfo = "key is empty";
@@ -4535,7 +4535,7 @@ bool RedisClient::sscan(const QString& key, const QString &pattern, RespType &va
     _vCmdList.clear();
     _vCmdList.push_back("SSCAN");
     _vCmdList.push_back(key);
-    _vCmdList.push_back(QString::number(cursor));
+    _vCmdList.push_back(cursor);
     if(!pattern.isEmpty()) {
         _vCmdList.push_back("MATCH");
         _vCmdList.push_back(pattern);
@@ -4575,7 +4575,7 @@ bool RedisClient::sscan(const QString& key, const QString &pattern, RespType &va
  * @see
  * @note
  */
-bool RedisClient::zscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor, qulonglong count) {
+bool RedisClient::zscan(const QString& key, const QString &pattern, RespType &value, QString cursor, qulonglong count) {
     _sErrorInfo.clear();
     if(key.trimmed().isEmpty()) {
         _sErrorInfo = "key is empty";
@@ -4585,7 +4585,7 @@ bool RedisClient::zscan(const QString& key, const QString &pattern, RespType &va
     _vCmdList.clear();
     _vCmdList.push_back("ZSCAN");
     _vCmdList.push_back(key);
-    _vCmdList.push_back(QString::number(cursor));
+    _vCmdList.push_back(cursor);
     if(!pattern.isEmpty()) {
         _vCmdList.push_back("MATCH");
         _vCmdList.push_back(pattern);

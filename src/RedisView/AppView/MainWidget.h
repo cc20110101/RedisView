@@ -12,6 +12,7 @@
 #include "Public/WorkThread.h"
 #include "AppView/DataView.h"
 #include "AppView/KeyDialog.h"
+#include "AppView/AddIndexDialog.h"
 #include "Model/KeyTreeModel.h"
 #include "AppView/PubsubDialog.h"
 #include "ui_mainwidget.h"
@@ -65,6 +66,7 @@ private slots:
     void closeMsg();
     void count();
     void keySort();
+    void addDatabase();
     void flush();
     void del();
     void alter();
@@ -101,6 +103,7 @@ private:
     bool _isCmdSplit;
     bool _isClusterMode;
     bool _isReplicationMode;
+    bool _isCustomMode;
     bool _haveError;
     bool _displayViewTab;
     bool _displayCmdTab;
@@ -124,8 +127,10 @@ private:
     RedisClient * _redisRecvClient;
     DataView *_dataView;
     KeyDialog * _keyDialog;
+    AddIndexDialog *_addDbDialog;
     Ui::MainWidget *ui;
     QAction* _mKeySort;
+    QAction* _mAddDb;
     QAction* _mCount;
     QAction* _mRefresh;
     QAction* _mCreated;
@@ -140,8 +145,8 @@ private:
     QLabel *_waitLabel;
     QMovie *_movie;
     KeyTreeModel* _itemKeyModel;
-    KeyTreeItem *_treeItemKey;
-    KeyTreeItem *_subTreeItem;
+    KeyTreeItem *_rootKeyTreeItem;
+    KeyTreeItem *_subKeyTreeItem;
     QList<KeyTreeItem *> _vTreeItemKey;
     QThreadPool *_threadPool;
     WorkThread *_workThread;

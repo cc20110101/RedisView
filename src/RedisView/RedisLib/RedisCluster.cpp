@@ -542,6 +542,11 @@ bool RedisCluster::getClusterMode() const
     return _isClusterMode;
 }
 
+bool RedisCluster::getCustomMode() const
+{
+    return _isCustomMode;
+}
+
 QList<QByteArray> RedisCluster::command(QString &str, const QString &split, int index) {
     if(index == -1) {
         if(split.isEmpty()) {
@@ -908,6 +913,94 @@ bool RedisCluster::openCluster() {
     return openCluster(_hostAddress, _passwd, _onlyMaster, _timeOut);
 }
 
+bool RedisCluster::openClient() {
+    return openClient(_hostAddress, _passwd, _onlyMaster, _timeOut);
+}
+
+bool RedisCluster::openClient(const QString &hostAddress,
+                              const QString passwd,
+                              const bool master,
+                              int timeOut) {
+    close();
+    int index;
+    bool open = false;
+    QStringList hostList;
+    ClusterClient clusterClient;
+    _passwd = passwd;
+    _timeOut = timeOut;
+    _onlyMaster = master;
+    _hostAddress = hostAddress;
+    _isReplicationMode = false;
+    _isClusterMode = false;
+    _isCustomMode = true;
+    _vClusterClients.clear();
+    _vClusterMasterClients.clear();
+
+    clusterClient._endSlot = 16383;
+    clusterClient._master = true;
+    clusterClient._passwd = _passwd;
+    clusterClient._startSlot = 0;
+    clusterClient._slotNum = 16384;
+    clusterClient._nodeId.clear();
+    clusterClient._passwd = passwd;
+
+    hostList =  hostAddress.split(',',QString::SkipEmptyParts);
+    for(int i = 0; i < hostList.size(); ++i) {
+        index = hostList[i].indexOf(":");
+        if(index == -1) {
+            _sErrorInfo = "redis node string info is error";
+            return false;
+        }
+        clusterClient._host = hostList[i].mid(0, index);
+        clusterClient._port = hostList[i].mid(index + 1).toUShort();
+
+        if(_redisClient == nullptr)
+            _redisClient = new RedisClient();
+        if(_redisClient->open(clusterClient._host, clusterClient._port, timeOut)) {
+            if(!clusterClient._passwd.isEmpty()) {
+                if(!_redisClient->auth(clusterClient._passwd)) {
+                    _sErrorInfo = _redisClient->getErrorInfo();
+                    _redisClient->close();
+                    continue;
+                }
+            }
+            open = true;
+            break;
+        } else {
+            _sErrorInfo = _redisClient->getErrorInfo();
+            _redisClient->close();
+            continue;
+        }
+    }
+
+    if(!open) {
+        if(_redisClient) {
+            delete _redisClient;
+            _redisClient = nullptr;
+        }
+        return false;
+    }
+    clusterClient._client = _redisClient;
+    _vClusterClients << clusterClient;
+
+    _dbIndex = 1;
+    if(!select(_dbIndex)){
+        if(_sErrorInfo.contains("SELECT is not allowed in cluster mode")) {
+            _isClusterMode = true;
+        }
+        _dbIndex = 0;
+    }
+
+    for(int m = 0; m < _vClusterClients.size(); ++m) {
+        if(master && !_vClusterClients[m]._master)
+            continue;
+        _vClusterMasterClients << _vClusterClients[m];
+    }
+
+    _isNewOpen = false;
+    return true;
+}
+
 bool RedisCluster::openCluster(const QString &hostAddress,
                                const QString passwd,
                                const bool master,
@@ -915,6 +1008,7 @@ bool RedisCluster::openCluster(const QString &hostAddress,
     close();
     int index;
     bool open = false;
+    _isCustomMode = false;
     RespType respType;
     QStringList hostList;
     RespType respArray;
@@ -1154,7 +1248,7 @@ bool RedisCluster::openCluster(const QString &hostAddress,
 
     // 按_startSlot升序排序
     std::sort(_vClusterMasterClients.begin(),_vClusterMasterClients.end(),
-          [](const ClusterClient &infoA,const ClusterClient &infoB) {
+              [](const ClusterClient &infoA,const ClusterClient &infoB) {
         return infoA._startSlot < infoB._startSlot;
     });
 

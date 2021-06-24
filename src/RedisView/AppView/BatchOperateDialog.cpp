@@ -42,8 +42,11 @@ BatchOperateDialog::BatchOperateDialog(RedisCluster *redisClient, QWidget *paren
 
     if(_redisCluster) {
         _isClusterMode = _redisCluster->getClusterMode();
+        _isCustomMode = _redisCluster->getCustomMode();
         if(_isClusterMode) {
             _idbNums = 1;
+        } else if(_isCustomMode) {
+            _idbNums = PubLib::getIndexNums(_redisCluster);
         } else {
             if(!_redisCluster->getDbNum(_idbNums)) {
                 _idbNums = 1;
@@ -545,7 +548,8 @@ void BatchOperateDialog::on__okPushButton_clicked()
             _taskMsg->_host = _vMasterClients[0]._host;
             _taskMsg->_port = _vMasterClients[0]._port;
             _taskMsg->_passwd = _vMasterClients[0]._passwd;
-            _taskMsg->_clientIndex = _isClusterMode;
+            _taskMsg->_clusterMode = _isClusterMode;
+            _taskMsg->_customMode = _isCustomMode;
             if(ui->_radioButton->isEnabled() &&
                     ui->_radioButton->isChecked())
                 _taskMsg->_dbIndex = 1;

@@ -1158,7 +1158,7 @@ public:
      * @see
      * @note
      */
-    bool scan(const QString &pattern, RespType &value, qulonglong cursor = 0, qulonglong count = 2000);
+    bool scan(const QString &pattern, RespType &value, QString cursor = "0", qulonglong count = 2000);
 
     /**
      * 迭代集合中的键
@@ -1171,7 +1171,7 @@ public:
      * @see
      * @note
      */
-    bool sscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor = 0, qulonglong count = 2000);
+    bool sscan(const QString& key, const QString &pattern, RespType &value, QString cursor = "0", qulonglong count = 2000);
 
     /**
      * 迭代有序集合中的键
@@ -1184,7 +1184,7 @@ public:
      * @see
      * @note
      */
-    bool zscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor = 0, qulonglong count = 2000);
+    bool zscan(const QString& key, const QString &pattern, RespType &value, QString cursor = "0", qulonglong count = 2000);
 
     /**
      * 迭代希键中的键
@@ -1197,7 +1197,7 @@ public:
      * @see
      * @note
      */
-    bool hscan(const QString& key, const QString &pattern, RespType &value, qulonglong cursor = 0, qulonglong count = 2000);
+    bool hscan(const QString& key, const QString &pattern, RespType &value, QString cursor = "0", qulonglong count = 2000);
 
     /**
      * 迭代希键中的键

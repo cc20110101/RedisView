@@ -17,7 +17,7 @@ WorkThread::WorkThread(TaskMsg *taskMsg, QObject *parent) : QObject(parent)
     _sql.clear();
     _respValue.init();
     _sendMsg.init();
-    _cursor = 0;
+    _cursor = "0";
     _taskid = -1;
     _db = nullptr;
     _redisClient = nullptr;
@@ -35,7 +35,7 @@ WorkThread::WorkThread(QList<CmdMsg> &cmd, TaskMsg *taskMsg, QObject *parent) : 
     _sql.clear();
     _respValue.init();
     _sendMsg.init();
-    _cursor = 0;
+    _cursor = "0";
     _taskid = -1;
     _db = nullptr;
     _redisClient = nullptr;
@@ -72,6 +72,61 @@ void WorkThread::run() {
 
 void WorkThread::cancelWork(const int taskid) {
     _taskid = taskid;
+}
+
+bool WorkThread::prepare(int mode, bool clusterMode, bool customMode) {
+    if(mode == WORK_THREAD_MODE1) {
+        _string.clear();
+        if(_taskMsg == nullptr) {
+            _string = "TaskMsg is null";
+            return false;
+        }
+
+        if(clusterMode && !customMode) {
+            _redisClusterClient = new RedisCluster();
+            if(!_redisClusterClient->openCluster(QString("%1:%2").
+                                                 arg(_taskMsg->_host).
+                                                 arg(_taskMsg->_port),
+                                                 _taskMsg->_passwd)) {
+                _string = _redisClusterClient->getErrorInfo();
+                _redisClusterClient->close();
+                delete _redisClusterClient;
+                _redisClusterClient = nullptr;
+                return false;
+            }
+        } else {
+            _redisClient = new RedisClient();
+            if(!_redisClient->open(_taskMsg->_host, _taskMsg->_port)) {
+                _string = _redisClient->getErrorInfo();
+                _redisClient->close();
+                delete _redisClient;
+                _redisClient = nullptr;
+                return false;
+            }
+            if(!_taskMsg->_passwd.isEmpty()) {
+                if(!_redisClient->auth(_taskMsg->_passwd)) {
+                    _string = _redisClient->getErrorInfo();
+                    _redisClient->close();
+                    delete _redisClient;
+                    _redisClient = nullptr;
+                    return false;
+                }
+            }
+
+            if(!_redisClient->isOpen()) {
+                _string = _redisClient->getErrorInfo();
+                _redisClient->close();
+                delete _redisClient;
+                _redisClient = nullptr;
+                return false;
+            }
+        }
+    } else {
+        _string = "function prepare mode error";
+        return false;
+    }
+
+    return true;
 }
 
 bool WorkThread::prepare(int mode, int cluster) {
@@ -188,7 +243,7 @@ void WorkThread::destroy(int mode) {
             _redisClient = nullptr;
         }
     } else if(mode == WORK_THREAD_MODE1) {
-        if(_taskMsg->_clientIndex) {
+        if(_taskMsg->_clusterMode && !_taskMsg->_customMode) {
             if(_redisClusterClient) {
                 _redisClusterClient->close();
                 delete _redisClusterClient;
@@ -256,7 +311,7 @@ int WorkThread::deleteData(int taskid) {
     while(sql_query.next()) {
         recordData.sKey = sql_query.value(0).toString();
         recordData.iState = sql_query.value(1).toInt();
-        if(_taskMsg->_clientIndex) {
+        if(_taskMsg->_clusterMode && !_taskMsg->_customMode) {
             //_redisClusterClient
             if(!_redisClusterClient->del(recordData.sKey, ret)){
                 continue;
@@ -359,16 +414,16 @@ int WorkThread::imporData(int taskid) {
         recordData.lTimeOut = sql_query.value(4).toLongLong();
         recordData.lWeight = sql_query.value(5).toLongLong();
         recordData.iState = sql_query.value(6).toInt();
-        if(_taskMsg->_clientIndex) {
-			 if(recordData.lTimeOut > 0) {
+        if(_taskMsg->_clusterMode && !_taskMsg->_customMode) {
+            if(recordData.lTimeOut > 0) {
                 if(!_redisClusterClient->pexpire(recordData.sKey, recordData.lTimeOut)) {
                     PubLib::log(QString("import set timeout failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else {
-				 continue;
-			}
- 
+                continue;
+            }
+
             if(recordData.sKeyType == "string") {
                 if(!_redisClusterClient->set(recordData.sKey, recordData.sValue)) {
                     PubLib::log(QString("import string failed,key=%1").arg(recordData.sKey));
@@ -406,9 +461,9 @@ int WorkThread::imporData(int taskid) {
                     continue;
                 }
             } else {
-				continue;
-			}
-			
+                continue;
+            }
+
             if(dbindex != recordData.iState) {
                 dbindex = recordData.iState;
                 if(!_redisClient->select(dbindex)) {
@@ -549,13 +604,13 @@ void WorkThread::doKeyListWork()
     _sendMsg._respResult.init();
     do {
         if(_redisClient->scan(_sendMsg._keyPattern, _sendMsg._respResult, _cursor, BATCH_SCAN_NUM)) {
-            _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+            _cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
             emit sendData(_sendMsg);
         } else {
-            _cursor = 0;
+            _cursor = "0";
         }
         _sendMsg._respResult.init();
-    } while(_cursor);
+    } while(_cursor.toLongLong());
 
     destroy();
 }
@@ -574,39 +629,39 @@ void WorkThread::doValueListWork() {
     if(_taskMsg->_type == KEY_HASH) {
         do {
             if(_redisClient->hscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
-                _cursor = 0;
+                _cursor = "0";
             }
             _sendMsg._respResult.init();
-        } while(_cursor);
+        } while(_cursor.toLongLong());
     } else if(_taskMsg->_type == KEY_ZSET) {
         do {
             if(_redisClient->zscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult, _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
-                _cursor = 0;
+                _cursor = "0";
             }
             _sendMsg._respResult.init();
-        } while(_cursor);
+        } while(_cursor.toLongLong());
     } else if(_taskMsg->_type == KEY_SET) {
         do {
             if(_redisClient->sscan(_sendMsg._key, _sendMsg._keyPattern, _sendMsg._respResult , _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                 emit sendData(_sendMsg);
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid, _string);
-                _cursor = 0;
+                _cursor = "0";
             }
             _sendMsg._respResult.init();
-        } while(_cursor);
+        } while(_cursor.toLongLong());
     } else if(_taskMsg->_type == KEY_LIST) {
         int start = 0;
         int stop = start + BATCH_SCAN_NUM;
@@ -619,10 +674,10 @@ void WorkThread::doValueListWork() {
             } else {
                 _string = _redisClient->getErrorInfo();
                 emit runError(_taskMsg->_taskid,_string);
-                _cursor = 0;
+                _cursor = "0";
             }
             _sendMsg._list.clear();
-        } while(_cursor);
+        } while(_cursor.toLongLong());
     } else if(_taskMsg->_type == KEY_STRING) {
         if(_redisClient->get(_sendMsg._key, _byteArray)) {
             _sendMsg._list << _byteArray;
@@ -782,13 +837,13 @@ void WorkThread::doDelKeyWork() {
         return;
     }
 
-    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clientIndex)) {
+    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clusterMode, _taskMsg->_customMode)) {
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;
     }
 
-    if(_taskMsg->_clientIndex) {
+    if(_taskMsg->_clusterMode && !_taskMsg->_customMode) {
         qlonglong qllRet;
         for(int i =0; i < _cmd.size(); ++i) {
             if(!_redisClusterClient->del(_cmd[i]._key, qllRet)) {
@@ -844,7 +899,7 @@ void WorkThread::doBatchDelKeyWork() {
         _sendMsg._key = vKeyPattern[i];
         do {
             if(_redisClient->scan(vKeyPattern[i], _respValue, _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _respValue._arrayValue[0]._stringValue;
                 key.clear();
                 keyNum = 0;
                 for(int j = 0; j < _respValue._arrayValue[1]._arrayValue.size(); ++j) {
@@ -859,13 +914,13 @@ void WorkThread::doBatchDelKeyWork() {
                 _sendMsg._sequence = keyNum;
                 emit sendData(_sendMsg);
             } else {
-                _cursor = 0;
+                _cursor = "0";
             }
             _respValue.init();
             _sendMsg._list.clear();
             if(cancle())
                 return;
-        } while(_cursor);
+        } while(_cursor.toLongLong());
         if(cancle())
             return;
     }
@@ -891,16 +946,16 @@ void WorkThread::doBatchScanKeyWork()
         _sendMsg._key = vKeyPattern[i];
         do {
             if(_redisClient->scan(vKeyPattern[i], _respValue, _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _respValue._arrayValue[0]._stringValue;
                 _sendMsg._sequence = _respValue._arrayValue[1]._arrayValue.size();
                 emit sendData(_sendMsg);
             } else {
-                _cursor = 0;
+                _cursor = "0";
             }
             _respValue.init();
             if(cancle())
                 return;
-        } while(_cursor);
+        } while(_cursor.toLongLong());
         if(cancle())
             return;
     }
@@ -929,10 +984,10 @@ void WorkThread::doBatchExportWork(int taskid) {
     QString key;
     QByteArray value;
     qlonglong timeout = 0;
-    qulonglong cursor = 0;
+    QString cursor = "0";
     ImpExpData stImpExpData;
     std::vector<ImpExpData> vecImpExpData;
-    _cursor = 0;
+    _cursor = "0";
     _sendMsg = *_taskMsg;
     _sendMsg._list.clear();
     _sendMsg._respResult.init();
@@ -941,7 +996,7 @@ void WorkThread::doBatchExportWork(int taskid) {
         _sendMsg._key = vKeyPattern[i];
         do {
             if(_redisClient->scan(vKeyPattern[i], _respValue, _cursor, BATCH_SCAN_NUM)) {
-                _cursor = _respValue._arrayValue[0]._stringValue.toLongLong();
+                _cursor = _respValue._arrayValue[0]._stringValue;
                 for(int j = 0; j < _respValue._arrayValue[1]._arrayValue.size(); ++j) {
                     key = QString(_respValue._arrayValue[1]._arrayValue[j]._stringValue);
                     if(!_redisClient->type(key, ret)) {
@@ -958,7 +1013,7 @@ void WorkThread::doBatchExportWork(int taskid) {
                         stImpExpData.lTimeOut = timeout;
                     }
 
-                    cursor = 0;
+                    cursor = "0";
                     switch(ret) {
                     case KeyType::STRING:
                         if(!_redisClient->get(key, value)) {
@@ -993,6 +1048,7 @@ void WorkThread::doBatchExportWork(int taskid) {
                         _sendMsg._list.clear();
                         start = 0;
                         stop = start + BATCH_SCAN_NUM;
+                        _count = 0;
 
                         do {
                             if(_redisClient->lrange(key, start, stop, _sendMsg._list)) {
@@ -1013,16 +1069,17 @@ void WorkThread::doBatchExportWork(int taskid) {
                                 }
                                 start = stop + 1;
                                 stop = start + BATCH_SCAN_NUM;
-                                cursor = _sendMsg._list.size();
+                                _count = _sendMsg._list.size();
                             } else {
                                 _string = _redisClient->getErrorInfo();
                                 emit runError(_taskMsg->_taskid,_string);
-                                cursor = 0;
+                                _count = 0;
                             }
                             _sendMsg._list.clear();
                             if(cancle())
                                 return;
-                        } while(cursor);
+                        } while(_count);
+                        _count = 0;
                         break;
                     case KeyType::SET:
                         stImpExpData.sKey = key;
@@ -1033,7 +1090,7 @@ void WorkThread::doBatchExportWork(int taskid) {
 
                         do {
                             if(_redisClient->sscan(key, "*", _sendMsg._respResult , cursor, BATCH_SCAN_NUM)) {
-                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                                 for(int m = 0; m < _sendMsg._respResult._arrayValue[1]._arrayValue.size(); ++m) {
                                     stImpExpData.sValue = QTextCodec::codecForLocale()->toUnicode(
                                                 _sendMsg._respResult._arrayValue[1]._arrayValue[m]._stringValue);
@@ -1051,12 +1108,12 @@ void WorkThread::doBatchExportWork(int taskid) {
                             } else {
                                 _string = _redisClient->getErrorInfo();
                                 emit runError(_taskMsg->_taskid, _string);
-                                cursor = 0;
+                                cursor = "0";
                             }
                             _sendMsg._respResult.init();
                             if(cancle())
                                 return;
-                        } while(cursor);
+                        } while(cursor.toLongLong());
                         break;
                     case KeyType::ZSET:
                         stImpExpData.sKey = key;
@@ -1066,7 +1123,7 @@ void WorkThread::doBatchExportWork(int taskid) {
 
                         do {
                             if(_redisClient->zscan(key, "*", _sendMsg._respResult, cursor, BATCH_SCAN_NUM)) {
-                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                                 for(int p = 0; p < _sendMsg._respResult._arrayValue[1]._arrayValue.size(); ++++p) {
                                     stImpExpData.sValue = QTextCodec::codecForLocale()->toUnicode(
                                                 _sendMsg._respResult._arrayValue[1]._arrayValue[p]._stringValue);
@@ -1086,12 +1143,12 @@ void WorkThread::doBatchExportWork(int taskid) {
                             } else {
                                 _string = _redisClient->getErrorInfo();
                                 emit runError(_taskMsg->_taskid, _string);
-                                cursor = 0;
+                                cursor = "0";
                             }
                             _sendMsg._respResult.init();
                             if(cancle())
                                 return;
-                        } while(cursor);
+                        } while(cursor.toLongLong());
                         break;
                     case KeyType::HASH:
                         stImpExpData.sKey = key;
@@ -1102,7 +1159,7 @@ void WorkThread::doBatchExportWork(int taskid) {
 
                         do {
                             if(_redisClient->hscan(key, "*", _sendMsg._respResult, cursor, BATCH_SCAN_NUM)) {
-                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue.toLongLong();
+                                cursor = _sendMsg._respResult._arrayValue[0]._stringValue;
                                 for(int n = 0; n < _sendMsg._respResult._arrayValue[1]._arrayValue.size(); ++++n) {
                                     stImpExpData.sFiled = QTextCodec::codecForLocale()->toUnicode(
                                                 _sendMsg._respResult._arrayValue[1]._arrayValue[n]._stringValue);
@@ -1122,12 +1179,12 @@ void WorkThread::doBatchExportWork(int taskid) {
                             } else {
                                 _string = _redisClient->getErrorInfo();
                                 emit runError(_taskMsg->_taskid, _string);
-                                cursor = 0;
+                                cursor = "0";
                             }
                             _sendMsg._respResult.init();
                             if(cancle())
                                 return;
-                        } while(cursor);
+                        } while(cursor.toLongLong());
                         break;
                     case KeyType::NONE:
                     default:
@@ -1145,12 +1202,12 @@ void WorkThread::doBatchExportWork(int taskid) {
                         return;
                 }
             } else {
-                _cursor = 0;
+                _cursor = "0";
             }
             _respValue.init();
             if(cancle())
                 return;
-        } while(_cursor);
+        } while(_cursor.toLongLong());
 
         if(vecImpExpData.size() > 0) {
             if(exportData(vecImpExpData, taskid) < 0) {
@@ -1174,7 +1231,7 @@ void WorkThread::doBatchExportWork(int taskid) {
 
 void WorkThread::doBatchImportWork(int taskid) {
 
-    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clientIndex)) {
+    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clusterMode, _taskMsg->_customMode)) {
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;
@@ -1201,7 +1258,7 @@ void WorkThread::doBatchImportWork(int taskid) {
 }
 
 void WorkThread::doBatchDbDeleWork(int taskid) {
-    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clientIndex)) {
+    if(!prepare(WORK_THREAD_MODE1, _taskMsg->_clusterMode, _taskMsg->_customMode)) {
         emit runError(_taskMsg->_taskid,_string);
         emit finishWork(_taskMsg->_taskid);
         return;

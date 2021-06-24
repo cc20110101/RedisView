@@ -10,6 +10,67 @@
 
 int64_t PubLib::_sequenceId = 0;
 
+
+void PubLib::setIndexNums(RedisCluster *redisClient, int indexNums) {
+    if(!redisClient)
+        return;
+    QList<ClientInfoDialog> vClientInfo;
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        clientInfo._encodeAddr = settings.value("addr").toByteArray();
+        clientInfo._encodePasswd = settings.value("passwd").toByteArray();
+        clientInfo._encode = settings.value("encode","GB18030").toString().trimmed();
+        clientInfo._keyPattern = settings.value("keypattern","").toString();
+        clientInfo._valuePattern = settings.value("valuepattern","").toString();
+        clientInfo._indexNums = settings.value("indexnums","").toInt();
+        vClientInfo << clientInfo;
+    }
+    settings.endArray();
+    settings.remove("logins");
+    settings.beginWriteArray("logins");
+    for(int j =0; j < vClientInfo.size(); ++j) {
+        settings.setArrayIndex(j);
+        settings.setValue("name", vClientInfo[j]._name);
+        settings.setValue("addr", vClientInfo[j]._encodeAddr);
+        settings.setValue("passwd", vClientInfo[j]._encodePasswd);
+        settings.setValue("encode", vClientInfo[j]._encode);
+        if(redisClient->getConnectName() == vClientInfo[j]._name)
+            settings.setValue("indexnums", indexNums);
+        else
+            settings.setValue("indexnums", vClientInfo[j]._indexNums);
+        settings.setValue("keypattern", vClientInfo[j]._keyPattern);
+        settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
+    }
+    settings.endArray();
+}
+
+int PubLib::getIndexNums(RedisCluster *redisClient) {
+    int indexNum = 1;
+    if(!redisClient)
+        return indexNum;
+    ClientInfoDialog clientInfo;
+    QString sPath = QCoreApplication::applicationDirPath() + "/" + IniFileName;
+    QSettings settings(sPath, QSettings::IniFormat);
+    settings.setIniCodec("UTF-8");
+    int size = settings.beginReadArray("logins");
+    for(int i = 0; i < size; ++i) {
+        settings.setArrayIndex(i);
+        clientInfo._name = settings.value("name").toString().trimmed();
+        if(redisClient->getConnectName() == clientInfo._name) {
+            indexNum = settings.value("indexnums","1").toInt();
+            break;
+        }
+    }
+    settings.endArray();
+    return indexNum == 0 ? 1: indexNum;
+}
+
 void PubLib::log(QString info) {
     QMutexLocker locker(&G_PUBLIC_LIB_MUTEX);
     QString logfile = QCoreApplication::applicationDirPath() + "/" + LogName;

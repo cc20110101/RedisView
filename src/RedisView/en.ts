@@ -2,6 +2,33 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
 <context>
+    <name>AddIndexDialog</name>
+    <message>
+        <location filename="AppView/AddIndexDialog.cpp" line="14"/>
+        <source>添加索引数</source>
+        <translatorcomment>Add index</translatorcomment>
+        <translation>Add index</translation>
+    </message>
+    <message>
+        <location filename="AppView/AddIndexDialog.cpp" line="16"/>
+        <source>索引数: </source>
+        <translatorcomment>Number of indexes: </translatorcomment>
+        <translation>Number of indexes: </translation>
+    </message>
+    <message>
+        <location filename="AppView/AddIndexDialog.cpp" line="18"/>
+        <source>确定</source>
+        <translatorcomment>OK</translatorcomment>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="AppView/AddIndexDialog.cpp" line="19"/>
+        <source>取消</source>
+        <translatorcomment>Cancel</translatorcomment>
+        <translation>Cancel</translation>
+    </message>
+</context>
+<context>
     <name>BatchOperateDialog</name>
     <message>
         <location filename="AppView/batchoperatedialog.ui" line="14"/>
@@ -76,149 +103,149 @@
         <translation>Batch Operate</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="50"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="248"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="370"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="375"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="380"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="387"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="393"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="400"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="405"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="414"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="420"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="586"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="592"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="600"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="611"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="620"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="628"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="640"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="646"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="654"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="666"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="675"/>
-        <location filename="AppView/BatchOperateDialog.cpp" line="683"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="53"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="251"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="373"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="378"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="383"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="390"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="396"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="403"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="408"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="417"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="423"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="590"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="596"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="604"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="615"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="624"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="632"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="644"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="650"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="658"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="670"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="679"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="687"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="50"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="53"/>
         <source>获取DB个数失败!</source>
         <translatorcomment>Failed to get db number!</translatorcomment>
         <translation>Failed to get db number!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="76"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="79"/>
         <source>删除以a或b开头的键</source>
         <translatorcomment>Delete key starting with a or b</translatorcomment>
         <translation>Delete key starting with a or b</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="86"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="89"/>
         <source>扫描以a或b开头的键</source>
         <translatorcomment>Scan key starting with a or b</translatorcomment>
         <translation>Scan key starting with a or b</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="96"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="99"/>
         <source>从ORACLE表导入键值</source>
         <translatorcomment>Import key values from the oracle table</translatorcomment>
         <translation>Import key values from the oracle table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="106"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="109"/>
         <source>导出a或b开头键值到ORACLE表</source>
         <translatorcomment>Export a or b start key values to oracle table</translatorcomment>
         <translation>Export a or b start key values to oracle table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="115"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="118"/>
         <source>从MYSQL表导入键值</source>
         <translatorcomment>Import key values from the mysql table</translatorcomment>
         <translation>Import key values from the mysql table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="125"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="128"/>
         <source>导出a或b开头键值到MYSQ表</source>
         <translatorcomment>Export a or b start key values to mysql table</translatorcomment>
         <translation>Export a or b start key values to mysql table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="134"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="137"/>
         <source>删除ORACLE表对应键值的键</source>
         <translatorcomment>Delete the key corresponding to the key value of the oracle table</translatorcomment>
         <translation>Delete the key corresponding to the key value of the oracle table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="143"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="146"/>
         <source>删除MYSQL表对应键值的键</source>
         <translatorcomment>Delete the key corresponding to the key value of the mysql table</translatorcomment>
         <translation>Delete the key corresponding to the key value of the mysql table</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="370"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="373"/>
         <source>存在未完成任务,稍后重试!</source>
         <translatorcomment>There are unfinished tasks, try again later!</translatorcomment>
         <translation>There are unfinished tasks, try again later!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="375"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="378"/>
         <source>客户端主实例连接为空!</source>
         <translatorcomment>The client main instance connection is empty!</translatorcomment>
         <translation>The client main instance connection is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="380"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="383"/>
         <source>客户端连接为空!</source>
         <translatorcomment>The client connection is null!</translatorcomment>
         <translation>The client connection is null!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="387"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="390"/>
         <source>键模式个数最小为1！</source>
         <translatorcomment>The minimum number of key patterns is 1!</translatorcomment>
         <translation>The minimum number of key patterns is 1!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="393"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="396"/>
         <source>键模式分隔符不可为空！</source>
         <translatorcomment>Key mode separator cannot be empty!</translatorcomment>
         <translation>Key mode separator cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="400"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="403"/>
         <source>键模式与个数不匹配！</source>
         <translatorcomment>Key pattern does not match number!</translatorcomment>
         <translation>Key pattern does not match number!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="405"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="408"/>
         <source>获取数据库键总数失败!</source>
         <translatorcomment>Failed to get the total number of database keys!</translatorcomment>
         <translation>Failed to get the total number of database keys!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="414"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="417"/>
         <source>数据库表不可为空！</source>
         <translatorcomment>Database tables cannot be empty!</translatorcomment>
         <translation>Database tables cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="420"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="423"/>
         <source>数据库连接信息未配置！</source>
         <translatorcomment>Database connection information is not configured!</translatorcomment>
         <translation>Database connection information is not configured!</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="698"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="702"/>
         <source>确认</source>
         <translatorcomment>Confirm</translatorcomment>
         <translation>Confirm</translation>
     </message>
     <message>
-        <location filename="AppView/BatchOperateDialog.cpp" line="698"/>
+        <location filename="AppView/BatchOperateDialog.cpp" line="702"/>
         <source>任务未结束，确定退出么？</source>
         <translatorcomment>The task is not over, are you sure you want to quit?</translatorcomment>
         <translation>The task is not over, are you sure you want to quit?</translation>
@@ -318,16 +345,15 @@
         <translation>Thanks To</translation>
     </message>
     <message>
-        <location filename="AppView/contributordialog.ui" line="26"/>
+        <location filename="AppView/contributordialog.ui" line="40"/>
         <source>确定</source>
         <translatorcomment>OK</translatorcomment>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="AppView/contributordialog.ui" line="39"/>
         <source>TextLabel</source>
         <translatorcomment>TextLabel</translatorcomment>
-        <translation>TextLabel</translation>
+        <translation type="vanished">TextLabel</translation>
     </message>
 </context>
 <context>
@@ -843,7 +869,8 @@ the best, everything goes well...</translation>
         <translation>Do you want to delete this login information?</translation>
     </message>
     <message>
-        <location filename="AppView/LoginDialog.cpp" line="275"/>
+        <location filename="AppView/LoginDialog.cpp" line="285"/>
+        <location filename="AppView/LoginDialog.cpp" line="288"/>
         <source>连接错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
@@ -923,14 +950,14 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/mainwidget.ui" line="55"/>
-        <location filename="AppView/MainWidget.cpp" line="561"/>
+        <location filename="AppView/MainWidget.cpp" line="577"/>
         <source>视图</source>
         <translatorcomment>View</translatorcomment>
         <translation>View</translation>
     </message>
     <message>
         <location filename="AppView/mainwidget.ui" line="68"/>
-        <location filename="AppView/MainWidget.cpp" line="1063"/>
+        <location filename="AppView/MainWidget.cpp" line="1118"/>
         <source>命令</source>
         <translatorcomment>Command</translatorcomment>
         <translation>Command</translation>
@@ -992,7 +1019,7 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/mainwidget.ui" line="263"/>
-        <location filename="AppView/MainWidget.cpp" line="572"/>
+        <location filename="AppView/MainWidget.cpp" line="588"/>
         <source>消息</source>
         <translatorcomment>Message</translatorcomment>
         <translation>Message</translation>
@@ -1041,314 +1068,320 @@ the best, everything goes well...</translation>
         <translation>Send</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="112"/>
+        <location filename="AppView/MainWidget.cpp" line="122"/>
         <source>获取DB数失败，默认为1</source>
         <translatorcomment>Failed to get db number, default 1</translatorcomment>
         <translation>Failed to get db number, default 1</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="148"/>
-        <location filename="AppView/MainWidget.cpp" line="153"/>
-        <location filename="AppView/MainWidget.cpp" line="236"/>
-        <location filename="AppView/MainWidget.cpp" line="241"/>
-        <location filename="AppView/MainWidget.cpp" line="682"/>
-        <location filename="AppView/MainWidget.cpp" line="696"/>
-        <location filename="AppView/MainWidget.cpp" line="719"/>
-        <location filename="AppView/MainWidget.cpp" line="724"/>
-        <location filename="AppView/MainWidget.cpp" line="979"/>
-        <location filename="AppView/MainWidget.cpp" line="984"/>
+        <location filename="AppView/MainWidget.cpp" line="159"/>
+        <location filename="AppView/MainWidget.cpp" line="164"/>
+        <location filename="AppView/MainWidget.cpp" line="247"/>
+        <location filename="AppView/MainWidget.cpp" line="252"/>
+        <location filename="AppView/MainWidget.cpp" line="735"/>
+        <location filename="AppView/MainWidget.cpp" line="749"/>
+        <location filename="AppView/MainWidget.cpp" line="772"/>
+        <location filename="AppView/MainWidget.cpp" line="777"/>
+        <location filename="AppView/MainWidget.cpp" line="1034"/>
+        <location filename="AppView/MainWidget.cpp" line="1039"/>
         <source>提示</source>
         <translatorcomment>Tips</translatorcomment>
         <translation>Tips</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="148"/>
-        <location filename="AppView/MainWidget.cpp" line="236"/>
-        <location filename="AppView/MainWidget.cpp" line="979"/>
+        <location filename="AppView/MainWidget.cpp" line="159"/>
+        <location filename="AppView/MainWidget.cpp" line="247"/>
+        <location filename="AppView/MainWidget.cpp" line="1034"/>
         <source>后台删键任务未结束，请稍后进行键刷新操作!</source>
         <translatorcomment>The background delete key task is not finished. please refresh the key later!</translatorcomment>
         <translation>The background delete key task is not finished. please refresh the key later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="153"/>
+        <location filename="AppView/MainWidget.cpp" line="164"/>
         <source>后台扫描键值任务未结束，请稍后进行键刷新操作!</source>
         <translatorcomment>The background scan key value task is not finished, please refresh the key later!</translatorcomment>
         <translation>The background scan key value task is not finished, please refresh the key later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="241"/>
-        <location filename="AppView/MainWidget.cpp" line="984"/>
+        <location filename="AppView/MainWidget.cpp" line="252"/>
+        <location filename="AppView/MainWidget.cpp" line="1039"/>
         <source>后台扫描键任务未结束，请稍后进行键刷新操作!</source>
         <translatorcomment>The background scan key task is not finished. please refresh the key later!</translatorcomment>
         <translation>The background scan key task is not finished. please refresh the key later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="450"/>
+        <location filename="AppView/MainWidget.cpp" line="461"/>
         <source>键初始化模式</source>
         <translatorcomment>key scan pattern</translatorcomment>
         <translation>key scan pattern</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="487"/>
+        <location filename="AppView/MainWidget.cpp" line="501"/>
         <source>键值排序</source>
         <translatorcomment>Sort Key</translatorcomment>
         <translation>Sort Key</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="489"/>
+        <location filename="AppView/MainWidget.cpp" line="503"/>
+        <source>添加索引</source>
+        <translatorcomment>Add index</translatorcomment>
+        <translation>Add index</translation>
+    </message>
+    <message>
+        <location filename="AppView/MainWidget.cpp" line="505"/>
         <source>总数统计</source>
         <translatorcomment>Total Statistics</translatorcomment>
         <translation>Total Statistics</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="491"/>
+        <location filename="AppView/MainWidget.cpp" line="507"/>
         <source>刷新键值</source>
         <translatorcomment>Refresh Key</translatorcomment>
         <translation>Refresh Key</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="493"/>
+        <location filename="AppView/MainWidget.cpp" line="509"/>
         <source>新建键值</source>
         <translatorcomment>Create Key</translatorcomment>
         <translation>Create Key</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="495"/>
+        <location filename="AppView/MainWidget.cpp" line="511"/>
         <source>删除键值</source>
         <translatorcomment>Delete Key</translatorcomment>
         <translation>Delete Key</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="497"/>
+        <location filename="AppView/MainWidget.cpp" line="513"/>
         <source>修改键值</source>
         <translatorcomment>Modify Key</translatorcomment>
         <translation>Modify Key</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="499"/>
+        <location filename="AppView/MainWidget.cpp" line="515"/>
         <source>关闭视图</source>
         <translatorcomment>Close View</translatorcomment>
         <translation>Close View</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="501"/>
+        <location filename="AppView/MainWidget.cpp" line="517"/>
         <source>关闭命令</source>
         <translatorcomment>Close Command</translatorcomment>
         <translation>Close Command</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="503"/>
+        <location filename="AppView/MainWidget.cpp" line="519"/>
         <source>关闭订阅</source>
         <translatorcomment>Close Subscribe</translatorcomment>
         <translation>Close Subscribe</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="653"/>
-        <location filename="AppView/MainWidget.cpp" line="662"/>
-        <location filename="AppView/MainWidget.cpp" line="666"/>
+        <location filename="AppView/MainWidget.cpp" line="706"/>
+        <location filename="AppView/MainWidget.cpp" line="715"/>
+        <location filename="AppView/MainWidget.cpp" line="719"/>
         <source>统计键值总数为</source>
         <translatorcomment>The total number of value  is </translatorcomment>
         <translation>The total number of value  is </translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="654"/>
-        <location filename="AppView/MainWidget.cpp" line="663"/>
-        <location filename="AppView/MainWidget.cpp" line="667"/>
+        <location filename="AppView/MainWidget.cpp" line="707"/>
+        <location filename="AppView/MainWidget.cpp" line="716"/>
+        <location filename="AppView/MainWidget.cpp" line="720"/>
         <source>统计</source>
         <translatorcomment>Statistics</translatorcomment>
         <translation>Statistics</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="682"/>
+        <location filename="AppView/MainWidget.cpp" line="735"/>
         <source>后台任务未结束，请稍后进行删键操作!</source>
         <translatorcomment>There is a background task not finished, please delete the key later!</translatorcomment>
         <translation>There is a background task not finished, please delete the key later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="686"/>
+        <location filename="AppView/MainWidget.cpp" line="739"/>
         <source>确认</source>
         <translatorcomment>Confirm</translatorcomment>
         <translation>Confirm</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="686"/>
+        <location filename="AppView/MainWidget.cpp" line="739"/>
         <source>确定要删除选中键么?</source>
         <translatorcomment>Are you sure you want to delete the selected key?</translatorcomment>
         <translation>Are you sure you want to delete the selected key?</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="696"/>
+        <location filename="AppView/MainWidget.cpp" line="749"/>
         <source>请先选择要删除的键！</source>
         <translatorcomment>Please select the key to delete first!</translatorcomment>
         <translation>Please select the key to delete first!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="719"/>
+        <location filename="AppView/MainWidget.cpp" line="772"/>
         <source>没有可删除的键！</source>
         <translatorcomment>No key to delete!</translatorcomment>
         <translation>No key to delete!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="724"/>
+        <location filename="AppView/MainWidget.cpp" line="777"/>
         <source>客户端连接信息异常!</source>
         <translatorcomment>Exceptional client connection information!</translatorcomment>
         <translation>Exceptional client connection information!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="799"/>
-        <location filename="AppView/MainWidget.cpp" line="806"/>
-        <location filename="AppView/MainWidget.cpp" line="819"/>
-        <location filename="AppView/MainWidget.cpp" line="827"/>
-        <location filename="AppView/MainWidget.cpp" line="832"/>
-        <location filename="AppView/MainWidget.cpp" line="839"/>
-        <location filename="AppView/MainWidget.cpp" line="848"/>
-        <location filename="AppView/MainWidget.cpp" line="865"/>
-        <location filename="AppView/MainWidget.cpp" line="873"/>
-        <location filename="AppView/MainWidget.cpp" line="876"/>
-        <location filename="AppView/MainWidget.cpp" line="889"/>
-        <location filename="AppView/MainWidget.cpp" line="904"/>
-        <location filename="AppView/MainWidget.cpp" line="919"/>
-        <location filename="AppView/MainWidget.cpp" line="934"/>
-        <location filename="AppView/MainWidget.cpp" line="950"/>
-        <location filename="AppView/MainWidget.cpp" line="962"/>
-        <location filename="AppView/MainWidget.cpp" line="967"/>
-        <location filename="AppView/MainWidget.cpp" line="1011"/>
+        <location filename="AppView/MainWidget.cpp" line="854"/>
+        <location filename="AppView/MainWidget.cpp" line="861"/>
+        <location filename="AppView/MainWidget.cpp" line="874"/>
+        <location filename="AppView/MainWidget.cpp" line="882"/>
+        <location filename="AppView/MainWidget.cpp" line="887"/>
+        <location filename="AppView/MainWidget.cpp" line="894"/>
+        <location filename="AppView/MainWidget.cpp" line="903"/>
+        <location filename="AppView/MainWidget.cpp" line="920"/>
+        <location filename="AppView/MainWidget.cpp" line="928"/>
+        <location filename="AppView/MainWidget.cpp" line="931"/>
+        <location filename="AppView/MainWidget.cpp" line="944"/>
+        <location filename="AppView/MainWidget.cpp" line="959"/>
+        <location filename="AppView/MainWidget.cpp" line="974"/>
+        <location filename="AppView/MainWidget.cpp" line="989"/>
+        <location filename="AppView/MainWidget.cpp" line="1005"/>
         <location filename="AppView/MainWidget.cpp" line="1017"/>
-        <location filename="AppView/MainWidget.cpp" line="1026"/>
-        <location filename="AppView/MainWidget.cpp" line="1033"/>
-        <location filename="AppView/MainWidget.cpp" line="1039"/>
-        <location filename="AppView/MainWidget.cpp" line="1045"/>
-        <location filename="AppView/MainWidget.cpp" line="1051"/>
-        <location filename="AppView/MainWidget.cpp" line="1075"/>
-        <location filename="AppView/MainWidget.cpp" line="1185"/>
-        <location filename="AppView/MainWidget.cpp" line="1191"/>
-        <location filename="AppView/MainWidget.cpp" line="1197"/>
-        <location filename="AppView/MainWidget.cpp" line="1205"/>
-        <location filename="AppView/MainWidget.cpp" line="1210"/>
-        <location filename="AppView/MainWidget.cpp" line="1218"/>
-        <location filename="AppView/MainWidget.cpp" line="1232"/>
-        <location filename="AppView/MainWidget.cpp" line="1238"/>
+        <location filename="AppView/MainWidget.cpp" line="1022"/>
+        <location filename="AppView/MainWidget.cpp" line="1066"/>
+        <location filename="AppView/MainWidget.cpp" line="1072"/>
+        <location filename="AppView/MainWidget.cpp" line="1081"/>
+        <location filename="AppView/MainWidget.cpp" line="1088"/>
+        <location filename="AppView/MainWidget.cpp" line="1094"/>
+        <location filename="AppView/MainWidget.cpp" line="1100"/>
+        <location filename="AppView/MainWidget.cpp" line="1106"/>
+        <location filename="AppView/MainWidget.cpp" line="1130"/>
+        <location filename="AppView/MainWidget.cpp" line="1240"/>
         <location filename="AppView/MainWidget.cpp" line="1246"/>
-        <location filename="AppView/MainWidget.cpp" line="1251"/>
-        <location filename="AppView/MainWidget.cpp" line="1266"/>
+        <location filename="AppView/MainWidget.cpp" line="1252"/>
+        <location filename="AppView/MainWidget.cpp" line="1260"/>
+        <location filename="AppView/MainWidget.cpp" line="1265"/>
+        <location filename="AppView/MainWidget.cpp" line="1273"/>
+        <location filename="AppView/MainWidget.cpp" line="1287"/>
+        <location filename="AppView/MainWidget.cpp" line="1293"/>
         <location filename="AppView/MainWidget.cpp" line="1301"/>
-        <location filename="AppView/MainWidget.cpp" line="1309"/>
-        <location filename="AppView/MainWidget.cpp" line="1314"/>
+        <location filename="AppView/MainWidget.cpp" line="1306"/>
+        <location filename="AppView/MainWidget.cpp" line="1321"/>
+        <location filename="AppView/MainWidget.cpp" line="1356"/>
+        <location filename="AppView/MainWidget.cpp" line="1364"/>
+        <location filename="AppView/MainWidget.cpp" line="1369"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="806"/>
+        <location filename="AppView/MainWidget.cpp" line="861"/>
         <source>获取键超时时间失败</source>
         <translatorcomment>Failed to get the key expiration time</translatorcomment>
         <translation>Failed to get the key expiration time</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="819"/>
-        <location filename="AppView/MainWidget.cpp" line="848"/>
-        <location filename="AppView/MainWidget.cpp" line="876"/>
-        <location filename="AppView/MainWidget.cpp" line="962"/>
+        <location filename="AppView/MainWidget.cpp" line="874"/>
+        <location filename="AppView/MainWidget.cpp" line="903"/>
+        <location filename="AppView/MainWidget.cpp" line="931"/>
+        <location filename="AppView/MainWidget.cpp" line="1017"/>
         <source>切回db0失败</source>
         <translatorcomment>Switch back to db0 failed</translatorcomment>
         <translation>Switch back to db0 failed</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="827"/>
+        <location filename="AppView/MainWidget.cpp" line="882"/>
         <source>设置键超时时间永久失败</source>
         <translatorcomment>Set key timeout to permanent failur</translatorcomment>
         <translation>Set key timeout to permanent failur</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="832"/>
+        <location filename="AppView/MainWidget.cpp" line="887"/>
         <source>设置超时失败</source>
         <translatorcomment>Set timeout failed</translatorcomment>
         <translation>Set timeout failed</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1017"/>
+        <location filename="AppView/MainWidget.cpp" line="1072"/>
         <source>获取键类型失败!</source>
         <translatorcomment>Failed to get the key type!</translatorcomment>
         <translation>Failed to get the key type!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1026"/>
+        <location filename="AppView/MainWidget.cpp" line="1081"/>
         <source>获取键值失败!</source>
         <translatorcomment>Failed to get key value!</translatorcomment>
         <translation>Failed to get key value!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1033"/>
+        <location filename="AppView/MainWidget.cpp" line="1088"/>
         <source>获取键过期时间失败!</source>
         <translatorcomment>Failed to get the key expiration time!</translatorcomment>
         <translation>Failed to get the key expiration time!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1039"/>
+        <location filename="AppView/MainWidget.cpp" line="1094"/>
         <source>获取键编码信息失败!</source>
         <translatorcomment>Failed to get keycode information!</translatorcomment>
         <translation>Failed to get keycode information!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1045"/>
+        <location filename="AppView/MainWidget.cpp" line="1100"/>
         <source>获取键引用计数失败!</source>
         <translatorcomment>Failed to get key reference coun!</translatorcomment>
         <translation>Failed to get key reference coun!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1051"/>
+        <location filename="AppView/MainWidget.cpp" line="1106"/>
         <source>获取键空闲时间失败!</source>
         <translatorcomment>Failed to get key idle time!</translatorcomment>
         <translation>Failed to get key idle time!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1075"/>
+        <location filename="AppView/MainWidget.cpp" line="1130"/>
         <source>多条命令执行,分隔符不可为空!</source>
         <translatorcomment>When multiple commands are executed, the separator cannot be empty!</translatorcomment>
         <translation>When multiple commands are executed, the separator cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1116"/>
+        <location filename="AppView/MainWidget.cpp" line="1171"/>
         <source>配置出错，非json、resp、text格式之一</source>
         <translatorcomment>Configuration error, not one of json, resp, text format</translatorcomment>
         <translation>Configuration error, not one of json, resp, text format</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1185"/>
+        <location filename="AppView/MainWidget.cpp" line="1240"/>
         <source>发送频道不可为空!</source>
         <translatorcomment>Send channel can&apos;t be empty!</translatorcomment>
         <translation>Send channel can&apos;t be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1191"/>
+        <location filename="AppView/MainWidget.cpp" line="1246"/>
         <source>发送消息不可为空!</source>
         <translatorcomment>Sending messages can&apos;t be empty!</translatorcomment>
         <translation>Sending messages can&apos;t be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1197"/>
-        <location filename="AppView/MainWidget.cpp" line="1238"/>
-        <location filename="AppView/MainWidget.cpp" line="1301"/>
+        <location filename="AppView/MainWidget.cpp" line="1252"/>
+        <location filename="AppView/MainWidget.cpp" line="1293"/>
+        <location filename="AppView/MainWidget.cpp" line="1356"/>
         <source>客户端连接信息为空!</source>
         <translatorcomment>Client connection information is empty!</translatorcomment>
         <translation>Client connection information is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1210"/>
-        <location filename="AppView/MainWidget.cpp" line="1251"/>
-        <location filename="AppView/MainWidget.cpp" line="1314"/>
+        <location filename="AppView/MainWidget.cpp" line="1265"/>
+        <location filename="AppView/MainWidget.cpp" line="1306"/>
+        <location filename="AppView/MainWidget.cpp" line="1369"/>
         <source>客户端连接失败!</source>
         <translatorcomment>Client connection failed!</translatorcomment>
         <translation>Client connection failed!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1232"/>
+        <location filename="AppView/MainWidget.cpp" line="1287"/>
         <source>订阅频道不可为空!</source>
         <translatorcomment>Subscription channels cannot be empty!</translatorcomment>
         <translation>Subscription channels cannot be empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWidget.cpp" line="1266"/>
+        <location filename="AppView/MainWidget.cpp" line="1321"/>
         <source>未执行订阅,无需取消订阅!</source>
         <translatorcomment>No subscription, no cancellation!</translatorcomment>
         <translation>No subscription, no cancellation!</translation>
@@ -2385,8 +2418,8 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="502"/>
-        <location filename="AppView/MainWindow.cpp" line="653"/>
-        <location filename="AppView/MainWindow.cpp" line="658"/>
+        <location filename="AppView/MainWindow.cpp" line="661"/>
+        <location filename="AppView/MainWindow.cpp" line="666"/>
         <source>提示</source>
         <translatorcomment>Tips</translatorcomment>
         <translation>Tips</translation>
@@ -2405,11 +2438,12 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/MainWindow.cpp" line="574"/>
-        <location filename="AppView/MainWindow.cpp" line="582"/>
-        <location filename="AppView/MainWindow.cpp" line="585"/>
-        <location filename="AppView/MainWindow.cpp" line="600"/>
-        <location filename="AppView/MainWindow.cpp" line="630"/>
-        <location filename="AppView/MainWindow.cpp" line="639"/>
+        <location filename="AppView/MainWindow.cpp" line="583"/>
+        <location filename="AppView/MainWindow.cpp" line="589"/>
+        <location filename="AppView/MainWindow.cpp" line="593"/>
+        <location filename="AppView/MainWindow.cpp" line="608"/>
+        <location filename="AppView/MainWindow.cpp" line="638"/>
+        <location filename="AppView/MainWindow.cpp" line="647"/>
         <source>错误</source>
         <translatorcomment>Error</translatorcomment>
         <translation>Error</translation>
@@ -2421,49 +2455,50 @@ the best, everything goes well...</translation>
         <translation>Background task not completed, please refresh the connection later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="585"/>
-        <location filename="AppView/MainWindow.cpp" line="630"/>
-        <location filename="AppView/MainWindow.cpp" line="639"/>
+        <location filename="AppView/MainWindow.cpp" line="593"/>
+        <location filename="AppView/MainWindow.cpp" line="638"/>
+        <location filename="AppView/MainWindow.cpp" line="647"/>
         <source>客户端连接为空!</source>
         <translatorcomment>Client connect is empty!</translatorcomment>
         <translation>Client connect is empty!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="600"/>
+        <location filename="AppView/MainWindow.cpp" line="608"/>
         <source>后台任务未完成,请稍后连接主机!</source>
         <translatorcomment>Background task not completed, please connect host later!</translatorcomment>
         <translation>Background task not completed, please connect host later!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="653"/>
-        <location filename="AppView/MainWindow.cpp" line="658"/>
+        <location filename="AppView/MainWindow.cpp" line="661"/>
+        <location filename="AppView/MainWindow.cpp" line="666"/>
         <source>语言设置成功，重启生效!</source>
         <translatorcomment>Language settings successful, restart effective!</translatorcomment>
         <translation>Language settings successful, restart effective!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="681"/>
+        <location filename="AppView/MainWindow.cpp" line="689"/>
         <source>保存信息</source>
         <translatorcomment>Save</translatorcomment>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="681"/>
+        <location filename="AppView/MainWindow.cpp" line="689"/>
         <source>成功保存窗口大小与位置信息！</source>
         <translatorcomment>Successfully save window size and location information!</translatorcomment>
         <translation>Successfully save window size and location information!</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1290"/>
+        <location filename="AppView/MainWindow.cpp" line="1298"/>
         <source>关于</source>
         <translatorcomment>About</translatorcomment>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="AppView/MainWindow.cpp" line="1291"/>
-        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.1&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
-        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : WangChangchun&lt;br&gt;Version : Community v1.7.1&lt;br&gt;Mailbox : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2019 Powered By CC&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author : WangChangchun&lt;br&gt;Version : Community v1.7.1&lt;br&gt;Mailbox : cc20110101@126.com&lt;br&gt;Address : &lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;Copyright : Copyright 2019 Powered By CC&lt;br&gt;</translation>
+        <location filename="AppView/MainWindow.cpp" line="1299"/>
+        <source>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.2&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;作者 ：王长春&lt;br&gt;版本 ：Community v1.7.1&lt;br&gt;邮箱 ：cc20110101@126.com&lt;br&gt;地址 ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;版权 ：Copyright 2019 Powered By CC&lt;br&gt;</oldsource>
+        <translatorcomment>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author ：WangChangchun&lt;br&gt;Version : Community v1.7.2&lt;br&gt;Mailbox ：cc20110101@126.com&lt;br&gt;Address ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;&lt;br&gt;Copyright ：Copyright 2019 Powered By CC&lt;br&gt;</translatorcomment>
+        <translation>&lt;br&gt;&lt;b&gt;RedisView&lt;/b&gt;&lt;br&gt;&lt;br&gt;Author ：WangChangchun&lt;br&gt;Version : Community v1.7.2&lt;br&gt;Mailbox ：cc20110101@126.com&lt;br&gt;Address ：&lt;a href=&apos;http://www.cc123.net.cn/&apos;&gt;RedisView&lt;/a&gt; &lt;a href=&apos;https://github.com/cc20110101/RedisView&apos;&gt;GitHub&lt;/a&gt; &lt;a href=&apos;https://sourceforge.net/projects/redisview/&apos;&gt;SourceForge&lt;/a&gt;&lt;br&gt;&lt;br&gt;Copyright ：Copyright 2019 Powered By CC&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -2726,7 +2761,7 @@ the best, everything goes well...</translation>
         <translation>Try hard to check, please wait...</translation>
     </message>
     <message>
-        <location filename="AppView/UpdateSystem.cpp" line="42"/>
+        <location filename="AppView/UpdateSystem.cpp" line="43"/>
         <source>功能不实现，请到下载网站更新...</source>
         <translatorcomment>Please check the official website for updates...</translatorcomment>
         <translation>Please check the official website for updates...</translation>
@@ -2830,9 +2865,10 @@ the best, everything goes well...</translation>
     </message>
     <message>
         <location filename="AppView/VersionHistory.cpp" line="21"/>
-        <source>&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;新增键值查看功能.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
-        <translatorcomment>&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;Added key value view function.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;New theme settings and database import and export.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
-        <translation>&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;Added key value view function.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;New theme settings and database import and export.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
+        <source>&lt;br&gt;2021/06/21&amp;nbsp;&amp;nbsp;Version 1.7.2&amp;nbsp;&amp;nbsp;适配浪潮云redis集群环境.&lt;br&gt;&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;新增键值查看功能.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</source>
+        <oldsource>&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;新增键值查看功能.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;新增主题设置和数据库导入导出.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;密码AES加密存储.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;新增集群信息查看分析功能.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;修复设置含空格值失败Bug.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;修复值初始化模式Bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;修复键值过长显示不全Bug.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;增加操作进度提示,修复中文乱码Bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;支持编码选择.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;支持复制集模式.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;增加批量删除键功能.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;增加订阅发布模式.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;界面调整,增加键值初始化扫描模式.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;自定义值模型,内存优化;新增Mac、Linux版本.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;自定义键模型,内存优化.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Windows初版发布.&lt;br&gt;</oldsource>
+        <translatorcomment>&lt;br&gt;2021/06/21&amp;nbsp;&amp;nbsp;Version 1.7.2&amp;nbsp;&amp;nbsp;Adapt to Inspur Cloud redis environment.&lt;br&gt;&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;Added key value view function.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;New theme settings and database import and export.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translatorcomment>
+        <translation>&lt;br&gt;2021/06/21&amp;nbsp;&amp;nbsp;Version 1.7.2&amp;nbsp;&amp;nbsp;Adapt to Inspur Cloud redis environment.&lt;br&gt;&lt;br&gt;2021/04/21&amp;nbsp;&amp;nbsp;Version 1.7.1&amp;nbsp;&amp;nbsp;Added key value view function.&lt;br&gt;&lt;br&gt;2019/06/26&amp;nbsp;&amp;nbsp;Version 1.7.0&amp;nbsp;&amp;nbsp;New theme settings and database import and export.&lt;br&gt;&lt;br&gt;2019/06/01&amp;nbsp;&amp;nbsp;Version 1.6.7&amp;nbsp;&amp;nbsp;Password AES encrypted storage.&lt;br&gt;&lt;br&gt;2019/05/30&amp;nbsp;&amp;nbsp;Version 1.6.6&amp;nbsp;&amp;nbsp;Added cluster viewing and analysis capabilities.&lt;br&gt;&lt;br&gt;2019/05/08&amp;nbsp;&amp;nbsp;Version 1.6.5&amp;nbsp;&amp;nbsp;Fix setting bug with space value failed.&lt;br&gt;&lt;br&gt;2019/04/08&amp;nbsp;&amp;nbsp;Version 1.6.4&amp;nbsp;&amp;nbsp;Fix value initialization pattern bug.&lt;br&gt;&lt;br&gt;2019/04/05&amp;nbsp;&amp;nbsp;Version 1.6.3&amp;nbsp;&amp;nbsp;Repair incomplete display bug when key value is too long.&lt;br&gt;&lt;br&gt;2019/03/24&amp;nbsp;&amp;nbsp;Version 1.6.2&amp;nbsp;&amp;nbsp;Increase progress hints,fix chinese garbled bug.&lt;br&gt;&lt;br&gt;2019/03/15&amp;nbsp;&amp;nbsp;Version 1.6.1&amp;nbsp;&amp;nbsp;Support coding settings.&lt;br&gt;&lt;br&gt;2019/02/21&amp;nbsp;&amp;nbsp;Version 1.6.0&amp;nbsp;&amp;nbsp;Support replication mode.&lt;br&gt;&lt;br&gt;2019/01/20&amp;nbsp;&amp;nbsp;Version 1.5.0&amp;nbsp;&amp;nbsp;Add batch deletion key function.&lt;br&gt;&lt;br&gt;2019/01/19&amp;nbsp;&amp;nbsp;Version 1.4.0&amp;nbsp;&amp;nbsp;Adding subscription publishing mode.&lt;br&gt;&lt;br&gt;2019/01/10&amp;nbsp;&amp;nbsp;Version 1.3.0&amp;nbsp;&amp;nbsp;Adjust view interface,adding keys and values to initialize scan mode.&lt;br&gt;&lt;br&gt;2019/01/07&amp;nbsp;&amp;nbsp;Version 1.2.0&amp;nbsp;&amp;nbsp;Custom value model, memory optimization; add mac and linux version.&lt;br&gt;&lt;br&gt;2018/12/30&amp;nbsp;&amp;nbsp;Version 1.1.0&amp;nbsp;&amp;nbsp;Custom key model, memory optimization.&lt;br&gt;&lt;br&gt;2018/12/25&amp;nbsp;&amp;nbsp;Version 1.0.0&amp;nbsp;&amp;nbsp;Initial release of windows.&lt;br&gt;</translation>
     </message>
 </context>
 </TS>

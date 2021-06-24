@@ -23,6 +23,7 @@ protected:
     void run();
 
 private:
+    bool prepare(int mode, bool clusterMode, bool customMode);
     bool prepare(int mode = WORK_THREAD_MODE0, int cluster = 0);
     void destroy(int mode = WORK_THREAD_MODE0);
     bool cancle(int mode = WORK_THREAD_MODE0);
@@ -43,7 +44,7 @@ private:
     QString _sql;
     QByteArray _byteArray;
     RespType _respValue;
-    qulonglong _cursor;
+    QString _cursor;
     qulonglong _count;
     QList<CmdMsg> _cmd;
     DbMgr _dbMgr;

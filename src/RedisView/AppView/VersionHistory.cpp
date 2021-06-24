@@ -19,6 +19,7 @@ VersionHistory::VersionHistory(int width, int height, QWidget *parent) :
     setFixedSize(width * 1 / 2, height * 1 / 2);
     ui->_textBrowser->setOpenExternalLinks(true);
     ui->_textBrowser->setText(tr(
+                                  "<br>2021/06/21&nbsp;&nbsp;Version 1.7.2&nbsp;&nbsp;适配浪潮云redis集群环境.<br>"
                                   "<br>2021/04/21&nbsp;&nbsp;Version 1.7.1&nbsp;&nbsp;新增键值查看功能.<br>"
                                   "<br>2019/06/26&nbsp;&nbsp;Version 1.7.0&nbsp;&nbsp;新增主题设置和数据库导入导出.<br>"
                                   "<br>2019/06/01&nbsp;&nbsp;Version 1.6.7&nbsp;&nbsp;密码AES加密存储.<br>"

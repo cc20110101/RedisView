@@ -22,6 +22,8 @@ public:
     bool openSingel(const QString &hostAddress, const QString passwd = "", int timeOut = 1000);
     bool openCluster(const QString &hostAddress, const QString passwd = "", const bool master = true, int timeOut = 1000);
     bool openCluster();
+    bool openClient(const QString &hostAddress, const QString passwd = "", const bool master = true, int timeOut = 1000);
+    bool openClient();
     bool reOpen();
     void close();
     void setCluster(const bool &isCluster);
@@ -64,6 +66,7 @@ public:
     bool encoding(const QString& key, QByteArray & value);
     int getClientIndex() const;
     bool getClusterMode() const;
+    bool getCustomMode() const;
     bool getReplicationMode() const;
     bool getcfg(const QString& parameter, RespType &value);
     bool getDbNum(int &num);
@@ -74,6 +77,7 @@ private:
     bool _isNewOpen;
     bool _isClusterMode;
     bool _isReplicationMode;
+    bool _isCustomMode;
     bool _onlyMaster;
     quint16 _port;
     int _dbIndex;

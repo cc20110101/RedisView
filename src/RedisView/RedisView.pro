@@ -1,4 +1,5 @@
 SOURCES += \
+    AppView/AddIndexDialog.cpp \
     AppView/AppMain.cpp \
     AppView/CheckCodeDialog.cpp \
     AppView/ContributorDialog.cpp \
@@ -39,6 +40,7 @@ SOURCES += \
 
 
 HEADERS += \
+    AppView/AddIndexDialog.h \
     AppView/CheckCodeDialog.h \
     AppView/ContributorDialog.h \
     AppView/DbCfgdialog.h \

@@ -272,7 +272,21 @@ void LoginDialog::onOK() {
             _redisClient->setConnectName(_lableName);
             accept();
         } else {
-            QMessageBox::critical(this, tr("连接错误"), _redisClient->getErrorInfo());
+            QString errInfo =_redisClient->getErrorInfo();
+            if(errInfo.contains("ERR unsupported command", Qt::CaseInsensitive)) {
+                if(_redisClient->openClient(
+                            _treeWidgetItem->text(1),
+                            _vClientInfo[_treeWidget->currentIndex().row()]._passwd,
+                            false, 1500)) {
+                    _lableName = _treeWidgetItem->text(0);
+                    _redisClient->setConnectName(_lableName);
+                    accept();
+                } else {
+                    QMessageBox::critical(this, tr("连接错误"), errInfo);
+                }
+            } else {
+                QMessageBox::critical(this, tr("连接错误"), _redisClient->getErrorInfo());
+            }
         }
     }
     _btConnect->setEnabled(true);

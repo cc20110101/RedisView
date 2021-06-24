@@ -30,6 +30,7 @@ private:
 private:
     bool _isRun;
     bool _isClusterMode;
+    bool _isCustomMode;
     bool _isCalculateTimeout;
     int _dbType;
     int _idbNums;

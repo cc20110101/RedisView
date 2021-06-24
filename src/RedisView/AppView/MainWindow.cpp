@@ -576,10 +576,18 @@ void MainWindow::refreshConnInfo() {
     }
 
     if(_redisClient) {
-        if(_redisClient->openCluster()) {
-            _mainWidget->reOpenClient();
+        if(_redisClient->getCustomMode()) {
+            if(_redisClient->openClient()) {
+                _mainWidget->reOpenClient();
+            } else {
+                QMessageBox::information(this,tr("错误"),_redisClient->getErrorInfo());
+            }
         } else {
-            QMessageBox::information(this,tr("错误"),_redisClient->getErrorInfo());
+            if(_redisClient->openCluster()) {
+                _mainWidget->reOpenClient();
+            } else {
+                QMessageBox::information(this,tr("错误"),_redisClient->getErrorInfo());
+            }
         }
     } else {
         QMessageBox::information(this,tr("错误"),tr("客户端连接为空!"));
@@ -1292,7 +1300,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：王长春<br>"
-                           "版本 ：Community v1.7.1<br>"
+                           "版本 ：Community v1.7.2<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='http://www.cc123.net.cn/'>RedisView</a> <a href='https://github.com/cc20110101/RedisView'>GitHub</a> <a href='https://sourceforge.net/projects/redisview/'>SourceForge</a><br>"
                            "版权 ：Copyright 2019 Powered By CC<br>"

@@ -70,12 +70,12 @@
 #endif
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.7.1"
+#define WindowTitle             "RedisView Community v1.7.2"
 #define IniFileName             "conf.ini"
 #define LogName                 "process.log"
 #define OrganizationName        "CC20110101"
 #define ApplicationName         "RedisView"
-#define ApplicationVersion      "1.7.1"
+#define ApplicationVersion      "1.7.2"
 
 // 定义常量
 #define BATCH_SCAN_NUM                             5000
@@ -176,6 +176,7 @@
 #define ICON_FEEDBACK              ":/Resources/feedback.ico"
 #define ICON_UPDATE                ":/Resources/update.ico"
 #define ICON_DETAILS               ":/Resources/details.ico"
+#define ICON_ADDDB                 ":/Resources/adddb.ico"
 #define GIF_WAIT                   ":/Resources/wait.gif"
 
 extern  QMutex  G_DB_MUTEX;
@@ -209,6 +210,7 @@ public:
     }
 
     void init() {
+        _indexNums = 0;
         _name.clear();
         _addr.clear();
         _encodeAddr.clear();
@@ -219,6 +221,7 @@ public:
         _encodePasswd.clear();
     }
 
+    int _indexNums;
     QString _name;
     QString _addr;
     QString _passwd;
@@ -238,6 +241,8 @@ public:
 
 public:
     void init() {
+        _clusterMode = false;
+        _customMode = false;
         _port = 0;
         _dbIndex = 0;
         _taskid = 0;
@@ -272,10 +277,13 @@ public:
         this->_list = rhs._list;
         this->_respResult = rhs._respResult;
         this->_tableName = rhs._tableName;
-
+        this->_clusterMode = rhs._clusterMode;
+        this->_customMode = rhs._customMode;
         return *this;
     }
 
+    bool _clusterMode;
+    bool _customMode;
     quint16 _port;
     int _taskid;
     int _sequence;

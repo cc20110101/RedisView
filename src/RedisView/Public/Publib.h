@@ -29,6 +29,8 @@ public:
     static void saveCode(QString code);
     static QString getCode();
     static QString getSoftCode();
+    static void setIndexNums(RedisCluster *redisClient, int indexNums);
+    static int getIndexNums(RedisCluster *redisClient);
 
 private:
     static void _getcpuid(unsigned int CPUInfo[4], unsigned int InfoType);
