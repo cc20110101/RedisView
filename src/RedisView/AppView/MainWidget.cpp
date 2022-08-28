@@ -1467,6 +1467,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
         settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
     }
     settings.endArray();
+    _keyPattern = keyPattern;
 }
 
 void MainWidget::on__enterRadioButton_toggled(bool checked)
