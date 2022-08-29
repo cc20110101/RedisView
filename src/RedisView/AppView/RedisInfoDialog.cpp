@@ -1,5 +1,5 @@
 /**
-* @file      RedisInfoDialog.h
+* @file      RedisInfoDialog.cpp
 * @brief     Redis服务端信息与分析
 * @author    王长春
 * @date      2019-05-30

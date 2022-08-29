@@ -13,6 +13,7 @@ SOURCES += \
     Public/AesEncrypt.cpp \
     Public/DbMgr.cpp \
     Public/Define.cpp \
+    Public/Log.cpp \
     Public/QaesEncryption.cpp \
     RedisLib/RedisClient.cpp \
     RedisLib/RedisRespParser.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     Public/AesEncrypt.h \
     Public/DbMgr.h \
     Public/Define.h \
+    Public/Log.h \
     Public/QaesEncryption.h \
     RedisLib/RedisClient.h \
     RedisLib/RedisRespParser.h \

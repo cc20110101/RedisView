@@ -10,7 +10,7 @@
 #define WORKTHREAD_H
 
 #include "Public/DbMgr.h"
-#include "Public/Publib.h"
+#include "Public/Log.h"
 
 class WorkThread : public QObject, public QRunnable
 {

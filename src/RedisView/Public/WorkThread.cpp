@@ -6,7 +6,7 @@
 * @version   001
 * @copyright Copyright (c) 2018
 */
-#include "Public/WorkThread.h"
+#include "WorkThread.h"
 
 WorkThread::WorkThread(TaskMsg *taskMsg, QObject *parent) : QObject(parent)
 {
@@ -417,7 +417,7 @@ int WorkThread::imporData(int taskid) {
         if(_taskMsg->_clusterMode && !_taskMsg->_customMode) {
             if(recordData.lTimeOut > 0) {
                 if(!_redisClusterClient->pexpire(recordData.sKey, recordData.lTimeOut)) {
-                    PubLib::log(QString("import set timeout failed,key=%1").arg(recordData.sKey));
+                    Log::Error(QString("import set timeout failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else {
@@ -426,38 +426,38 @@ int WorkThread::imporData(int taskid) {
 
             if(recordData.sKeyType == "string") {
                 if(!_redisClusterClient->set(recordData.sKey, recordData.sValue)) {
-                    PubLib::log(QString("import string failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import string failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "list") {
                 if(!_redisClusterClient->lpush(recordData.sKey, recordData.sValue, ret)) {
-                    PubLib::log(QString("import list failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import list failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "hash") {
                 if(!_redisClusterClient->hset(recordData.sKey, recordData.sFiled, recordData.sValue, ret)) {
-                    PubLib::log(QString("import hash failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import hash failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "set") {
                 if(!_redisClusterClient->sadd(recordData.sKey, recordData.sValue, ret)) {
-                    PubLib::log(QString("import set failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import set failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "zset") {
                 if(!_redisClusterClient->zadd(recordData.sKey, recordData.sValue, recordData.lWeight, ret)) {
-                    PubLib::log(QString("import zset failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import zset failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else {
-                PubLib::log(QString("import failed,error type %1").arg(recordData.sKeyType));
+                 Log::Error(QString("import failed,error type %1").arg(recordData.sKeyType));
                 continue;
             }
 
         } else {
             if(recordData.lTimeOut > 0) {
                 if(!_redisClient->pexpire(recordData.sKey, recordData.lTimeOut)) {
-                    PubLib::log(QString("import set timeout failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import set timeout failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else {
@@ -467,38 +467,38 @@ int WorkThread::imporData(int taskid) {
             if(dbindex != recordData.iState) {
                 dbindex = recordData.iState;
                 if(!_redisClient->select(dbindex)) {
-                    PubLib::log(QString("import failed,select index %1 failed").arg(dbindex));
+                    Log::Error(QString("import failed,select index %1 failed").arg(dbindex));
                     continue;
                 }
             }
 
             if(recordData.sKeyType == "string") {
                 if(!_redisClient->set(recordData.sKey, recordData.sValue)) {
-                    PubLib::log(QString("import string failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import string failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "list") {
                 if(!_redisClient->lpush(recordData.sKey, recordData.sValue, ret)) {
-                    PubLib::log(QString("import list failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import list failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "hash") {
                 if(!_redisClient->hset(recordData.sKey, recordData.sFiled, recordData.sValue, ret)) {
-                    PubLib::log(QString("import hash failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import hash failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "set") {
                 if(!_redisClient->sadd(recordData.sKey, recordData.sValue, ret)) {
-                    PubLib::log(QString("import set failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import set failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else if(recordData.sKeyType == "zset") {
                 if(!_redisClient->zadd(recordData.sKey, recordData.sValue, recordData.lWeight, ret)) {
-                    PubLib::log(QString("import zset failed,key=%1").arg(recordData.sKey));
+                     Log::Error(QString("import zset failed,key=%1").arg(recordData.sKey));
                     continue;
                 }
             } else {
-                PubLib::log(QString("import failed,error type %1").arg(recordData.sKeyType));
+                 Log::Error(QString("import failed,error type %1").arg(recordData.sKeyType));
                 continue;
             }
         }

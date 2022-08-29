@@ -8,6 +8,7 @@
 */
 #include "AppView/MainWindow.h"
 #include "AppView/CheckCodeDialog.h"
+#include "Public/Log.h"
 
 // PLEASE USE UTF-8 CODE BROWSE CODE
 int main(int argc, char *argv[]) {
@@ -50,7 +51,7 @@ int main(int argc, char *argv[]) {
             app.setStyleSheet(QLatin1String(styleSheet.readAll()));
             styleSheet.close();
         } else {
-            PubLib::log("install style sheet failed");
+            Log::Error("install style sheet failed");
         }
     }
 

@@ -70,12 +70,12 @@
 #endif
 
 // 定义字符串
-#define WindowTitle             "RedisView Community v1.7.2"
+#define WindowTitle             "RedisView Community v1.7.3"
 #define IniFileName             "conf.ini"
-#define LogName                 "process.log"
+#define LogName                 "RedisView.log"
 #define OrganizationName        "CC20110101"
 #define ApplicationName         "RedisView"
-#define ApplicationVersion      "1.7.2"
+#define ApplicationVersion      "1.7.3"
 
 // 定义常量
 #define BATCH_SCAN_NUM                             5000

@@ -1,12 +1,12 @@
 /**
-* @file      Publib.h
+* @file      Publib.cpp
 * @brief     公共函数库
 * @author    王长春
 * @date      2018-11-24
 * @version   001
 * @copyright Copyright (c) 2018
 */
-#include "Public/Publib.h"
+#include "Publib.h"
 
 qlonglong PubLib::_sequenceId = 0;
 
@@ -74,15 +74,12 @@ int PubLib::getIndexNums(RedisCluster *redisClient) {
 void PubLib::log(QString info) {
     QMutexLocker locker(&G_PUBLIC_LIB_MUTEX);
     QString logfile = QCoreApplication::applicationDirPath() + "/" + LogName;
-    QString message = QString("[%1] : %2\r\n")
-            .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss"))
-            .arg(info);
     QFile file(logfile);
     if(file.size() >= 1024*1024*10)
         file.resize(1024);
     file.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream text_stream(&file);
-    text_stream << message;
+    text_stream << info;
     file.flush();
     file.close();
 }

@@ -10,6 +10,7 @@
 #define MAINWIDGET_H
 
 #include "Public/WorkThread.h"
+#include "Public/Log.h"
 #include "AppView/DataView.h"
 #include "AppView/KeyDialog.h"
 #include "AppView/AddIndexDialog.h"

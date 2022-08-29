@@ -118,8 +118,8 @@ void MainWidget::initSet(RedisCluster *redisClient) {
         _idbNums = PubLib::getIndexNums(_redisClient);
     } else {
         if(!_redisClient->getDbNum(_idbNums)) {
-            _idbNums = 1;
-            PubLib::log(tr("获取DB数失败，默认为1"));
+            _idbNums = 16;
+            Log::Error(tr("获取DB数失败，默认为1"));
         }
     }
     _vClients = _redisClient->getClients(false);
@@ -1085,25 +1085,29 @@ void MainWidget::treeClicked(const QModelIndex &index) {
     }
 
     if(!_redisClient->pttl(key, _qLongLong)) {
-        QMessageBox::critical(this, tr("错误"), tr("获取键过期时间失败!"));
+        //QMessageBox::critical(this, tr("错误"), tr("获取键过期时间失败!"));
+        Log::Error("获取键过期时间失败!");
         _qLongLong = -2;
     }
     _dataView->setTimeMs(_qLongLong);
 
     if(!_redisClient->encoding(key, byteArray)) {
-        QMessageBox::critical(this, tr("错误"), tr("获取键编码信息失败!"));
+        //QMessageBox::critical(this, tr("错误"), tr("获取键编码信息失败!"));
+         Log::Error("获取键编码信息失败!");
         byteArray.clear();
     }
     _dataView->setEncode(byteArray);
 
     if(!_redisClient->refcount(key, _qLongLong)) {
-        QMessageBox::critical(this, tr("错误"), tr("获取键引用计数失败!"));
+        //QMessageBox::critical(this, tr("错误"), tr("获取键引用计数失败!"));
+         Log::Error("获取键引用计数失败!");
         _qLongLong = -1;
     }
     _dataView->setRefcount(_qLongLong);
 
     if(!_redisClient->idletime(key, _qLongLong)) {
-        QMessageBox::critical(this, tr("错误"), tr("获取键空闲时间失败!"));
+        //QMessageBox::critical(this, tr("错误"), tr("获取键空闲时间失败!"));
+         Log::Error("获取键空闲时间失败!");
         _qLongLong = -1;
     }
     _dataView->setIdleTimeS(_qLongLong);
@@ -1467,7 +1471,7 @@ void MainWidget::setKeyPattern(QString keyPattern) {
         settings.setValue("valuepattern", vClientInfo[j]._valuePattern);
     }
     settings.endArray();
-    _keyPattern = keyPattern;
+	_keyPattern = keyPattern;
 }
 
 void MainWidget::on__enterRadioButton_toggled(bool checked)

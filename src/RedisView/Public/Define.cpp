@@ -6,7 +6,7 @@
 * @version   001
 * @copyright Copyright (c) 2018
 */
-#include "Public/Define.h"
+#include "Define.h"
 
 QMutex  G_DB_MUTEX;
 QMutex  G_SEQUENCE_MUTEX;

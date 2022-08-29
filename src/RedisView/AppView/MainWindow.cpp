@@ -1300,7 +1300,7 @@ void MainWindow::about() {
                            "<br>"
                            "<b>RedisView</b><br><br>"
                            "作者 ：王长春<br>"
-                           "版本 ：Community v1.7.2<br>"
+                           "版本 ：Community v1.7.3<br>"
                            "邮箱 ：cc20110101@126.com<br>"
                            "地址 ：<a href='http://www.cc123.net.cn/'>RedisView</a> <a href='https://github.com/cc20110101/RedisView'>GitHub</a> <a href='https://sourceforge.net/projects/redisview/'>SourceForge</a><br>"
                            "版权 ：Copyright 2019 Powered By CC<br>"
